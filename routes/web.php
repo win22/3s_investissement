@@ -24,5 +24,7 @@ Route::get('/logout', 'DashboardController@logout');
 
 Route::get('/all_admin', 'AdminController@all_admin');
 Route::post('/save_admin', 'AdminController@save');
-Route::get('/edit/{id}', 'AdminController@edit');
-Route::post('/update/test', 'AdminController@update');
+Route::post('/update_admin/test', 'AdminController@update');
+Route::get('/delete_admin/{id}', 'AdminController@delete');
+Route::get('/active_admin/{id}', 'AdminController@active_admin');
+Route::get('/desactive_admin/{id}', 'AdminController@desactive_admin');

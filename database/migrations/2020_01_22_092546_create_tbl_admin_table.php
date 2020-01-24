@@ -17,9 +17,9 @@ class CreateTblAdminTable extends Migration
             $table->increments('id');
             $table->string('admin_name', 90);
             $table->string('admin_email', 191);
-            $table->string('admin_password',20);
+            $table->string('admin_password',200);
             $table->string('admin_token',30);
-            $table->string('admin_image',6);
+            $table->string('admin_image',20);
             $table->string('admin_role',15);
             $table->string('admin_status',10);
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

@@ -16,9 +16,9 @@
         <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
             <div class="row w-100">
                 <div class="col-lg-5 mx-auto">
-                    <div class="auto-form-wrapper">
+                    <div class="auto-form-wrapper card-success card-outline card-success1 card-outline1">
                         <div class="card-title text text-center py-3">
-                            <img style="width: 80px" src="{{ asset('backend/img/logo.png')}}">
+                            <img width="90px" src="{{ asset('backend/img/logo2.jpg')}}">
                             <h3 class="text-center"><span class="text-warning">3s Investissement</span> | Connexion</h3>
                         </div>
 
@@ -66,7 +66,7 @@
 
                             <div class="form-group">
 
-                                <button class="btn btn-warning submit-btn btn-block">
+                                <button style="background-color: #0c3540; border-radius: 10px" class="btn text-white  submit-btn btn-block">
                                     <i class="material-icons mr-6">send</i>
                                     Se connecter
 

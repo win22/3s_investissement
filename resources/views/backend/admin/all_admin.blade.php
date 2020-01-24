@@ -1,7 +1,10 @@
 @extends('backend.admin_layout')
 @section('contenu')
+
+
 <div class="col-lg-12">
-    <div class="card card-orange card-outline">
+
+    <div class="card card-orange card-outline ">
         <div class="card-header">
             <h5 class="m-0">Utilisateurs</h5>
             <p>Voici la liste des utilisateurs de l'application</p>
@@ -13,7 +16,7 @@
 
                         <div class="table-responsive">
                         <table class="table table-hover">
-                            <thead class="text-white" style="background-color: #343a40; border-radius: 30px !important;">
+                            <thead class="text-white" style="background-color: #0c3540; border-radius: 30px !important;">
                             <tr>
                                 <th style="width: 10px">image</th>
                                 <th>Nom</th>
@@ -26,7 +29,7 @@
                             <tbody>
                             @foreach($all_info as $v_info)
                             <tr>
-                                <td class="text-center"><img src="{{ URL::to($v_info->admin_image) }}"
+                                <td><img src="{{ URL::to($v_info->admin_image) }}"
                                                              style=" height: 40px; width: 40px; border-radius: 15px;">
                                 </td>
                                 <td>{{ $v_info->admin_name }}</td>
@@ -47,10 +50,15 @@
                                 </td>
 
                                 <td  class="td-actions text-center">
-                                    <a class="btn btn-info btn-link btn-sm">
+                                    @if($v_info->admin_status == 'Activé')
+                                    <a href="/desactive_admin/{{$v_info->id}}" class="btn btn-dark btn-link btn-sm">
                                         <i  style="color: white !important;" class="fas fa-thumbs-down"></i>
                                     </a>
-
+                                    @else
+                                    <a  href="/active_admin/{{$v_info->id}}" class="btn btn-info btn-link btn-sm">
+                                        <i  style="color: white !important;" class="fas fa-thumbs-up"></i>
+                                    </a>
+                                    @endif
                                     <a data-toggle="modal"
                                        data-id="{{ $v_info->id }}"
                                        data-name="{{ $v_info->admin_name }}"
@@ -62,7 +70,7 @@
                                         <i  style="color: white !important;" class="fas fa-edit" ></i>
                                     </a>
 
-                                    <a id="delete" class="btn btn-danger btn-link btn-sm" style="margin-left: 2px">
+                                    <a  id="delete" href="/delete_admin/{{ $v_info->id }}" class="btn btn-danger btn-link btn-sm" style="margin-left: 2px">
                                         <i  style="color: white !important;" class="fas fa-times "></i>
                                     </a>
                                 </td>
@@ -88,8 +96,8 @@
             </p>
 
             <div class="card-tools">
-                <a href="#" class="btn btn-outline-orange  btn-sm" data-toggle="modal" data-target="#exampleModal">
-                    <i  style="color: #ff5100 !important;"  class="fas fa-user"></i> &nbsp; Ajouter un nouveau</a>
+                <a href="#" class="btn btn-dark  btn-sm" data-toggle="modal" data-target="#exampleModal">
+                    <i  style="color: #ffffff !important;"  class="fas fa-user-plus"></i> &nbsp; Ajouter</a>
                 <ul class="pagination pagination-sm float-right">
                     <li class="page-item"><a class="page-link" href="#">&laquo;
                             {{ $all_info->links() }}
@@ -103,8 +111,8 @@
 
 <!-- Modal save user -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog modal-lg " role="document">
+        <div class="modal-content card-orange card-outline">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Ajouter un utilisateur</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -176,14 +184,14 @@
 
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+        <div class="modal-content card-orange card-outline">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajouter un utilisateur</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Modifier un utilisateur</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form enctype="multipart/form-data" action="/update/test" method="post">
+            <form enctype="multipart/form-data" action="/update_admin/test" method="post">
                 @csrf
                 <div class="modal-body">
                     <input hidden  name="id" id="id" value="">

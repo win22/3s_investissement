@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use Session;
-
+use Illuminate\Support\Facades\Hash;
 session_start();
 class SuperAdminController extends Controller
 {
@@ -23,17 +23,17 @@ class SuperAdminController extends Controller
         ]);
 
         $admin_email = $request->admin_email;
-        $admin_password = md5 ($request->admin_password);
+        $admin_password = sha1($request->admin_password);
 
         $log1 = DB::table('tbl_admin')
-            ->where('admin_email', $admin_email)
-            ->where('admin_password', $admin_password)
-            ->where('admin_status', 1)
+            ->where('admin_email', '=', $admin_email)
+            ->where('admin_password', '=',  $admin_password)
+            ->where('admin_status', '=', 'Activé')
             ->first();
         $log2 = DB::table('tbl_admin')
             ->where('admin_email', '=', $admin_email)
             ->where('admin_password', '=', $admin_password)
-            ->where('admin_status', '=', 0)
+            ->where('admin_status', '=', 'Desactivé')
             ->first();
 
         if($log1)
@@ -45,17 +45,18 @@ class SuperAdminController extends Controller
           Session::put('admin_image', $log1->admin_image);
           Session::put('admin_status', $log1->admin_status);
          return redirect('/dashboard');
-        }else
-        {
-            return redirect('/investi_admin')->with(
-            Session::put('message', 'Vos identifiants sont incorrectes'));
-
-
         }
         if($log2)
         {
             return redirect('/investi_admin')->with(
                 Session::put('message', "Votre compte n'est pas activé"));
+        }
+        else
+        {
+            return redirect('/investi_admin')->with(
+                Session::put('message', 'Vos identifiants sont incorrectes'));
+
+
         }
     }
 }

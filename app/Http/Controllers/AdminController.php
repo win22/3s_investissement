@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use Session;
-use function Sodium\crypto_pwhash_scryptsalsa208sha256_str;
-use Hash;
+
 class AdminController extends Controller
 {
     public function index()
@@ -15,7 +14,6 @@ class AdminController extends Controller
         $this->AdminAuthCheck();
         return view('backend.admin.all_admin');
     }
-
     public function all_admin()
     {
         $this->AdminAuthCheck();
@@ -28,21 +26,41 @@ class AdminController extends Controller
             ->with(['nb'=> $nb ]);
     }
 
+    public function active_admin($id)
+    {
+        $this->AdminAuthCheck();
+        DB::table('tbl_admin')
+            ->where('id', $id)
+            ->update(['admin_status'=>'Activé']);
+        Session::put('message', ' Un Utilisateur a été activé ! ');
+        return back();
+    }
+    public function desactive_admin($id)
+    {
+        $this->AdminAuthCheck();
+        DB::table('tbl_admin')
+            ->where('id', $id)
+            ->update(['admin_status'=>'Desactivé']);
+        Session::put('message', 'Un Utilisateur a été désactivé ! ');
+        return back();
+    }
+
     public function save(Request $request)
     {
+        $this->AdminAuthCheck();
         request()->validate([
             'admin_name' => ['required', 'max:90'],
             'admin_email' => ['required',  'unique:tbl_admin', 'max:191', 'email'],
             'admin_password' => ['required', 'min:8', 'max:20'],
             'admin_role' => ['required', 'max:15'],
         ]);
-
+        $password = $request->admin_password;
         $admin = array();
         $admin['admin_name'] = $request->admin_name;
         $admin['admin_email'] = $request->admin_email;
-        $admin['admin_password'] = hash::make( $request->admin_password);
+        $admin['admin_password'] = sha1($password);
         $admin['admin_role'] = $request->admin_role;
-        $admin['admin_status'] = 0;
+        $admin['admin_status'] = 'Desactivé';
         $admin['admin_token'] = str_random(30);
         $image = $request->file('admin_image');
         if($image)
@@ -68,6 +86,7 @@ class AdminController extends Controller
 
     public function update(Request $request)
     {
+        $this->AdminAuthCheck();
         request()->validate([
             'admin_name' => ['required', 'max:90'],
             'admin_email' => ['required', 'max:191', 'email'],
@@ -79,9 +98,8 @@ class AdminController extends Controller
 
         $admin['admin_name'] = $request->admin_name;
         $admin['admin_email'] = $request->admin_email;
-        $admin['admin_password'] = hash::make( $request->admin_password);
+        $admin['admin_password'] = sha1( $request->admin_password);
         $admin['admin_role'] = $request->admin_role;
-        $admin['admin_status'] = 0;
         $admin['admin_token'] = str_random(30);
         $image = $request->file('admin_image');
         if($image)
@@ -100,12 +118,18 @@ class AdminController extends Controller
             ->where('id', $id)
             ->update($admin);
         return redirect('/all_admin');
-//        dump($admin);
-//        dump($id);
-
-
-
     }
+
+    public function delete($id)
+    {
+        $this->AdminAuthCheck();
+        DB::table('tbl_admin')
+            ->where('id', $id)
+            ->delete();
+        Session::put('message', 'Un Utilisateur a été supprimé... ');
+        return back();
+    }
+
 
 
 
