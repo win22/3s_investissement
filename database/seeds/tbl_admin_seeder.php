@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hashlara ;
+use Illuminate\Support\Facades\Hash;
 
 class tbl_admin_seeder extends Seeder
 {
@@ -19,7 +19,7 @@ class tbl_admin_seeder extends Seeder
         $admin['id'] = 1;
         $admin['admin_name'] = 'Sagesse Diham';
         $admin['admin_email'] = 'dihambouroslyn@gmail.com';
-        $admin['admin_password'] =sha1($password);
+        $admin['admin_password'] =hash::make($password);
         $admin['admin_role'] = 'Administrateur';
         $admin['admin_token'] = 'jdu5sja8dj8zifp';
         $admin['admin_image'] = 'image/user.png';
