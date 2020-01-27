@@ -35,14 +35,14 @@
                                 <td>{{ $v_info->admin_name }}</td>
                                 <td>{{ $v_info->admin_email }}</td>
                                 <td >
-                                    @if($v_info->admin_role == 'Administrateur')
+                                    @if($v_info->admin_role == 1 )
                                     <span class="text-danger">Adminnistrateur</span>
                                     @else
                                     <span class="text-warning">Utilisateur</span>
                                     @endif
                                 </td>
                                 <td >
-                                    @if($v_info->admin_status == 'Activé')
+                                    @if($v_info->admin_status == 1)
                                     <span class="text-success">Activé</span>
                                     @else
                                     <span class="text-warning">Désactivé</span>
@@ -50,7 +50,7 @@
                                 </td>
 
                                 <td  class="td-actions text-center">
-                                    @if($v_info->admin_status == 'Activé')
+                                    @if($v_info->admin_status == 1)
                                     <a href="/desactive_admin/{{$v_info->id}}" class="btn btn-dark btn-link btn-sm">
                                         <i  style="color: white !important;" class="fas fa-thumbs-down"></i>
                                     </a>
@@ -89,9 +89,9 @@
             </div>
             <p class="card-text">
                 @if($nb>0)
-                Total des orangemations : <span id="total_records">{{ $nb }}</span>
+                Total des informations : <span id="total_records">{{ $nb }}</span>
             @else
-            Aucune orangemation trouvé
+                <span class="text-center">Aucune information trouvé</span>
                 @endif
             </p>
 
@@ -99,9 +99,7 @@
                 <a href="#" class="btn btn-dark  btn-sm" data-toggle="modal" data-target="#exampleModal">
                     <i  style="color: #ffffff !important;"  class="fas fa-user-plus"></i> &nbsp; Ajouter</a>
                 <ul class="pagination pagination-sm float-right">
-                    <li class="page-item"><a class="page-link" href="#">&laquo;
-                            {{ $all_info->links() }}
-                        </a></li>
+                    {{ $all_info->links() }}
 
                 </ul>
             </div>
@@ -153,8 +151,8 @@
                             <h6 class="">Role  <span class="text-orange">*</span></h6>
                             <select class="form-control" name="admin_role">
                                 <option value="">Selectionnez un role </option>
-                                <option class="text-orange" value="Administrateur">Administrateur </option>
-                                <option value="Utilisateur">Utilisateur </option>
+                                <option class="text-orange" value="1">Administrateur </option>
+                                <option value="2">Utilisateur </option>
                             </select>
                             @if($errors->has('admin_role'))
                             <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_role')}}</small>

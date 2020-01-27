@@ -28,3 +28,5 @@ Route::post('/update_admin/test', 'AdminController@update');
 Route::get('/delete_admin/{id}', 'AdminController@delete');
 Route::get('/active_admin/{id}', 'AdminController@active_admin');
 Route::get('/desactive_admin/{id}', 'AdminController@desactive_admin');
+
+Route::get('/add_appartement', 'AppartController@index');

@@ -2,13 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\admin;
+use App\Notifications\RepliedToThread;
+use App\tbl_admin;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
+use Illuminate\Notifications\Notifiable;
 use Session;
+use Illuminate\Support\Facades\Hash;
+
 
 class AdminController extends Controller
 {
+
+
+
     public function index()
     {
         $this->AdminAuthCheck();
@@ -17,8 +26,7 @@ class AdminController extends Controller
     public function all_admin()
     {
         $this->AdminAuthCheck();
-        $all_info = DB::table('tbl_admin')
-            ->orderByDesc('id')
+        $all_info = tbl_admin::orderByDesc('id')
             ->paginate(5);
         $nb = $all_info->count();
 
@@ -29,18 +37,16 @@ class AdminController extends Controller
     public function active_admin($id)
     {
         $this->AdminAuthCheck();
-        DB::table('tbl_admin')
-            ->where('id', $id)
-            ->update(['admin_status'=>'Activé']);
+        tbl_admin::where('id', $id)
+            ->update(['admin_status'=> 1]);
         Session::put('message', ' Un Utilisateur a été activé ! ');
         return back();
     }
     public function desactive_admin($id)
     {
         $this->AdminAuthCheck();
-        DB::table('tbl_admin')
-            ->where('id', $id)
-            ->update(['admin_status'=>'Desactivé']);
+        tbl_admin::where('id', $id)
+            ->update(['admin_status'=> 0]);
         Session::put('message', 'Un Utilisateur a été désactivé ! ');
         return back();
     }
@@ -50,7 +56,7 @@ class AdminController extends Controller
         $this->AdminAuthCheck();
         request()->validate([
             'admin_name' => ['required', 'max:90'],
-            'admin_email' => ['required',  'unique:tbl_admin', 'max:191', 'email'],
+            'admin_email' => ['required',  'unique:tbl_admins', 'max:191', 'email'],
             'admin_password' => ['required', 'min:8', 'max:20'],
             'admin_role' => ['required', 'max:15'],
         ]);
@@ -58,9 +64,9 @@ class AdminController extends Controller
         $admin = array();
         $admin['admin_name'] = $request->admin_name;
         $admin['admin_email'] = $request->admin_email;
-        $admin['admin_password'] = sha1($password);
+        $admin['admin_password'] = hash::make($password);
         $admin['admin_role'] = $request->admin_role;
-        $admin['admin_status'] = 'Desactivé';
+        $admin['admin_status'] = 0;
         $admin['admin_token'] = str_random(30);
         $image = $request->file('admin_image');
         if($image)
@@ -79,8 +85,10 @@ class AdminController extends Controller
         {
             $admin['admin_image'] = 'image/user.png';
         }
-         DB::table('tbl_admin')->insert($admin);
-         return redirect('/all_admin');
+        tbl_admin::create($admin);
+        Session::put('message', 'Un utilisateur a été Ajouté ! ');
+        return back();
+
 
     }
 
@@ -98,7 +106,7 @@ class AdminController extends Controller
 
         $admin['admin_name'] = $request->admin_name;
         $admin['admin_email'] = $request->admin_email;
-        $admin['admin_password'] = sha1( $request->admin_password);
+        $admin['admin_password'] = hash::make( $request->admin_password);
         $admin['admin_role'] = $request->admin_role;
         $admin['admin_token'] = str_random(30);
         $image = $request->file('admin_image');
@@ -114,7 +122,7 @@ class AdminController extends Controller
                 $admin['admin_image'] = $image_url;
             }
         }
-        DB::table('tbl_admin')
+        DB::table('tbl_admins')
             ->where('id', $id)
             ->update($admin);
         return redirect('/all_admin');
@@ -123,9 +131,7 @@ class AdminController extends Controller
     public function delete($id)
     {
         $this->AdminAuthCheck();
-        DB::table('tbl_admin')
-            ->where('id', $id)
-            ->delete();
+        tbl_admin::where('id', $id)->delete();
         Session::put('message', 'Un Utilisateur a été supprimé... ');
         return back();
     }

@@ -1,3 +1,4 @@
+@if(Session::get('admin_role') == 1 || Session::get('admin_role') == 2 )
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -44,10 +45,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </form>
         <p hidden class="alert">{{ $message = Session::get('message')}}</p>
         @if($message)
-        <div id="alert" style="height: 15px !important; width: 30px" class="alert alert-success alert-with-icon small right ml-5">
+        <div id="alert"  class="alert alert-success alert-with-icon small right ml-5">
             <i class="fa fa-bell" data-notify="icon"></i>
             </button>
-            <span class="text-center" style="width: 20; height: 10px !important;" data-notify="message"> {{$message }} </span>
+            <span class="text-center data-notify="message"> {{$message }} </span>
         </div>
         {{ Session::put('message',NULL) }}
         @endif
@@ -158,8 +159,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview {{ request()->is('all_appart','add_appart')? 'open-menu' : ''}} ">
-                        <a href="#" class="nav-link {{ request()->is('all_appart','add_appart')? 'active' : ''}}">
+                    <li class="nav-item has-treeview {{ request()->is('all_appartement','add_appartement')? 'open-menu' : ''}} ">
+                        <a href="#" class="nav-link {{ request()->is('all_appartement','all_appartement')? 'active' : ''}}">
                             <i class="nav-icon fas fa-store-alt"></i>
                             <p>
                                 Appartements
@@ -168,13 +169,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <a href="/all_appartement" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Liste Appartements</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/add_appartement" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Ajouter Appartements</p>
                                 </a>
@@ -448,3 +449,4 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </script>
 </body>
 </html>
+@endif

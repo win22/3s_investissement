@@ -27,14 +27,14 @@ class SuperAdminController extends Controller
         $admin_email = $request->admin_email;
         $admin_password = $request->admin_password;
 
-        $log1 = DB::table('tbl_admin')
+        $log1 = DB::table('tbl_admins')
             ->where('admin_email', $admin_email)->first();
 
         $redirect = '/investi_admin';
         $errors = Session::put('message', 'Vos identifiants sont incorrectes');
         if (isset($log1))
         {
-            if ($log1->admin_status == "Desactivé")
+            if ($log1->admin_status == 0)
             {
                 $errors = Session::put('message', 'Votre compte n\'est pas activé');
             }
@@ -47,7 +47,7 @@ class SuperAdminController extends Controller
                 Session::put('admin_image', $log1->admin_image);
                 Session::put('admin_status', $log1);
                 $redirect = '/dashboard';
-                $errors = null;
+                $errors = Session::put('message', 'Bienvenue ' .Session::get('admin_name'));
             }
         }
 

@@ -12,7 +12,7 @@ class tbl_admin_seeder extends Seeder
      */
     public function run()
     {
-        DB::table('tbl_admin')->truncate();
+        DB::table('tbl_admins')->truncate();
         $password = 'passer1234';
 
         $admin = array();
@@ -20,12 +20,12 @@ class tbl_admin_seeder extends Seeder
         $admin['admin_name'] = 'Sagesse Diham';
         $admin['admin_email'] = 'dihambouroslyn@gmail.com';
         $admin['admin_password'] =hash::make($password);
-        $admin['admin_role'] = 'Administrateur';
+        $admin['admin_role'] = 1;
         $admin['admin_token'] = 'jdu5sja8dj8zifp';
         $admin['admin_image'] = 'image/user.png';
-        $admin['admin_status'] = 'Activé';
+        $admin['admin_status'] = 1;
 
-        DB::table('tbl_admin')->insert($admin);
+        DB::table('tbl_admins')->insert($admin);
 
 
     }

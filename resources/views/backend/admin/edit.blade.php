@@ -30,8 +30,8 @@
             <h6 class="">Role  <span class="text-orange">*</span></h6>
             <select  id="admin_role" class="form-control" name="admin_role">
               <option value="" >Selectionner un autre role</option>
-                <option class="text-orange" value="Administrateur">Administrateur </option>
-                <option value="Utilisateur">Utilisateur </option>
+                <option class="text-orange" value="1">Administrateur </option>
+                <option value="2">Utilisateur </option>
             </select>
             @if($errors->has('admin_role'))
             <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_role')}}</small>
