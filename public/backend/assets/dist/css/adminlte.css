@@ -30049,6 +30049,6 @@ a.text-muted:hover {
 }
 
 .text-divider{margin: 2em 0; line-height: 0; text-align: center;}
-.text-divider span{background-color: #ffffff; padding: 1em; font-weight: bold ; color: rgba(220, 31, 0, 0.57)
+.text-divider span{background-color: #ffffff; padding: 1em; font-weight: bold ; color: rgba(255, 83, 0, 0.79)
 }
 .text-divider:before{ content: " "; display: block; border-top: 1px solid #fff; border-bottom: 1px solid rgba(155, 155, 155, 0.58);}

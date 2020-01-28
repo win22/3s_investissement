@@ -30,3 +30,4 @@ Route::get('/active_admin/{id}', 'AdminController@active_admin');
 Route::get('/desactive_admin/{id}', 'AdminController@desactive_admin');
 
 Route::get('/add_appartement', 'AppartController@index');
+Route::post('/save_appart', 'AppartController@save')->name('save');

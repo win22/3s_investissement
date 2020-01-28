@@ -11,12 +11,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>3s investissement</title>
-
+    <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel = "feuille de style" >
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media = "all" rel = "stylesheet" type = "text / css" />
+    <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media = "all" rel = "stylesheet" type = " text / css " />
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('backend/assets/plugins/fontawesome-free/css/all.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('backend/assets/dist/css/adminlte.css') }}">
     <!-- Google Font: Source Sans Pro -->
+
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -160,7 +163,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
                     <li class="nav-item has-treeview {{ request()->is('all_appartement','add_appartement')? 'open-menu' : ''}} ">
-                        <a href="#" class="nav-link {{ request()->is('all_appartement','all_appartement')? 'active' : ''}}">
+                        <a href="#" class="nav-link {{ request()->is('all_appartement','add_appartement')? 'active' : ''}}">
                             <i class="nav-icon fas fa-store-alt"></i>
                             <p>
                                 Appartements
@@ -405,7 +408,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('backend/assets/dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('backend/assets/dist/js/my.js') }}"></script>
 
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js" type="text/javascript"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js" type="text/javascript"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>-->
 
+
+<!-- Pour declenché l'action du bouton delete -->
 <script type="text/javascript" src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js')}}"></script>
 <script>
     $(document).on("click", "#delete",function (e) {
@@ -438,6 +447,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     })
 </script>
 
+<!-- Pour afficher l'animation au niveau de l'alerte -->
 <script>
     jQuery(function ($) {
         var alert = $('#alert');
@@ -447,6 +457,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
     })
 </script>
+
+<!-- Pour charger les images de maniere automatique -->
+<!--<script type="text/javascript">-->
+<!--    $("#file-1").fileinput({-->
+<!--        console.log('ok')-->
+<!--        theme:'fa',-->
+<!--        uploadUrl: "/image-submit",-->
+<!---->
+<!--        uploadExtraData:function () {-->
+<!--            return{-->
+<!--                _token:$("input[name='_token']").val()-->
+<!--            };-->
+<!--        },-->
+<!--        allowedFileExtensions :['jpg', 'png', 'gif'],-->
+<!--        overwriteInitial:false,-->
+<!--        maxFileSize:2000,-->
+<!--        maxFileNum:8,-->
+<!--        slugCallback:function (filename) {-->
+<!--            return filename.replace('(','_').replace(']','_');-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>
 @endif
