@@ -19,15 +19,20 @@ Route::get('/investi_admin', 'SuperAdminController@index');
 
 Route::post('/admin_connexion', 'SuperAdminController@connexion');
 
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/logout', 'DashboardController@logout');
+Route::group([
+    'middleware' => 'App\Http\Middleware\Auth'
+    ], function ()
+{
+    Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/logout', 'DashboardController@logout');
 
-Route::get('/all_admin', 'AdminController@all_admin');
-Route::post('/save_admin', 'AdminController@save');
-Route::post('/update_admin/test', 'AdminController@update');
-Route::get('/delete_admin/{id}', 'AdminController@delete');
-Route::get('/active_admin/{id}', 'AdminController@active_admin');
-Route::get('/desactive_admin/{id}', 'AdminController@desactive_admin');
+    Route::get('/all_admin', 'AdminController@all_admin');
+    Route::post('/save_admin', 'AdminController@save');
+    Route::post('/update_admin/test', 'AdminController@update');
+    Route::get('/delete_admin/{id}', 'AdminController@delete');
+    Route::get('/active_admin/{id}', 'AdminController@active_admin');
+    Route::get('/desactive_admin/{id}', 'AdminController@desactive_admin');
 
-Route::get('/add_appartement', 'AppartController@index');
-Route::post('/save_appart', 'AppartController@save')->name('save');
+    Route::get('/add_appartement', 'AppartController@index');
+    Route::post('/save_appart', 'AppartController@save')->name('save');
+});

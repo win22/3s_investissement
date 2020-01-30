@@ -12,20 +12,20 @@ class tbl_admin_seeder extends Seeder
      */
     public function run()
     {
-        DB::table('tbl_admins')->truncate();
+        DB::table('admins')->truncate();
         $password = 'passer1234';
-
         $admin = array();
         $admin['id'] = 1;
-        $admin['admin_name'] = 'Sagesse Diham';
-        $admin['admin_email'] = 'dihambouroslyn@gmail.com';
-        $admin['admin_password'] =hash::make($password);
-        $admin['admin_role'] = 1;
-        $admin['admin_token'] = 'jdu5sja8dj8zifp';
-        $admin['admin_image'] = 'image/user.png';
-        $admin['admin_status'] = 1;
+        $admin['name'] = 'Sagesse Diham';
+        $admin['email'] = 'dihambouroslyn@gmail.com';
+        $admin['password'] = bcrypt($password);
+        $admin['role'] = 1;
+        $admin['token'] = 'jdu5sja8dj8zifp';
+        $admin['remember_token'] = null;
+        $admin['image'] = 'image/user.png';
+        $admin['status'] = 1;
 
-        DB::table('tbl_admins')->insert($admin);
+        DB::table('admins')->insert($admin);
 
 
     }

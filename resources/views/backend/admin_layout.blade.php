@@ -1,4 +1,4 @@
-@if(Session::get('admin_role') == 1 || Session::get('admin_role') == 2 )
+@if(Auth::check())
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -134,10 +134,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ URL::asset(Session::get('admin_image')) }}"  class="img-circle elevation-1">
+                    <img src="{{ URL::asset(Auth::user()->image)}}"  class="img-circle elevation-1">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{ Session::get('admin_name')}}</a>
+                    <a href="#" class="d-block">{{ Auth::user()->name}}</a>
                 </div>
             </div>
 

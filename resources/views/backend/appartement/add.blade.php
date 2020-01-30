@@ -1,4 +1,3 @@
-@if(Session::get('admin_role') ==1 || Session::get('admin_role') == 2)
 @extends('backend.admin_layout')
 @section('contenu')
 
@@ -199,6 +198,12 @@
                             @endif
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="">Image</label>
+                            <input type="file" class="form-control input-sm" multiple name="images[]">
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-body -->
                     <button type="submit" class="btn btn-dark float-right card-success1 card-outline1">
@@ -211,4 +216,3 @@
     </div>
 </div>
 @endsection
-@endif

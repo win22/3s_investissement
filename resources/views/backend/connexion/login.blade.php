@@ -27,15 +27,15 @@
                             <div class="form-group">
                                 <label class="label">Adresse e-mail</label>
                                 <div class="input-group">
-                                    <input type="email" name="admin_email" class="form-control" placeholder="Veuillez saisir votre adresse e-mail">
+                                    <input type="email" name="email" class="form-control" placeholder="Veuillez saisir votre adresse e-mail">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                            <i class="material-icons">mail</i>
                                         </span>
                                     </div>
                                 </div>
-                                @if($errors->has('admin_email'))
-                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_email')}}</small>
+                                @if($errors->has('email'))
+                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('email')}}</small>
                                 @endif
                                 <p hidden class="alert">{{ $message = Session::get('message')}}</p>
                                 <p hidden class="alert">{{ $succes = Session::get('succes')}}</p>
@@ -52,15 +52,15 @@
                             <div class="form-group">
                                 <label class="label">Mot de passe </label>
                                 <div class="input-group">
-                                    <input type="password" name="admin_password" class="form-control" placeholder="Veuillez saisir votre mot de passe">
+                                    <input type="password" name="password" class="form-control" placeholder="Veuillez saisir votre mot de passe">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="material-icons">lock</i>
                                         </span>
                                     </div>
                                 </div>
-                                @if($errors->has('admin_password'))
-                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_password')}}</small>
+                                @if($errors->has('password'))
+                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('password')}}</small>
                                 @endif
                             </div>
 

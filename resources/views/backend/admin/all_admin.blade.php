@@ -29,20 +29,20 @@
                             <tbody>
                             @foreach($all_info as $v_info)
                             <tr>
-                                <td><img src="{{ URL::to($v_info->admin_image) }}"
+                                <td><img src="{{ URL::to($v_info->image) }}"
                                                              style=" height: 40px; width: 40px; border-radius: 15px;">
                                 </td>
-                                <td>{{ $v_info->admin_name }}</td>
-                                <td>{{ $v_info->admin_email }}</td>
+                                <td>{{ $v_info->name }}</td>
+                                <td>{{ $v_info->email }}</td>
                                 <td >
-                                    @if($v_info->admin_role == 1 )
+                                    @if($v_info->role == 1 )
                                     <span class="text-danger">Adminnistrateur</span>
                                     @else
                                     <span class="text-warning">Utilisateur</span>
                                     @endif
                                 </td>
                                 <td >
-                                    @if($v_info->admin_status == 1)
+                                    @if($v_info->status == 1)
                                     <span class="text-success">Activé</span>
                                     @else
                                     <span class="text-warning">Désactivé</span>
@@ -50,7 +50,7 @@
                                 </td>
 
                                 <td  class="td-actions text-center">
-                                    @if($v_info->admin_status == 1)
+                                    @if($v_info->status == 1)
                                     <a href="/desactive_admin/{{$v_info->id}}" class="btn btn-dark btn-link btn-sm">
                                         <i  style="color: white !important;" class="fas fa-thumbs-down"></i>
                                     </a>
@@ -61,18 +61,19 @@
                                     @endif
                                     <a data-toggle="modal"
                                        data-id="{{ $v_info->id }}"
-                                       data-name="{{ $v_info->admin_name }}"
-                                       data-email="{{ $v_info->admin_email }}"
+                                       data-name="{{ $v_info->name }}"
+                                       data-email="{{ $v_info->email }}"
                                        data-password="{{ null }}"
-                                       data-role="{{ $v_info->admin_role }}"
+                                       data-role="{{ $v_info->role }}"
                                        data-target="#updateModal"
                                        class="btn btn-warning btn-link btn-sm"  style="margin-left: 2px">
                                         <i  style="color: white !important;" class="fas fa-edit" ></i>
                                     </a>
-
+                                    @if(Auth::check() AND Auth::user()->role == 1)
                                     <a  id="delete" href="/delete_admin/{{ $v_info->id }}" class="btn btn-danger btn-link btn-sm" style="margin-left: 2px">
                                         <i  style="color: white !important;" class="fas fa-times "></i>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
@@ -123,39 +124,39 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <h6 class="">Nom <span class="text-orange">*</span></h6>
-                            <input type="text" name="admin_name" class="form-control" placeholder="Saisir ici...">
+                            <input type="text" name="name" class="form-control" placeholder="Saisir ici...">
 
-                            @if($errors->has('admin_name'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_name')}}</small>
+                            @if($errors->has('name'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('name')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-6">
                             <h6 class="">Adresse e-mail  <span class="text-orange">*</span></h6>
-                            <input type="email" name="admin_email" class="form-control" placeholder="Saisir ici...">
+                            <input type="email" name="email" class="form-control" placeholder="Saisir ici...">
 
-                            @if($errors->has('admin_email'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_email')}}</small>
+                            @if($errors->has('email'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('email')}}</small>
                             @endif
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <h6 class="">Mot de Passe  <span class="text-orange">*</span></h6>
-                            <input type="password" name="admin_password" class="form-control" placeholder="Saisir ici...">
+                            <input type="password" name="password" class="form-control" placeholder="Saisir ici...">
 
-                            @if($errors->has('admin_password'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_password')}}</small>
+                            @if($errors->has('password'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('password')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-6">
                             <h6 class="">Role  <span class="text-orange">*</span></h6>
-                            <select class="form-control" name="admin_role">
+                            <select class="form-control" name="role">
                                 <option value="">Selectionnez un role </option>
                                 <option class="text-orange" value="1">Administrateur </option>
                                 <option value="2">Utilisateur </option>
                             </select>
-                            @if($errors->has('admin_role'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_role')}}</small>
+                            @if($errors->has('role'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('role')}}</small>
                             @endif
                         </div>
                     </div>
@@ -163,7 +164,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <h6 class="">Image de l'utilisateur</h6>
-                                <input  accept="image/*" type="file" name="admin_image">
+                                <input  accept="image/*" type="file" name="image">
                             </div>
                         </div>
                     </div>
