@@ -20,48 +20,48 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <h6  style="font-family: 'Manjari bold">Nom de l'appartement<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control"  name="appart_name"  placeholder="Saisir ici">
-                            @if($errors->has('appart_name'))
-                            <small class="form-text text-danger">{{$errors->first('appart_name')}}</small>
+                            <input type="text" class="form-control" value="{{ old('name') }}"  name="name"  placeholder="Saisir ici">
+                            @if($errors->has('name'))
+                            <small class="form-text text-danger">{{$errors->first('name')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-6">
                             <h6 style="font-family: 'Manjari bold">Description rapide<span class="text-orange"> *</span></h6>
-                            <input type="text"  name="appart_short_description" class="form-control" placeholder="Saisir ici">
-                            @if($errors->has('appart_short_description'))
-                            <small class="form-text text-danger">{{$errors->first('appart_short_description')}}</small>
+                            <input type="text"  name="short_description" value="{{ old('short_description') }}" class="form-control" placeholder="Saisir ici">
+                            @if($errors->has('short_description'))
+                            <small class="form-text text-danger">{{$errors->first('short_description')}}</small>
                             @endif
                         </div>
                     </div>
                     <div class="form-group">
                         <h6 style="font-family: 'Manjari bold">Large déscription<span class="text-orange"> *</span></h6>
-                        <textarea name="appart_long_description" class="form-control" rows="3" placeholder="Saisi ici ..."></textarea>
-                        @if($errors->has('appart_long_description'))
-                        <small class="form-text text-danger">{{$errors->first('appart_long_description')}}</small>
+                        <textarea name="large_description" value="{{ old('large_description') }}"  class="form-control" rows="3" placeholder="Saisi ici ..."></textarea>
+                        @if($errors->has('large_description'))
+                        <small class="form-text text-danger">{{$errors->first('large_description')}}</small>
                         @endif
                     </div>
                     <div class="text-divider"><span>Localisation </span></div>
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6  style="font-family: 'Manjari bold">Adresse<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" name="appart_adresse"  placeholder="Saisir ici">
-                            @if($errors->has('appart_adresse'))
-                            <small class="form-text text-danger">{{$errors->first('appart_adresse')}}</small>
+                            <input type="text" class="form-control" value="{{ old('adresse') }}" name="adresse"  placeholder="Saisir ici">
+                            @if($errors->has('adresse'))
+                            <small class="form-text text-danger">{{$errors->first('adresse')}}</small>
                             @endif
                         </div>
 
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari bold">Ville<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" name="appart_ville" placeholder="Saisir ici">
-                            @if($errors->has('appart_ville'))
-                            <small class="form-text text-danger">{{$errors->first('appart_ville')}}</small>
+                            <input type="text" class="form-control" value="{{ old('ville') }}" name="ville" placeholder="Saisir ici">
+                            @if($errors->has('ville'))
+                            <small class="form-text text-danger">{{$errors->first('ville')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari bold">Pays<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" name="appart_pays" placeholder="Saisir ici">
-                            @if($errors->has('appart_pays'))
-                            <small class="form-text text-danger">{{$errors->first('appart_pays')}}</small>
+                            <input type="text" class="form-control" value="{{ old('pays') }}" name="pays" placeholder="Saisir ici">
+                            @if($errors->has('pays'))
+                            <small class="form-text text-danger">{{$errors->first('pays')}}</small>
                             @endif
                         </div>
                     </div>
@@ -69,62 +69,82 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Type<span class="text-orange"> *</span></h6>
-                            <select class="form-control" name="appart_type">
+                            <select class="form-control" name="type">
                                 <option value="Appartement">Appartement</option>
                             </select>
-                            @if($errors->has('appart_type'))
-                            <small  class="form-text text-danger">{{$errors->first('appart_type')}}</small>
+                            @if($errors->has('type'))
+                            <small  class="form-text text-danger">{{$errors->first('type')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'">Option<span class="text-orange"> *</span></h6>
-                            <select class="form-control" name="appart_option">
+                            <select class="form-control" name="option">
                                 <option value="1">Â louer</option>
                                 <option value="2">Â vendre</option>
                             </select>
-                            @if($errors->has('appart_option'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('appart_option')}}</small>
+                            @if($errors->has('option'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('option')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Alignements sur le site<span class="text-orange"> *</span></h6>
-                            <select class="form-control" name="appart_align">
+                            <select class="form-control" name="align">
                                 <option value="1">1</option>
                                 <option value="1">2</option>
                                 <option value="1">3</option>
                                 <option value="1">4</option>
                             </select>
-                            @if($errors->has('appart_align'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('appart_align')}}</small>
+                            @if($errors->has('align'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('align')}}</small>
                             @endif
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'">Prix<span class="text-orange"> *</span></h6>
-                            <input class="form-control" placeholder="Saisi ici" name="appart_prix">
-                            @if($errors->has('appart_prix'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('appart_prix')}}</small>
+                            <input class="form-control" value="{{ old('prix') }}" placeholder="Saisi ici" name="prix">
+                            @if($errors->has('prix'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('prix')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
-                            <h6 style="font-family: 'Manjari Bold'" name="appart_devise"" class="">Devise<span class="text-orange"> *</span></h6>
-                            <select class="form-control">
+                            <h6 style="font-family: 'Manjari Bold'" class="">Devise<span class="text-orange"> *</span></h6>
+                            <select class="form-control" name="devise" >
                                 <option value="1">CFA</option>
                                 <option value="2">EURO</option>
                                 <option value="3">DOLARS</option>
                             </select>
-                            @if($errors->has('appart_devise'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('appart_devise')}}</small>
+                            @if($errors->has('devise'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('devise')}}</small>
+                            @endif
+                        </div>
+                        <div class="form-group col-md-4 ">
+                            <h6 style="font-family: 'Manjari Bold'">Solde<span class="text-orange"> *</span></h6>
+                            <select name="solde" class="form-control dynamic2">
+                                <option value="2">Non soldé</option>
+                                <option value="1">En solde</option>
+                            </select>
+                            @if($errors->has('solde'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('solde')}}</small>
                             @endif
                         </div>
                     </div>
-
+                    <div class="row forma">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"></div>
+                        <div class="form-group col-md-4">
+                            <h6 style="font-family: 'Manjari Bold'" class="">Pourcentage<span class="text-orange"> *</span></h6>
+                            <input type="text" class="form-control" value="{{ old('pourcentage') }}" name="pourcentage"  placeholder="Saisir ici">
+                            @if($errors->has('pourcentage'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('pourcentage')}}</small>
+                            @endif
+                        </div>
+                    </div>
                     <div class="text-divider"><span>Détail de l'appartement</span></div>
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Chambre</h6>
-                            <select class="form-control" name="">
+                            <select class="form-control" name="chambre">
                                 <option value="0">0</option>
                                 <option value="1">1 chambre</option>
                                 <option value="2">2 chambres </option>
@@ -135,39 +155,39 @@
                                 <option value="7">7 chambres</option>
                                 <option value="8">8 chambres</option>
                             </select>
-                            @if($errors->has('admin_role'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_role')}}</small>
+                            @if($errors->has('chambre'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('chambre')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Cuisine</h6>
-                            <select class="form-control" name="">
+                            <select class="form-control" name="cuisine">
                                 <option value="0">0</option>
                                 <option value="1">1 cuisine</option>
                                 <option value="2">2 cuisines </option>
                                 <option value="3">3 cuisines</option>
                             </select>
-                            @if($errors->has('admin_role'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_role')}}</small>
+                            @if($errors->has('cuisine'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('cuisine')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Garage</h6>
-                            <select class="form-control" name="">
+                            <select class="form-control" name="garage">
                                 <option value="0">0</option>
                                 <option value="1">1 garage</option>
                                 <option value="2">2 garages </option>
                                 <option value="3">3 garages</option>
                             </select>
-                            @if($errors->has('admin_role'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_role')}}</small>
+                            @if($errors->has('garage'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('garage')}}</small>
                             @endif
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Salon</h6>
-                            <select class="form-control" name="">
+                            <select class="form-control" name="salon">
                                 <option value="0">0</option>
                                 <option value="1">1 salon</option>
                                 <option value="2">2 salons </option>
@@ -175,13 +195,13 @@
                                 <option value="4">4 salons</option>
                                 <option value="5">5 salons</option>
                             </select>
-                            @if($errors->has('admin_role'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_role')}}</small>
+                            @if($errors->has('salon'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('salon')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Sale de bain</h6>
-                            <select class="form-control" name="">
+                            <select class="form-control" name="sale_de_bain">
                                 <option value="0">0</option>
                                 <option value="1">1 salle de bain</option>
                                 <option value="2">2 salle de bain </option>
@@ -193,15 +213,26 @@
                                 <option value="8">8 salle de bain</option>
                                 <option value="9">9 salle de bain</option>
                             </select>
-                            @if($errors->has('admin_role'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_role')}}</small>
+                            @if($errors->has('sale_de_bain'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('sale_de_bain')}}</small>
                             @endif
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="">Image</label>
-                            <input type="file" class="form-control input-sm" multiple name="images[]">
+                    <div class="form-group">
+                        <label for="exampleInputFile">Image Profile</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom file" accept="image/*" name="image" id="exampleInputFile">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-divider"><span>Selectionner plusieurs images</span></div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Galerie image</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" name="images[]" multiple accept="image/*" class="custom file" id="exampleInputFile">
+                            </div>
                         </div>
                     </div>
                 </div>

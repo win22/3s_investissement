@@ -1,40 +1,41 @@
-
+@if(Auth::user()->id == 1)
     <div class="row">
         <div class="form-group col-md-6">
             <h6 class="">Nom <span class="text-orange">*</span></h6>
-            <input id="admin_name" type="text" name="admin_name" class="form-control">
+            <input id="name" type="text" name="name" class="form-control">
 
-            @if($errors->has('admin_name'))
-            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_name')}}</small>
+            @if($errors->has('name'))
+            <small id="emailHelp" class="form-text text-danger">{{$errors->first('name')}}</small>
             @endif
         </div>
         <div class="form-group col-md-6">
             <h6 class="">Adresse e-mail  <span class="text-orange">*</span></h6>
-            <input  id="admin_email" type="email" name="admin_email" class="form-control" placeholder="Saisir ici...">
+            <input  id="email" type="email" name="email" class="form-control" placeholder="Saisir ici...">
 
-            @if($errors->has('admin_email'))
-            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_email')}}</small>
+            @if($errors->has('email'))
+            <small id="emailHelp" class="form-text text-danger">{{$errors->first('email')}}</small>
             @endif
         </div>
     </div>
+
     <div class="row">
         <div class="form-group col-md-6">
             <h6 class="">Mot de Passe</h6>
-            <input id="admin_password" type="password" name="admin_password" class="form-control" placeholder="Saisir ici...">
-
-            @if($errors->has('admin_password'))
-            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_password')}}</small>
+            <input id="password" type="password" name="password" class="form-control" placeholder="Saisir ici...">
+            @if($errors->has('password'))
+            <small id="emailHelp" class="form-text text-danger">{{$errors->first('password')}}</small>
             @endif
         </div>
+
         <div class="form-group col-md-6">
             <h6 class="">Role  <span class="text-orange">*</span></h6>
-            <select  id="admin_role" class="form-control" name="admin_role">
+            <select  id="role" class="form-control" name="role">
               <option value="" >Selectionner un autre role</option>
                 <option class="text-orange" value="1">Administrateur </option>
                 <option value="2">Utilisateur </option>
             </select>
-            @if($errors->has('admin_role'))
-            <small id="emailHelp" class="form-text text-danger">{{$errors->first('admin_role')}}</small>
+            @if($errors->has('role'))
+            <small id="emailHelp" class="form-text text-danger">{{$errors->first('role')}}</small>
             @endif
         </div>
     </div>
@@ -42,7 +43,8 @@
         <div class="col-md-4">
             <div class="form-group">
                 <h6 class="">Image de l'utilisateur</h6>
-                <input  accept="image/*" type="file" name="admin_image">
+                <input  accept="image/*" type="file" name="image">
             </div>
         </div>
     </div>
+@endif

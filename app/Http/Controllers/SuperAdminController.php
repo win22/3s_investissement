@@ -22,7 +22,7 @@ class SuperAdminController extends Controller
     {
         request()->validate([
             'email' => ['required', 'email'],
-            'password' => ['required', 'min:8']
+            'password' => ['required']
         ]);
        $result = Auth::attempt([
            'email' => request('email'),
@@ -36,7 +36,7 @@ class SuperAdminController extends Controller
         {
             $errors = Session::put('message', "Désolé votre compte n'est pas activé");
             $redirect = '/investi_admin';
-        }else if(hash::check(request('password'), Auth::user()->password))
+        }else
         {
             $errors = Session::put('message', "Bienvenue ".Auth::user()->name);
             $redirect = '/dashboard';

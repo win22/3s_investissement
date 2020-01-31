@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appartement;
 use App\tbl_appartement;
 use App\tbl_image;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use MongoDB\Driver\Session;
 
 class AppartController extends Controller
 {
@@ -15,46 +17,53 @@ class AppartController extends Controller
         return view('backend.appartement.add');
     }
 
-   public function save(Request $request)
+   public function save()
    {
-       request()->validate([
-           'appart_name' => 'required', 'max: 60',
-           'appart_short_description' => 'required', 'max: 60',
-           'appart_long_description' => 'required',
-//           'appart_ville' => 'required', 'max:30',
-//           'appart_adresse' => 'required', '90',
-//           'appart_pays' => 'required', '90',
-//           'appart_align' => 'required', '90',
-//           'appart_type' => 'required', '90',
-//           'appart_prix' => 'required', '90',
-//           'appart_chambre' => 'required', '2',
-//           'appart_cuisine' => 'required', '2',
-//           'appart_sall_bain' => 'required', '2',
-//           'appart_option' => 'required', '2',
-//           'appart_piece' => 'required', '2',
-//           'appart_salon' => 'required', '2',
-           //'appart_image' => 'required', '10',
-       ]);
+//       request()->validate([
+//           'name' => 'required', 'max: 60',
+//           'short_description' => 'required', 'max: 60',
+//           'large_description' => 'required',
+//           'ville' => 'required', 'max:30',
+//           'adresse' => 'required', 'max:90',
+//           'pays' => 'required', 'max:90',
+//           'align' => 'required', 'max:90',
+//           'type' => 'required', 'max:90',
+//           'devise' => 'required', 'max:2',
+//           'prix' => 'required', 'max:90',
+//           'chambre' => 'required', 'max:3',
+//           'cuisine' => 'required', 'max:3',
+//           'sale_de_bain' => 'required', 'max:3',
+//           'option' => 'required', 'max:3',
+//           'piece' => 'required', 'max:3',
+//           'solde' => 'required', 'max:3',
+//           'salon' => 'required', 'max:3',
+//           'image' => 'required', 'max:20',
+//       ]);
 
-       $post = tbl_appartement::create([
-              'appart_name' => $request->appart_name,
-              'appart_short_description' => $request->appart_short_description,
-              'appart_long_description' => $request->appart_long_description,
-           ]);
-       $images = Input::file('images');
-       foreach ($images as $image):
-           $move = $image->move('public/images', $image->getClientOriginalName());
-           if($move)
-           {
-               $imagedata = tbl_image::create([
-                    'title' => $image->getClientOriginalName(),
-                     'filename' => $image->getClientOriginalName()
-               ]);
-               var_dump('image upload');
-               $post->images()->attach([$imagedata->id]);
-           }
-       endforeach;
+//       $appart = Appartement::create([
+//           'name' => request('name'),
+//           'short_description' => request('short_description'),
+//           'large_description' => request('large_description'),
+//           'ville' => request('ville'),
+//           'adresse' => request('adresse'),
+//           'pays' => request('pays'),
+//           'align' => request('align'),
+//           'type' => request('type'),
+//           'prix' => request('prix'),
+//           'devise' => request('devise'),
+//           'solde' => request('solde'),
+//           'chambre' => request('chambre'),
+//           'cuisine' => request('cuisine'),
+//           'sale_de_bain' => request('sale_de_bain'),
+//           'option' => request('option'),
+//           'piece' => request('piece'),
+//           'salon' => request('salon'),
+//       ]);
+//       return redirect('/dashboard')->with(
+//         Session::put('message', 'Un appartement a été ajouté ')
+//       );
 
+       dump(Input::all());
 
    }
 }

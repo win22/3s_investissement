@@ -15,14 +15,14 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('appartement_id');
-            $table->integer('bureau_id');
-            $table->integer('entreprot_id');
-            $table->integer('immeuble_id');
-            $table->integer('magasin_id');
-            $table->integer('terrain_id');
-            $table->integer('hectare_id');
-            $table->integer('villa_id');
+            $table->integer('appartement_id')->nullable();
+            $table->integer('burreau_id')->nullable();
+            $table->integer('entrepot_id')->nullable();
+            $table->integer('immeuble_id')->nullable();
+            $table->integer('magasin_id')->nullable();
+            $table->integer('terrain_id')->nullable();
+            $table->integer('hectare_id')->nullable();
+            $table->integer('villa_id')->nullable();
             $table->string('image');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

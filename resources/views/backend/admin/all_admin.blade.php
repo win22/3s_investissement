@@ -29,11 +29,11 @@
                             <tbody>
                             @foreach($all_info as $v_info)
                             <tr>
-                                <td><img src="{{ URL::to($v_info->image) }}"
+                                <td><img src="{{ URL::to($v_info['image']) }}"
                                                              style=" height: 40px; width: 40px; border-radius: 15px;">
                                 </td>
-                                <td>{{ $v_info->name }}</td>
-                                <td>{{ $v_info->email }}</td>
+                                <td>{{ $v_info['name'] }}</td>
+                                <td>{{ $v_info['email'] }}</td>
                                 <td >
                                     @if($v_info->role == 1 )
                                     <span class="text-danger">Adminnistrateur</span>
@@ -50,27 +50,27 @@
                                 </td>
 
                                 <td  class="td-actions text-center">
+                                    @if(Auth::check() AND Auth::user()->role == 1)
                                     @if($v_info->status == 1)
-                                    <a href="/desactive_admin/{{$v_info->id}}" class="btn btn-dark btn-link btn-sm">
+                                    <a href="/desactive_admin/{{$v_info['id']}}" class="btn btn-dark btn-link btn-sm">
                                         <i  style="color: white !important;" class="fas fa-thumbs-down"></i>
                                     </a>
                                     @else
-                                    <a  href="/active_admin/{{$v_info->id}}" class="btn btn-info btn-link btn-sm">
+                                    <a  href="/active_admin/{{$v_info['id']}}" class="btn btn-info btn-link btn-sm">
                                         <i  style="color: white !important;" class="fas fa-thumbs-up"></i>
                                     </a>
                                     @endif
                                     <a data-toggle="modal"
-                                       data-id="{{ $v_info->id }}"
-                                       data-name="{{ $v_info->name }}"
-                                       data-email="{{ $v_info->email }}"
-                                       data-password="{{ null }}"
-                                       data-role="{{ $v_info->role }}"
+                                       data-id="{{ $v_info['id'] }}"
+                                       data-name="{{ $v_info['name'] }}"
+                                       data-email="{{ $v_info['email'] }}"
+                                       data-password="{{ bcrypt($v_info['password']) }}"
+                                       data-role="{{ $v_info['role'] }}"
                                        data-target="#updateModal"
                                        class="btn btn-warning btn-link btn-sm"  style="margin-left: 2px">
                                         <i  style="color: white !important;" class="fas fa-edit" ></i>
                                     </a>
-                                    @if(Auth::check() AND Auth::user()->role == 1)
-                                    <a  id="delete" href="/delete_admin/{{ $v_info->id }}" class="btn btn-danger btn-link btn-sm" style="margin-left: 2px">
+                                    <a  id="delete" href="/delete_admin/{{ $v_info['id'] }}" class="btn btn-danger btn-link btn-sm" style="margin-left: 2px">
                                         <i  style="color: white !important;" class="fas fa-times "></i>
                                     </a>
                                     @endif
@@ -165,6 +165,15 @@
                             <div class="form-group">
                                 <h6 class="">Image de l'utilisateur</h6>
                                 <input  accept="image/*" type="file" name="image">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h6 class="">Image multiple </h6>
+                                <input  accept="image/*" type="file" multiple name="images[]">
                             </div>
                         </div>
                     </div>

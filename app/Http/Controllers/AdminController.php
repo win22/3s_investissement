@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use \App\Models\Admin;
+use App\Models\Image;
+use DemeterChain\A;
+use http\Message;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -19,11 +22,17 @@ class AdminController extends Controller
     }
     public function all_admin()
     {
-        $all_info = Admin::orderByDesc('id')
+        $all_info = Admin::latest()
             ->paginate(5);
         $nb = $all_info->count();
         return view('backend.admin.all_admin', ['all_info' => $all_info])
             ->with(['nb'=> $nb ]);
+
+//        $admin = Admin::find('3');
+//        $image = $admin->images;
+//
+//        return view('backend.slide',['images' => $image]);
+
     }
 
     public function active_admin($id)
@@ -69,7 +78,7 @@ class AdminController extends Controller
             $image = 'image/user.png';
         }
         $data_image = $image;
-         $data = Admin::create([
+        $data = Admin::create([
              'name' => request('name'),
              'email' => request('email'),
              'password' => bcrypt(request('password')),
@@ -77,45 +86,57 @@ class AdminController extends Controller
              'status' => 0,
              'image' => $data_image
         ]);
+        $photo = $request->file('images');
+        foreach ($photo as $image):
+            $image_name = '12';
+            $text = strtolower($image->getClientOriginalExtension());
+            $image_full_name =$image_name.'.'.$text;
+            $upload_path = 'image/';
+            $image_url = $upload_path.$image_full_name;
+            $success = $image->move($upload_path,$image_full_name);
+            if($success)
+            {
+                $data_img = Image::create([
+                    'admin_id' => $data->id,
+                    'image' =>  $image_url
+                ]);
+            }
+        endforeach;
+
          return back()->with(Session::put('message', 'Un utilisateur a été ajouté'));
 
     }
 
     public function update(Request $request)
     {
-//        $this->AdminAuthCheck();
-//        request()->validate([
-//            'admin_name' => ['required', 'max:90'],
-//            'admin_email' => ['required', 'max:191', 'email'],
-//            'admin_password' => [ 'max:20'],
-//            'admin_role' => ['required', 'max:15'],
-//        ]);
-//
-//        $data = Admin::where([
-//             'id' => request('id'),
-//             'name' => request('name'),
-//             'email' => request('email'),
-//             'password' => bcrypt(request('password')),
-//             'role' => request('role'),
-//             'status' => 0,
-//             'image' => $data_image
-//
-//        ]);
-//        Admin::updat($data);
-//        $image = $request->file('admin_image');
-//        if($image)
-//        {
-//            $image_name = str_random(6);
-//            $text = strtolower($image->getClientOriginalExtension());
-//            $image_full_name =$image_name.'.'.$text;
-//            $upload_path = 'image/';
-//            $image_url = $upload_path.$image_full_name;
-//            $success = $image->move($upload_path,$image_full_name);
-//            if($success){
-//                $admin['admin_image'] = $image_url;
-//            }
-//        }
-       return back();
+        request()->validate([
+           'name'  => ['required', 'max:90'],
+           'email' => ['required', 'max:191'],
+           'password' => ['max:30'],
+           'role' => ['required'],
+        ]);
+        $id = request('id');
+        $image = $request->file('image');
+
+        $admin = Admin::find($id);
+        $admin->name = request('name');
+        $admin->email = request('email');
+        $admin->password = bcrypt(request('password'));
+        $admin->role = request('role');
+        if($image)
+        {
+            $image_name = str_random(10);
+            $text = strtolower($image->getClientOriginalExtension());
+            $image_full_name =$image_name.'.'.$text;
+            $upload_path = 'image/';
+            $image_url = $upload_path.$image_full_name;
+            $success = $image->move($upload_path,$image_full_name);
+            if($success){
+                $admin->image = $image_url;
+            }
+        }
+        $admin->save();
+        return back();
     }
 
     public function delete($id)

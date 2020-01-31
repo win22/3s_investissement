@@ -15,4 +15,5 @@ class Admin extends Model implements Authenticatable
     {
        return $this->password;
     }
+
 }

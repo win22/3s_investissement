@@ -432,18 +432,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     $('#updateModal').on('show.bs.modal', function (event) {
 
     var button = $(event.relatedTarget)
-        var admin_id = button.data('id')
-        var admin_name = button.data('name')
-        var admin_email = button.data('email')
-        var admin_password = button.data('password')
-        var admin_role = button.data('role')
+        var id = button.data('id')
+        var name = button.data('name')
+        var email = button.data('email')
+        var password = button.data('password')
+        var role = button.data('role')
 
         var modal = $(this)
-        modal.find('.modal-body #id').val(admin_id)
-        modal.find('.modal-body #admin_name').val(admin_name)
-        modal.find('.modal-body #admin_email').val(admin_email)
-        modal.find('.modal-body #admin_password').val(admin_password)
-        modal.find('.modal-body #admin_role').val(admin_role)
+        modal.find('.modal-body #id').val(id)
+        modal.find('.modal-body #name').val(name)
+        modal.find('.modal-body #email').val(email)
+        modal.find('.modal-body #password').val(password)
+        modal.find('.modal-body #role').val(role)
     })
 </script>
 
@@ -457,7 +457,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
     })
 </script>
+<script>
+    $(document).ready(function () {
+        $(".forma").hide();
 
+        $('.dynamic2').change(function () {
+
+            if($(this).val() != '')
+            {
+                var select = $(this).attr("id");
+                var value = $(this).val();
+
+                if (value == 1) {
+                    $(".forma").hide().slideDown("slow");
+                };
+                if (value ==2) {
+                    $(".forma").hide().slideUp("slow");
+
+                };
+            }
+        });
+    });
+</script>
 <!-- Pour charger les images de maniere automatique -->
 <!--<script type="text/javascript">-->
 <!--    $("#file-1").fileinput({-->
