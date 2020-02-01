@@ -120,12 +120,12 @@
                         </div>
                         <div class="form-group col-md-4 ">
                             <h6 style="font-family: 'Manjari Bold'">Solde<span class="text-orange"> *</span></h6>
-                            <select name="solde" class="form-control dynamic2">
+                            <select name="sold" class="form-control dynamic2">
                                 <option value="2">Non soldé</option>
                                 <option value="1">En solde</option>
                             </select>
-                            @if($errors->has('solde'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('solde')}}</small>
+                            @if($errors->has('sold'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('sold')}}</small>
                             @endif
                         </div>
                     </div>
@@ -247,3 +247,8 @@
     </div>
 </div>
 @endsection
+
+
+<!--//$all_info = admin::find($id);-->
+<!--// dans la vue-->
+<!--//$all_info->image as $info afin de recuperer les images-->

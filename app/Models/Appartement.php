@@ -8,6 +8,7 @@ class Appartement extends Model
 {
     protected $fillable =
         [
+            'admin_id',
             'name',
             'short_description',
             'large_description',
@@ -18,8 +19,11 @@ class Appartement extends Model
             'option',
             'align',
             'prix',
+            'sold',
+            'pourcentage',
             'devise',
             'chambre',
+            'salon',
             'cuisine',
             'garage',
             'sale_de_bain',

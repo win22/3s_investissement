@@ -20,11 +20,10 @@ class CreateAdminsTable extends Migration
             $table->string('password',200);
             $table->string('token')->nullable();
             $table->string('remember_token')->nullable();
-            $table->string('image',20);
+            $table->string('image');
             $table->string('role',15);
             $table->string('status',10);
-            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 

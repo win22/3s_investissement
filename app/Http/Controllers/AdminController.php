@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 
 use \App\Models\Admin;
 use App\Models\Image;
-use DemeterChain\A;
-use http\Message;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Session;
-use Illuminate\Support\Facades\Hash;
 
 
 class AdminController extends Controller
@@ -30,7 +27,8 @@ class AdminController extends Controller
 
 //        $admin = Admin::find('3');
 //        $image = $admin->images;
-//
+//         Admin::find('3')->images()->create([
+//              'contenu' => 'text']);
 //        return view('backend.slide',['images' => $image]);
 
     }
@@ -59,8 +57,9 @@ class AdminController extends Controller
             'password' => ['required', 'min:8', 'max:20'],
             'role' => ['required', 'max:15'],
         ]);
-        $data_image = null;
-        $image = $request->file('image');
+
+        $data_image = 'image/user.png';
+        $image = request(file('image'));
         if($image)
         {
             $image_name = str_random(6);
@@ -72,13 +71,10 @@ class AdminController extends Controller
             if($success){
                 $image = $image_url;
             }
+            $data_image = $image;
         }
-        else
-        {
-            $image = 'image/user.png';
-        }
-        $data_image = $image;
-        $data = Admin::create([
+
+         Admin::create([
              'name' => request('name'),
              'email' => request('email'),
              'password' => bcrypt(request('password')),
@@ -86,23 +82,6 @@ class AdminController extends Controller
              'status' => 0,
              'image' => $data_image
         ]);
-        $photo = $request->file('images');
-        foreach ($photo as $image):
-            $image_name = '12';
-            $text = strtolower($image->getClientOriginalExtension());
-            $image_full_name =$image_name.'.'.$text;
-            $upload_path = 'image/';
-            $image_url = $upload_path.$image_full_name;
-            $success = $image->move($upload_path,$image_full_name);
-            if($success)
-            {
-                $data_img = Image::create([
-                    'admin_id' => $data->id,
-                    'image' =>  $image_url
-                ]);
-            }
-        endforeach;
-
          return back()->with(Session::put('message', 'Un utilisateur a été ajouté'));
 
     }

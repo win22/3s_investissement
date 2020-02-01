@@ -15,9 +15,10 @@ class CreateAppartementsTable extends Migration
     {
         Schema::create('appartements', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('admin_id');
             $table->string('name');
             $table->string('short_description');
-            $table->string('large_description');
+            $table->text('large_description');
             $table->string('adresse');
             $table->string('ville');
             $table->string('pays');
@@ -26,17 +27,16 @@ class CreateAppartementsTable extends Migration
             $table->string('align',2);
             $table->string('prix');
             $table->string('devise');
-            $table->string('solde');
-            $table->string('pourcentage');
+            $table->string('sold',1);
+            $table->string('pourcentage')->nullable();
             $table->string('chambre', 3);
             $table->string('cuisine',3);
             $table->string('garage',3);
             $table->string('salon',3);
             $table->string('sale_de_bain',3);
-            $table->string('image',10);
+            $table->string('image');
             $table->string('status',1);
-            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 
