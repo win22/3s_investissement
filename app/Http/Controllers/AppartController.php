@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Image;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Appartement;
 use App\tbl_appartement;
@@ -18,6 +19,20 @@ class AppartController extends Controller
     public function index()
     {
         return view('backend.appartement.add');
+    }
+
+    public function all_appart()
+    {
+        $appart = Appartement::latest()
+            ->paginate(5);
+        $nb = $appart->count();
+
+        return view('backend.appartement.all', ['all_appart'=> $appart])
+            ->with(['nb'=> $nb]);
+
+//        $appart = Appartement::find('1');
+////        $image = $appart->images;
+////return view('backend.appartement.all', ['appart' => $appart]);
     }
 
    public function save(Request $request)

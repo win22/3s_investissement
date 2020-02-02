@@ -11,13 +11,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>3s investissement</title>
-    <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel = "feuille de style" >
-    <link href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media = "all" rel = "stylesheet" type = "text / css" />
-    <link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media = "all" rel = "stylesheet" type = " text / css " />
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('backend/assets/plugins/fontawesome-free/css/all.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('backend/assets/dist/css/adminlte.css') }}">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/plugins/toastr/toastr.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -46,7 +47,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             </div>
         </form>
-        <p hidden class="alert">{{ $message = Session::get('message')}}</p>
+        <p hidden class="alert ">{{ $message = Session::get('message')}}</p>
         @if($message)
         <div id="alert"  class="alert alert-success alert-with-icon small right ml-5">
             <i class="fa fa-bell" data-notify="icon"></i>
@@ -172,13 +173,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/all_appartement" class="nav-link active">
+                                <a href="{{ route('appart') }}" class="nav-link {{ request()->is('all_appartement')? 'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Liste Appartements</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/add_appartement" class="nav-link">
+                                <a href="/add_appartement" class="nav-link {{ request()->is('add_appartement')? 'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Ajouter Appartements</p>
                                 </a>
@@ -407,7 +408,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="{{ asset('backend/assets/dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('backend/assets/dist/js/my.js') }}"></script>
-
+<!-- SweetAlert2 -->
+<script src="{{ asset('backend/assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<!-- Toastr -->
+<script src="{{ asset('backend/assets/plugins/toastr/toastr.min.js') }}"></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js" type="text/javascript"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js" type="text/javascript"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>-->
@@ -457,6 +461,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
     })
 </script>
+<script type="text/javascript">
+    $(function() {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+
+        $('.swalDefaultSuccess').click(function() {
+            Toast.fire({
+                type: 'success',
+                title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+            })
+        });
+
+    });
+
+</script>
 <script>
     $(document).ready(function () {
         $(".forma").hide();
@@ -476,6 +499,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 };
             }
+        });
+    });
+</script>
+
+<!--pour le slide du back-->
+<script>
+    $(document).ready(function () {
+        $('.slider').bxSlider({
+             sliderWidth: 500
         });
     });
 </script>

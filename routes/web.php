@@ -34,5 +34,6 @@ Route::group([
     Route::get('/desactive_admin/{id}', 'AdminController@desactive_admin');
 
     Route::get('/add_appartement', 'AppartController@index');
+    Route::get('/all_appartement', 'AppartController@all_appart')->name('appart');
     Route::post('/save_appart', 'AppartController@save')->name('save');
 });
