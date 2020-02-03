@@ -30052,3 +30052,9 @@ a.text-muted:hover {
 .text-divider span{background-color: #ffffff; padding: 1em; font-weight: bold ; color: rgba(255, 83, 0, 0.79)
 }
 .text-divider:before{ content: " "; display: block; border-top: 1px solid #fff; border-bottom: 1px solid rgba(155, 155, 155, 0.58);}
+.ellipsis {
+  max-width: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -58,8 +58,8 @@ class AdminController extends Controller
             'role' => ['required', 'max:15'],
         ]);
 
-        $data_image = 'image/user.png';
-        $image = request(file('image'));
+        $defaut_image = 'image/user.png';
+        $image = $request->file('image');
         if($image)
         {
             $image_name = str_random(6);
@@ -69,21 +69,22 @@ class AdminController extends Controller
             $image_url = $upload_path.$image_full_name;
             $success = $image->move($upload_path,$image_full_name);
             if($success){
-                $image = $image_url;
+                $defaut_image = $image_url;
             }
-            $data_image = $image;
         }
-
+        else
+        {
+            $defaut_image = 'image/user.png';
+        }
          Admin::create([
              'name' => request('name'),
              'email' => request('email'),
              'password' => bcrypt(request('password')),
              'role' => request('role'),
              'status' => 0,
-             'image' => $data_image
+             'image' => $defaut_image,
         ]);
          return back()->with(Session::put('message', 'Un utilisateur a été ajouté'));
-
     }
 
     public function update(Request $request)
@@ -118,7 +119,7 @@ class AdminController extends Controller
         return back();
     }
 
-    public function delete($id)
+    public function supprimer($id)
     {
         if(Auth::user()->role == 1)
         {

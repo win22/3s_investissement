@@ -33,7 +33,11 @@ Route::group([
     Route::get('/active_admin/{id}', 'AdminController@active_admin');
     Route::get('/desactive_admin/{id}', 'AdminController@desactive_admin');
 
+    //Route pour les appartements
     Route::get('/add_appartement', 'AppartController@index');
     Route::get('/all_appartement', 'AppartController@all_appart')->name('appart');
     Route::post('/save_appart', 'AppartController@save')->name('save');
+    Route::get('/active_appart/{id}', 'AppartController@active')->name('active');
+    Route::get('/unactive_appart/{id}', 'AppartController@unactive')->name('desactive');
+    Route::get('/delete_appart/{id}', 'AppartController@supprimer')->name('supprimer');
 });

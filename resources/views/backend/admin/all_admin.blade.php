@@ -169,14 +169,6 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <h6 class="">Image multiple </h6>
-                                <input  accept="image/*" type="file" multiple name="images[]">
-                            </div>
-                        </div>
-                    </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-outline-orange btn-sm">Ajouter</button>
                         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Annuler</button>
