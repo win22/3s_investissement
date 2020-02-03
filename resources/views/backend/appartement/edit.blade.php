@@ -237,9 +237,9 @@
                     </div>
                 </div>
                 <!-- /.card-body -->
-                    <button type="submit" class="btn btn-dark float-right card-success1 card-outline1">
-                        <i class="nav-icon fas fa-check"></i>
-                        Ajouter</button>
+                <button type="submit" class="btn btn-dark float-right card-success1 card-outline1">
+                    <i class="nav-icon fas fa-check"></i>
+                    Ajouter</button>
 
             </form>
         </div>

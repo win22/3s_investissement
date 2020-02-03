@@ -40,4 +40,5 @@ Route::group([
     Route::get('/active_appart/{id}', 'AppartController@active')->name('active');
     Route::get('/unactive_appart/{id}', 'AppartController@unactive')->name('desactive');
     Route::get('/delete_appart/{id}', 'AppartController@supprimer')->name('supprimer');
+    Route::get('/detail_appart/{id}', 'AppartController@details')->name('detail');
 });

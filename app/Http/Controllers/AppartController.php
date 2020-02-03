@@ -26,20 +26,23 @@ class AppartController extends Controller
     {
         $appart = Appartement::where('option', 1)
             ->where('sold', 2)
+            ->latest()
             ->paginate(6);
         $nb = $appart->count();
         $appart_vendre = Appartement::where('option', 2)
             ->where('sold', 2)
+            ->latest()
             ->paginate(6);
-        $nb_v = $appart->count();
-        $appart_sold = Appartement::where('sold', 2)
+        $nb_v = $appart_vendre->count();
+        $appart_sold = Appartement::where('sold', 1)
+            ->latest()
             ->paginate(6);
-        $nb_s = $appart->count();
+        $nb_s = $appart_sold->count();
         return view('backend.appartement.all', ['all_appart' => $appart])
             ->with(['nb' => $nb])
             ->with(['all_appart_vendre' => $appart_vendre])
             ->with(['nb_v' => $nb_v])
-            ->with(['appart_sold' => $appart_sold])
+            ->with(['all_appart_sold' => $appart_sold])
             ->with(['nb_s' => $nb_s]);
 
 
@@ -125,7 +128,7 @@ class AppartController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $image->move($upload_path, $image_full_name);
             if ($success) {
-                Appartement::find($appart->id)->images()->create([
+                Appartement::findOrFail($appart->id)->images()->create([
                     'image' => $image_url
                 ]);
             }
@@ -139,7 +142,7 @@ class AppartController extends Controller
 
     public function active($id)
     {
-        $appart = Appartement::find($id);
+        $appart = Appartement::findOrFail($id);
         $appart->status = 1;
         $appart->save();
         return back()->with(
@@ -150,7 +153,7 @@ class AppartController extends Controller
 
     public function unactive($id)
     {
-        $appart = Appartement::find($id);
+        $appart = Appartement::findOrFail($id);
         $appart->status = 0;
         $appart->save();
         return back()->with(
@@ -160,12 +163,17 @@ class AppartController extends Controller
 
     public function supprimer($id)
     {
-        $appart = Appartement::find($id);
+        $appart = Appartement::findOrFail($id);
         $appart->delete();
         return back()->with(
             Session::put('message', "L'appartement " . $appart->name . "a été supprimé")
         );
+    }
 
+    public function details($id)
+    {
+        $detail_appart = Appartement::findOrFail($id);
+        return view('backend.appartement.details', ['appart' => $detail_appart]);
     }
 }
 
