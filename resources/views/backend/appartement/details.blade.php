@@ -18,7 +18,7 @@
             <div class="col-12 col-sm-6">
                 <div class="col-12">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner shadow">
 
                             @foreach($appart->images as $image)
                             <div class="carousel-item @if($loop->first) elevation-3 active @endif">

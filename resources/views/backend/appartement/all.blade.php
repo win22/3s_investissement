@@ -16,23 +16,21 @@
             </nav>
             <div class="tab-content p-3">
                 <div class="tab-pane fade show active" id="p1">
-                    Vous etes dans l'onglet qui affiche les appartements qui sont à <span class="text-warning">louer</span> sur votre site ! <br/>
+                    <p>Vous etes dans l'onglet qui affiche les appartements qui sont à <span class="text-warning">louer</span> sur votre site !</p>
                     <div class="row">
                         @foreach($all_appart as $appart)
                         <div class="col-md-4 p-2">
                             <div class="card card-success1 card-outline1">
                                 <div class="ribbon-wrapper ribbon-lg">
-                                    <div style="color: white !important;" class="ribbon bg-danger text-white">
+                                    <div style="color: white !important; " class="ribbon bg-danger text-white">
                                         Louer
                                     </div>
                                 </div>
-                                <a href="{{ route('detail', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc p-1"> {{ $appart['name']
-                                        }}</h6></a>
                                 <div class="card-header"
                                      style="background: url({{$appart['image'] }}) center center; background-position: cover; height: 130px !important;">
 
                                     <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-right">{{
+                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
                                             $appart['prix'] }}
                                             @if($appart['devise'] == 1)
                                             CFA
@@ -45,11 +43,15 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    Description:<br/>
+                                    <a href="{{ route('detail', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $appart['name']
+                                            }}</h6></a>
+                                    <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $appart['short_description'] }}
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <i style="color: orangered !important;" class="fas fa-map-marker-alt"></i>&nbsp;
+                                            <span class="small">
+                                                <i style="color: deepskyblue !important;" class="fas fa-map-marker-alt"></i>&nbsp;
+                                            </span>
                                             <span>{{ $appart['adresse'] }}</span>
                                         </div>
                                         <div class="col-md-4">
@@ -60,10 +62,14 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             @if($appart['status'] == 1)
-                                            <i style="color: green  !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            <span class="small">
+                                                 <i style="color: green  !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            </span>
                                             <span class="text-success">Activé</span>
                                             @else
-                                            <i style="color: #da2839 !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            <span class="small">
+                                                 <i style="color: #da2839 !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            </span>
                                             <span class="text-danger">Désactivé</span>
                                             @endif
                                         </div>
@@ -127,13 +133,11 @@
                                         Vendre
                                     </div>
                                 </div>
-                                <a href="{{ route('detail', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc p-1"> {{ $appart['name']
-                                        }}</h6></a>
                                 <div class="card-header"
                                      style="background: url({{$appart['image'] }}) center center; background-position: cover; height: 130px !important;">
 
                                     <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-right">{{
+                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
                                             $appart['prix'] }}
                                             @if($appart['devise'] == 1)
                                             CFA
@@ -145,13 +149,16 @@
                                         </h2>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    Description:<br/>
+                                <div class="card-body"> <a href="{{ route('detail', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $appart['name']
+                                            }}</h6></a>
+                                    <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $appart['short_description'] }}
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <i style="color: orangered !important;" class="fas fa-map-marker-alt"></i>&nbsp;
-                                            <span>{{ $appart['adresse'] }}</span>
+                                           <span class="small">
+                                                <i style="color: deepskyblue !important;" class="fas fa-map-marker-alt"></i>&nbsp;
+                                            </span>
+                                    <span>{{ $appart['adresse'] }}</span>
                                         </div>
                                         <div class="col-md-4">
                                             <i style="color: #05d7ff  !important;" class="fas fa-globe-africa"></i>&nbsp;
@@ -161,10 +168,14 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             @if($appart['status'] == 1)
-                                            <i style="color: green  !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            <span class="small">
+                                                <i style="color: green  !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            </span>
                                             <span class="text-success">Activé</span>
                                             @else
-                                            <i style="color: #da2839 !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            <span class="small">
+                                               <i style="color: #da2839 !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            </span>
                                             <span class="text-danger">Désactivé</span>
                                             @endif
                                         </div>
@@ -172,7 +183,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="float-left">
-                                       <span class="small"> {{ \Carbon\Carbon::parse($appart['updated_at'])->diffForHumans() }}</span>
+                                       <span class="small"> {{ \Carbon\Carbon::parse($appart['updatedp_at'])->diffForHumans() }}</span>
                                     </div>
                                     <div class="row td-actions text-center float-right">
                                         @if($appart['status'] == 1)
@@ -228,13 +239,11 @@
                                         Promo
                                     </div>
                                 </div>
-                                <a href="{{ route('detail', array('test' => $appart->id)) }}"><h6 class="widget-user-desc p-1 container text-left">{{ $appart['name']
-                                        }}</h6></a>
                                 <div class="card-header"
                                      style="background: url({{$appart['image'] }}) center center; height: 130px !important;">
 
                                     <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-right">{{
+                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
                                             $appart['prix'] }}
                                             @if($appart['devise'] == 1)
                                             CFA
@@ -247,7 +256,9 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <i style="color: orangered !important;" class="fas fa-info-circle"></i>
+                                     <a href="{{ route('detail', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $appart['name']
+                                                }}</h6></a>
+                                    <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $appart['short_description'] }}
                                     <div class="row">
                                         <div class="col-md-8">

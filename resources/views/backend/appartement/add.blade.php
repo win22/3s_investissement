@@ -119,10 +119,10 @@
                             @endif
                         </div>
                         <div class="form-group col-md-4 ">
-                            <h6 style="font-family: 'Manjari Bold'">Solde<span class="text-orange"> *</span></h6>
+                            <h6 style="font-family: 'Manjari Bold'">Promotion<span class="text-orange"> *</span></h6>
                             <select name="sold" class="form-control dynamic2">
-                                <option value="2">Non soldé</option>
-                                <option value="1">En solde</option>
+                                <option value="2">Pas de promotion</option>
+                                <option value="1">Avec promotion</option>
                             </select>
                             @if($errors->has('sold'))
                             <small id="emailHelp" class="form-text text-danger">{{$errors->first('sold')}}</small>
