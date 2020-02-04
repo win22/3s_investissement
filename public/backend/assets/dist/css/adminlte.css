@@ -30048,6 +30048,11 @@ a.text-muted:hover {
   border-bottom: 4px solid #ff5100;
 }
 
+.card-dark1.card-outline-dark1 {
+  border-bottom: 4px solid #0c3540;
+}
+
+
 .text-divider{margin: 2em 0; line-height: 0; text-align: center;}
 .text-divider span{background-color: #ffffff; padding: 1em; font-weight: bold ; color: rgba(255, 83, 0, 0.79)
 }

@@ -1,16 +1,20 @@
 @extends('backend.admin_layout')
 @section('contenu')
-
+<p hidden>   {{ \Carbon\Carbon::setLocale('fr') }}</p>
 <div class="card card-solid card-success1 fade show card-outline1">
     <div class="card-body fade show">
         <div class="ribbon-wrapper ribbon-lg">
-            @if($appart['option'] == 1 )
-            <div style="color: white !important;" class="ribbon bg-orange text-white">
-                Louer
+            @if($appart['sold'] == 1)
+            <div style="color: white !important;" class="ribbon bg-success text-white">
+                Promo
             </div>
-            @elseif($appart['option'] == 2)
-            <div style="color: white !important;" class="ribbon bg-orange text-white">
-                Louer
+            @elseif($appart['sold'] == 1 || $appart['sold'] == 2 && $appart['option'] == 2)
+            <div style="color: white !important;" class="ribbon bg-blue text-white">
+                A vendre
+            </div>
+            @elseif($appart['sold'] == 1 || $appart['sold'] == 2 && $appart['option'] == 1)
+            <div style="color: white !important;" class="ribbon bg-danger text-white">
+                A louer
             </div>
             @endif
         </div>
@@ -129,11 +133,17 @@
                 </nav>
             </div>
             <div class="mt-4">
-                <div class="btn btn-primary float-right">
+                <a href="{{ route('selectionner', array('select' =>$appart->id)) }}" class="btn btn-primary float-right">
                     <i class="fas fa-edit fa-lg mr-2"></i>
                     Modifier
-                </div>
+                </a>
             </div>
+        </div>
+        <div class="float-right">
+            <span class="small">Modifié {{  \Carbon\Carbon::parse($appart['updated_at'])->diffForHumans() }}
+             par {{$admin_name['name']}}
+            </span>
+
         </div>
     </div>
     <!-- /.card-body -->

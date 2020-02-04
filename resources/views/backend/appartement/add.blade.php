@@ -121,7 +121,7 @@
                         <div class="form-group col-md-4 ">
                             <h6 style="font-family: 'Manjari Bold'">Promotion<span class="text-orange"> *</span></h6>
                             <select name="sold" class="form-control dynamic2">
-                                <option value="2">Pas de promotion</option>
+                                <option value="2">Sans promotion</option>
                                 <option value="1">Avec promotion</option>
                             </select>
                             @if($errors->has('sold'))
@@ -226,18 +226,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-divider"><span>Selectionner plusieurs images</span></div>
+                    <div class="text-divider"><span>Selectionner un autre images</span></div>
                     <div class="form-group">
-                        <label for="exampleInputFile">Galerie image</label>
+                        <label for="exampleInputFile">Image details</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" required name="images[]" multiple accept="image/*" class="custom file" id="exampleInputFile">
+                                <input type="file" required name="images"  accept="image/*" class="custom file" id="exampleInputFile">
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.card-body -->
-                    <button type="submit" class="btn btn-dark float-right card-success1 card-outline1">
+                    <button type="submit" class="btn btn-info float-right">
                         <i class="nav-icon fas fa-check"></i>
                         Ajouter</button>
 

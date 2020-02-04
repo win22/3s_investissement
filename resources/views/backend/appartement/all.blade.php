@@ -92,7 +92,7 @@
                                         </a>
                                         @endif
                                         &nbsp;
-                                        <a href="#" class="btn btn-warning btn-link btn-sm">
+                                        <a href="{{ route('selectionner', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-edit"></i>
                                         </a>
                                         &nbsp;
@@ -183,7 +183,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="float-left">
-                                       <span class="small"> {{ \Carbon\Carbon::parse($appart['updatedp_at'])->diffForHumans() }}</span>
+                                       <span class="small"> {{ \Carbon\Carbon::parse($appart['updated_at'])->diffForHumans() }}</span>
                                     </div>
                                     <div class="row td-actions text-center float-right">
                                         @if($appart['status'] == 1)
@@ -198,7 +198,7 @@
                                         </a>
                                         @endif
                                         &nbsp;
-                                        <a href="#" class="btn btn-warning btn-link btn-sm">
+                                        <a href="{{ route('selectionner', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-edit"></i>
                                         </a>
                                         &nbsp;
@@ -233,7 +233,7 @@
                     <div class="row">
                         @foreach($all_appart_sold as $appart)
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="card  card-success1 card-outline1">
                                 <div class="ribbon-wrapper ribbon-lg">
                                     <div class="ribbon bg-success">
                                         Promo
@@ -262,7 +262,9 @@
                                     <span>{{ $appart['short_description'] }}
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <i style="color: orangered !important;" class="fas fa-map-marker-alt"></i>&nbsp;
+                                            <span class="small">
+                                                <i style="color: deepskyblue !important;" class="fas fa-map-marker-alt"></i>&nbsp;
+                                            </span>
                                             <span>{{ $appart['adresse'] }}</span>
                                         </div>
                                         <div class="col-md-4">
@@ -273,15 +275,21 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             @if($appart['status'] == 1)
-                                            <i style="color: green  !important;" class="fas fa-shield-alt"></i>&nbsp;
-                                            <span class="text-success">Activé</span>
+                                            <span class="small">
+                                                 <i style="color: green  !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                                  <span class="text-success">Activé</span>
+                                            </span>
                                             @else
-                                            <i style="color: #da2839 !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            <span class="small">
+                                                <i style="color: #da2839 !important;" class="fas fa-shield-alt"></i>&nbsp;
                                             <span class="text-danger">Désactivé</span>
+                                           </span>
                                             @endif
                                         </div>
                                         <div class="col-md-4">
-                                            <i style="color: #05d7ff  !important;"is=""  class="nav-icon fas fa-store-alt"></i>
+                                            <small class="small">
+                                                <i style="color: #05d7ff  !important;"is=""  class="nav-icon fas fa-store-alt"></i>
+                                            </small>
                                             @if($appart['type'] == 1)
                                             <span>A louer</span>
                                             @else
@@ -304,7 +312,7 @@
                                         </a>
                                         @endif
                                         &nbsp;
-                                        <a href="#" class="btn btn-warning btn-link btn-sm">
+                                        <a href="{{ route('selectionner', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-edit"></i>
                                         </a>
                                         &nbsp;

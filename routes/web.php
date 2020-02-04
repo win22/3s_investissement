@@ -37,8 +37,10 @@ Route::group([
     Route::get('/add_appartement', 'AppartController@index');
     Route::get('/all_appartement', 'AppartController@all_appart')->name('appart');
     Route::post('/save_appart', 'AppartController@save')->name('save');
+    Route::post('/update_appart/{id}', 'AppartController@updates')->name('modifier');
     Route::get('/active_appart/{id}', 'AppartController@active')->name('active');
     Route::get('/unactive_appart/{id}', 'AppartController@unactive')->name('desactive');
     Route::get('/delete_appart/{id}', 'AppartController@supprimer')->name('supprimer');
     Route::get('/detail_appart/{id}', 'AppartController@details')->name('detail');
+    Route::get('/edit_appart/{id}', 'AppartController@edits')->name('selectionner');
 });

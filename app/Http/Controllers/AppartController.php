@@ -10,10 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Appartement;
 use App\tbl_appartement;
 use App\tbl_image;
+use Illuminate\Support\Facades\Storage;
 use Session;
-use Illuminate\Support\Facades\Input;
-use function Couchbase\defaultEncoder;
-
+use File;
 
 class AppartController extends Controller
 {
@@ -45,10 +44,6 @@ class AppartController extends Controller
             ->with(['all_appart_sold' => $appart_sold])
             ->with(['nb_s' => $nb_s]);
 
-
-//        $appart = Appartement::find('1');
-////        $image = $appart->images;
-////return view('backend.appartement.all', ['appart' => $appart]);
     }
 
     public function save(Request $request)
@@ -120,7 +115,67 @@ class AppartController extends Controller
             'image' => $defaut_image
         ]);
         $photo = $request->file('images');
-        foreach ($photo as $image):
+        if ($photo) {
+            $image_name = str_random(6);
+            $text = strtolower($photo->getClientOriginalExtension());
+            $image_full_name = $image_name . '.' . $text;
+            $upload_path = 'image/';
+            $image_url = $upload_path . $image_full_name;
+            $success = $photo->move($upload_path, $image_full_name);
+            if ($success) {
+                Appartement::findOrFail($appart->id)->images()->create([
+                    'image' => $image_url
+                ]);
+            }
+        }
+        return redirect('/all_appartement')->with(
+            Session::put('message', 'Un appartement a été ajouté ')
+        );
+    }
+
+    public function updates(Request $request, $id)
+    {
+        request()->validate([
+            'name' => 'required', 'max: 60',
+            'short_description' => 'required', 'max: 60',
+            'large_description' => 'required',
+            'ville' => 'required', 'max:30',
+            'adresse' => 'required', 'max:90',
+            'pays' => 'required', 'max:90',
+            'align' => 'required', 'max:90',
+            'type' => 'required', 'max:90',
+            'devise' => 'required', 'max:2',
+            'prix' => 'required', 'max:90',
+            'chambre' => 'required', 'max:3',
+            'cuisine' => 'required', 'max:3',
+            'sale_de_bain' => 'required', 'max:3',
+            'option' => 'required', 'max:3',
+            'sold' => 'required', 'max:3',
+            'garage' => 'required', 'max:3',
+            'salon' => 'required', 'max:3',
+        ]);
+        $appart = array();
+        $appart = Appartement::findOrFail($id);
+        $appart->name = request('name');
+        $appart->short_description = request('short_description');
+        $appart->large_description = request('large_description');
+        $appart->adresse = request('adresse');
+        $appart->ville = request('ville');
+        $appart->pays = request('pays');
+        $appart->type = request('type');
+        $appart->option = request('option');
+        $appart->align = request('align');
+        $appart->prix = request('prix');
+        $appart->devise = request('devise');
+        $appart->sold = request('sold');
+        $appart->pourcentage = request('pourcentage');
+        $appart->chambre = request('chambre');
+        $appart->cuisine = request('cuisine');
+        $appart->garage = request('garage');
+        $appart->salon = request('salon');
+        $appart->sale_de_bain = request('cuisine');
+        $image = $request->file('image');
+        if ($image) {
             $image_name = str_random(6);
             $text = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . '.' . $text;
@@ -128,15 +183,31 @@ class AppartController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $image->move($upload_path, $image_full_name);
             if ($success) {
-                Appartement::findOrFail($appart->id)->images()->create([
-                    'image' => $image_url
-                ]);
+                $appart->image = $image_url;
             }
-        endforeach;
+        }
 
-        return redirect('/all_appartement')->with(
-            Session::put('message', 'Un appartement a été ajouté ')
+        $photo = $request->file('images');
+        if ($photo) {
+            $image_name = str_random(6);
+            $text = strtolower($photo->getClientOriginalExtension());
+            $image_full_name = $image_name . '.' . $text;
+            $upload_path = 'image/';
+            $image_url = $upload_path . $image_full_name;
+            $success = $photo->move($upload_path, $image_full_name);
+            if ($success) {
+                $img = Image::where('appartement_id', $id)->first();
+                File::delete($img->image);
+                $img->image = $image_url;
+                $img->save();
+            }
+        }
+
+        $appart->save();
+        return redirect('/detail_appart/' . $appart->id)->with(
+            Session::put('message', " Information modifiée avec succès !")
         );
+
     }
 
 
@@ -164,7 +235,12 @@ class AppartController extends Controller
     public function supprimer($id)
     {
         $appart = Appartement::findOrFail($id);
+        $img = Image::where('appartement_id', $id);
+        $img->delete();
+        File::delete($img->image);
+        File::delete($appart->image);
         $appart->delete();
+
         return back()->with(
             Session::put('message', "L'appartement " . $appart->name . "a été supprimé")
         );
@@ -173,7 +249,15 @@ class AppartController extends Controller
     public function details($id)
     {
         $detail_appart = Appartement::findOrFail($id);
-        return view('backend.appartement.details', ['appart' => $detail_appart]);
+        $admin_name = Admin::findOrFail($detail_appart->admin_id);
+        return view('backend.appartement.details', ['appart' => $detail_appart])
+            ->with(['admin_name' => $admin_name]);
+    }
+
+    public function edits($id)
+    {
+        $appart = Appartement::findOrFail($id);
+        return view('backend.appartement.edit', ['appart' => $appart]);
     }
 }
 
