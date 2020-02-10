@@ -36,13 +36,13 @@ Route::group([
     //Route pour les appartements
     Route::get('/add_appartement', 'AppartController@index');
     Route::get('/all_appartement', 'AppartController@all_appart')->name('appart');
-    Route::post('/save_appart', 'AppartController@save')->name('save');
-    Route::post('/update_appart/{id}', 'AppartController@updates')->name('modifier');
-    Route::get('/active_appart/{id}', 'AppartController@active')->name('active');
-    Route::get('/unactive_appart/{id}', 'AppartController@unactive')->name('desactive');
-    Route::get('/delete_appart/{id}', 'AppartController@supprimer')->name('supprimer');
-    Route::get('/detail_appart/{id}', 'AppartController@details')->name('detail');
-    Route::get('/edit_appart/{id}', 'AppartController@edits')->name('selectionner');
+    Route::post('/save_appart', 'AppartController@save')->name('save_ap');
+    Route::post('/update_appart/{id}', 'AppartController@updates')->name('modifie_ap');
+    Route::get('/active_appart/{id}', 'AppartController@active')->name('active_ap');
+    Route::get('/unactive_appart/{id}', 'AppartController@unactive')->name('desactive_ap');
+    Route::get('/delete_appart/{id}', 'AppartController@supprimer')->name('supprimer_ap');
+    Route::get('/detail_appart/{id}', 'AppartController@details')->name('detail_appart');
+    Route::get('/edit_appart/{id}', 'AppartController@edits')->name('selectionner_ap');
 
     //Route pour les villas
     Route::get('/add_villa', 'VillaController@index');

@@ -14,7 +14,7 @@
             <div class="card-header" style="background-color: #0c3540">
                 <h6 class="card-title text-white">Formulaire d'ajout</h6>
             </div>
-            <form  action="{{ route('save') }}" enctype="multipart/form-data" method="post">
+            <form  action="{{ route('save_ap') }}" enctype="multipart/form-data" method="post">
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="row">

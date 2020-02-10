@@ -15,6 +15,25 @@ class CreateImmeublesTable extends Migration
     {
         Schema::create('immeubles', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('admin_id');
+            $table->string('name');
+            $table->string('short_description');
+            $table->text('large_description');
+            $table->string('adresse');
+            $table->string('ville');
+            $table->string('pays');
+            $table->string('type',20);
+            $table->string('option');
+            $table->string('align',2);
+            $table->string('prix');
+            $table->string('devise');
+            $table->string('sold',1);
+            $table->string('pourcentage')->nullable();
+            $table->string('niveau', 3);
+            $table->string('garage',3);
+            $table->string('appartement',3);
+            $table->string('image');
+            $table->string('status',1);
             $table->timestamps();
         });
     }

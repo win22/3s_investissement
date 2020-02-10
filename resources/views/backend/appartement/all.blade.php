@@ -20,7 +20,7 @@
                     <div class="row">
                         @foreach($all_appart as $appart)
                         <div class="col-md-4 p-2">
-                            <div class="card card-success1 card-outline1">
+                            <div class="card card-success1 animated-dropdown-menu card-outline1">
                                 <div class="ribbon-wrapper ribbon-lg">
                                     <div style="color: white !important; " class="ribbon bg-danger text-white">
                                         Louer
@@ -29,8 +29,8 @@
                                 <div class="card-header"
                                      style="background: url({{$appart['image'] }}) center center; background-position: cover; height: 130px !important;">
 
-                                    <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
+                                    <div style="padding-top: 103px">
+                                        <h2 style="padding: 10px;" class="badge badge-info float-left">{{
                                             $appart['prix'] }}
                                             @if($appart['devise'] == 1)
                                             CFA
@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <a href="{{ route('detail', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $appart['name']
+                                    <a href="{{ route('detail_appart', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $appart['name']
                                             }}</h6></a>
                                     <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $appart['short_description'] }}
@@ -81,22 +81,22 @@
                                     </div>
                                     <div class="row td-actions text-center float-right">
                                         @if($appart['status'] == 1)
-                                        <a href="{{ route('desactive', array('test' => $appart->id)) }}"
+                                        <a href="{{ route('desactive_ap', array('test' => $appart->id)) }}"
                                            class="btn btn-dark btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-down"></i>
                                         </a>
                                         @else
-                                        <a href="{{ route('active', array('test' => $appart->id)) }}"
+                                        <a href="{{ route('active_ap', array('test' => $appart->id)) }}"
                                            class="btn btn-success btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-up"></i>
                                         </a>
                                         @endif
                                         &nbsp;
-                                        <a href="{{ route('selectionner', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
+                                        <a href="{{ route('selectionner_ap', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-edit"></i>
                                         </a>
                                         &nbsp;
-                                        <a href="{{ route('supprimer', array('test' => $appart->id)) }}" id="delete"
+                                        <a href="{{ route('supprimer_ap', array('test' => $appart->id)) }}" id="delete"
                                            class="btn btn-danger btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-times"></i>
                                         </a>
@@ -149,7 +149,7 @@
                                         </h2>
                                     </div>
                                 </div>
-                                <div class="card-body"> <a href="{{ route('detail', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $appart['name']
+                                <div class="card-body"> <a href="{{ route('detail_appart', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $appart['name']
                                             }}</h6></a>
                                     <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $appart['short_description'] }}
@@ -187,22 +187,22 @@
                                     </div>
                                     <div class="row td-actions text-center float-right">
                                         @if($appart['status'] == 1)
-                                        <a href="{{ route('desactive', array('test' => $appart->id)) }}"
+                                        <a href="{{ route('desactive_ap', array('test' => $appart->id)) }}"
                                            class="btn btn-dark btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-down"></i>
                                         </a>
                                         @else
-                                        <a href="{{ route('active', array('test' => $appart->id)) }}"
+                                        <a href="{{ route('active_ap', array('test' => $appart->id)) }}"
                                            class="btn btn-success btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-up"></i>
                                         </a>
                                         @endif
                                         &nbsp;
-                                        <a href="{{ route('selectionner', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
+                                        <a href="{{ route('selectionner_ap', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-edit"></i>
                                         </a>
                                         &nbsp;
-                                        <a href="{{ route('supprimer', array('test' => $appart->id)) }}" id="delete"
+                                        <a href="{{ route('supprimer_ap', array('test' => $appart->id)) }}" id="delete"
                                            class="btn btn-danger btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-times"></i>
                                         </a>
@@ -256,7 +256,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                     <a href="{{ route('detail', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $appart['name']
+                                     <a href="{{ route('detail_appart', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $appart['name']
                                                 }}</h6></a>
                                     <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $appart['short_description'] }}
@@ -301,22 +301,22 @@
                                 <div class="card-footer">
                                     <div class="row td-actions text-center float-right">
                                         @if($appart['status'] == 1)
-                                        <a href="{{ route('desactive', array('test' => $appart->id)) }}"
+                                        <a href="{{ route('desactive_ap', array('test' => $appart->id)) }}"
                                            class="btn btn-dark btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-down"></i>
                                         </a>
                                         @else
-                                        <a href="{{ route('active', array('test' => $appart->id)) }}"
+                                        <a href="{{ route('active_ap', array('test' => $appart->id)) }}"
                                            class="btn btn-success btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-up"></i>
                                         </a>
                                         @endif
                                         &nbsp;
-                                        <a href="{{ route('selectionner', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
+                                        <a href="{{ route('selectionner_ap', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-edit"></i>
                                         </a>
                                         &nbsp;
-                                        <a href="{{ route('supprimer', array('test' => $appart->id)) }}" id="delete"
+                                        <a href="{{ route('supprimer_ap', array('test' => $appart->id)) }}" id="delete"
                                            class="btn btn-danger btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-times"></i>
                                         </a>

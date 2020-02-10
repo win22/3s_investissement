@@ -84,13 +84,13 @@ class AdminController extends Controller
            'role' => ['required'],
         ]);
         $id = request('id');
-        $image = $request->file('image');
 
         $admin = Admin::find($id);
         $admin->name = request('name');
         $admin->email = request('email');
         $admin->password = bcrypt(request('password'));
         $admin->role = request('role');
+        $image = $request->file('image');
         if($image)
         {
             $image_name = str_random(10);

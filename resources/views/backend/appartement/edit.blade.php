@@ -14,7 +14,7 @@
             <div class="card-header" style="background-color: red">
                 <h6 class="card-title text-white">Formulaire d'ajout</h6>
             </div>
-            <form  action="{{ route('modifier', array('test' => $appart->id)) }}" enctype="multipart/form-data" method="post">
+            <form  action="{{ route('modifie_ap', array('test' => $appart->id)) }}" enctype="multipart/form-data" method="post">
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="row">

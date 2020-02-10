@@ -174,6 +174,7 @@ class AppartController extends Controller
         $appart->garage = request('garage');
         $appart->salon = request('salon');
         $appart->sale_de_bain = request('cuisine');
+        $appart->admin_id = Auth::id();
         $image = $request->file('image');
         if ($image) {
             $image_name = str_random(6);
@@ -183,6 +184,8 @@ class AppartController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $image->move($upload_path, $image_full_name);
             if ($success) {
+                $img = Appartement::findOrFaill($id);
+                File::delete($img->image);
                 $appart->image = $image_url;
             }
         }
@@ -215,6 +218,7 @@ class AppartController extends Controller
     {
         $appart = Appartement::findOrFail($id);
         $appart->status = 1;
+        $appart->admin_id = Auth::id();
         $appart->save();
         return back()->with(
             Session::put('message', "L'appartement " . $appart->name . "a été activé")
@@ -226,6 +230,7 @@ class AppartController extends Controller
     {
         $appart = Appartement::findOrFail($id);
         $appart->status = 0;
+        $appart->admin_id = Auth::id();
         $appart->save();
         return back()->with(
             Session::put('message', "L'appartement " . $appart->name . "a été desactivé")
@@ -235,10 +240,10 @@ class AppartController extends Controller
     public function supprimer($id)
     {
         $appart = Appartement::findOrFail($id);
-        $img = Image::where('appartement_id', $id);
-        $img->delete();
+        $img = Image::where('appartement_id', $id)->firstOrFail();
         File::delete($img->image);
         File::delete($appart->image);
+        $img->delete();
         $appart->delete();
 
         return back()->with(
