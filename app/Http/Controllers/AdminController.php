@@ -24,13 +24,6 @@ class AdminController extends Controller
         $nb = $all_info->count();
         return view('backend.admin.all_admin', ['all_info' => $all_info])
             ->with(['nb'=> $nb ]);
-
-//        $admin = Admin::find('3');
-//        $image = $admin->images;
-//         Admin::find('3')->images()->create([
-//              'contenu' => 'text']);
-//        return view('backend.slide',['images' => $image]);
-
     }
 
     public function active_admin($id)
@@ -56,9 +49,8 @@ class AdminController extends Controller
             'email' => ['required',  'unique:admins', 'max:191', 'email'],
             'password' => ['required', 'min:8', 'max:20'],
             'role' => ['required', 'max:15'],
+            'image' => ['required', 'file'],
         ]);
-
-        $defaut_image = 'image/user.png';
         $image = $request->file('image');
         if($image)
         {
@@ -71,10 +63,6 @@ class AdminController extends Controller
             if($success){
                 $defaut_image = $image_url;
             }
-        }
-        else
-        {
-            $defaut_image = 'image/user.png';
         }
          Admin::create([
              'name' => request('name'),

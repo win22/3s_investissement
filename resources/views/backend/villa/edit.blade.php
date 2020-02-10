@@ -5,29 +5,29 @@
     <!-- general form elements -->
     <div class="card card-orange card-outline">
         <div class="card-header">
-            <h3 class="card-title ">Appartement</h3><br/>
-            <p>Vous êtes dans le formulaire de modifification d'un appartement</p>
+            <h3 class="card-title badge">Villa</h3><br/>
+            <p>Vous êtes dans le formulaire de modifification d'une villa</p>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
         <div class="card-body">
             <div class="card-header" style="background-color: red">
-                <h6 class="card-title text-white">Formulaire d'ajout</h6>
+                <h6 class="card-title text-white">Modification de la villa : <span style="font-family: 'Manjari Bold'">{{ $villa['name'] }}</span> </h6>
             </div>
-            <form  action="{{ route('modifier', array('test' => $appart->id)) }}" enctype="multipart/form-data" method="post">
+            <form  action="{{ route('modifier', array('test' => $villa->id)) }}" enctype="multipart/form-data" method="post">
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <h6  style="font-family: 'Manjari bold">Nom de l'appartement<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" value="{{ $appart['name']}}"  name="name"  placeholder="Saisir ici">
+                            <h6  style="font-family: 'Manjari bold">Nom de la villa<span class="text-orange"> *</span></h6>
+                            <input type="text" class="form-control" value="{{ $villa['name']}}"  name="name"  placeholder="Saisir ici">
                             @if($errors->has('name'))
                             <small class="form-text text-danger">{{$errors->first('name')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-6">
                             <h6 style="font-family: 'Manjari bold">Description rapide<span class="text-orange"> *</span></h6>
-                            <input type="text"  name="short_description"value="{{ $appart['short_description']}}" class="form-control" placeholder="Saisir ici">
+                            <input type="text"  name="short_description"value="{{ $villa['short_description']}}" class="form-control" placeholder="Saisir ici">
                             @if($errors->has('short_description'))
                             <small class="form-text text-danger">{{$errors->first('short_description')}}</small>
                             @endif
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <h6 style="font-family: 'Manjari bold">Large déscription<span class="text-orange"> *</span></h6>
                         <textarea name="large_description" value="{{ old('large_description') }}"  class="form-control" rows="3" placeholder="Saisi ici ...">
-                            {{ $appart['large_description']}}
+                            {{ $villa['large_description']}}
                         </textarea>
                         @if($errors->has('large_description'))
                         <small class="form-text text-danger">{{$errors->first('large_description')}}</small>
@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6  style="font-family: 'Manjari bold">Adresse<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" value="{{ $appart['adresse']}}" name="adresse"  placeholder="Saisir ici">
+                            <input type="text" class="form-control" value="{{ $villa['adresse']}}" name="adresse"  placeholder="Saisir ici">
                             @if($errors->has('adresse'))
                             <small class="form-text text-danger">{{$errors->first('adresse')}}</small>
                             @endif
@@ -54,14 +54,14 @@
 
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari bold">Ville<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" value="{{ $appart['ville']}}" name="ville" placeholder="Saisir ici">
+                            <input type="text" class="form-control" value="{{ $villa['ville']}}" name="ville" placeholder="Saisir ici">
                             @if($errors->has('ville'))
                             <small class="form-text text-danger">{{$errors->first('ville')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari bold">Pays<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" value="{{ $appart['pays']}}" name="pays" placeholder="Saisir ici">
+                            <input type="text" class="form-control" value="{{ $villa['pays']}}" name="pays" placeholder="Saisir ici">
                             @if($errors->has('pays'))
                             <small class="form-text text-danger">{{$errors->first('pays')}}</small>
                             @endif
@@ -72,7 +72,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Type<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="type">
-                                <option value="Appartement">Appartement</option>
+                                <option value="villaement">villaement</option>
                             </select>
                             @if($errors->has('type'))
                             <small  class="form-text text-danger">{{$errors->first('type')}}</small>
@@ -81,7 +81,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'">Option<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="option">
-                                @if($appart['option'] == 1)
+                                @if($villa['option'] == 1)
                                 <option value="1">Â louer</option>
                                 @else
                                 <option value="2">Â vendre</option>
@@ -97,7 +97,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Alignements sur le site<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="align">
-                                <option class="text-orange" value="{{ $appart['align'] }}"> {{ $appart['align'] }} </option>
+                                <option class="text-orange" value="{{ $villa['align'] }}"> {{ $villa['align'] }} </option>
                                 <option value="">Selectionner une nouvelle option</option>
                                 <option value="1">1</option>
                                 <option value="1">2</option>
@@ -112,7 +112,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'">Prix<span class="text-orange"> *</span></h6>
-                            <input class="form-control" value="{{ $appart['prix'] }}" placeholder="Saisi ici" name="prix">
+                            <input class="form-control" value="{{ $villa['prix'] }}" placeholder="Saisi ici" name="prix">
                             @if($errors->has('prix'))
                             <small id="emailHelp" class="form-text text-danger">{{$errors->first('prix')}}</small>
                             @endif
@@ -120,12 +120,12 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Devise<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="devise" >
-                                @if($appart['devise'] == 1)
-                                <option value="{{ $appart['devise']}}">CFA</option>
-                                @elseif($appart['devise'] == 2)
-                                <option value="{{ $appart['devise']}}">EURO</option>
+                                @if($villa['devise'] == 1)
+                                <option value="{{ $villa['devise']}}">CFA</option>
+                                @elseif($villa['devise'] == 2)
+                                <option value="{{ $villa['devise']}}">EURO</option>
                                 @else
-                                <option value="{{ $appart['devise']}}" >DOLLAR</option>
+                                <option value="{{ $villa['devise']}}" >DOLLAR</option>
                                 @endif
                                 <option value="">Selectionner une nouvelle devise</option>
                                 <option value="1">CFA</option>
@@ -139,10 +139,10 @@
                         <div class="form-group col-md-4 ">
                             <h6 style="font-family: 'Manjari Bold'">Solde<span class="text-orange"> *</span></h6>
                             <select name="sold" class="form-control">
-                                @if($appart['sold'] == 1)
-                                <option class="text-orange" value="{{ $appart['sold']}}">En promo</option>
+                                @if($villa['sold'] == 1)
+                                <option class="text-orange" value="{{ $villa['sold']}}">En promo</option>
                                 @else
-                                <option class="text-orange" value="{{ $appart['sold']}}" >Sans promo</option>
+                                <option class="text-orange" value="{{ $villa['sold']}}" >Sans promo</option>
                                 @endif
                                 <option value="">Selectionner une nouvelle catégorie</option>
                                 <option value="2">Sans promo</option>
@@ -158,18 +158,18 @@
                         <div class="col-md-4"></div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Pourcentage<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" value="{{ $appart['pourcentage'] }}" name="pourcentage"  placeholder="Saisir ici">
+                            <input type="text" class="form-control" value="{{ $villa['pourcentage'] }}" name="pourcentage"  placeholder="Saisir ici">
                             @if($errors->has('pourcentage'))
                             <small id="emailHelp" class="form-text text-danger">{{$errors->first('pourcentage')}}</small>
                             @endif
                         </div>
                     </div>
-                    <div class="text-divider"><span>Détail de l'appartement</span></div>
+                    <div class="text-divider"><span>Détail de l'villaement</span></div>
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Chambre</h6>
                             <select class="form-control" name="chambre">
-                                <option class="text-orange" value="{{ $appart['chambre'] }}">{{  $appart['chambre'] }}</option>
+                                <option class="text-orange" value="{{ $villa['chambre'] }}">{{  $villa['chambre'] }}</option>
                                 <option value="">Selecctionner un nouveau nombre</option>
                                 <option value="0">0</option>
                                 <option value="1">1 chambre</option>
@@ -188,7 +188,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Cuisine</h6>
                             <select class="form-control" name="cuisine">
-                                <option class="text-orange" value="{{ $appart['cuisine'] }}">{{  $appart['cuisine'] }}</option>
+                                <option class="text-orange" value="{{ $villa['cuisine'] }}">{{  $villa['cuisine'] }}</option>
                                 <option value="">Selecctionner un nouveau nombre</option>
                                 <option value="0">0</option>
                                 <option value="1">1 cuisine</option>
@@ -202,7 +202,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Garage</h6>
                             <select class="form-control" name="garage">
-                                <option class="text-orange" value="{{ $appart['garage'] }}">{{  $appart['garage'] }}</option>
+                                <option class="text-orange" value="{{ $villa['garage'] }}">{{  $villa['garage'] }}</option>
                                 <option value="">Selecctionner un nouveau nombre</option>
                                 <option value="0">0</option>
                                 <option value="1">1 garage</option>
@@ -218,7 +218,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Salon</h6>
                             <select class="form-control" name="salon">
-                                <option class="text-orange" value="{{ $appart['salon'] }}">{{  $appart['salon'] }}</option>
+                                <option class="text-orange" value="{{ $villa['salon'] }}">{{  $villa['salon'] }}</option>
                                 <option value="">Selecctionner un nouveau nombre</option>
                                 <option value="0">0</option>
                                 <option value="1">1 salon</option>
@@ -234,7 +234,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Sale de bain</h6>
                             <select class="form-control" name="sale_de_bain">
-                                <option class="text-orange" value="{{ $appart['sale_de_bain'] }}">{{  $appart['sale_de_bain'] }}</option>
+                                <option class="text-orange" value="{{ $villa['sale_de_bain'] }}">{{  $villa['sale_de_bain'] }}</option>
                                 <option value="">Selecctionner un nouveau nombre</option>
                                 <option value="0">0</option>
                                 <option value="1">1 salle de bain</option>
@@ -275,7 +275,7 @@
                     <i class="nav-icon fas fa-edit"></i>
                     Modifier</button>
                 &nbsp;
-                <a href="{{ route('appart')}}" class="btn btn-danger">
+                <a href="{{ route('all_vil')}}" class="btn btn-danger">
                     <i class="fas fa-backspace fa-lg mr-2"></i>
                     Retour
                 </a>

@@ -3,45 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use Illuminate\Http\Request;
+use App\Models\Villa;
 use App\Models\Image;
-use Illuminate\Support\Facades\App;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Appartement;
-use App\tbl_appartement;
-use App\tbl_image;
-use Illuminate\Support\Facades\Storage;
 use Session;
 use File;
-
-class AppartController extends Controller
+class VillaController extends Controller
 {
     public function index()
     {
-        return view('backend.appartement.add');
+        return view('backend.villa.add');
     }
 
-    public function all_appart()
+    public function all_villa()
     {
-        $appart = Appartement::where('option', 1)
+        $villa = Villa::where('option', 1)
             ->where('sold', 2)
             ->latest()
             ->paginate(6);
-        $nb = $appart->count();
-        $appart_vendre = Appartement::where('option', 2)
+        $nb = $villa->count();
+        $villa_vendre = Villa::where('option', 2)
             ->where('sold', 2)
             ->latest()
             ->paginate(6);
-        $nb_v = $appart_vendre->count();
-        $appart_sold = Appartement::where('sold', 1)
+        $nb_v = $villa_vendre->count();
+        $villa_sold = Villa::where('sold', 1)
             ->latest()
             ->paginate(6);
-        $nb_s = $appart_sold->count();
-        return view('backend.appartement.all', ['all_appart' => $appart])
+        $nb_s = $villa_sold->count();
+        return view('backend.villa.all', ['all_villa' => $villa])
             ->with(['nb' => $nb])
-            ->with(['all_appart_vendre' => $appart_vendre])
+            ->with(['all_villa_vendre' => $villa_vendre])
             ->with(['nb_v' => $nb_v])
-            ->with(['all_appart_sold' => $appart_sold])
+            ->with(['all_villa_sold' => $villa_sold])
             ->with(['nb_s' => $nb_s]);
 
     }
@@ -49,8 +44,8 @@ class AppartController extends Controller
     public function save(Request $request)
     {
         request()->validate([
-            'name' => 'required', 'max: 60',
-            'short_description' => 'required', 'max: 60',
+            'name' => 'required', 'max: 90',
+            'short_description' => 'required', 'max: 90',
             'large_description' => 'required',
             'ville' => 'required', 'max:30',
             'adresse' => 'required', 'max:90',
@@ -66,8 +61,10 @@ class AppartController extends Controller
             'sold' => 'required', 'max:3',
             'garage' => 'required', 'max:3',
             'salon' => 'required', 'max:3',
+            'image' => 'required', 'file',
+            'images' => 'required', 'file',
         ]);
-        $defaut_image = 'image/appart.jpg';
+
         $image = $request->file('image');
         if ($image) {
             $image_name = str_random(6);
@@ -79,8 +76,6 @@ class AppartController extends Controller
             if ($success) {
                 $defaut_image = $image_url;
             }
-        } else {
-            $defaut_image = 'image/appart.jpg';
         }
 
         $pourcentage = null;
@@ -90,7 +85,7 @@ class AppartController extends Controller
             $pourcentage = null;
         }
 
-        $appart = Appartement::create([
+        $villa = villa::create([
             'admin_id' => Auth::user()->role,
             'name' => request('name'),
             'short_description' => request('short_description'),
@@ -123,13 +118,13 @@ class AppartController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $photo->move($upload_path, $image_full_name);
             if ($success) {
-                Appartement::findOrFail($appart->id)->images()->create([
+                villa::findOrFail($villa->id)->images()->create([
                     'image' => $image_url
                 ]);
             }
         }
-        return redirect('/all_appartement')->with(
-            Session::put('message', 'Un appartement a été ajouté ')
+        return redirect('/all_villa')->with(
+            Session::put('message', 'Une villa a été ajoutée ')
         );
     }
 
@@ -154,26 +149,26 @@ class AppartController extends Controller
             'garage' => 'required', 'max:3',
             'salon' => 'required', 'max:3',
         ]);
-        $appart = array();
-        $appart = Appartement::findOrFail($id);
-        $appart->name = request('name');
-        $appart->short_description = request('short_description');
-        $appart->large_description = request('large_description');
-        $appart->adresse = request('adresse');
-        $appart->ville = request('ville');
-        $appart->pays = request('pays');
-        $appart->type = request('type');
-        $appart->option = request('option');
-        $appart->align = request('align');
-        $appart->prix = request('prix');
-        $appart->devise = request('devise');
-        $appart->sold = request('sold');
-        $appart->pourcentage = request('pourcentage');
-        $appart->chambre = request('chambre');
-        $appart->cuisine = request('cuisine');
-        $appart->garage = request('garage');
-        $appart->salon = request('salon');
-        $appart->sale_de_bain = request('cuisine');
+        $villa = array();
+        $villa = villa::findOrFail($id);
+        $villa->name = request('name');
+        $villa->short_description = request('short_description');
+        $villa->large_description = request('large_description');
+        $villa->adresse = request('adresse');
+        $villa->ville = request('ville');
+        $villa->pays = request('pays');
+        $villa->type = request('type');
+        $villa->option = request('option');
+        $villa->align = request('align');
+        $villa->prix = request('prix');
+        $villa->devise = request('devise');
+        $villa->sold = request('sold');
+        $villa->pourcentage = request('pourcentage');
+        $villa->chambre = request('chambre');
+        $villa->cuisine = request('cuisine');
+        $villa->garage = request('garage');
+        $villa->salon = request('salon');
+        $villa->sale_de_bain = request('cuisine');
         $image = $request->file('image');
         if ($image) {
             $image_name = str_random(6);
@@ -183,7 +178,10 @@ class AppartController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $image->move($upload_path, $image_full_name);
             if ($success) {
-                $appart->image = $image_url;
+                $villa->image = $image_url;
+                $img_p = Villa::findOrFail($id);
+                File::delete($img_p->image);
+                $img_p->image = $image_url;
             }
         }
 
@@ -196,15 +194,15 @@ class AppartController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $photo->move($upload_path, $image_full_name);
             if ($success) {
-                $img = Image::where('appartement_id', $id)->first();
+                $img = Image::where('villa_id', $id)->first();
                 File::delete($img->image);
                 $img->image = $image_url;
                 $img->save();
             }
         }
-
-        $appart->save();
-        return redirect('/detail_appart/' . $appart->id)->with(
+        $villa->admin_id = Auth::id();
+        $villa->save();
+        return redirect('/detail_villa/' . $villa->id)->with(
             Session::put('message', " Information modifiée avec succès !")
         );
 
@@ -213,52 +211,52 @@ class AppartController extends Controller
 
     public function active($id)
     {
-        $appart = Appartement::findOrFail($id);
-        $appart->status = 1;
-        $appart->save();
+        $villa = villa::findOrFail($id);
+        $villa->status = 1;
+        $villa->admin_id = Auth::id();
+        $villa->save();
         return back()->with(
-            Session::put('message', "L'appartement " . $appart->name . "a été activé")
+            Session::put('message', "L'villa " . $villa->name . "a été activé")
         );
 
     }
 
     public function unactive($id)
     {
-        $appart = Appartement::findOrFail($id);
-        $appart->status = 0;
-        $appart->save();
+        $villa = villa::findOrFail($id);
+        $villa->status = 0;
+        $villa->admin_id = Auth::id();
+        $villa->save();
         return back()->with(
-            Session::put('message', "L'appartement " . $appart->name . "a été desactivé")
+            Session::put('message', "L'villa " . $villa->name . "a été desactivé")
         );
     }
 
     public function supprimer($id)
     {
-        $appart = Appartement::findOrFail($id);
-        $img = Image::where('appartement_id', $id);
+        $villa = villa::findOrFail($id);
+        $img = Image::where('villa_id', $id);
         $img->delete();
         File::delete($img->image);
-        File::delete($appart->image);
-        $appart->delete();
+        File::delete($villa->image);
+        $villa->delete();
 
         return back()->with(
-            Session::put('message', "L'appartement " . $appart->name . "a été supprimé")
+            Session::put('message', "L'villa " . $villa->name . "a été supprimé")
         );
     }
 
     public function details($id)
     {
-        $detail_appart = Appartement::findOrFail($id);
-        $admin_name = Admin::find($detail_appart->admin_id);
-        return view('backend.appartement.details', ['appart' => $detail_appart])
+        $detail_villa = villa::findOrFail($id);
+        $admin_name = Admin::find($detail_villa->admin_id);
+        return view('backend.villa.details', ['villa' => $detail_villa])
             ->with(['admin_name' => $admin_name]);
     }
 
     public function edits($id)
     {
-        $appart = Appartement::findOrFail($id);
-        return view('backend.appartement.edit', ['appart' => $appart]);
+        $villa = villa::findOrFail($id);
+        return view('backend.villa.edit', ['villa' => $villa]);
     }
 }
-
-

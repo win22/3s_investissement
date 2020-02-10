@@ -29,7 +29,7 @@ Route::group([
     Route::get('/all_admin', 'AdminController@all_admin');
     Route::post('/save_admin', 'AdminController@save');
     Route::post('/update_admin/test', 'AdminController@update');
-    Route::get('/delete_admin/{id}', 'AdminController@delete');
+    Route::get('/delete_admin/{id}', 'AdminController@supprimer');
     Route::get('/active_admin/{id}', 'AdminController@active_admin');
     Route::get('/desactive_admin/{id}', 'AdminController@desactive_admin');
 
@@ -43,4 +43,15 @@ Route::group([
     Route::get('/delete_appart/{id}', 'AppartController@supprimer')->name('supprimer');
     Route::get('/detail_appart/{id}', 'AppartController@details')->name('detail');
     Route::get('/edit_appart/{id}', 'AppartController@edits')->name('selectionner');
+
+    //Route pour les villas
+    Route::get('/add_villa', 'VillaController@index');
+    Route::get('/all_villa', 'VillaController@all_villa')->name('all_vil');
+    Route::post('/save_villa', 'VillaController@save')->name('save_v');
+    Route::post('/update_villa/{id}', 'VillaController@updates')->name('modifier');
+    Route::get('/active_villa/{id}', 'VillaController@active')->name('active');
+    Route::get('/unactive_villa/{id}', 'VillaController@unactive')->name('desactive');
+    Route::get('/delete_villa/{id}', 'VillaController@supprimer')->name('supprimer');
+    Route::get('/detail_villa/{id}', 'VillaController@details')->name('detail');
+    Route::get('/edit_villa/{id}', 'VillaController@edits')->name('selectionner');
 });
