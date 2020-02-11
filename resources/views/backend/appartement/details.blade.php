@@ -133,7 +133,7 @@
                 </nav>
             </div>
             <div class="mt-3">
-                <a href="{{ route('selectionner', array('select' =>$appart->id)) }}" class="btn btn-primary ">
+                <a href="{{ route('selectionner_ap', array('select' =>$appart->id)) }}" class="btn btn-primary ">
                     <i class="fas fa-edit fa-lg mr-2"></i>
                     Modifier
                 </a>

@@ -9,7 +9,7 @@ use DB;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Session;
-
+use File;
 
 class AdminController extends Controller
 {
@@ -80,12 +80,12 @@ class AdminController extends Controller
         request()->validate([
            'name'  => ['required', 'max:90'],
            'email' => ['required', 'max:191'],
-           'password' => ['max:30'],
+           'password' => ['required'],
            'role' => ['required'],
         ]);
         $id = request('id');
 
-        $admin = Admin::find($id);
+        $admin = Admin::findOrFail($id);
         $admin->name = request('name');
         $admin->email = request('email');
         $admin->password = bcrypt(request('password'));
@@ -100,6 +100,7 @@ class AdminController extends Controller
             $image_url = $upload_path.$image_full_name;
             $success = $image->move($upload_path,$image_full_name);
             if($success){
+                File::delete($admin->image);
                 $admin->image = $image_url;
             }
         }
@@ -111,7 +112,9 @@ class AdminController extends Controller
     {
         if(Auth::user()->role == 1)
         {
-            Admin::where('id', $id)->delete();
+            $admin =  Admin::findOrFail($id);
+            File::delete($admin->image);
+            $admin->delete();
             Session::put('message', 'Un Utilisateur a été supprimé... ');
             return back();
         }

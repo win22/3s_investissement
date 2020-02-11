@@ -20,10 +20,10 @@
                     <div class="row">
                         @foreach($all_appart as $appart)
                         <div class="col-md-4 p-2">
-                            <div class="card card-success1 animated-dropdown-menu card-outline1">
-                                <div class="ribbon-wrapper ribbon-lg">
+                            <div class="card dropdown-hover animated-dropdown-menu">
+                                <div class="ribbon-wrapper sm ribbon">
                                     <div style="color: white !important; " class="ribbon bg-danger text-white">
-                                        Louer
+                                        <span class="small" style="font-family: 'Manjari Bold'">A louer</span>
                                     </div>
                                 </div>
                                 <div class="card-header"
@@ -43,9 +43,17 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <a href="{{ route('detail_appart', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $appart['name']
-                                            }}</h6></a>
-                                    <span class="text-orange small">Déscription rapide</span><br/>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="text-orange small">Déscription rapide</span><br/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="{{ route('detail_appart', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $appart['name']
+                                                    }}</h6></a>
+                                        </div>
+                                    </div>
+
+
                                     <span>{{ $appart['short_description'] }}
                                     <div class="row">
                                         <div class="col-md-8">
@@ -77,7 +85,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="float-left">
-                                        <span class="small"> {{  \Carbon\Carbon::parse($appart['updated_at'])->diffForHumans() }}</span>
+                                        <span class="small"> Modifier {{  \Carbon\Carbon::parse($appart['updated_at'])->diffForHumans() }}</span>
                                     </div>
                                     <div class="row td-actions text-center float-right">
                                         @if($appart['status'] == 1)

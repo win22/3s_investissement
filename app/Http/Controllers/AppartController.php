@@ -184,7 +184,7 @@ class AppartController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $image->move($upload_path, $image_full_name);
             if ($success) {
-                $img = Appartement::findOrFaill($id);
+                $img = Appartement::findOrFail($id);
                 File::delete($img->image);
                 $appart->image = $image_url;
             }
