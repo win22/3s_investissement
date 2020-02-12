@@ -20,17 +20,17 @@
                     <div class="row">
                         @foreach($all_villa as $villa)
                         <div class="col-md-4 p-2">
-                            <div class="card card-success1 card-outline1">
-                                <div class="ribbon-wrapper ribbon-lg">
+                            <div class="card carde">
+                                <div class="ribbon-wrapper sm ribbon">
                                     <div style="color: white !important; " class="ribbon bg-danger text-white">
-                                        Louer
+                                        <span class="small" style="font-family: 'Manjari Bold'">A louer</span>
                                     </div>
                                 </div>
                                 <div class="card-header"
                                      style="background: url({{ $villa['image'] }}) center center; background-position: cover; height: 130px !important;">
 
-                                    <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
+                                    <div style="padding-top: 103px">
+                                        <h2 style="padding: 10px;" class="badge badge-info float-left">{{
                                             $villa['prix'] }}
                                             @if($villa['devise'] == 1)
                                             CFA
@@ -45,7 +45,7 @@
                                 <div class="card-body">
                                     <a href="{{ route('detail', array('test' => $villa->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $villa['name']
                                             }}</h6></a>
-                                    <span class="text-orange small">Déscription rapide</span><br/>
+                                  <br/>
                                     <span>{{ $villa['short_description'] }}
                                     <div class="row">
                                         <div class="col-md-8">
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="float-left">
-                                        <span class="small"> {{  \Carbon\Carbon::parse($villa['updated_at'])->diffForHumans() }}</span>
+                                        <span class="small">Modifié {{  \Carbon\Carbon::parse($villa['updated_at'])->diffForHumans() }}</span>
                                     </div>
                                     <div class="row td-actions text-center float-right">
                                         @if($villa['status'] == 1)

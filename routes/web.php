@@ -11,12 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('details_proprieties/{id}', 'HomeController@details')->name('select');
+
+
+
+
+
+
 
 Route::get('/investi_admin', 'SuperAdminController@index');
-
 Route::post('/admin_connexion', 'SuperAdminController@connexion');
 
 Route::group([

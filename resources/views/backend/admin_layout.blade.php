@@ -513,27 +513,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
     });
 </script>
-<!-- Pour charger les images de maniere automatique -->
-<!--<script type="text/javascript">-->
-<!--    $("#file-1").fileinput({-->
-<!--        console.log('ok')-->
-<!--        theme:'fa',-->
-<!--        uploadUrl: "/image-submit",-->
-<!---->
-<!--        uploadExtraData:function () {-->
-<!--            return{-->
-<!--                _token:$("input[name='_token']").val()-->
-<!--            };-->
-<!--        },-->
-<!--        allowedFileExtensions :['jpg', 'png', 'gif'],-->
-<!--        overwriteInitial:false,-->
-<!--        maxFileSize:2000,-->
-<!--        maxFileNum:8,-->
-<!--        slugCallback:function (filename) {-->
-<!--            return filename.replace('(','_').replace(']','_');-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
+<!-- pour le hover au niveau des card -->
+<script>
+    $(document).ready(function () {
+        $('.carde').hover(
+            function () {
+                $(this).animate({
+                    marginTop: "-1%",
+                },100);
+            },
+            function () {
+                $(this).animate({
+                    marginTop: "0%",
+                },100);
+            }
+        )
+    });
+</script>
 </body>
 </html>
 @endif

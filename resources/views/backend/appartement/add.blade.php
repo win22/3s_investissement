@@ -89,10 +89,10 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Alignements sur le site<span class="text-orange"> *</span></h6>
                             <select required class="form-control" name="align">
+                                <option value="0">0</option>
                                 <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                             </select>
                             @if($errors->has('align'))
                             <small id="emailHelp" class="form-text text-danger">{{$errors->first('align')}}</small>

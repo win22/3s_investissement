@@ -3,7 +3,7 @@
 
 <div class="col-lg-12">
     <p hidden>   {{ \Carbon\Carbon::setLocale('fr') }}</p>
-    <div class="card card-dark ">
+    <div class="card card-dark  ">
         <div class="card-header">
             <h5 class="m-0">Appartements</h5>
             <p>Liste des appartements par catégorie</p>
@@ -20,7 +20,7 @@
                     <div class="row">
                         @foreach($all_appart as $appart)
                         <div class="col-md-4 p-2">
-                            <div class="card dropdown-hover animated-dropdown-menu">
+                            <div class="card carde dropdown-hover animated-dropdown-menu">
                                 <div class="ribbon-wrapper sm ribbon">
                                     <div style="color: white !important; " class="ribbon bg-danger text-white">
                                         <span class="small" style="font-family: 'Manjari Bold'">A louer</span>
@@ -43,17 +43,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <span class="text-orange small">Déscription rapide</span><br/>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="{{ route('detail_appart', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $appart['name']
-                                                    }}</h6></a>
-                                        </div>
-                                    </div>
-
-
+                                    <a href="{{ route('detail_appart', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $appart['name']
+                                            }}</h6></a><br/>
                                     <span>{{ $appart['short_description'] }}
                                     <div class="row">
                                         <div class="col-md-8">
@@ -135,17 +126,17 @@
                     <div class="row">
                         @foreach($all_appart_vendre as $appart)
                         <div class="col-md-4 p-2">
-                            <div class="card card-success1 card-outline1">
-                                <div class="ribbon-wrapper ribbon-lg">
-                                    <div style="color: white !important;" class="ribbon bg-info text-white">
-                                        Vendre
+                            <div class="card carde">
+                                <div class="ribbon-wrapper sm ribbon">
+                                    <div style="color: white !important; " class="ribbon bg-success text-white">
+                                        <span class="small" style="font-family: 'Manjari Bold'">A Vendre</span>
                                     </div>
                                 </div>
                                 <div class="card-header"
                                      style="background: url({{$appart['image'] }}) center center; background-position: cover; height: 130px !important;">
 
-                                    <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
+                                    <div style="padding-top: 103px">
+                                        <h2 style="padding: 10px;" class="badge badge-info float-left">{{
                                             $appart['prix'] }}
                                             @if($appart['devise'] == 1)
                                             CFA
@@ -159,7 +150,7 @@
                                 </div>
                                 <div class="card-body"> <a href="{{ route('detail_appart', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $appart['name']
                                             }}</h6></a>
-                                    <span class="text-orange small">Déscription rapide</span><br/>
+                                  <br/>
                                     <span>{{ $appart['short_description'] }}
                                     <div class="row">
                                         <div class="col-md-8">
@@ -191,7 +182,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="float-left">
-                                       <span class="small"> {{ \Carbon\Carbon::parse($appart['updated_at'])->diffForHumans() }}</span>
+                                       <span class="small"> Modifié {{ \Carbon\Carbon::parse($appart['updated_at'])->diffForHumans() }}</span>
                                     </div>
                                     <div class="row td-actions text-center float-right">
                                         @if($appart['status'] == 1)
