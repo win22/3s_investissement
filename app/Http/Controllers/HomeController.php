@@ -19,6 +19,11 @@ class HomeController extends Controller
 
         return view('welcome', ['apparts' => $apparts])
             ->with(['villas' => $villas]);
+    }
 
+    public function details($id)
+    {
+        $appart = Appartement::findOrFail($id);
+        return view('site.details', ['appart' => $appart]);
     }
 }

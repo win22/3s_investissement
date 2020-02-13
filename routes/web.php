@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('details_proprieties/{id}', 'HomeController@details')->name('select');
+Route::get('details_proprieties/{id}', 'HomeController@details')->name('property-detail');
 
 
 

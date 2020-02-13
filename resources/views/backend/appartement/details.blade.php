@@ -23,7 +23,6 @@
                 <div class="col-12">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner shadow">
-
                             @foreach($appart->images as $image)
                             <div class="carousel-item @if($loop->first) elevation-3 active @endif">
                                 <img class="d-block w-100 " style="width: 600px !important;" src="{{ URL::to($image['image']) }}" alt="slide">

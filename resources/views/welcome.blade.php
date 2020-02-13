@@ -308,7 +308,7 @@
                             @foreach($apparts as $appart)
                             <li class="col-md-4 col-sm-6 type-rent">
                                 <div class="property-block">
-                                    <a  href="property-detail.html" class="property-featured-image">
+                                    <a  href="{{ route('property-detail', array('select' => $appart->id)) }}" class="property-featured-image">
                                         <img style="height: 230px !important;"  src="{{$appart->image }}" alt="">
                                         <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
                                         @if($appart->option == 1)
@@ -320,7 +320,7 @@
                                         @endif
                                     </a>
                                     <div class="property-info">
-                                        <h4><a href="property-detail.html">{{ $appart->name }}</a></h4>
+                                        <h4><a href="{{ route('property-detail', array('select' => $appart->id)) }}">{{ $appart->name }}</a></h4>
                                         <span class="location">{{ $appart->adresse }}</span>
                                         @if($appart->devise == 1)
                                         <div class="price"><span>{{ $appart->prix }}</span><strong>CFA</strong></div>
@@ -599,6 +599,14 @@
                 },100);
             }
         )
+    });
+</script>
+
+<script>
+    console.log('ok');
+    $(document).ready(function () {
+        $('.forma').hide();
+
     });
 </script>
 </body>
