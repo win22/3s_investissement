@@ -69,7 +69,7 @@
                                     <li class="active2"><a href="/">Acceuil</a></li>
                                     <li><a href="javascript:;">Propriétés</a>
                                         <ul class="dropdown">
-                                            <li><a href="agents.html">Appartements</a></li>
+                                            <li><a href="{{ route('all_appar') }}">Appartements</a></li>
                                             <li><a href="agent-detail.html">Villa</a></li>
                                             <li><a href="my-properties.html">Bureau</a></li>
                                             <li><a href="submit.html">Immeuble</a></li>

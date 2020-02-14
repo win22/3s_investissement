@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index');
 //Appartement site config
 Route::get('details_proprieties/{id}', 'AppartController@details_site')->name('property-detail');
 Route::get('send_message/{id}', 'AppartController@captcha_send')->name('save_mess');
-
+Route::get('all_appart', 'HomeController@all_appart')->name('all_appar');
 
 
 

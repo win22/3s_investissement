@@ -45,7 +45,7 @@
         </div>
 
         <div class="widget">
-            <h3 class="widgettitle">Additional Amenities</h3>
+            <h3 class="widgettitle">Details </h3>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Adresse:</span><br/>
@@ -182,7 +182,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="block-heading">
-                        <h4><span class="heading-icon"><i class="fa fa-star"></i></span>>Propriétés similaire</h4>
+                        <h4><span class="heading-icon"><i class="fa fa-home"></i></span>Propriétés similaire</h4>
                     </div>
                 </div>
             </div>
@@ -191,15 +191,26 @@
                     data-pagination="no" data-arrows="yes" data-single-item="no">
                     @foreach($appart_similaire as $appart)
                     <li class="item property-block">
-                        <a href="property-detail.html" class="property-featured-image">
-                            <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-                            <span class="images-count"><i class="fa fa-picture-o"></i> 2</span>
-                            <span class="badges">Rent</span>
+                        <a href="{{ route('property-detail', array('select' => $appart->id)) }}" class="property-featured-image">
+                            <img style="height: 150px;"  src="{{ asset($appart->image) }}" alt="">
+                            @if($appart->option == 1)
+                            <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
+                            @elseif($appart->option == 2)
+                            <span style="background-color: #00bd49 !important; color: white" class="badges">vendre</span>
+                            @else
+                            <span class="badges">Promo</span>
+                            @endif
                         </a>
                         <div class="property-info">
-                            <h4><a href="property-detail.html">116 Waverly Place</a></h4>
-                            <span class="location">NYC</span>
-                            <div class="price"><strong>$</strong><span>2800 Monthly</span></div>
+                            <h4><a href="{{ route('property-detail', array('select' => $appart->id)) }}">{{ $appart->name }}</a></h4>
+                            <span class="location">{{ $appart->adresse }}</span>
+                            @if($appart->devise == 1)
+                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>CFA</strong></div>
+                            @elseif($appart->devise == 2)
+                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>EURO</strong></div>
+                            @else
+                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>$</strong></div>
+                            @endif
                         </div>
                     </li>
                     @endforeach

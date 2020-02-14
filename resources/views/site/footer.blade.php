@@ -34,7 +34,7 @@
                 <ul class="twitter-widget"></ul>
             </div>
             <div class="col-md-3 col-sm-6 footer-widget widget">
-                <h3 class="widgettitle">Our Newsletter</h3>
+                <h3 class="widgettitle">Newsletter</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec
                     facilisis fermentum sem, ac viverra ante luctus vel.</p>
                 <form method="post" id="newsletterform" name="newsletterform" class="newsletter-form"
@@ -54,7 +54,7 @@
     <div class="container">
         <div class="row">
             <div class="copyrights-col-left col-md-6 col-sm-6">
-                <p>&copy; 2014 RealSpaces. All Rights Reserved</p>
+                <p>&copy; 2020 NataalAgency. All Rights Reserved</p>
             </div>
             <div class="copyrights-col-right col-md-6 col-sm-6">
                 <div class="social-icons">

@@ -23,5 +23,12 @@ class HomeController extends Controller
             ->with(['villas' => $villas]);
     }
 
+    public function all_appart()
+    {
+        $appart = Appartement::where('status', 1)
+                    ->latest()
+                    ->paginate(3);
+        return view('site.appart.all_appart', ['apparts' => $appart]);
+    }
 
 }

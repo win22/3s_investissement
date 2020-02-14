@@ -68,7 +68,7 @@
                                 <li class="active2"><a href="/">Acceuil</a></li>
                                 <li><a href="javascript:;">Propriétés</a>
                                     <ul class="dropdown">
-                                        <li><a href="agents.html">Appartements</a></li>
+                                        <li><a href="{{ route('all_appar') }}">Appartements</a></li>
                                         <li><a href="agent-detail.html">Villa</a></li>
                                         <li><a href="my-properties.html">Bureau</a></li>
                                         <li><a href="submit.html">Immeuble</a></li>
@@ -323,11 +323,11 @@
                                         <h4><a href="{{ route('property-detail', array('select' => $appart->id)) }}">{{ $appart->name }}</a></h4>
                                         <span class="location">{{ $appart->adresse }}</span>
                                         @if($appart->devise == 1)
-                                        <div class="price"><span>{{ $appart->prix }}</span><strong>CFA</strong></div>
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>CFA</strong></div>
                                         @elseif($appart->devise == 2)
-                                        <div class="price"><span>{{ $appart->prix }}</span><strong>EURO</strong></div>
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>EURO</strong></div>
                                         @else
-                                        <div class="price"><span>{{ $appart->prix }}</span><strong>$</strong></div>
+                                        <div  style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>$</strong></div>
                                         @endif
                                         <br/>
                                         <span>{{ $appart->short_description }}</span>
@@ -359,11 +359,11 @@
                                         <h4><a href="property-detail.html">{{ $appart->name }}</a></h4>
                                         <span class="location">{{ $appart->adresse }}</span>
                                         @if($appart->devise == 1)
-                                        <div class="price"><span>{{ $appart->prix }}</span><strong>CFA</strong></div>
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>CFA</strong></div>
                                         @elseif($appart->devise == 2)
-                                        <div class="price"><span>{{ $appart->prix }}</span><strong>EURO</strong></div>
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>EURO</strong></div>
                                         @else
-                                        <div class="price"><span>{{ $appart->prix }}</span><strong>$</strong></div>
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>$</strong></div>
                                         @endif
                                         <br/>
                                         <span>{{ $appart->short_description }}</span>

@@ -271,7 +271,7 @@ class AppartController extends Controller
         $appart = Appartement::findOrFail($id);
         $appart_similaire = Appartement::where('id', '!=', $id)
             ->where('status', 1)
-            ->get();
+            ->paginate(8);
         return view('site.appart.details', ['appart' => $appart])
             ->with([ 'appart_similaire' => $appart_similaire ]);
     }
