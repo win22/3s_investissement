@@ -393,7 +393,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <ul class="owl-carousel owl-alt-controls" data-columns="4" data-autoplay="no"
+                        <ul class="owl-carousel owl-alt-controls" data-columns="4" data-autoplay="yes"
                             data-pagination="no" data-arrows="yes" data-single-item="no">
                             <li class="item property-block">
                                 <a href="property-detail.html" class="property-featured-image">
@@ -585,6 +585,7 @@
 <script src="{{ asset('site/js/script_ie.js') }}"></script><![endif]-->
 
 
+
 <script>
     $(document).ready(function () {
         $('.carde').hover(
@@ -602,12 +603,5 @@
     });
 </script>
 
-<script>
-    console.log('ok');
-    $(document).ready(function () {
-        $('.forma').hide();
-
-    });
-</script>
 </body>
 </html>

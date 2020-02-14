@@ -27,6 +27,7 @@
     <!-- SCRIPTS
       ================================================== -->
     <script src="{{ asset('site/js/modernizr.js') }}"></script><!-- Modernizr -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="home">
 <!--[if lt IE 7]>
@@ -135,18 +136,23 @@
 
 <script>
     $(document).ready(function () {
-        $('.carde').hover(
-            function () {
-                $(this).animate({
-                    marginTop: "-1%",
-                },100);
-            },
-            function () {
-                $(this).animate({
-                    marginTop: "0%",
-                },100);
+
+        $('.dynamic2').change(function () {
+
+            if($(this).val() != '')
+            {
+                var select = $(this).attr("id");
+                var value = $(this).val();
+
+                if (value == 1) {
+                    $(".forma").hide().slideDown("slow");
+                };
+                if (value ==2) {
+                    $(".forma").hide().slideUp("slow");
+
+                };
             }
-        )
+        });
     });
 </script>
 </body>

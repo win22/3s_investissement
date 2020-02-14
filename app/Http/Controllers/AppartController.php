@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Rules\Captcha;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Appartement;
-use App\tbl_appartement;
-use App\tbl_image;
+use App\Models\Message;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Session;
 use File;
@@ -258,12 +259,49 @@ class AppartController extends Controller
         return view('backend.appartement.details', ['appart' => $detail_appart])
             ->with(['admin_name' => $admin_name]);
     }
-
     public function edits($id)
     {
         $appart = Appartement::findOrFail($id);
         return view('backend.appartement.edit', ['appart' => $appart]);
     }
+
+    //Partie admin du site
+    public function details_site($id)
+    {
+        $appart = Appartement::findOrFail($id);
+        $appart_similaire = Appartement::where('id', '!=', $id)
+            ->where('status', 1)
+            ->get();
+        return view('site.appart.details', ['appart' => $appart])
+            ->with([ 'appart_similaire' => $appart_similaire ]);
+    }
+
+    public function captcha_send($id)
+    {
+        request()->validate([
+            'name' => ['required', 'max:60', 'min:2'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'max:60', 'min:2'],
+            'message' => ['required'],
+            'g-recaptcha-response' => new Captcha(),
+        ]);
+        Message::create([
+            'appartement_id' => $id,
+            'name' => request('name'),
+            'email' => request('email'),
+            'phone' => request('phone'),
+            'message' => request('message'),
+            'status' => 0
+
+        ]);
+        return back()->with(
+          Session::put('message', 'Merci '.request('name').' pour votre réservation')
+        );
+    }
+
+
+
+
 }
 
 

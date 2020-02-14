@@ -121,67 +121,92 @@
         </div>
     </div>
 </div>
-<form>
-    <div id="forma">
-        pppp
-    </div>
+<form class="forma" action="{{ route('save_mess', array('test' => $appart->id)) }}">
     <div class="row">
         <div class="form-group col-md-4">
             <label>Nom</label>
-            <input type="text" class="form-control" placeholder="saisir votre nom">
+            <input required type="text" name="name" class="form-control" placeholder="saisir votre nom">
+            @if($errors->has('name'))
+            <span style="color: red" class="small">{{ $errors->first('name')}}</span>
+            @endif
         </div>
         <div class="form-group col-md-4">
             <label>Email</label>
-            <input type="email" class="form-control" placeholder="saisir votre adresse e-mail">
+            <input required type="email" name="email" class="form-control" placeholder="saisir votre adresse e-mail">
+            @if($errors->has('email'))
+            <span style="color: red" class="small">{{ $errors->first('email')}}</span>
+            @endif
         </div>
         <div class="form-group col-md-4">
             <label>Téléphone</label>
-            <input type="text" class="form-control" placeholder="saisir votre numéro de téléphone">
+            <input required type="text" name="phone" class="form-control" placeholder="saisir votre numéro de téléphone">
+            @if($errors->has('phone'))
+            <span style="color: red" class="small">{{ $errors->first('phone')}}</span>
+            @endif
         </div>
         <div class="form-group col-md-12">
             <label>Message</label>
-            <textarea class="form-control" placeholder="saisir votre message"></textarea>
+            <textarea required class="form-control" name="message" placeholder="saisir votre message"></textarea>
+            @if($errors->has('message'))
+            <span style="color: red" class="small">{{ $errors->first('message')}}</span>
+            @endif
         </div>
+
     </div>
+    <div class="form-group row">
+        <div class="col-md-6 offset-md-4">
+            <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}"></div>
+            @if($errors->has('g-recaptcha-response'))
+            <span>
+                <strong style="color: red">{{ $errors->first('g-recaptcha-response')}}</strong>
+               </span>
+            @endif
+            <p hidden class="alert ">{{ $message = Session::get('message')}}</p>
+            @if($message)
+                <p style="color: #1a741a; font-family: 'Manjari Regular'" class="data-notify=" message"> {{$message }} <br/>
+            Un mail vous a été envoyé afin de confirmer votre reservation<br/>
+            </p>
+            {{ Session::put('message',NULL) }}
+            @endif
+        </div>
+
+    </div>
+
+    <br/>
     <button type="submit" class="btn btn-primary pull-right">Envoyer</button>
 </form>
 
 <div class="row">
-    <h3>Related Properties</h3>
-    <hr>
-    <div class="property-grid col-md-12">
-        <ul class="grid-holder col-3">
-            <li class="grid-item type-rent">
-                <div class="property-block"> <a href="#" class="property-featured-image"> <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""> <span class="images-count"><i class="fa fa-picture-o"></i> 2</span> <span class="badges">Rent</span> </a>
-                    <div class="property-info">
-                        <h4><a href="#">116 Waverly Place</a></h4>
-                        <span class="location">NYC</span>
-                        <div class="price"><strong>$</strong><span>2800 Monthly</span></div>
+    <div id="featured-properties">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block-heading">
+                        <h4><span class="heading-icon"><i class="fa fa-star"></i></span>>Propriétés similaire</h4>
                     </div>
-                    <div class="property-amenities clearfix"> <span class="area"><strong>5000</strong>Area</span> <span class="baths"><strong>3</strong>Baths</span> <span class="beds"><strong>3</strong>Beds</span> <span class="parking"><strong>1</strong>Parking</span> </div>
                 </div>
-            </li>
-            <li class="grid-item type-buy">
-                <div class="property-block"> <a href="#" class="property-featured-image"> <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""> <span class="images-count"><i class="fa fa-picture-o"></i> 2</span> <span class="badges">Buy</span> </a>
-                    <div class="property-info">
-                        <h4><a href="#">232 East 63rd Street</a></h4>
-                        <span class="location">NYC</span>
-                        <div class="price"><strong>$</strong><span>250000</span></div>
-                    </div>
-                    <div class="property-amenities clearfix"> <span class="area"><strong>5000</strong>Area</span> <span class="baths"><strong>3</strong>Baths</span> <span class="beds"><strong>3</strong>Beds</span> <span class="parking"><strong>1</strong>Parking</span> </div>
-                </div>
-            </li>
-            <li class="grid-item type-rent">
-                <div class="property-block"> <a href="#" class="property-featured-image"> <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""> <span class="images-count"><i class="fa fa-picture-o"></i> 2</span> <span class="badges">Buy</span> </a>
-                    <div class="property-info">
-                        <h4><a href="#">55 Warren Street</a></h4>
-                        <span class="location">NYC</span>
-                        <div class="price"><strong>$</strong><span>300000</span></div>
-                    </div>
-                    <div class="property-amenities clearfix"> <span class="area"><strong>5000</strong>Area</span> <span class="baths"><strong>3</strong>Baths</span> <span class="beds"><strong>3</strong>Beds</span> <span class="parking"><strong>1</strong>Parking</span> </div>
-                </div>
-            </li>
-        </ul>
+            </div>
+            <div class="row">
+                <ul class="owl-carousel owl-alt-controls" data-columns="4" data-autoplay="yes"
+                    data-pagination="no" data-arrows="yes" data-single-item="no">
+                    @foreach($appart_similaire as $appart)
+                    <li class="item property-block">
+                        <a href="property-detail.html" class="property-featured-image">
+                            <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
+                            <span class="images-count"><i class="fa fa-picture-o"></i> 2</span>
+                            <span class="badges">Rent</span>
+                        </a>
+                        <div class="property-info">
+                            <h4><a href="property-detail.html">116 Waverly Place</a></h4>
+                            <span class="location">NYC</span>
+                            <div class="price"><strong>$</strong><span>2800 Monthly</span></div>
+                        </div>
+                    </li>
+                    @endforeach
+
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Appartement;
 use App\Models\villa;
+use http\Message;
 use Illuminate\Http\Request;
+use App\Rules\Captcha;
 
 class HomeController extends Controller
 {
@@ -21,9 +23,5 @@ class HomeController extends Controller
             ->with(['villas' => $villas]);
     }
 
-    public function details($id)
-    {
-        $appart = Appartement::findOrFail($id);
-        return view('site.details', ['appart' => $appart]);
-    }
+
 }
