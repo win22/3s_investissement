@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6 footer-widget widget">
-                <h3 class="widgettitle">Latest News</h3>
+                <h3 style="color: white" class="widgettitle">Latest News</h3>
                 <ul>
                     <li>
                         <a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
@@ -20,7 +20,7 @@
                 </ul>
             </div>
             <div class="col-md-3 col-sm-6 footer-widget widget">
-                <h3 class="widgettitle">Useful Links</h3>
+                <h3 style="color: white" class="widgettitle">Useful Links</h3>
                 <ul>
                     <li><a href="submit.html">Add your listing</a></li>
                     <li><a href="login.html">Become an agent</a></li>
@@ -30,11 +30,11 @@
                 </ul>
             </div>
             <div class="col-md-3 col-sm-6 footer-widget widget">
-                <h3 class="widgettitle">Twitter Updates</h3>
+                <h3  style="color: white" class="widgettitle">Twitter Updates</h3>
                 <ul class="twitter-widget"></ul>
             </div>
             <div class="col-md-3 col-sm-6 footer-widget widget">
-                <h3 class="widgettitle">Newsletter</h3>
+                <h3 style="color: white" class="widgettitle">Newsletter</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec
                     facilisis fermentum sem, ac viverra ante luctus vel.</p>
                 <form method="post" id="newsletterform" name="newsletterform" class="newsletter-form"
@@ -54,7 +54,7 @@
     <div class="container">
         <div class="row">
             <div class="copyrights-col-left col-md-6 col-sm-6">
-                <p>&copy; 2020 NataalAgency. All Rights Reserved</p>
+                <p style="color: white">&copy; 2020 NataalAgency. All Rights Reserved</p>
             </div>
             <div class="copyrights-col-right col-md-6 col-sm-6">
                 <div class="social-icons">

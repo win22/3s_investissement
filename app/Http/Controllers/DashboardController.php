@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
+use App\Models\villa;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -21,5 +23,12 @@ class DashboardController extends Controller
         Auth::logout();
         return redirect('investi_admin')->withErrors([
             'email' => 'Vous avez été déconnecté']);;
+    }
+
+    public function all_message()
+    {
+        $messages = Message::all()
+                    ->latest();
+        return view('backend.dashboard', ['messages' => $messages ]);
     }
 }

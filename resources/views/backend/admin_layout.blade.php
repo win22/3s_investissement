@@ -148,7 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="dashboard" class="nav-link {{ request()->is('dashboard')? 'active' : ''  }}" >
+                        <a href="/dashboard" class="nav-link {{ request()->is('dashboard')? 'active' : ''  }}" >
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Tableau de bord

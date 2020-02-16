@@ -268,7 +268,8 @@ class AppartController extends Controller
     //Partie admin du site
     public function details_site($id)
     {
-        $appart = Appartement::findOrFail($id);
+        $appart = Appartement::where('status', 1)
+        ->findOrFail($id);
         $appart_similaire = Appartement::where('id', '!=', $id)
             ->where('status', 1)
             ->paginate(8);

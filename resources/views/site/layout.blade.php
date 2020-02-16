@@ -69,34 +69,34 @@
                                     <li class="active2"><a href="/">Acceuil</a></li>
                                     <li><a href="javascript:;">Propriétés</a>
                                         <ul class="dropdown">
-                                            <li><a href="{{ route('all_appar') }}">Appartements</a></li>
-                                            <li><a href="agent-detail.html">Villa</a></li>
-                                            <li><a href="my-properties.html">Bureau</a></li>
-                                            <li><a href="submit.html">Immeuble</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('all_appar') }}">Appartements</a></li>
+                                            <li><a style="color: #5e5e5e !important;"href="{{ route('vil_all') }}">Villa</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Louer</a>
                                         <ul class="dropdown">
-                                            <li><a href="agents.html">Appartements</a></li>
-                                            <li><a href="agent-detail.html">Villa</a></li>
-                                            <li><a href="my-properties.html">Bureau</a></li>
-                                            <li><a href="submit.html">Immeuble</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Vendre</a>
                                         <ul class="dropdown">
-                                            <li><a href="agents.html">Appartements</a></li>
-                                            <li><a href="agent-detail.html">Villa</a></li>
-                                            <li><a href="my-properties.html">Bureau</a></li>
-                                            <li><a href="submit.html">Immeuble</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Promo</a>
                                         <ul class="dropdown">
-                                            <li><a href="agents.html">Appartements</a></li>
-                                            <li><a href="agent-detail.html">Villa</a></li>
-                                            <li><a href="my-properties.html">Bureau</a></li>
-                                            <li><a href="submit.html">Immeuble</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="contact.html">A propos</a></li>

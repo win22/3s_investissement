@@ -1,8 +1,8 @@
 .text-primary, .btn-primary .badge, .btn-link,a.list-group-item.active > .badge,.nav-pills > .active > a > .badge, p.drop-caps:first-child:first-letter, .accent-color, .post-more, ul.nav-list-primary > li a:hover, .widget_recent_comments a, .navigation > ul > li:hover > a, .flex-caption .hero-agent-contact, .property-info h4 a, .agent-info h4 a, .features-list li .icon, .property-listing h3 a, .agents-listing h3 a, .nav-tabs li.active > i, .nav-tabs li:hover > i, .location > i, .contact-info-blocks > div > i, .additional-amenities > span.available i, .error-404 h2 > i, .properties-table .action-button i, .pricing-column h3 {
-	color:#f55a4e;
+	color:#f55a4e !important;
 }
 a:hover, .testimonials > li cite a:hover, .property-listing h3 a:hover, .agents-listing h3 a:hover, .property-info h4 a:hover, .agent-info h4 a:hover{
-	color:#f55a4e;
+	color:#f55a4e !important;
 }
 .featured-gallery p, .post-more:hover, .widget_recent_comments a:hover, .property-info h4 a:hover{
 	opacity:.9
@@ -70,7 +70,10 @@ a.list-group-item.active:focus,
 	border-color:#f55a4e;
 }
 .panel-primary > .panel-heading + .panel-collapse .panel-body, .navigation ul > li:hover > a, .navigation ul > li.current_menu_item > a{
-	border-top-color:#f55a4e;
+	border-top-color:#f55a4e !important;
+	color: #f55a4e ;
+
+
 }
 .panel-primary > .panel-footer + .panel-collapse .panel-body, .widget .widgettitle{
 	border-bottom-color:#f55a4e;

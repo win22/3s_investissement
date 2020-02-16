@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Appartement;
+use App\Models\Message;
 use App\Models\Villa;
 use App\Models\Image;
+use App\Rules\Captcha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -258,5 +261,40 @@ class VillaController extends Controller
     {
         $villa = villa::findOrFail($id);
         return view('backend.villa.edit', ['villa' => $villa]);
+    }
+
+
+    //config pour le site
+    public function details_villa_site($id)
+    {
+        $villa = villa::findOrFail($id);
+        $villa_similaire = villa::where('id', '!=', $id)
+            ->where('status', 1)
+            ->paginate(8);
+        return view('site.villa.details', ['villa' => $villa])
+            ->with([ 'villa_similaire' => $villa_similaire ]);
+    }
+
+    public function captcha_send($id)
+    {
+        request()->validate([
+            'name' => ['required', 'max:60', 'min:2'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'max:60', 'min:2'],
+            'message' => ['required'],
+            'g-recaptcha-response' => new Captcha(),
+        ]);
+        Message::create([
+            'villa_id' => $id,
+            'name' => request('name'),
+            'email' => request('email'),
+            'phone' => request('phone'),
+            'message' => request('message'),
+            'status' => 0
+
+        ]);
+        return back()->with(
+            Session::put('message', 'Merci '.request('name').' pour votre réservation')
+        );
     }
 }

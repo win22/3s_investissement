@@ -45,14 +45,14 @@
                              src="{{ URL::to(asset('backend/img/logo2.jpg')) }}">
                     </div>
                     <div class="col-md-9 col-sm-8 col-xs-4">
-                        <div class="contact-info-blocks hidden-sm hidden-xs">
+                        <div class="contact-info-blocks hidden-sm hidden-xs" style="padding-top: 10px">
                             <div>
-                                <i style="color: antiquewhite" class="fa fa-phone"></i> Free Line For You
+                                <i style="color: antiquewhite !important;" class="fa fa-phone"></i> Appelez nous
                                 <span>080 378678 90</span>
                             </div>
                             <div>
-                                <i style="color: antiquewhite" class="fa fa-envelope"></i> Email Us
-                                <span>sales@realspaces.com</span>
+                                <i style="color: antiquewhite" class="fa fa-envelope"></i>Notre Email
+                                <span>sagesse@gmail.com</span>
                             </div>
                     </div>
                         <a href="#" style="color: white !important;" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a>
@@ -68,34 +68,34 @@
                                 <li class="active2"><a href="/">Acceuil</a></li>
                                 <li><a href="javascript:;">Propriétés</a>
                                     <ul class="dropdown">
-                                        <li><a href="{{ route('all_appar') }}">Appartements</a></li>
-                                        <li><a href="agent-detail.html">Villa</a></li>
-                                        <li><a href="my-properties.html">Bureau</a></li>
-                                        <li><a href="submit.html">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('all_appar') }}">Appartements</a></li>
+                                        <li><a style="color: #5e5e5e !important;"href="{{ route('vil_all') }}">Villa</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Louer</a>
                                     <ul class="dropdown">
-                                        <li><a href="agents.html">Appartements</a></li>
-                                        <li><a href="agent-detail.html">Villa</a></li>
-                                        <li><a href="my-properties.html">Bureau</a></li>
-                                        <li><a href="submit.html">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Vendre</a>
                                     <ul class="dropdown">
-                                        <li><a href="agents.html">Appartements</a></li>
-                                        <li><a href="agent-detail.html">Villa</a></li>
-                                        <li><a href="my-properties.html">Bureau</a></li>
-                                        <li><a href="submit.html">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Promo</a>
                                     <ul class="dropdown">
-                                        <li><a href="agents.html">Appartements</a></li>
-                                        <li><a href="agent-detail.html">Villa</a></li>
-                                        <li><a href="my-properties.html">Bureau</a></li>
-                                        <li><a href="submit.html">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="contact.html">A propos</a></li>
@@ -112,22 +112,17 @@
     <div class="site-showcase">
         <div class="slider-mask overlay-transparent"></div>
         <!-- Start Hero Slider -->
-        <div class="hero-slider flexslider clearfix" style="height:680px" data-autoplay="yes" data-pagination="no"
+        <div class="hero-slider flexslider clearfix" style="height:680px" data-autoplay="yes" ondurationchange="5000" data-pagination="no"
              data-arrows="yes" data-style="fade" data-pause="yes">
             <ul class="slides">
                 <li class="slider-banner1" style="background-image:url({{ asset('site/image/06.jpg')}}); height: 680px">
-                    <div class="flex-caption">
-                        <strong class="title">1671 Grand Avenue, <em>NYC</em></strong>
-                        <div class="price"><strong>$</strong><span>100000</span></div>
-                        <a href="property-detail.html" class="btn btn-primary btn-block">Details</a>
-                        <div class="hero-agent">
-                            <img src="http://placehold.it/365x365&amp;text=IMAGE+PLACEHOLDER" alt=""
-                                 class="hero-agent-pic">
-                            <a href="agent-detail.html" class="hero-agent-contact" data-placement="left"
-                               data-toggle="tooltip" title="" data-original-title="Contact Agent"><i
-                                        class="fa fa-envelope"></i></a>
+                    <div class="row">
+                        <div class="containerss">
+                            <span class="text1 span1">Bienvenue dans </span>
+                            <span class="text2 span1">3s investissement </span>
                         </div>
                     </div>
+
                 </li>
                 <li class="parallax" style="background-image:url({{ asset('site/image/05.jpg')}}); height: 680px">
                     <div class="flex-caption">
@@ -181,82 +176,6 @@
                                                 class="fa fa-search"></i> Search
                                     </button>
                                 </div>
-                                <div class="col-md-2"><a href="#" id="ads-trigger" class="btn btn-default btn-block"><i
-                                                class="fa fa-plus"></i> <span>Advanced</span></a></div>
-                            </div>
-                            <div class="row hidden-xs hidden-sm">
-                                <div class="col-md-2">
-                                    <label>Min Beds</label>
-                                    <select name="beds" class="form-control input-lg selectpicker">
-                                        <option>Any</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <label>Min Baths</label>
-                                    <select name="beds" class="form-control input-lg selectpicker">
-                                        <option>Any</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <label>Min Price</label>
-                                    <select name="beds" class="form-control input-lg selectpicker">
-                                        <option>Any</option>
-                                        <option>$1000</option>
-                                        <option>$5000</option>
-                                        <option>$10000</option>
-                                        <option>$50000</option>
-                                        <option>$100000</option>
-                                        <option>$500000</option>
-                                        <option>$1000000</option>
-                                        <option>$3000000</option>
-                                        <option>$5000000</option>
-                                        <option>$10000000</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <label>Max Price</label>
-                                    <select name="beds" class="form-control input-lg selectpicker">
-                                        <option>Any</option>
-                                        <option>$1000</option>
-                                        <option>$5000</option>
-                                        <option>$10000</option>
-                                        <option>$50000</option>
-                                        <option>$100000</option>
-                                        <option>$500000</option>
-                                        <option>$1000000</option>
-                                        <option>$3000000</option>
-                                        <option>$5000000</option>
-                                        <option>$10000000</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <label>Min Area (Sq Ft)</label>
-                                    <input type="text" class="form-control input-lg" placeholder="Any">
-                                </div>
-                                <div class="col-md-2">
-                                    <label>Max Area (Sq Ft)</label>
-                                    <input type="text" class="form-control input-lg" placeholder="Any">
-                                </div>
                             </div>
                         </div>
                     </form>
@@ -301,7 +220,7 @@
                     <div class="property-columns" id="latest-properties">
                         <div class="col-md-12">
                             <div class="block-heading">
-                                <h4><span class="heading-icon"><i class="fa fa-leaf"></i></span>Nouvautés</h4>
+                                <h4><span class="heading-icon"><i class="fa fa-home"></i></span>Nouvautés</h4>
                             </div>
                         </div>
                         <ul>
@@ -388,7 +307,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="block-heading">
-                                <h4><span class="heading-icon"><i class="fa fa-star"></i></span>Featured Properties</h4>
+                                <h4><span class="heading-icon"><i class="fa fa-star"></i></span>Autres proprétés</h4>
                             </div>
                         </div>
                     </div>

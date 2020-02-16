@@ -17,9 +17,9 @@ Route::get('details_proprieties/{id}', 'AppartController@details_site')->name('p
 Route::get('send_message/{id}', 'AppartController@captcha_send')->name('save_mess');
 Route::get('all_appart', 'HomeController@all_appart')->name('all_appar');
 
-
-
-
+Route::get('villa_all', 'HomeController@all_villa')->name('vil_all');
+Route::get('details_proprieties_villa/{id}', 'VillaController@details_villa_site')->name('villa_detail');
+Route::get('send_message_villa/{id}', 'VillaController@captcha_send')->name('save_mess_villa');
 
 
 Route::get('/investi_admin', 'SuperAdminController@index');

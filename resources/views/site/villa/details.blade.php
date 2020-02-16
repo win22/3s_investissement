@@ -4,25 +4,25 @@
     <div class="col-md-8">
         <div class="single-property">
             <div class="widget">
-                <h2 style="font-family: 'Manjari Regular'" class="widgettitle">Details d'un appartement  </h2>
+                <h2 style="font-family: 'Manjari Regular'" class="widgettitle">Details d'une villa </h2>
             </div>
-            <h2 class="page-title">{{ $appart->name }}</h2>
+            <h3 class="page-title">{{ $villa->name }}</h3>
             <div class="property-slider">
                 <div id="property-images" class="flexslider">
                     <ul class="slides">
-                        @foreach($appart->images as $image)
+                        @foreach($villa->images as $image)
                         <li class="item @if($loop->first) elevation-3 active @endif"> <img  src="{{ URL::to($image['image']) }}" alt="">
                         </li>
                         @endforeach
-                        <li class="item"> <img src="{{URL::to($appart['image'])}}" alt=""> </li>
+                        <li class="item"> <img src="{{URL::to($villa['image'])}}" alt=""> </li>
                     </ul>
                 </div>
                 <div id="property-thumbs" class="flexslider">
                     <ul class="slides">
-                        @foreach($appart->images as $image)
+                        @foreach($villa->images as $image)
                         <li class="item"> <img  src="{{ URL::to($image['image']) }}" alt=""> </li>
                         @endforeach
-                        <li class="item"> <img src="{{URL::to($appart['image'])}}" alt=""> </li>
+                        <li class="item"> <img src="{{URL::to($villa['image'])}}" alt=""> </li>
 
                     </ul>
                 </div>
@@ -33,15 +33,15 @@
     <div class="sidebar right-sidebar col-md-4">
         <div class="widget">
             <div class="agent">
-                <h4><i style="color: red" class="fa fa-map-marker"></i> {{ $appart->adresse }}</h4>
-                <p>{{ $appart->short_description }}</p>
+                <h4><i style="color: red" class="fa fa-map-marker"></i> {{ $villa->adresse }}</h4>
+                <p>{{ $villa->short_description }}</p>
                 <div class="agent-contacts clearfix">
-                    @if($appart->devise == 1)
-                    <div style="background-color: red;" class="price"><span>{{ $appart->prix }}</span><strong>CFA</strong></div>
-                    @elseif($appart->devise == 2)
-                    <div class="price"><span>{{ $appart->prix }}</span><strong>EURO</strong></div>
+                    @if($villa->devise == 1)
+                    <div style="background-color: red;" class="price"><span>{{ $villa->prix }}</span><strong>CFA</strong></div>
+                    @elseif($villa->devise == 2)
+                    <div class="price"><span>{{ $villa->prix }}</span><strong>EURO</strong></div>
                     @else
-                    <div class="price"><span>{{ $appart->prix }}</span><strong>$</strong></div>
+                    <div class="price"><span>{{ $villa->prix }}</span><strong>$</strong></div>
                     @endif
                 </div>
             </div>
@@ -52,27 +52,27 @@
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Adresse:</span><br/>
-                    <span>{{ $appart['adresse'] }}</span>
+                    <span>{{ $villa['adresse'] }}</span>
                 </div>
                 <div class="col-md-4">
                     <span style="color: red">Ville:</span><br/>
-                    <span>{{ $appart['ville'] }}</span>
+                    <span>{{ $villa['ville'] }}</span>
                 </div>
                 <div class="col-md-4">
                     <span style="color: red">Pays:</span><br/>
-                    <span>{{ $appart['pays'] }}</span>
+                    <span>{{ $villa['pays'] }}</span>
                 </div>
             </div>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Type:</span><br/>
-                    <span>{{ $appart['type'] }}</span>
+                    <span>{{ $villa['type'] }}</span>
                 </div>
                 <div class="col-md-4">
                     <span style="color: red">Option:</span><br/>
-                    @if($appart['option'] == 1)
+                    @if($villa['option'] == 1)
                     <span>A louer</span>
-                    @elseif($appart['devise'] == 2)
+                    @elseif($villa['devise'] == 2)
                     EURO
                     <span>A vendre</span>
                     $
@@ -82,25 +82,25 @@
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Chambre:</span><br/>
-                    <span>{{ $appart['chambre'] }}</span>
+                    <span>{{ $villa['chambre'] }}</span>
                 </div>
                 <div class="col-md-4">
                     <span style="color: red">Cuisines:</span><br/>
-                    <span>{{ $appart['cuisine'] }}</span>
+                    <span>{{ $villa['cuisine'] }}</span>
                 </div>
                 <div class="col-md-4">
                     <span style="color: red">Salle de bain:</span><br/>
-                    <span>{{ $appart['sale_de_bain'] }}</span>
+                    <span>{{ $villa['sale_de_bain'] }}</span>
                 </div>
             </div>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Garage:</span><br/>
-                    <span>{{ $appart['garage'] }}</span>
+                    <span>{{ $villa['garage'] }}</span>
                 </div>
                 <div class="col-md-4">
                     <span style="color: red">Salon:</span><br/>
-                    <span>{{ $appart['salon'] }}</span>
+                    <span>{{ $villa['salon'] }}</span>
                 </div>
             </div>
             <br/>
@@ -110,7 +110,7 @@
                 </ul>
                 <div class="tab-content">
                     <div id="description" class="tab-pane active">
-                        {{ $appart->large_description }}
+                        {{ $villa->large_description }}
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
         </div>
     </div>
 </div>
-<form class="forma" action="{{ route('save_mess', array('test' => $appart->id)) }}">
+<form class="forma" action="{{ route('save_mess_villa', array('test' => $villa->id)) }}">
     <div class="row">
         <div class="form-group col-md-4">
             <label>Nom</label>
@@ -166,7 +166,7 @@
             @endif
             <p hidden class="alert ">{{ $message = Session::get('message')}}</p>
             @if($message)
-                <p style="color: #1a741a; font-family: 'Manjari Regular'" class="data-notify=" message"> {{$message }} <br/>
+            <p style="color: #1a741a; font-family: 'Manjari Regular'" class="data-notify=" message"> {{$message }} <br/>
             Un mail vous a été envoyé afin de confirmer votre reservation<br/>
             </p>
             {{ Session::put('message',NULL) }}
@@ -192,33 +192,32 @@
             <div class="row">
                 <ul class="owl-carousel owl-alt-controls" data-columns="4" data-autoplay="yes"
                     data-pagination="no" data-arrows="yes" data-single-item="no">
-                    @foreach($appart_similaire as $appart)
+                    @foreach($villa_similaire as $villa)
                     <li class="item property-block">
-                        <a href="{{ route('property-detail', array('select' => $appart->id)) }}" class="property-featured-image">
-                            <img style="height: 150px;"  src="{{ asset($appart->image) }}" alt="">
-                            @if($appart->option == 1)
+                        <a href="{{ route('property-detail', array('select' => $villa->id)) }}" class="property-featured-image">
+                            <img style="height: 150px;"  src="{{ asset($villa->image) }}" alt="">
+                            @if($villa->option == 1)
                             <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
-                            @elseif($appart->option == 2)
+                            @elseif($villa->option == 2)
                             <span style="background-color: #00bd49 !important; color: white" class="badges">vendre</span>
                             @else
                             <span class="badges">Promo</span>
                             @endif
                         </a>
                         <div class="property-info">
-                            <h4><a href="{{ route('property-detail', array('select' => $appart->id)) }}">{{ $appart->name }}</a></h4>
-                            <span class="location">{{ $appart->adresse }}</span>
-                            @if($appart->devise == 1)
-                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>CFA</strong></div>
-                            @elseif($appart->devise == 2)
-                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>EURO</strong></div>
+                            <h4><a href="{{ route('property-detail', array('select' => $villa->id)) }}">{{ $villa->name }}</a></h4>
+                            <span class="location">{{ $villa->adresse }}</span>
+                            @if($villa->devise == 1)
+                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>CFA</strong></div>
+                            @elseif($villa->devise == 2)
+                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>EURO</strong></div>
                             @else
-                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>$</strong></div>
+                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>$</strong></div>
                             @endif
                         </div>
                     </li>
-                    @endforeach
-
                 </ul>
+                @endforeach
             </div>
         </div>
     </div>

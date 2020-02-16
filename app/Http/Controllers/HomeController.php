@@ -31,4 +31,12 @@ class HomeController extends Controller
         return view('site.appart.all_appart', ['apparts' => $appart]);
     }
 
+    public function all_villa()
+    {
+        $villa = villa::where('status', 1)
+            ->latest()
+            ->paginate(3);
+        return view('site.villa.all_villa', ['villas' => $villa]);
+    }
+
 }
