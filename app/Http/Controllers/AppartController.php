@@ -277,7 +277,7 @@ class AppartController extends Controller
             ->with([ 'appart_similaire' => $appart_similaire ]);
     }
 
-    public function captcha_send($id)
+    public function captcha_send($name)
     {
         request()->validate([
             'name' => ['required', 'max:60', 'min:2'],
@@ -287,7 +287,7 @@ class AppartController extends Controller
             'g-recaptcha-response' => new Captcha(),
         ]);
         Message::create([
-            'appartement_id' => $id,
+            'name_p' => $name,
             'name' => request('name'),
             'email' => request('email'),
             'phone' => request('phone'),

@@ -124,7 +124,7 @@
         </div>
     </div>
 </div>
-<form class="forma" action="{{ route('save_mess', array('test' => $appart->id)) }}">
+<form class="forma" action="{{ route('save_mess', array('test' => $appart->name)) }}">
     <div class="row">
         <div class="form-group col-md-4">
             <label>Nom</label>

@@ -27,8 +27,16 @@ class DashboardController extends Controller
 
     public function all_message()
     {
-        $messages = Message::all()
-                    ->latest();
-        return view('backend.dashboard', ['messages' => $messages ]);
+        $all_messages = Message::latest()
+                        ->paginate(5);
+        $nb = $all_messages->count();
+        return view('backend.admin.dashboard', ['all_messages' => $all_messages ])
+            ->with(['nb' => $nb])
+            ;
+    }
+
+    public function details_view($id)
+    {
+        $messages = Message::findOrFail($id);
     }
 }

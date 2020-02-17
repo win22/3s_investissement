@@ -126,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-orange elevation-4" >
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
-            <img style="width: 60px; border-radius: 10px" src="{{ asset('backend/img/logo2.jpg')}}">
+            <img style="width: 60px; border-radius: 60px" src="{{ asset('backend/img/logo2.jpg')}}">
             <span class="brand-text text-white font-weight-light">3s investissement</span>
         </a>
 
@@ -441,15 +441,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
         var id = button.data('id')
         var name = button.data('name')
         var email = button.data('email')
-        var password = button.data('password')
         var role = button.data('role')
 
         var modal = $(this)
         modal.find('.modal-body #id').val(id)
         modal.find('.modal-body #name').val(name)
         modal.find('.modal-body #email').val(email)
-        modal.find('.modal-body #password').val(password)
         modal.find('.modal-body #role').val(role)
+    })
+</script>
+
+<script>
+    $('#updateModal2').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var name = button.data('name')
+        var email = button.data('email')
+        var message = button.data('message')
+        var phone = button.data('phone')
+        var name_p = button.data('name_p')
+
+
+        var modal = $(this)
+        modal.find('.modal-body #id').val(id)
+        modal.find('.modal-body #name').val(name)
+        modal.find('.modal-body #email').val(email)
+        modal.find('.modal-body #message').val(message)
+        modal.find('.modal-body #phone').val(phone)
+        modal.find('.modal-body #name_p').val(name_p)
     })
 </script>
 

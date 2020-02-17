@@ -88,7 +88,10 @@ class AdminController extends Controller
         $admin = Admin::findOrFail($id);
         $admin->name = request('name');
         $admin->email = request('email');
-        $admin->password = bcrypt(request('password'));
+        if(!empty(request('password')))
+        {
+            $admin->password = bcrypt(request('password'));
+        }
         $admin->role = request('role');
         $image = $request->file('image');
         if($image)

@@ -14,7 +14,7 @@
 Route::get('/', 'HomeController@index');
 //Appartement site config
 Route::get('details_proprieties/{id}', 'AppartController@details_site')->name('property-detail');
-Route::get('send_message/{id}', 'AppartController@captcha_send')->name('save_mess');
+Route::get('send_message/{name}', 'AppartController@captcha_send')->name('save_mess');
 Route::get('all_appart', 'HomeController@all_appart')->name('all_appar');
 
 Route::get('villa_all', 'HomeController@all_villa')->name('vil_all');
@@ -30,7 +30,9 @@ Route::group([
     ], function ()
 {
     Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard', 'DashboardController@all_message');
     Route::get('/logout', 'DashboardController@logout');
+
 
     Route::get('/all_admin', 'AdminController@all_admin');
     Route::post('/save_admin', 'AdminController@save');
