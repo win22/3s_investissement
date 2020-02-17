@@ -260,38 +260,38 @@
                                 </div>
                             </li>
                             @endforeach
-                            @foreach($villas as $appart)
+                            @foreach($villas as $villa)
                             <li class="col-md-4 col-sm-6 type-rent">
                                 <div class="property-block">
-                                    <a  href="property-detail.html" class="property-featured-image">
-                                        <img style="height: 230px !important;"  src="{{$appart->image }}" alt="">
+                                    <a  href="{{ route('villa_detail', array('select' => $villa->id)) }}" class="property-featured-image">
+                                        <img style="height: 230px !important;"  src="{{$villa->image }}" alt="">
                                         <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
-                                        @if($appart->option == 1)
+                                        @if($villa->option == 1)
                                         <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
-                                        @elseif($appart->option == 2)
+                                        @elseif($villa->option == 2)
                                         <span style="background-color: #00bd49 !important; color: white" class="badges">vendre</span>
                                         @else
                                         <span class="badges">Promo</span>
                                         @endif
                                     </a>
                                     <div class="property-info">
-                                        <h4><a href="property-detail.html">{{ $appart->name }}</a></h4>
-                                        <span class="location">{{ $appart->adresse }}</span>
-                                        @if($appart->devise == 1)
-                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>CFA</strong></div>
-                                        @elseif($appart->devise == 2)
-                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>EURO</strong></div>
+                                        <h4><a href="{{ route('villa_detail', array('select' => $villa->id)) }}">{{ $villa->name }}</a></h4>
+                                        <span class="location">{{ $villa->adresse }}</span>
+                                        @if($villa->devise == 1)
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>CFA</strong></div>
+                                        @elseif($villa->devise == 2)
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>EURO</strong></div>
                                         @else
-                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $appart->prix }}</span><strong>$</strong></div>
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>$</strong></div>
                                         @endif
                                         <br/>
-                                        <span>{{ $appart->short_description }}</span>
+                                        <span>{{ $villa->short_description }}</span>
                                     </div>
                                     <div class="property-amenities clearfix">
-                                        <span class="area"><strong>{{ $appart->chambre }}</strong>Chambre</span>
-                                        <span class="baths"><strong>{{ $appart->salon }}</strong>Salon</span>
-                                        <span class="beds"><strong>{{ $appart->cuisine }}</strong>Cuisine</span>
-                                        <span class="parking"><strong>{{ $appart->garage }}</strong>Garage</span>
+                                        <span class="area"><strong>{{ $villa->chambre }}</strong>Chambre</span>
+                                        <span class="baths"><strong>{{ $villa->salon }}</strong>Salon</span>
+                                        <span class="beds"><strong>{{ $villa->cuisine }}</strong>Cuisine</span>
+                                        <span class="parking"><strong>{{ $villa->garage }}</strong>Garage</span>
                                     </div>
                                 </div>
                             </li>

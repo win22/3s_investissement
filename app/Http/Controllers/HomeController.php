@@ -7,7 +7,7 @@ use App\Models\villa;
 use http\Message;
 use Illuminate\Http\Request;
 use App\Rules\Captcha;
-
+use Session;
 class HomeController extends Controller
 {
     public function index()
@@ -38,5 +38,29 @@ class HomeController extends Controller
             ->paginate(3);
         return view('site.villa.all_villa', ['villas' => $villa]);
     }
+
+    public function captcha_send($name)
+    {
+        request()->validate([
+            'name' => ['required', 'max:60', 'min:2'],
+            'email' => ['required', 'email'],
+            'phone' => ['required', 'max:60', 'min:2'],
+            'message' => ['required'],
+            'g-recaptcha-response' => new Captcha(),
+        ]);
+        \App\Models\Message::create([
+            'name_p' => $name,
+            'name' => request('name'),
+            'email' => request('email'),
+            'phone' => request('phone'),
+            'message' => request('message'),
+            'status' => 0,
+            'confirm' => 0
+        ]);
+        return back()->with(
+            Session::put('message', 'Merci '.request('name').' pour votre réservation')
+        );
+    }
+
 
 }

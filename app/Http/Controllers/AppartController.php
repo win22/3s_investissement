@@ -277,30 +277,6 @@ class AppartController extends Controller
             ->with([ 'appart_similaire' => $appart_similaire ]);
     }
 
-    public function captcha_send($name)
-    {
-        request()->validate([
-            'name' => ['required', 'max:60', 'min:2'],
-            'email' => ['required', 'email'],
-            'phone' => ['required', 'max:60', 'min:2'],
-            'message' => ['required'],
-            'g-recaptcha-response' => new Captcha(),
-        ]);
-        Message::create([
-            'name_p' => $name,
-            'name' => request('name'),
-            'email' => request('email'),
-            'phone' => request('phone'),
-            'message' => request('message'),
-            'status' => 0
-
-        ]);
-        return back()->with(
-          Session::put('message', 'Merci '.request('name').' pour votre réservation')
-        );
-    }
-
-
 
 
 }

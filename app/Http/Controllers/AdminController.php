@@ -80,7 +80,6 @@ class AdminController extends Controller
         request()->validate([
            'name'  => ['required', 'max:90'],
            'email' => ['required', 'max:191'],
-           'password' => ['required'],
            'role' => ['required'],
         ]);
         $id = request('id');

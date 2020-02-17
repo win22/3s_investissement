@@ -21,9 +21,9 @@
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>53</h3>
 
-                <p>Bounce Rate</p>
+                <p>Villa</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -37,8 +37,7 @@
         <div style="color: white !important;" class="small-box bg-warning">
             <div class="inner">
                 <h3>44</h3>
-
-                <p>User Registrations</p>
+                <p>Immeuble</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -53,7 +52,7 @@
             <div class="inner">
                 <h3>65</h3>
 
-                <p>Unique Visitors</p>
+                <p>Bureau</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -63,7 +62,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-md-8">
 
                 <div class="col-lg-12">
                     <div class="card card-orange card-outline ">
@@ -123,7 +122,7 @@
                                                     <i style="color: white !important;" class="fas fa-eye"></i>
                                                 </a>
                                                 @if(Auth::check() AND Auth::user()->role == 1)
-                                                <a id="delete" href="/delete_admin/{{ $v_info['id'] }}"
+                                                <a id="delete" href="/delete_message/{{ $v_info['id'] }}"
                                                    class="btn btn-danger btn-link btn-sm" style="margin-left: 2px">
                                                     <i style="color: white !important;" class="fas fa-times "></i>
                                                 </a>
@@ -146,22 +145,46 @@
                         </div>
                     </div>
                 </div>
-        <div class="card card-primary card-outline">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's
-                    content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div><!-- /.card -->
     </div>
     <!-- /.col-md-6 -->
-
     <!-- /.col-md-6 -->
+    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+        <div class="card  card-info card-outline">
+            <div class="card-header text-muted border-bottom-0">
+                @if( Auth()->user()->role == 1)
+                    Administrateur
+                @else
+                    Utilisateur
+                @endif
+            </div>
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div class="col-7">
+                        <h2 class="lead"><b>{{ Auth()->user()->name }}</b></h2>
+                        <p class="text-muted text-sm"><b>Email </b> <br/>
+                            {{ Auth()->user()->email }}
+                        </p>
+                        <p class="text-muted text-sm"><b>Téléphone </b> <br/>
+                            {{ Auth()->user()->email }}
+                        </p>
+                        <p class="text-muted text-sm"><b>Status </b> <br/>
+                            Activé
+                        </p>
+                    </div>
+                    <div class="col-5 text-center">
+                        <img src="{{ asset(Auth()->user()->image) }}" alt="" class="img-circle img-fluid">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="text-right">
+                    <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-user"></i> View Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <button type="button" class="btn btn-success swalDefaultSuccess">
@@ -178,9 +201,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form enctype="multipart/form-data" action="/update_admin/test" method="post">
+            <form action="/view_message/test" method="post">
                 @csrf
                 <div class="modal-body">
+                    <input hidden name="id" id="id" value="">
                     <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
@@ -209,7 +233,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button"  class="btn btn-danger btn-sm" data-dismiss="modal">Marquer comme lu</button>
+                    <button type="submit" style="color: white" class="btn btn-danger btn-sm">
+                        <i class="fas fa-eye"></i>
+                        Marquer comme lu</button>
                 </div>
             </form>
 

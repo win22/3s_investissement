@@ -39,4 +39,22 @@ class DashboardController extends Controller
     {
         $messages = Message::findOrFail($id);
     }
+
+    public function view_mess()
+    {
+       $id = request('id');
+       $message =  Message::findOrFail($id);
+       $message->status = 1;
+       $message->save();
+       return back();
+    }
+
+    public function delete_mess($id)
+    {
+        $message = Message::findOrFail($id);
+        $message->delete();
+        return back()->with(
+            Session::put('message', 'Vous avez supprimé un message ')
+        );
+    }
 }

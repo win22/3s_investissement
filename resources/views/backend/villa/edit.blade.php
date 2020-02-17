@@ -99,10 +99,10 @@
                             <select class="form-control" name="align">
                                 <option class="text-orange" value="{{ $villa['align'] }}"> {{ $villa['align'] }} </option>
                                 <option value="">Selectionner une nouvelle option</option>
+                                <option value="0">0</option>
                                 <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                             </select>
                             @if($errors->has('align'))
                             <small id="emailHelp" class="form-text text-danger">{{$errors->first('align')}}</small>

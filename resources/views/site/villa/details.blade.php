@@ -124,7 +124,7 @@
         </div>
     </div>
 </div>
-<form class="forma" action="{{ route('save_mess_villa', array('test' => $villa->id)) }}">
+<form class="forma" action="{{ route('save_mess', array('test' => $villa->name)) }}">
     <div class="row">
         <div class="form-group col-md-4">
             <label>Nom</label>
@@ -209,15 +209,16 @@
                             <span class="location">{{ $villa->adresse }}</span>
                             @if($villa->devise == 1)
                             <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>CFA</strong></div>
-                            @elseif($villa->devise == 2)
+                            @elseif($appart->devise == 2)
                             <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>EURO</strong></div>
                             @else
                             <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>$</strong></div>
                             @endif
                         </div>
                     </li>
+                    @endforeach
+
                 </ul>
-                @endforeach
             </div>
         </div>
     </div>
