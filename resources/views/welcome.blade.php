@@ -76,7 +76,7 @@
                                 </li>
                                 <li><a href="javascript:;">Louer</a>
                                     <ul class="dropdown">
-                                        <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('app_louer') }}">Appartements</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
@@ -84,7 +84,7 @@
                                 </li>
                                 <li><a href="javascript:;">Vendre</a>
                                     <ul class="dropdown">
-                                        <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('app_vendre') }}">Appartements</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>

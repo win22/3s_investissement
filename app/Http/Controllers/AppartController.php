@@ -277,6 +277,46 @@ class AppartController extends Controller
             ->with([ 'appart_similaire' => $appart_similaire ]);
     }
 
+    // appartement louer
+    public function all_louer()
+    {
+        $appart_louer = Appartement::where('status', 1)
+            ->where('option', 1)
+            ->latest()
+            ->paginate(3);
+        return view('site.appart.louer',['appart_louer' => $appart_louer]);
+    }
+    public function all_vendre()
+    {
+        $appart_vendre = Appartement::where('status', 1)
+            ->where('option', 2)
+            ->latest()
+            ->paginate(3);
+        return view('site.appart.vendre',['appart_vendre' => $appart_vendre]);
+    }
+
+    //search
+    public function search_louer()
+    {
+        $search = request('search');
+        $appart_louer = Appartement::where('status', 1)
+            ->where('name', 'like','%'.$search.'%')
+            ->where('option', 1)
+            ->latest()
+            ->paginate(3);
+        return view('site.appart.louer',['appart_louer' => $appart_louer]);
+    }
+    public function search_vendre()
+    {
+        $search = request('search');
+        $appart_vendre = Appartement::where('status', 1)
+            ->where('name', 'like','%'.$search.'%')
+            ->where('option', 1)
+            ->latest()
+            ->paginate(3);
+        return view('site.appart.vendre',['appart_vendre' => $appart_vendre]);
+    }
+
 
 
 }

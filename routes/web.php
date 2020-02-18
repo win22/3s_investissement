@@ -16,6 +16,10 @@ Route::get('/', 'HomeController@index');
 Route::get('details_proprieties/{id}', 'AppartController@details_site')->name('property-detail');
 Route::get('send_message/{name}', 'HomeController@captcha_send')->name('save_mess');
 Route::get('all_appart', 'HomeController@all_appart')->name('all_appar');
+Route::get('all_appartement_louer', 'AppartController@all_louer')->name('app_louer');
+Route::get('all_appartement_vendre', 'AppartController@all_vendre')->name('app_vendre');
+Route::post('all_search_louer', 'AppartController@search_louer')->name('search_lou');
+Route::post('all_search_vendre', 'AppartController@search_vendre')->name('search_ven');
 
 Route::get('villa_all', 'HomeController@all_villa')->name('vil_all');
 Route::get('details_proprieties_villa/{id}', 'VillaController@details_villa_site')->name('villa_detail');

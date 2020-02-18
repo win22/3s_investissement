@@ -175,7 +175,10 @@
         </div>
     </div>
     <div  style="padding-left: 16px" class="row">
-        <button type="submit" class="btn btn-primary pull-left">Envoyer</button>
+        <button type="submit" class="btn btn-primary pull-left">
+            <i class="fa fa-send" style="color: white"></i>
+            Envoyer
+        </button>
     </div>
 
 </form>

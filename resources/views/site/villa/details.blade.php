@@ -174,12 +174,15 @@
         </div>
 
     </div>
-
-    <br/>
-    <button type="submit" class="btn btn-primary pull-right">Envoyer</button>
+    <div  style="padding-left: 16px" class="row">
+        <button type="submit" class="btn btn-primary pull-left">
+            <i class="fa fa-send" style="color: white"></i>
+            Envoyer
+        </button>
+    </div>
 </form>
 
-<div class="row reveal-3">
+<div style="padding-top: 20px" class="row reveal-3">
     <div id="featured-properties">
         <div class="container">
             <div class="row">
