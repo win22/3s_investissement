@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-8 col-xs-8">
                         <img style="width: 65px;border-radius: 30px"
-                             src="{{ URL::to(asset('backend/img/logo2.jpg')) }}">
+                             src="{{ URL::to(asset('backend/img/logo.png')) }}">
                     </div>
                     <div class="col-md-9 col-sm-8 col-xs-4">
                         <div class="contact-info-blocks hidden-sm hidden-xs" style="padding-top: 10px">
@@ -115,7 +115,7 @@
         <div class="hero-slider flexslider clearfix" style="height:680px" data-autoplay="yes" ondurationchange="5000" data-pagination="no"
              data-arrows="yes" data-style="fade" data-pause="yes">
             <ul class="slides">
-                <li class="slider-banner1" style="background-image:url({{ asset('site/image/06.jpg')}}); height: 680px">
+                <li class="slider-banner1" style="background-image:url({{ asset('site/image/03.jpg')}}); height: 680px">
                     <div class="row">
                         <div class="containerss">
                             <span class="text1 span1">Bienvenue dans </span>
@@ -125,17 +125,8 @@
 
                 </li>
                 <li class="parallax" style="background-image:url({{ asset('site/image/05.jpg')}}); height: 680px">
-                    <div class="flex-caption">
-                        <strong class="title">1671 Grand Avenue, <em>NYC</em></strong>
-                        <div class="price"><strong>$</strong><span>100000</span></div>
-                        <a href="property-detail.html" class="btn btn-primary btn-block">Details</a>
-                        <div class="hero-agent">
-                            <img src="http://placehold.it/365x365&amp;text=IMAGE+PLACEHOLDER" alt=""
-                                 class="hero-agent-pic">
-                            <a href="agent-detail.html" class="hero-agent-contact" data-placement="left"
-                               data-toggle="tooltip" title="" data-original-title="Contact Agent"><i
-                                        class="fa fa-envelope"></i></a>
-                        </div>
+                    <div>
+                        <h2 class="line anim-typewriter" >Nous faisons de votre confort notre priorité</h2>
                     </div>
                 </li>
             </ul>
@@ -188,7 +179,7 @@
         <div id="content" class="content full">
             <div class="featured-blocks">
                 <div class="container">
-                    <div class="row">
+                    <div class="row reveal">
                         <h3 class="text-center">Choisir un catalogue</h3>
                         <div class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
                                     src="{{ URL::to(asset('site/image/03.jpg')) }}"
@@ -197,19 +188,23 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
                                 Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
                         </div>
-                        <div class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
-                                                                  src="{{ URL::to(asset('site/image/02.jpg')) }}"
-                                                                  class="img-thumbnail">
-                            <h3 class="text-center">Louer</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
-                                Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
+                        <div class="reveal-2">
+                            <div class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
+                                                                      src="{{ URL::to(asset('site/image/02.jpg')) }}"
+                                                                      class="img-thumbnail">
+                                <h3 class="text-center">Louer</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
+                                    Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
+                            </div>
                         </div>
-                        <div class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
-                                                                  src="{{ URL::to(asset('site/image/06.jpg')) }}"
-                                                                  class="img-thumbnail">
-                            <h3 class="text-center">Avendre</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
-                                Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
+                        <div class="reveal-3">
+                            <div class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
+                                                                      src="{{ URL::to(asset('site/image/06.jpg')) }}"
+                                                                      class="img-thumbnail">
+                                <h3 class="text-center">Avendre</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
+                                    Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,7 +220,7 @@
                         </div>
                         <ul>
                             @foreach($apparts as $appart)
-                            <li class="col-md-4 col-sm-6 type-rent">
+                            <li class="col-md-4 col-sm-6 type-rent reveal">
                                 <div class="property-block">
                                     <a  href="{{ route('property-detail', array('select' => $appart->id)) }}" class="property-featured-image">
                                         <img style="height: 230px !important;"  src="{{$appart->image }}" alt="">
@@ -261,7 +256,7 @@
                             </li>
                             @endforeach
                             @foreach($villas as $villa)
-                            <li class="col-md-4 col-sm-6 type-rent">
+                            <li class="col-md-4 col-sm-6 type-rent reveal">
                                 <div class="property-block">
                                     <a  href="{{ route('villa_detail', array('select' => $villa->id)) }}" class="property-featured-image">
                                         <img style="height: 230px !important;"  src="{{$villa->image }}" alt="">
@@ -500,6 +495,7 @@
 <script src="{{ asset('site/js/bootstrap.js') }}"></script> <!-- UI -->
 <script src="{{ asset('site/js/waypoints.js') }}"></script> <!-- Waypoints -->
 <script src="{{ asset('site/js/init.js') }}"></script> <!-- All Scripts -->
+<script src="{{ asset('backend/assets/dist/js/app.js') }}"></script>
 <!--[if lte IE 9]>
 <script src="{{ asset('site/js/script_ie.js') }}"></script><![endif]-->
 

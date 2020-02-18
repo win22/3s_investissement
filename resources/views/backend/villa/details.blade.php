@@ -18,7 +18,7 @@
             </div>
             @endif
         </div>
-        <div class="row">
+        <div class="row reveal">
             <div class="col-12 col-sm-6">
                 <div class="col-12">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-sm-6 reveal-2">
                 <h3 class="my-3">{{ $villa->name }}</h3>
                 <span class="small text-orange">Petite description :</span><br/>
                 <p>{{ $villa->short_description }}</p>
@@ -93,7 +93,11 @@
                     </div>
                     <div class="col-md-4">
                         <span class="small text-orange">Allignement sur le site :</span><br/>
+                        @if($villa['align'] == 10)
+                        <span class="badge badge-danger">0</span>
+                        @else
                         <span class="badge badge-danger">{{ $villa['align'] }}</span>
+                        @endif
                     </div>
                 </div>
                 <div class="row">
@@ -122,7 +126,7 @@
                 </div>
                 <br/>
             </div>
-            <div class="row">
+            <div class="row reveal-3">
                 <nav class="nav nav-tabs">
                     <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Large description</a>
                     <div class="tab-content p-3">

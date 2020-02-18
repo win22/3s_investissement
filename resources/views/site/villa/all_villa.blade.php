@@ -8,7 +8,7 @@
         <div class="property-listing">
             <ul>
                 @foreach($villas as $villa)
-                <li class="type-rent col-md-12">
+                <li class="type-rent col-md-12 reveal">
                     <div class="col-md-4"><a href="{{ route('villa_detail', array('select' => $villa->id)) }}"
                                              class="property-featured-image"> <img src="{{ asset($villa->image) }}"
                                                                                    alt=""> <span class="images-count"><i

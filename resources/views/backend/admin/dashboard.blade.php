@@ -1,7 +1,7 @@
 @extends('backend.admin_layout')
 @section('contenu')
 <p hidden>   {{ \Carbon\Carbon::setLocale('fr') }}</p>
-<div class="row">
+<div class="row reveal">
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-info">
@@ -65,10 +65,14 @@
     <div class="col-md-8">
 
                 <div class="col-lg-12">
-                    <div class="card card-orange card-outline ">
+                    <div class="card card-orange card-outline reveal-2">
                         <div class="card-header">
                             <h5 class="m-0">Messages</h5>
-                            <p>Voici la liste des messages de l'application</p>
+                            @if($last_mess)
+                            <p> {{  \Carbon\Carbon::parse($last_mess['created_at'])->diffForHumans() }}
+                                de cela vous avez reçu un nouveau message de {{ $last_mess->name }}
+                            </p>
+                            @endif
                         </div>
                         <div class="card-body">
                             <div class="col-md-12">
@@ -148,7 +152,7 @@
     </div>
     <!-- /.col-md-6 -->
     <!-- /.col-md-6 -->
-    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch reveal-3">
         <div class="card  card-info card-outline">
             <div class="card-header text-muted border-bottom-0">
                 @if( Auth()->user()->role == 1)

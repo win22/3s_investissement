@@ -1,7 +1,7 @@
 @extends('backend.admin_layout')
 @section('contenu')
 
-<div class="col-md-12">
+<div class="col-md-12 reveal">
     <!-- general form elements -->
     <div class="card card-orange card-outline">
         <div class="card-header">
@@ -89,7 +89,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Alignements sur le site<span class="text-orange"> *</span></h6>
                             <select required class="form-control" name="align">
-                                <option value="0">0</option>
+                                <option value="10">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

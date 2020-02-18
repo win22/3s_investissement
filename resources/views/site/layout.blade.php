@@ -132,7 +132,7 @@
 <script src="{{ asset('site/js/init.js') }}"></script> <!-- All Scripts -->
 <!--[if lte IE 9]>
 <script src="{{ asset('site/js/script_ie.js') }}"></script><![endif]-->
-
+<script src="{{ asset('backend/assets/dist/js/app.js') }}"></script>
 
 <script>
     $(document).ready(function () {

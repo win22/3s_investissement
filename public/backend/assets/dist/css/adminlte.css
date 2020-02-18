@@ -30070,3 +30070,29 @@ a.text-muted:hover {
   -moz-box-shadow: -1px 9px 30px -12px rgba(0,0,0,0.75);
   box-shadow: -1px 9px 30px -12px rgb(144, 25, 9);
 }
+
+/*Pour l'annimation de transition'*/
+[class*="reveal"]
+{
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.reveal-visible
+{
+  opacity: 1;
+  transform: translateY(0);
+  transition: 1s cubic-bezier(.5, 0 , 0 , 1);
+}
+
+
+.reveal-2
+{
+    transition-delay: .2s;
+
+}
+.reveal-3
+{
+  transition-delay: .4s;
+
+}

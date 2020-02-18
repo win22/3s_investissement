@@ -1,7 +1,7 @@
 @extends('backend.admin_layout')
 @section('contenu')
 
-<div class="col-lg-12">
+<div class="col-lg-12 reveal">
     <p hidden>   {{ \Carbon\Carbon::setLocale('fr') }}</p>
     <div class="card card-dark  ">
         <div class="card-header">

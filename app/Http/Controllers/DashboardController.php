@@ -30,9 +30,14 @@ class DashboardController extends Controller
         $all_messages = Message::latest()
                         ->paginate(5);
         $nb = $all_messages->count();
+
+        $last_mess = Message::where('status', 0)
+                    ->latest()
+                    ->first();
+
         return view('backend.admin.dashboard', ['all_messages' => $all_messages ])
             ->with(['nb' => $nb])
-            ;
+            ->with(['last_mess' => $last_mess]);
     }
 
     public function details_view($id)

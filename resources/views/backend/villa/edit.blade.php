@@ -97,9 +97,13 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Alignements sur le site<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="align">
-                                <option class="text-orange" value="{{ $villa['align'] }}"> {{ $villa['align'] }} </option>
+                                @if($villa['align'] == 10)
+                                <option value="10">0</option>
+                                @else
+                                <option class="text-orange" value="{{ $villa['align'] }}"> {{ $appart['align'] }} </option>
+                                @endif
                                 <option value="">Selectionner une nouvelle option</option>
-                                <option value="0">0</option>
+                                <option value="10">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

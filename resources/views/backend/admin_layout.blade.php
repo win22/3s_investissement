@@ -144,10 +144,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a href="/dashboard" class="nav-link {{ request()->is('dashboard')? 'active' : ''  }}" >
                             <i class="nav-icon fas fa-th"></i>
                             <p>
@@ -219,7 +219,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link ">
+                                <a href="{{ route('immeubles') }}" class="nav-link ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Liste immeubles</p>
                                 </a>
@@ -410,6 +410,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="{{ asset('backend/assets/dist/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('backend/assets/dist/js/my.js') }}"></script>
+<script src="{{ asset('backend/assets/dist/js/app.js') }}"></script>
 <!-- SweetAlert2 -->
 <script src="{{ asset('backend/assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <!-- Toastr -->
@@ -550,6 +551,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         )
     });
 </script>
+
+<!--Annimation pour la transition -->
+
 </body>
 </html>
 @endif

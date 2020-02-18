@@ -1,6 +1,6 @@
 @extends('backend.admin_layout')
 @section('contenu')
-<div class="col-lg-12">
+<div class="col-lg-12 reveal">
     <div class="card card-orange card-outline ">
         <div class="card-header">
             <h5 class="m-0">Utilisateurs</h5>

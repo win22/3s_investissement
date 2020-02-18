@@ -1,7 +1,7 @@
 @extends('site.layout')
 @section('content')
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 reveal">
         <div class="single-property">
             <div class="widget">
                 <h2 style="font-family: 'Manjari Regular'" class="widgettitle">Details d'une villa </h2>
@@ -30,7 +30,7 @@
 
         </div>
     </div>
-    <div class="sidebar right-sidebar col-md-4">
+    <div class="sidebar right-sidebar col-md-4 reveal-2">
         <div class="widget">
             <div class="agent">
                 <h4><i style="color: red" class="fa fa-map-marker"></i> {{ $villa->adresse }}</h4>
@@ -124,7 +124,7 @@
         </div>
     </div>
 </div>
-<form class="forma" action="{{ route('save_mess', array('test' => $villa->name)) }}">
+<form class="forma reveal-3" action="{{ route('save_mess', array('test' => $villa->name)) }}">
     <div class="row">
         <div class="form-group col-md-4">
             <label>Nom</label>
@@ -179,7 +179,7 @@
     <button type="submit" class="btn btn-primary pull-right">Envoyer</button>
 </form>
 
-<div class="row">
+<div class="row reveal-3">
     <div id="featured-properties">
         <div class="container">
             <div class="row">

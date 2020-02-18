@@ -63,4 +63,7 @@ Route::group([
     Route::get('/delete_villa/{id}', 'VillaController@supprimer')->name('supprimer');
     Route::get('/detail_villa/{id}', 'VillaController@details')->name('detail');
     Route::get('/edit_villa/{id}', 'VillaController@edits')->name('selectionner');
+
+    //Route pour les immeubles
+    Route::get('all_im', 'ImmeubleController@all_immeuble')->name('immeubles');
 });

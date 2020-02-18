@@ -3153,19 +3153,33 @@ span.progress-bar-tooltip:after {
 }
 .text1{
 	color: white;
-	font-size: 60px;
+	font-size: 80px;
 	box-shadow: -1px 9px 30px -12px rgb(144, 25, 9) !important;
 	font-weight: 700;
 	letter-spacing: 1px;
 	margin-bottom: 20px;
-
+	font-family: "Verdana" !important;
 	position: relative;
 	animation: text 3s 1;
 }
 .text2{
 	font-size: 30px;
-	color: #6ab04c;
+	color: #ff9600;
 }
+
+.line
+{
+	position: relative;
+	top: 50%;
+	width: 20em;
+	margin-top: 50px;
+	border-right: 2px solid rgba(255, 255, 255, 0.75);
+	font-size: 180%;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;transform: translateY(-50%);
+}
+
 
 @keyframes text {
 	0%{
@@ -3180,5 +3194,31 @@ span.progress-bar-tooltip:after {
 		letter-spacing: 8px;
 		margin-bottom: -40px;
 	}
+}
+
+/*Pour l'annimation de transition'*/
+[class*="reveal"]
+{
+	opacity: 0;
+	transform: translateY(-30px);
+}
+
+
+.reveal-visible
+{
+	opacity: 1;
+	transform: translateY(0);
+	transition: 1s cubic-bezier(.5, 0 , 0 , 1);
+}
+
+.reveal-2
+{
+	transition-delay: .2s;
+
+}
+.reveal-3
+{
+	transition-delay: .4s;
+
 }
 
