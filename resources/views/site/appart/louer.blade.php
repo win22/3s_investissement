@@ -49,6 +49,9 @@
                 @endforeach
             </ul>
         </div>
+        @if( $nb_app <= 0)
+        <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
+        @endif
         <ul class="pagination">
             {{ $appart_louer->links() }}
         </ul>

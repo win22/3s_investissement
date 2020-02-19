@@ -14,7 +14,7 @@
             <div class="card-header" style="background-color: red">
                 <h6 class="card-title text-white">Formulaire d'ajout</h6>
             </div>
-            <form  action="{{ route('modifie_ap', array('test' => $appart->id)) }}" enctype="multipart/form-data" method="post">
+            <form  enctype="multipart/form-data"  action="{{ route('modifie_ap', array('test' => $appart->id)) }}" method="post">
                 {{ csrf_field() }}
                 <div class="card-body">
                     <div class="row">
@@ -100,7 +100,7 @@
                                 @if($appart['align'] == 10)
                                 <option value="10">0</option>
                                 @else
-                                <option class="text-orange" value="{{ $appart['$appart'] }}"> {{ $appart['align'] }} </option>
+                                <option class="text-orange" value="{{ $appart['align'] }}"> {{ $appart['align'] }} </option>
                                 @endif
                                 <option value="">Selectionner une nouvelle option</option>
                                 <option value="10">0</option>
@@ -261,6 +261,9 @@
                         <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" class="custom file" accept="image/*" name="image" id="exampleInputFile">
+                                @if($errors->has('image'))
+                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('image')}}</small>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -269,7 +272,7 @@
                         <label for="exampleInputFile">Galerie image</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" name="images" accept="image/*" class="custom file" id="exampleInputFile">
+                                <input multiple type="file" name="images[]" accept="image/*" class="custom file" id="exampleInputFile">
                             </div>
                         </div>
                     </div>

@@ -13,22 +13,35 @@
 
 Route::get('/', 'HomeController@index');
 //Appartement site config
-Route::get('details_proprieties/{id}', 'AppartController@details_site')->name('property-detail');
+
 Route::get('send_message/{name}', 'HomeController@captcha_send')->name('save_mess');
+
+Route::get('details_proprieties/{id}', 'AppartController@details_site')->name('property-detail');
 Route::get('all_appart', 'HomeController@all_appart')->name('all_appar');
 Route::get('all_appartement_louer', 'AppartController@all_louer')->name('app_louer');
 Route::get('all_appartement_vendre', 'AppartController@all_vendre')->name('app_vendre');
 Route::post('all_search_louer', 'AppartController@search_louer')->name('search_lou');
+Route::post('all_search', 'AppartController@search')->name('search');
 Route::post('all_search_vendre', 'AppartController@search_vendre')->name('search_ven');
 
 Route::get('villa_all', 'HomeController@all_villa')->name('vil_all');
 Route::get('details_proprieties_villa/{id}', 'VillaController@details_villa_site')->name('villa_detail');
-Route::get('send_message_villa/{id}', 'VillaController@captcha_send')->name('save_mess_villa');
+Route::get('all_villa_louer', 'VillaController@all_louer')->name('vill_louer');
+Route::get('all_villa_vendre', 'VillaController@all_vendre')->name('vill_vendre');
+Route::post('all_search_louer_villa', 'VillaController@search_louer')->name('search_lou_vill');
+Route::post('all_search_villa', 'VillaController@search')->name('search_vill');
+Route::post('all_search_vendre_villa', 'VillaController@search_vendre')->name('search_ven_vill');
 
 
+
+
+
+
+
+
+// partie admin
 Route::get('/investi_admin', 'SuperAdminController@index');
 Route::post('/admin_connexion', 'SuperAdminController@connexion');
-
 Route::group([
     'middleware' => 'App\Http\Middleware\Auth'
     ], function ()
@@ -70,4 +83,6 @@ Route::group([
 
     //Route pour les immeubles
     Route::get('all_im', 'ImmeubleController@all_immeuble')->name('immeubles');
+    Route::get('add_im', 'ImmeubleController@index')->name('add_immeubles');
+    Route::post('save_im', 'ImmeubleController@save')->name('save_immeubles');
 });

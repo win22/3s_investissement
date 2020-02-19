@@ -221,9 +221,11 @@
                         </div>
                     </li>
                     @endforeach
-
                 </ul>
             </div>
+            @if( $nb_sim <= 0)
+            <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
+            @endif
         </div>
     </div>
 </div>

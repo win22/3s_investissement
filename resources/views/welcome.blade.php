@@ -77,7 +77,7 @@
                                 <li><a href="javascript:;">Louer</a>
                                     <ul class="dropdown">
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('app_louer') }}">Appartements</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('vill_louer') }}">Villa</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                     </ul>
@@ -85,7 +85,7 @@
                                 <li><a href="javascript:;">Vendre</a>
                                     <ul class="dropdown">
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('app_vendre') }}">Appartements</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('vill_vendre') }}">Villa</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
                                     </ul>
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <button type="submit" class="btn btn-primary btn-block btn-lg"><i
-                                                class="fa fa-search"></i> Search
+                                                class="fa fa-search"></i> Recherche
                                     </button>
                                 </div>
                             </div>
@@ -293,6 +293,9 @@
                             @endforeach
                         </ul>
                     </div>
+                    @if( ($nb_app<=0) && ($nb_vill<=0))
+                    <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
+                    @endif
                 </div>
                 <a href="simple-listing-fw.html" class="btn btn-primary btn-sm pull-right">Voir d'autres proprétés<i class="fa fa-long-arrow-right"></i></a>
                 <br/>

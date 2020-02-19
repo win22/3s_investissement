@@ -29,9 +29,11 @@ class CreateImmeublesTable extends Migration
             $table->string('devise');
             $table->string('sold',1);
             $table->string('pourcentage')->nullable();
-            $table->string('niveau', 3);
             $table->string('garage',3);
             $table->string('appartement',3);
+            $table->string('etage',3);
+            $table->string('piscine',3);
+            $table->string('dimension');
             $table->string('image');
             $table->string('status',1);
             $table->timestamps();

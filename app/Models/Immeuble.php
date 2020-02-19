@@ -22,9 +22,11 @@ class Immeuble extends Model
             'sold',
             'pourcentage',
             'devise',
-            'niveau',
             'appartement',
             'garage',
+            'etage',
+            'dimension',
+            'piscine',
             'image',
             'status',
         ];

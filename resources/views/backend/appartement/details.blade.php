@@ -144,7 +144,6 @@
                     <i class="fas fa-backspace fa-lg mr-2"></i>
                     Retour
                 </a>
-               &nbsp;
             </div>
         </div>
         <div class="float-right">
@@ -156,7 +155,6 @@
                 {{ $admin_name['name']}}
                 @endif
             </span>
-
         </div>
     </div>
     <!-- /.card-body -->

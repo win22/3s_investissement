@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appartement;
 use App\Models\villa;
-use http\Message;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use App\Rules\Captcha;
 use Session;
@@ -14,28 +14,37 @@ class HomeController extends Controller
     {
         $apparts = Appartement::where('status', 1)
             ->orderBy('align')
-            ->paginate(3);
+            ->take(3)
+            ->get();
+        $nb_app = $apparts->count();
+
         $villas = villa::where('status', 1)
             ->orderBy('align')
-            ->paginate(3);
+            ->take(3)
+            ->get();
+        $nb_vill = $villas->count();
 
         return view('welcome', ['apparts' => $apparts])
-            ->with(['villas' => $villas]);
+            ->with(['villas' => $villas])
+            ->with(['nb_app' => $nb_app])
+            ->with(['nb_vill' => $nb_vill]);
     }
 
     public function all_appart()
     {
         $appart = Appartement::where('status', 1)
                     ->latest()
-                    ->paginate(3);
-        return view('site.appart.all_appart', ['apparts' => $appart]);
+                    ->paginate(4);
+        $nb_app = $appart->count();
+        return view('site.appart.all_appart', ['apparts' => $appart])
+            ->with(['nb_app' => $nb_app]);
     }
 
     public function all_villa()
     {
         $villa = villa::where('status', 1)
             ->latest()
-            ->paginate(3);
+            ->paginate(4);
         return view('site.villa.all_villa', ['villas' => $villa]);
     }
 
@@ -48,7 +57,7 @@ class HomeController extends Controller
             'message' => ['required'],
             'g-recaptcha-response' => new Captcha(),
         ]);
-        \App\Models\Message::create([
+        Message::create([
             'name_p' => $name,
             'name' => request('name'),
             'email' => request('email'),

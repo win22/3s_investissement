@@ -49,9 +49,9 @@
                 @endforeach
             </ul>
         </div>
-        <ul class="pagination">
-            {{ $appart_vendre->links() }}
-        </ul>
+        @if( $nb_app <= 0)
+        <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
+        @endif
     </div>
     <!-- Start Sidebar -->
     <div class="sidebar right-sidebar col-md-3">

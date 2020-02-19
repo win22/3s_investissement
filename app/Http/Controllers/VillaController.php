@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Appartement;
 use App\Models\Message;
 use App\Models\Villa;
 use App\Models\Image;
@@ -275,26 +274,55 @@ class VillaController extends Controller
             ->with([ 'villa_similaire' => $villa_similaire ]);
     }
 
-    public function captcha_send($id)
+    // villa louer
+    public function all_louer()
     {
-        request()->validate([
-            'name' => ['required', 'max:60', 'min:2'],
-            'email' => ['required', 'email'],
-            'phone' => ['required', 'max:60', 'min:2'],
-            'message' => ['required'],
-            'g-recaptcha-response' => new Captcha(),
-        ]);
-        Message::create([
-            'villa_id' => $id,
-            'name' => request('name'),
-            'email' => request('email'),
-            'phone' => request('phone'),
-            'message' => request('message'),
-            'status' => 0
-
-        ]);
-        return back()->with(
-            Session::put('message', 'Merci '.request('name').' pour votre réservation')
-        );
+        $villa_louer = villa::where('status', 1)
+            ->where('option', 1)
+            ->latest()
+            ->paginate(3);
+        return view('site.villa.louer',['villa_louer' => $villa_louer]);
     }
+    public function all_vendre()
+    {
+        $villa_vendre = villa::where('status', 1)
+            ->where('option', 2)
+            ->latest()
+            ->paginate(3);
+        return view('site.villa.vendre',['villa_vendre' => $villa_vendre]);
+    }
+
+    //search
+    public function search()
+    {
+        $search = request('search');
+        $villas = villa::where('status', 1)
+            ->where('name', 'like','%'.$search.'%')
+            ->latest()
+            ->paginate(4);
+        return view('site.villa.all_villa',['villas' => $villas]);
+    }
+
+    public function search_louer()
+    {
+        $search = request('search');
+        $villa_louer = villa::where('status', 1)
+            ->where('name', 'like','%'.$search.'%')
+            ->where('option', 1)
+            ->latest()
+            ->paginate(4);
+        return view('site.villa.louer',['villa_louer' => $villa_louer]);
+    }
+    public function search_vendre()
+    {
+        $search = request('search');
+        $villa_vendre = villa::where('status', 1)
+            ->where('name', 'like','%'.$search.'%')
+            ->where('option', 2)
+            ->latest()
+            ->paginate(4);
+        return view('site.villa.vendre',['villa_vendre' => $villa_vendre]);
+    }
+
+
 }

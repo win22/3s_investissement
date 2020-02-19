@@ -18,8 +18,8 @@
                 <div class="col-lg-5 mx-auto">
                     <div class="auto-form-wrapper card-success card-outline card-success1 card-outline1">
                         <div class="card-title text text-center py-3">
-                            <img width="90px" src="{{ asset('backend/img/logo2.jpg')}}">
-                            <h3 class="text-center"><span class="text-warning">3s Investissement</span> | Connexion</h3>
+                            <img width="120px" src="{{ asset('backend/img/logo.png')}}">
+                            <h3 style="font-family: 'Manjari Regular'" class="text-center">Connexion</h3>
                         </div>
 
                         <form action="/admin_connexion" method="post">

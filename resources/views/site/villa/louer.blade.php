@@ -3,19 +3,19 @@
 <div class="row">
     <div class="col-md-9">
         <div class="block-heading">
-            <h4><span class="heading-icon"><i class="fa fa-th-list"></i></span>Liste des appartements</h4>
+            <h4><span class="heading-icon"><i class="fa fa-th-list"></i></span>Liste des villa à louer</h4>
         </div>
         <div class="property-listing">
             <ul>
-                @foreach($apparts as $appart)
+                @foreach($villa_louer as $villa)
                 <li class="type-rent col-md-12 reveal">
-                    <div class="col-md-4"><a href="{{ route('property-detail', array('select' => $appart->id)) }}"
-                                             class="property-featured-image"> <img src="{{ asset($appart->image) }}"
+                    <div class="col-md-4"><a href="{{ route('property-detail', array('select' => $villa->id)) }}"
+                                             class="property-featured-image"> <img src="{{ asset($villa->image) }}"
                                                                                    alt=""> <span class="images-count"><i
-                                        class="fa fa-picture-o"></i> 1</span>
-                            @if($appart->option == 1)
+                                    class="fa fa-picture-o"></i> 1</span>
+                            @if($villa->option == 1)
                             <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
-                            @elseif($appart->option == 2)
+                            @elseif($villa->option == 2)
                             <span style="background-color: #00bd49 !important; color: white"
                                   class="badges">vendre</span>
                             @else
@@ -24,41 +24,38 @@
                     </div>
                     <div class="col-md-8">
                         <div class="property-info">
-                            @if($appart->devise == 1)
+                            @if($villa->devise == 1)
                             <div style="background-color: rgba(2,72,255,0.76)" class="price">
-                                <span>{{ $appart->prix }}</span><strong>CFA</strong></div>
-                            @elseif($appart->devise == 2)
+                                <span>{{ $villa->prix }}</span><strong>CFA</strong></div>
+                            @elseif($villa->devise == 2)
                             <div style="background-color: rgba(2,72,255,0.76)" class="price">
-                                <span>{{ $appart->prix }}</span><strong>EURO</strong></div>
+                                <span>{{ $villa->prix }}</span><strong>EURO</strong></div>
                             @else
                             <div style="background-color: rgba(2,72,255,0.76)" class="price">
-                                <span>{{ $appart->prix }}</span><strong>$</strong></div>
+                                <span>{{ $villa->prix }}</span><strong>$</strong></div>
                             @endif
-                            <h4><a href="{{ route('property-detail', array('select' => $appart->id)) }}">{{
-                                    $appart->name }}</a></h4>
-                            <span class="location">{{ $appart->adresse }}</span>
-                            <p>{{ $appart->short_description }}</p>
+                            <h4><a href="{{ route('property-detail', array('select' => $villa->id)) }}">{{
+                                    $villa->name }}</a></h4>
+                            <span class="location">{{ $villa->adresse }}</span>
+                            <p>{{ $villa->short_description }}</p>
                         </div>
                         <div class="property-amenities clearfix">
-                            <span class="area"><strong>{{ $appart->chambre }}</strong>Chambre</span>
-                            <span class="baths"><strong>{{ $appart->salon }}</strong>Salon</span>
-                            <span class="beds"><strong>{{ $appart->cuisine }}</strong>Cuisine</span>
-                            <span class="parking"><strong>{{ $appart->garage }}</strong>Garage</span>
+                            <span class="area"><strong>{{ $villa->chambre }}</strong>Chambre</span>
+                            <span class="baths"><strong>{{ $villa->salon }}</strong>Salon</span>
+                            <span class="beds"><strong>{{ $villa->cuisine }}</strong>Cuisine</span>
+                            <span class="parking"><strong>{{ $villa->garage }}</strong>Garage</span>
                         </div>
                 </li>
                 @endforeach
             </ul>
         </div>
         <ul class="pagination">
-            {{ $apparts->links() }}
+            {{ $villa_louer->links() }}
         </ul>
-        @if( $nb_app <= 0)
-        <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
-        @endif
     </div>
     <!-- Start Sidebar -->
     <div class="sidebar right-sidebar col-md-3">
-        <form action="{{ route('search') }}" method="post">
+        <form action="{{ route('search_lou_vill') }}" method="post">
             @csrf
             <div class="widget sidebar-widget">
                 <h3 class="widgettitle">Recherche</h3>

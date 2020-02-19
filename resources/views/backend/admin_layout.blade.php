@@ -126,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-orange elevation-4" >
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
-            <img style="width: 60px; border-radius: 60px" src="{{ asset('backend/img/logo2.jpg')}}">
+            <img style="width: 63px; border-radius: 60px" src="{{ asset('backend/img/logo.png')}}">
             <span class="brand-text text-white font-weight-light">3s investissement</span>
         </a>
 
@@ -219,13 +219,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('immeubles') }}" class="nav-link ">
+                                <a href="{{ route('immeubles') }}" class="nav-link {{ request()->is('all_im')?  'active' : ''}} ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Liste immeubles</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('add_immeubles') }}" class="nav-link {{ request()->is('add_im')?  'active' : ''}} ">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Ajouter immeuble</p>
                                 </a>
