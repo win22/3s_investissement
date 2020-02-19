@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <a href="{{ route('detail', array('test' => $villa->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $villa['name']
+                                    <a href="{{ route('ma_villas', array('test' => $villa->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $villa['name']
                                             }}</h6></a>
                                   <br/>
                                     <span>{{ $villa['short_description'] }}
@@ -149,7 +149,7 @@
                                         </h2>
                                     </div>
                                 </div>
-                                <div class="card-body"> <a href="{{ route('detail', array('test' => $villa->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $villa['name']
+                                <div class="card-body"> <a href="{{ route('ma_villas', array('test' => $villa->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $villa['name']
                                             }}</h6></a>
                                     <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $villa['short_description'] }}
@@ -256,7 +256,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                     <a href="{{ route('detail', array('test' => $villa->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $villa['name']
+                                     <a href=""> <h6 class="widget-user-desc p-1 float-right"> {{ $villa['name']
                                                 }}</h6></a>
                                     <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $villa['short_description'] }}

@@ -6,7 +6,8 @@ use App\Models\Image;
 use App\Models\Immeuble;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Input;
+use Session;
 class ImmeubleController extends Controller
 {
     public function index()
@@ -16,8 +17,14 @@ class ImmeubleController extends Controller
 
     public function all_immeuble()
     {
-        return view('backend.immeuble.all');
+        $immeubs_louer = Immeuble::where('option', 1)
+            ->latest()
+            ->paginate(6);
+        $nb_l = $immeubs_louer->count();
+        return view('backend.immeuble.all', ['immeubs_louer' => $immeubs_louer])
+            ->with('nb_l', $nb_l);
     }
+
 
     public function save(Request $request)
     {
@@ -40,7 +47,25 @@ class ImmeubleController extends Controller
             'garage' => 'required', 'max:3',
             'appartement' => 'required', 'max:3',
         ]);
-        $appart = Appartement::create([
+        $pourcentage = null;
+        if (request('sold') == 1) {
+            $pourcentage = request('pourcentage');
+        } else {
+            $pourcentage = null;
+        }
+        $image = $request->file('image');
+        if ($image) {
+            $image_name = str_random(6);
+            $text = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name . '.' . $text;
+            $upload_path = 'image/';
+            $image_url = $upload_path . $image_full_name;
+            $success = $image->move($upload_path, $image_full_name);
+            if ($success) {
+                $image = $image_url;
+            }
+        }
+        $immeub = Immeuble::create([
             'admin_id' => Auth::user()->role,
             'name' => request('name'),
             'short_description' => request('short_description'),
@@ -54,32 +79,37 @@ class ImmeubleController extends Controller
             'devise' => request('devise'),
             'sold' => request('sold'),
             'pourcentage' => $pourcentage,
-            'chambre' => request('chambre'),
-            'cuisine' => request('cuisine'),
-            'sale_de_bain' => request('sale_de_bain'),
             'option' => request('option'),
             'garage' => request('garage'),
-            'piece' => request('piece'),
-            'salon' => request('salon'),
+            'piscine' => request('piscine'),
+            'appartement' => request('appartement'),
+            'etage' => request('etage'),
+            'dimension' => request('dimension'),
             'status' => 0,
-            'image' => $defaut_image
+            'image' => $image
         ]);
         $photo = $request->file('images');
-        if ($photo) {
+        foreach ($photo as $images):
             $image_name = str_random(6);
-            $text = strtolower($photo->getClientOriginalExtension());
+            $text = strtolower($images->getClientOriginalExtension());
             $image_full_name = $image_name . '.' . $text;
             $upload_path = 'image/';
             $image_url = $upload_path . $image_full_name;
-            $success = $photo->move($upload_path, $image_full_name);
+            $success = $images->move($upload_path, $image_full_name);
             if ($success) {
-                Appartement::findOrFail($appart->id)->images()->create([
+                Immeuble::findOrFail($immeub->id)->images()->create([
                     'image' => $image_url
                 ]);
             }
-        }
-        return redirect('/all_appartement')->with(
-            Session::put('message', 'Un appartement a été ajouté ')
+        endforeach;
+        return redirect('/dashboard')->with(
+            Session::put('message', 'Un Immeuble a été ajouté ')
         );
+    }
+
+
+    public function details($id)
+    {
+        dump('detail immeuble');
     }
 }

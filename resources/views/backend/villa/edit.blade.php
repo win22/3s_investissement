@@ -100,7 +100,7 @@
                                 @if($villa['align'] == 10)
                                 <option value="10">0</option>
                                 @else
-                                <option class="text-orange" value="{{ $villa['align'] }}"> {{ $appart['align'] }} </option>
+                                <option class="text-orange" value="{{ $villa['align'] }}"> {{ $villa['align'] }} </option>
                                 @endif
                                 <option value="">Selectionner une nouvelle option</option>
                                 <option value="10">0</option>
@@ -269,7 +269,7 @@
                         <label for="exampleInputFile">Galerie image</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" name="images" accept="image/*" class="custom file" id="exampleInputFile">
+                                <input type="file" multiple name="images[]" accept="image/*" class="custom file" id="exampleInputFile">
                             </div>
                         </div>
                     </div>

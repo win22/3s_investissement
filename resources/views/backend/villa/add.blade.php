@@ -223,6 +223,9 @@
                         <div class="input-group">
                             <div class="custom-file">
                                 <input required type="file" class="custom file" accept="image/*" name="image" id="exampleInputFile">
+                                @if($errors->has('image'))
+                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('image')}}</small>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -231,7 +234,10 @@
                         <label for="exampleInputFile">Image details</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" required name="images"  accept="image/*" class="custom file" id="exampleInputFile">
+                                <input type="file" required name="images[]"  accept="image/*" class="custom file" id="exampleInputFile">
+                                @if($errors->has('images'))
+                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('images')}}</small>
+                                @endif
                             </div>
                         </div>
                     </div>

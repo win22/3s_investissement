@@ -291,9 +291,45 @@
                                 </div>
                             </li>
                             @endforeach
+                            @foreach($immeubs as $villa)
+                            <li class="col-md-4 col-sm-6 type-rent reveal">
+                                <div class="property-block">
+                                    <a  href="{{ route('villa_detail', array('select' => $villa->id)) }}" class="property-featured-image">
+                                        <img style="height: 230px !important;"  src="{{$villa->image }}" alt="">
+                                        <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
+                                        @if($villa->option == 1)
+                                        <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
+                                        @elseif($villa->option == 2)
+                                        <span style="background-color: #00bd49 !important; color: white" class="badges">vendre</span>
+                                        @else
+                                        <span class="badges">Promo</span>
+                                        @endif
+                                    </a>
+                                    <div class="property-info">
+                                        <h4><a href="{{ route('villa_detail', array('select' => $villa->id)) }}">{{ $villa->name }}</a></h4>
+                                        <span class="location">{{ $villa->adresse }}</span>
+                                        @if($villa->devise == 1)
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>CFA</strong></div>
+                                        @elseif($villa->devise == 2)
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>EURO</strong></div>
+                                        @else
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>$</strong></div>
+                                        @endif
+                                        <br/>
+                                        <span>{{ $villa->short_description }}</span>
+                                    </div>
+                                    <div class="property-amenities clearfix">
+                                        <span class="area"><strong>{{ $villa->chambre }}</strong>Chambre</span>
+                                        <span class="baths"><strong>{{ $villa->salon }}</strong>Salon</span>
+                                        <span class="beds"><strong>{{ $villa->cuisine }}</strong>Cuisine</span>
+                                        <span class="parking"><strong>{{ $villa->garage }}</strong>Garage</span>
+                                    </div>
+                                </div>
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
-                    @if( ($nb_app<=0) && ($nb_vill<=0))
+                    @if( ($nb_app<=0) && ($nb_vill<=0) && ($nb_im<=0) )
                     <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
                     @endif
                 </div>

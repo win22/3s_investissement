@@ -52,6 +52,9 @@
         <ul class="pagination">
             {{ $villa_louer->links() }}
         </ul>
+        @if( $nb_vill <= 0)
+        <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
+        @endif
     </div>
     <!-- Start Sidebar -->
     <div class="sidebar right-sidebar col-md-3">
@@ -63,9 +66,9 @@
                     <form action="#">
                         <div class="form-group">
                             <label>Recherche</label>
-                            <input class="form-control" placeholder="Saisir ici" name="search">
+                            <input required class="form-control" placeholder="Saisir ici" name="search">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Search</button>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Rechercher</button>
                     </form>
                 </div>
             </div>

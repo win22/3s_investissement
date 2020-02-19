@@ -78,11 +78,12 @@ Route::group([
     Route::get('/active_villa/{id}', 'VillaController@active')->name('active');
     Route::get('/unactive_villa/{id}', 'VillaController@unactive')->name('desactive');
     Route::get('/delete_villa/{id}', 'VillaController@supprimer')->name('supprimer');
-    Route::get('/detail_villa/{id}', 'VillaController@details')->name('detail');
+    Route::get('/detail_villa/{id}', 'VillaController@details')->name('ma_villas');
     Route::get('/edit_villa/{id}', 'VillaController@edits')->name('selectionner');
 
     //Route pour les immeubles
     Route::get('all_im', 'ImmeubleController@all_immeuble')->name('immeubles');
     Route::get('add_im', 'ImmeubleController@index')->name('add_immeubles');
     Route::post('save_im', 'ImmeubleController@save')->name('save_immeubles');
+    Route::get('/detail_villa/{id}', 'ImmeubleController@details')->name('detail_immeub');
 });

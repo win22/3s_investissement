@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <h6  style="font-family: 'Manjari bold">Nom de la immeuble<span class="text-orange"> *</span></h6>
+                            <h6  style="font-family: 'Manjari bold">Nom de l'immeuble<span class="text-orange"> *</span></h6>
                             <input required type="text" class="form-control" value="{{ old('name') }}"  name="name"  placeholder="Saisir ici">
                             @if($errors->has('name'))
                             <small class="form-text text-danger">{{$errors->first('name')}}</small>
@@ -144,12 +144,21 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Dimension</h6>
-                            <input name="dimension" class="form-control" placeholder="saisir ici">
+                            <input required name="dimension" class="form-control" placeholder="saisir ici">
                             @if($errors->has('dimension'))
                             <small id="emailHelp" class="form-text text-danger">{{$errors->first('dimension')}}</small>
                             @endif
                         </div>
-
+                        <div class="form-group col-md-4">
+                            <h6 style="font-family: 'Manjari Bold'" class="">Piscine</h6>
+                            <select class="form-control" name="piscine">
+                                <option value="0">Sans piscine</option>
+                                <option value="1">Avec piscine</option>
+                            </select>
+                            @if($errors->has('piscine'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('piscine')}}</small>
+                            @endif
+                        </div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Garage</h6>
                             <select class="form-control" name="garage">
@@ -167,16 +176,16 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Nombre Appartement</h6>
-                                <input name="appartement" class="form-control" placeholder="saisir un nombre">
+                                <input required name="appartement" class="form-control" placeholder="saisir un nombre">
                             @if($errors->has('appartement'))
                             <small id="emailHelp" class="form-text text-danger">{{$errors->first('appartement')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
-                            <h6 style="font-family: 'Manjari Bold'" class="">Niveau</h6>
-                            <input name="niveau" class="form-control" placeholder="saisir un nombre">
-                            @if($errors->has('niveau'))
-                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('niveau')}}</small>
+                            <h6 style="font-family: 'Manjari Bold'" class="">Nombre d'etage</h6>
+                            <input required name="etage" class="form-control" placeholder="saisir un nombre">
+                            @if($errors->has('etage'))
+                            <small id="emailHelp" class="form-text text-danger">{{$errors->first('etage')}}</small>
                             @endif
                         </div>
                     </div>
@@ -185,6 +194,9 @@
                         <div class="input-group">
                             <div class="custom-file">
                                 <input required type="file" class="custom file" accept="image/*" name="image" id="exampleInputFile">
+                                @if($errors->has('image'))
+                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('image')}}</small>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -193,7 +205,10 @@
                         <label for="exampleInputFile">Image details</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" required name="images"  accept="image/*" class="custom file" id="exampleInputFile">
+                                <input type="file" required name="images[]" multiple  accept="image/*" class="custom file" id="exampleInputFile">
+                                @if($errors->has('imagess'))
+                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('images')}}</small>
+                                @endif
                             </div>
                         </div>
                     </div>

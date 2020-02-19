@@ -153,11 +153,11 @@ class AppartController extends Controller
             'option' => ['required', 'max:3'],
             'sold' => ['required', 'max:3'],
             'garage' => ['required', 'max:3'],
-            'salon' => 'required', 'max:3',
+            'salon' => ['required', 'max:3',],
+            'image' => ['image'],
         ]);
 
         $appart = Appartement::findOrFail($id);
-
         $appart->name = request('name');
         $appart->short_description = request('short_description');
         $appart->large_description = request('large_description');
@@ -220,7 +220,6 @@ class AppartController extends Controller
         }
 
         $appart->save();
-
         return redirect('/detail_appart/' . $appart->id)->with(
             Session::put('message', " Information modifiée avec succès !")
         );
@@ -322,6 +321,9 @@ class AppartController extends Controller
     //search
     public function search()
     {
+        request()->validate([
+            'search' => ['required', 'max: 60']
+        ]);
         $search = request('search');
         $apparts = Appartement::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
@@ -334,6 +336,9 @@ class AppartController extends Controller
 
     public function search_louer()
     {
+        request()->validate([
+            'search' => ['required', 'max: 60']
+        ]);
         $search = request('search');
         $appart_louer = Appartement::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
@@ -347,6 +352,9 @@ class AppartController extends Controller
 
     public function search_vendre()
     {
+        request()->validate([
+            'search' => ['required', 'max: 60']
+        ]);
         $search = request('search');
         $appart_vendre = Appartement::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')

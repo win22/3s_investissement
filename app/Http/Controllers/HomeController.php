@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appartement;
+use App\Models\Immeuble;
 use App\Models\villa;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -24,8 +25,16 @@ class HomeController extends Controller
             ->get();
         $nb_vill = $villas->count();
 
+        $immeubs = Immeuble::where('status', 1)
+            ->orderBy('align')
+            ->take(3)
+            ->get();
+        $nb_im = $immeubs->count();
+
         return view('welcome', ['apparts' => $apparts])
             ->with(['villas' => $villas])
+            ->with(['immeubs' => $immeubs])
+            ->with(['nb_im' => $nb_im])
             ->with(['nb_app' => $nb_app])
             ->with(['nb_vill' => $nb_vill]);
     }

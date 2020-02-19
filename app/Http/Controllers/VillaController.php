@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use File;
+
 class VillaController extends Controller
 {
     public function index()
@@ -46,25 +47,25 @@ class VillaController extends Controller
     public function save(Request $request)
     {
         request()->validate([
-            'name' => 'required', 'max: 90',
-            'short_description' => 'required', 'max: 90',
-            'large_description' => 'required',
-            'ville' => 'required', 'max:30',
-            'adresse' => 'required', 'max:90',
-            'pays' => 'required', 'max:90',
-            'align' => 'required', 'max:90',
-            'type' => 'required', 'max:90',
-            'devise' => 'required', 'max:2',
-            'prix' => 'required', 'max:90',
-            'chambre' => 'required', 'max:3',
-            'cuisine' => 'required', 'max:3',
-            'sale_de_bain' => 'required', 'max:3',
-            'option' => 'required', 'max:3',
-            'sold' => 'required', 'max:3',
-            'garage' => 'required', 'max:3',
-            'salon' => 'required', 'max:3',
-            'image' => 'required', 'file',
-            'images' => 'required', 'file',
+            'name' => ['required', 'max:60'],
+            'short_description' => ['required', 'max: 150'],
+            'large_description' => ['required'],
+            'ville' => ['required', 'max:30'],
+            'adresse' => ['required', 'max:90'],
+            'pays' => ['required', 'max:90'],
+            'align' => ['required', 'max:90'],
+            'type' => ['required', 'max:90'],
+            'devise' => ['required', 'max:2'],
+            'prix' => ['required', 'max:90'],
+            'chambre' => ['required', 'max:3'],
+            'cuisine' => ['required', 'max:3'],
+            'sale_de_bain' => ['required', 'max:3'],
+            'option' => ['required', 'max:3'],
+            'sold' => ['required', 'max:3'],
+            'garage' => ['required', 'max:3'],
+            'salon' => ['required', 'max:3'],
+            'image' => ['required', 'image'],
+            'images' => ['required',]
         ]);
 
         $image = $request->file('image');
@@ -112,19 +113,19 @@ class VillaController extends Controller
             'image' => $defaut_image
         ]);
         $photo = $request->file('images');
-        if ($photo) {
+        foreach ($photo as $images):
             $image_name = str_random(6);
-            $text = strtolower($photo->getClientOriginalExtension());
+            $text = strtolower($images->getClientOriginalExtension());
             $image_full_name = $image_name . '.' . $text;
             $upload_path = 'image/';
             $image_url = $upload_path . $image_full_name;
-            $success = $photo->move($upload_path, $image_full_name);
+            $success = $images->move($upload_path, $image_full_name);
             if ($success) {
                 villa::findOrFail($villa->id)->images()->create([
                     'image' => $image_url
                 ]);
             }
-        }
+        endforeach;
         return redirect('/all_villa')->with(
             Session::put('message', 'Une villa a été ajoutée ')
         );
@@ -133,25 +134,25 @@ class VillaController extends Controller
     public function updates(Request $request, $id)
     {
         request()->validate([
-            'name' => 'required', 'max: 60',
-            'short_description' => 'required', 'max: 60',
-            'large_description' => 'required',
-            'ville' => 'required', 'max:30',
-            'adresse' => 'required', 'max:90',
-            'pays' => 'required', 'max:90',
-            'align' => 'required', 'max:90',
-            'type' => 'required', 'max:90',
-            'devise' => 'required', 'max:2',
-            'prix' => 'required', 'max:90',
-            'chambre' => 'required', 'max:3',
-            'cuisine' => 'required', 'max:3',
-            'sale_de_bain' => 'required', 'max:3',
-            'option' => 'required', 'max:3',
-            'sold' => 'required', 'max:3',
-            'garage' => 'required', 'max:3',
-            'salon' => 'required', 'max:3',
+            'name' => ['required', 'max:60'],
+            'short_description' => ['required', 'max: 150'],
+            'large_description' => ['required'],
+            'ville' => ['required', 'max:30'],
+            'adresse' => ['required', 'max:90'],
+            'pays' => ['required', 'max:90'],
+            'align' => ['required', 'max:90'],
+            'type' => ['required', 'max:90'],
+            'devise' => ['required', 'max:2'],
+            'prix' => ['required', 'max:90'],
+            'chambre' => ['required', 'max:3'],
+            'cuisine' => ['required', 'max:3'],
+            'sale_de_bain' => ['required', 'max:3'],
+            'option' => ['required', 'max:3'],
+            'sold' => ['required', 'max:3'],
+            'garage' => ['required', 'max:3'],
+            'salon' => ['required', 'max:3'],
         ]);
-        $villa = array();
+
         $villa = villa::findOrFail($id);
         $villa->name = request('name');
         $villa->short_description = request('short_description');
@@ -173,6 +174,9 @@ class VillaController extends Controller
         $villa->sale_de_bain = request('cuisine');
         $image = $request->file('image');
         if ($image) {
+            request()->validate([
+                'image' => ['required', 'image']
+            ]);
             $image_name = str_random(6);
             $text = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . '.' . $text;
@@ -189,18 +193,24 @@ class VillaController extends Controller
 
         $photo = $request->file('images');
         if ($photo) {
-            $image_name = str_random(6);
-            $text = strtolower($photo->getClientOriginalExtension());
-            $image_full_name = $image_name . '.' . $text;
-            $upload_path = 'image/';
-            $image_url = $upload_path . $image_full_name;
-            $success = $photo->move($upload_path, $image_full_name);
-            if ($success) {
-                $img = Image::where('villa_id', $id)->first();
-                File::delete($img->image);
-                $img->image = $image_url;
-                $img->save();
-            }
+            $imag = Image::where('villa_id', $id)->get();
+            foreach ($imag as $im):
+                File::delete($im->image);
+                $im->delete();
+            endforeach;
+            foreach ($photo as $images):
+                $image_name = str_random(6);
+                $text = strtolower($images->getClientOriginalExtension());
+                $image_full_name = $image_name . '.' . $text;
+                $upload_path = 'image/';
+                $image_url = $upload_path . $image_full_name;
+                $success = $images->move($upload_path, $image_full_name);
+                if ($success) {
+                    villa::findOrFail($villa->id)->images()->create([
+                        'image' => $image_url
+                    ]);
+                }
+            endforeach;
         }
         $villa->admin_id = Auth::id();
         $villa->save();
@@ -237,14 +247,16 @@ class VillaController extends Controller
     public function supprimer($id)
     {
         $villa = villa::findOrFail($id);
-        $img = Image::where('villa_id', $id);
-        $img->delete();
-        File::delete($img->image);
+        $imag = Image::where('villa_id', $id)->get();
+        foreach ($imag as $im):
+            File::delete($im->image);
+            $im->delete();
+        endforeach;
         File::delete($villa->image);
         $villa->delete();
 
         return back()->with(
-            Session::put('message', "L'villa " . $villa->name . "a été supprimé")
+            Session::put('message', "La villa " . $villa->name . "a été supprimé")
         );
     }
 
@@ -269,9 +281,13 @@ class VillaController extends Controller
         $villa = villa::findOrFail($id);
         $villa_similaire = villa::where('id', '!=', $id)
             ->where('status', 1)
-            ->paginate(8);
+            ->take(8)
+            ->get();
+        $nb_vill = $villa_similaire->count();
+
         return view('site.villa.details', ['villa' => $villa])
-            ->with([ 'villa_similaire' => $villa_similaire ]);
+            ->with(['nb_vill' => $nb_vill])
+            ->with(['villa_similaire' => $villa_similaire]);
     }
 
     // villa louer
@@ -280,48 +296,69 @@ class VillaController extends Controller
         $villa_louer = villa::where('status', 1)
             ->where('option', 1)
             ->latest()
-            ->paginate(3);
-        return view('site.villa.louer',['villa_louer' => $villa_louer]);
+            ->paginate(4);
+        $nb_vill = $villa_louer->count();
+        return view('site.villa.louer', ['villa_louer' => $villa_louer])
+            ->with(['nb_vill' => $nb_vill]);
     }
+
     public function all_vendre()
     {
         $villa_vendre = villa::where('status', 1)
             ->where('option', 2)
             ->latest()
-            ->paginate(3);
-        return view('site.villa.vendre',['villa_vendre' => $villa_vendre]);
+            ->paginate(4);
+        $nb_vill = $villa_vendre->count();
+        return view('site.villa.vendre', ['villa_vendre' => $villa_vendre])
+            ->with(['nb_vill' => $nb_vill]);
     }
 
     //search
     public function search()
     {
+        request()->validate([
+            'search' => ['required', 'max: 60']
+        ]);
         $search = request('search');
         $villas = villa::where('status', 1)
-            ->where('name', 'like','%'.$search.'%')
+            ->where('name', 'like', '%' . $search . '%')
             ->latest()
             ->paginate(4);
-        return view('site.villa.all_villa',['villas' => $villas]);
+        $nb_vill = $villas->count();
+        return view('site.villa.all_villa', ['villas' => $villas])
+            ->with(['nb_vill' => $nb_vill]);
     }
 
     public function search_louer()
     {
+        request()->validate([
+            'search' => ['required', 'max: 60']
+        ]);
         $search = request('search');
         $villa_louer = villa::where('status', 1)
-            ->where('name', 'like','%'.$search.'%')
+            ->where('name', 'like', '%' . $search . '%')
             ->where('option', 1)
             ->latest()
             ->paginate(4);
-        return view('site.villa.louer',['villa_louer' => $villa_louer]);
+        $nb_vill = $villa_louer->count();
+        return view('site.villa.louer', ['villa_louer' => $villa_louer])
+            ->with(['nb_vill' => $nb_vill]);
     }
+
     public function search_vendre()
     {
+        request()->validate([
+            'search' => ['required', 'max: 60']
+        ]);
         $search = request('search');
         $villa_vendre = villa::where('status', 1)
-            ->where('name', 'like','%'.$search.'%')
+            ->where('name', 'like', '%' . $search . '%')
             ->where('option', 2)
             ->latest()
             ->paginate(4);
-        return view('site.villa.vendre',['villa_vendre' => $villa_vendre]);
+        $nb_vill = $villa_vendre->count();
+        return view('site.villa.vendre', ['villa_vendre' => $villa_vendre])
+            ->with(['nb_vill' => $nb_vill]);
     }
 
 
