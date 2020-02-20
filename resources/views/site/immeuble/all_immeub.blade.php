@@ -3,16 +3,16 @@
 <div class="row">
     <div class="col-md-9">
         <div class="block-heading">
-            <h4><span class="heading-icon"><i class="fa fa-th-list"></i></span>Liste des immeubles à louer</h4>
+            <h4><span class="heading-icon"><i class="fa fa-th-list"></i></span>Liste des $immeubles</h4>
         </div>
         <div class="property-listing">
             <ul>
-                @foreach($immeub_louer as $immeub)
+                @foreach($immeubs as $immeub)
                 <li class="type-rent col-md-12 reveal">
                     <div class="col-md-4"><a href="{{ route('property-detail', array('select' => $immeub->id)) }}"
                                              class="property-featured-image"> <img src="{{ asset($immeub->image) }}"
                                                                                    alt=""> <span class="images-count"><i
-                                    class="fa fa-picture-o"></i> 1</span>
+                                        class="fa fa-picture-o"></i> 1</span>
                             @if($immeub->option == 1)
                             <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
                             @elseif($immeub->option == 2)
@@ -49,16 +49,16 @@
                 @endforeach
             </ul>
         </div>
+        <ul class="pagination">
+            {{ $immeubs->links() }}
+        </ul>
         @if( $nb_im <= 0)
         <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
         @endif
-        <ul class="pagination">
-            {{ $immeub_louer->links() }}
-        </ul>
     </div>
     <!-- Start Sidebar -->
     <div class="sidebar right-sidebar col-md-3">
-        <form action="{{ route('search_lou_im') }}" method="post">
+        <form action="{{ route('search_im') }}" method="post">
             @csrf
             <div class="widget sidebar-widget">
                 <h3 class="widgettitle">Recherche</h3>
@@ -68,7 +68,7 @@
                             <label>Recherche</label>
                             <input required class="form-control" placeholder="Saisir ici" name="search">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Search</button>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Rechercher</button>
                     </form>
                 </div>
             </div>

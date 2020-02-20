@@ -54,7 +54,19 @@ class HomeController extends Controller
         $villa = villa::where('status', 1)
             ->latest()
             ->paginate(4);
-        return view('site.villa.all_villa', ['villas' => $villa]);
+        $nb_vill = $villa->count();
+        return view('site.villa.all_villa', ['villas' => $villa])
+            ->with(['nb_vill' => $nb_vill]);
+    }
+
+    public function all_immeub()
+    {
+        $immeubs = Immeuble::where('status', 1)
+            ->latest()
+            ->paginate(4);
+        $nb_im = $immeubs->count();
+        return view('site.immeuble.all_immeub', ['immeubs' => $immeubs])
+            ->with(['nb_im' => $nb_im]);
     }
 
     public function captcha_send($name)

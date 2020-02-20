@@ -80,22 +80,22 @@
                                     </div>
                                     <div class="row td-actions text-center float-right">
                                         @if($immeub['status'] == 1)
-                                        <a href="{{ route('desactive_ap', array('test' => $immeub->id)) }}"
+                                        <a href="{{ route('desactive_immeubles', array('test' => $immeub->id)) }}"
                                            class="btn btn-dark btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-down"></i>
                                         </a>
                                         @else
-                                        <a href="{{ route('active_ap', array('test' => $immeub->id)) }}"
+                                        <a href="{{ route('active_immeubles', array('test' => $immeub->id)) }}"
                                            class="btn btn-success btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-up"></i>
                                         </a>
                                         @endif
                                         &nbsp;
-                                        <a href="{{ route('selectionner_ap', array('select' =>$immeub->id)) }}" class="btn btn-warning btn-link btn-sm">
+                                        <a href="{{ route('selectionner_im', array('select' =>$immeub->id)) }}" class="btn btn-warning btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-edit"></i>
                                         </a>
                                         &nbsp;
-                                        <a href="{{ route('supprimer_ap', array('test' => $immeub->id)) }}" id="delete"
+                                        <a href="{{ route('supprimer_im', array('test' => $immeub->id)) }}" id="delete"
                                            class="btn btn-danger btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-times"></i>
                                         </a>
@@ -118,7 +118,221 @@
                         </ul>
                     </div>
                 </div>
+                <div class="tab-pane fade " id="p2">
+                    <p>Vous etes dans l'onglet qui affiche les immeubles qui sont à <span class="text-warning">vendre</span> sur votre site !</p>
+                    <div class="row">
+                        @foreach($immeubs_vendre as $immeub_v)
+                        <div class="col-md-4 p-2">
+                            <div class="card carde dropdown-hover animated-dropdown-menu">
+                                <div class="ribbon-wrapper sm ribbon">
+                                    <div style="color: white !important; " class="ribbon bg-danger text-white">
+                                        <span class="small" style="font-family: 'Manjari Bold'">A louer</span>
+                                    </div>
+                                </div>
+                                <div class="card-header"
+                                     style="background: url({{ $immeub_v['image'] }}) center center; background-position: cover; height: 130px !important;">
 
+                                    <div style="padding-top: 103px">
+                                        <h2 style="padding: 10px;" class="badge badge-info float-left">{{
+                                            $immeub_v['prix'] }}
+                                            @if($immeub_v['devise'] == 1)
+                                            CFA
+                                            @elseif($immeub_v['devise'] == 2)
+                                            EURO
+                                            @else
+                                            $
+                                            @endif
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a href="{{ route('detail_immeub', array('test' => $immeub_v->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $immeub_v['name']
+                                            }}</h6></a><br/>
+                                    <span>{{ $immeub_v['short_description'] }}
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <span class="small">
+                                                <i style="color: deepskyblue !important;" class="fas fa-map-marker-alt"></i>&nbsp;
+                                            </span>
+                                            <span>{{ $immeub_v['adresse'] }}</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <i style="color: #05d7ff  !important;" class="fas fa-globe-africa"></i>&nbsp;
+                                            <span>{{ $immeub_v['pays'] }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            @if($immeub_v['status'] == 1)
+                                            <span class="small">
+                                                 <i style="color: green  !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            </span>
+                                            <span class="text-success">Activé</span>
+                                            @else
+                                            <span class="small">
+                                                 <i style="color: #da2839 !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            </span>
+                                            <span class="text-danger">Désactivé</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="float-left">
+                                        <span class="small"> Modifier {{  \Carbon\Carbon::parse($immeub_v['updated_at'])->diffForHumans() }}</span>
+                                    </div>
+                                    <div class="row td-actions text-center float-right">
+                                        @if($immeub_v['status'] == 1)
+                                        <a href="{{ route('desactive_immeubles', array('test' => $immeub_v->id)) }}"
+                                           class="btn btn-dark btn-link btn-sm">
+                                            <i style="color: white !important;" class="fas fa-thumbs-down"></i>
+                                        </a>
+                                        @else
+                                        <a href="{{ route('active_immeubles', array('test' => $immeub_v->id)) }}"
+                                           class="btn btn-success btn-link btn-sm">
+                                            <i style="color: white !important;" class="fas fa-thumbs-up"></i>
+                                        </a>
+                                        @endif
+                                        &nbsp;
+                                        <a href="{{ route('selectionner_im', array('select' =>$immeub_v->id)) }}" class="btn btn-warning btn-link btn-sm">
+                                            <i style="color: white !important;" class="fas fa-edit"></i>
+                                        </a>
+                                        &nbsp;
+                                        <a href="{{ route('supprimer_im', array('test' => $immeub_v->id)) }}" id="delete"
+                                           class="btn btn-danger btn-link btn-sm">
+                                            <i style="color: white !important;" class="fas fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <p class="card-text">
+                        @if($nb_v<=0)
+                        <span align="center" class="text-center">Aucune information trouvé</span>
+                        @endif
+                    </p>
+
+                    <div class="card-tools">
+
+                        <ul class="pagination pagination-sm float-right">
+                            {{ $immeubs_vendre->links() }}
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane show" id="p3">
+                    Vous etes dans l'onglet qui affiche les immeubles qui sont en <span class="text-info">Promotions</span> sur votre site ! <br/>
+                    <div class="row">
+                        @foreach($immeubs_promo as $immeub_p)
+                        <div class="col-md-4">
+                            <div class="card  card-success1 card-outline1">
+                                <div class="ribbon-wrapper ribbon-lg">
+                                    <div class="ribbon bg-success">
+                                        Promo
+                                    </div>
+                                </div>
+                                <div class="card-header"
+                                     style="background: url({{$immeub_p['image'] }}) center center; height: 130px !important;">
+
+                                    <div style="padding-top: 40px">
+                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
+                                            $immeub_p['prix'] }}
+                                            @if($immeub_p['devise'] == 1)
+                                            CFA
+                                            @elseif($immeub_p['devise'] == 2)
+                                            EURO
+                                            @else
+                                            $
+                                            @endif
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a href="{{ route('detail_immeub', array('test' => $immeub_p->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $immeub_p['name']
+                                            }}</h6></a>
+                                    <span class="text-orange small">Déscription rapide</span><br/>
+                                    <span>{{ $immeub_p['short_description'] }}
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <span class="small">
+                                                <i style="color: deepskyblue !important;" class="fas fa-map-marker-alt"></i>&nbsp;
+                                            </span>
+                                            <span>{{ $immeub_p['adresse'] }}</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <i style="color: #05d7ff  !important;" class="fas fa-globe-africa"></i>&nbsp;
+                                            <span>{{ $immeub_p['pays'] }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            @if($immeub_p['status'] == 1)
+                                            <span class="small">
+                                                 <i style="color: green  !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                                  <span class="text-success">Activé</span>
+                                            </span>
+                                            @else
+                                            <span class="small">
+                                                <i style="color: #da2839 !important;" class="fas fa-shield-alt"></i>&nbsp;
+                                            <span class="text-danger">Désactivé</span>
+                                           </span>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-4">
+                                            <small class="small">
+                                                <i style="color: #05d7ff  !important;"is=""  class="nav-icon fas fa-store-alt"></i>
+                                            </small>
+                                            @if($immeub_p['type'] == 1)
+                                            <span>A louer</span>
+                                            @else
+                                            <span>A vendre</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row td-actions text-center float-right">
+                                        @if($immeub_p['status'] == 1)
+                                        <a href="{{ route('desactive_immeubles', array('test' => $immeub_p->id)) }}"
+                                           class="btn btn-dark btn-link btn-sm">
+                                            <i style="color: white !important;" class="fas fa-thumbs-down"></i>
+                                        </a>
+                                        @else
+                                        <a href="{{ route('active_immeubles', array('test' => $immeub_p->id)) }}"
+                                           class="btn btn-success btn-link btn-sm">
+                                            <i style="color: white !important;" class="fas fa-thumbs-up"></i>
+                                        </a>
+                                        @endif
+                                        &nbsp;
+                                        <a href="{{ route('selectionner_im', array('select' =>$immeub_p->id)) }}" class="btn btn-warning btn-link btn-sm">
+                                            <i style="color: white !important;" class="fas fa-edit"></i>
+                                        </a>
+                                        &nbsp;
+                                        <a href="{{ route('supprimer_im', array('test' => $immeub_p->id)) }}" id="delete"
+                                           class="btn btn-danger btn-link btn-sm">
+                                            <i style="color: white !important;" class="fas fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <p class="card-text">
+                        @if($nb_p<=0)
+                        <span class="text-center">Aucune information trouvé</span>
+                        @endif
+                    </p>
+                    <br/>
+                    <div class="card-tools">
+
+                        <ul class="pagination pagination-sm float-right">
+                            {{ $immeubs_promo->links() }}
+
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

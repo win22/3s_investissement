@@ -71,7 +71,7 @@
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('all_appar') }}">Appartements</a></li>
                                         <li><a style="color: #5e5e5e !important;"href="{{ route('vil_all') }}">Villa</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('all_im') }}">Immeuble</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Louer</a>
@@ -79,7 +79,7 @@
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('app_louer') }}">Appartements</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('vill_louer') }}">Villa</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('im_louer') }}">Immeuble</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Vendre</a>
@@ -87,15 +87,15 @@
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('app_vendre') }}">Appartements</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('vill_vendre') }}">Villa</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('im_louer') }}">Immeuble</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Promo</a>
                                     <ul class="dropdown">
-                                        <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('app_promo') }}">Appartements</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('vill_promo') }}">Villa</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('im_promo') }}">Immeuble</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="contact.html">A propos</a></li>
@@ -291,38 +291,38 @@
                                 </div>
                             </li>
                             @endforeach
-                            @foreach($immeubs as $villa)
+                            @foreach($immeubs as $immeub)
                             <li class="col-md-4 col-sm-6 type-rent reveal">
                                 <div class="property-block">
-                                    <a  href="{{ route('villa_detail', array('select' => $villa->id)) }}" class="property-featured-image">
+                                    <a  href="{{ route('detail_im', array('select' => $immeub->id)) }}" class="property-featured-image">
                                         <img style="height: 230px !important;"  src="{{$villa->image }}" alt="">
                                         <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
-                                        @if($villa->option == 1)
+                                        @if($immeub->option == 1)
                                         <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
-                                        @elseif($villa->option == 2)
+                                        @elseif($immeub->option == 2)
                                         <span style="background-color: #00bd49 !important; color: white" class="badges">vendre</span>
                                         @else
                                         <span class="badges">Promo</span>
                                         @endif
                                     </a>
                                     <div class="property-info">
-                                        <h4><a href="{{ route('villa_detail', array('select' => $villa->id)) }}">{{ $villa->name }}</a></h4>
-                                        <span class="location">{{ $villa->adresse }}</span>
-                                        @if($villa->devise == 1)
-                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>CFA</strong></div>
-                                        @elseif($villa->devise == 2)
-                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>EURO</strong></div>
+                                        <h4><a href="{{ route('detail_im', array('select' => $immeub->id)) }}">{{ $immeub->name }}</a></h4>
+                                        <span class="location">{{ $immeub->adresse }}</span>
+                                        @if($immeub->devise == 1)
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $immeub->prix }}</span><strong>CFA</strong></div>
+                                        @elseif($immeub->devise == 2)
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $immeub->prix }}</span><strong>EURO</strong></div>
                                         @else
-                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>$</strong></div>
+                                        <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $immeub->prix }}</span><strong>$</strong></div>
                                         @endif
                                         <br/>
                                         <span>{{ $villa->short_description }}</span>
                                     </div>
                                     <div class="property-amenities clearfix">
-                                        <span class="area"><strong>{{ $villa->chambre }}</strong>Chambre</span>
-                                        <span class="baths"><strong>{{ $villa->salon }}</strong>Salon</span>
-                                        <span class="beds"><strong>{{ $villa->cuisine }}</strong>Cuisine</span>
-                                        <span class="parking"><strong>{{ $villa->garage }}</strong>Garage</span>
+                                        <span class="area"><strong>{{ $immeub->appartement }}</strong>Appart</span>
+                                        <span class="baths"><strong>{{ $immeub->etage }}</strong>Étage</span>
+                                        <span class="beds"><strong>{{ $immeub->piscine }}</strong>Piscine</span>
+                                        <span class="parking"><strong>{{ $immeub->dimension }}</strong>Dimension</span>
                                     </div>
                                 </div>
                             </li>

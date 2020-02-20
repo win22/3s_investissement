@@ -318,6 +318,17 @@ class AppartController extends Controller
             ->with(['nb_app' => $nb_app]);
     }
 
+    public function all_promo()
+    {
+        $appart_promo = Appartement::where('status', 1)
+            ->where('sold', 1)
+            ->latest()
+            ->paginate(4);
+        $nb_app = $appart_promo->count();
+        return view('site.appart.promo', ['appart_promo' => $appart_promo])
+            ->with(['nb_app' => $nb_app]);
+    }
+
     //search
     public function search()
     {
@@ -363,6 +374,22 @@ class AppartController extends Controller
             ->paginate(4);
         $nb_app = $appart_vendre->count();
         return view('site.appart.vendre', ['appart_vendre' => $appart_vendre])
+            ->with(['nb_app' => $nb_app]);
+    }
+
+    public function search_promo()
+    {
+        request()->validate([
+            'search' => ['required', 'max: 60']
+        ]);
+        $search = request('search');
+        $appart_promo = Appartement::where('status', 1)
+            ->where('name', 'like', '%' . $search . '%')
+            ->where('sold', 1)
+            ->latest()
+            ->paginate(4);
+        $nb_app = $appart_promo->count();
+        return view('site.appart.promo', ['appart_promo' => $appart_promo])
             ->with(['nb_app' => $nb_app]);
     }
 

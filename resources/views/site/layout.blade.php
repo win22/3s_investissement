@@ -72,7 +72,7 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('all_appar') }}">Appartements</a></li>
                                             <li><a style="color: #5e5e5e !important;"href="{{ route('vil_all') }}">Villa</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                            <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('all_im') }}">Immeuble</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Louer</a>
@@ -80,7 +80,7 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('app_louer') }}">Appartements</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('vill_louer') }}">Villa</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                            <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('im_louer') }}">Immeuble</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Vendre</a>
@@ -88,15 +88,15 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('app_vendre') }}">Appartements</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('vill_vendre') }}">Villa</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                            <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('im_louer') }}">Immeuble</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Promo</a>
                                         <ul class="dropdown">
-                                            <li><a style="color: #5e5e5e !important;" href="agents.html">Appartements</a></li>
-                                            <li><a style="color: #5e5e5e !important;" href="agent-detail.html">Villa</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('app_promo') }}">Appartements</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('vill_promo') }}">Villa</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                            <li><a style="color: #5e5e5e !important;" href="submit.html">Immeuble</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('im_promo') }}">Immeuble</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="contact.html">A propos</a></li>

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Message;
 use App\Models\Villa;
 use App\Models\Image;
-use App\Rules\Captcha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -290,7 +288,6 @@ class VillaController extends Controller
             ->with(['villa_similaire' => $villa_similaire]);
     }
 
-    // villa louer
     public function all_louer()
     {
         $villa_louer = villa::where('status', 1)
@@ -310,6 +307,18 @@ class VillaController extends Controller
             ->paginate(4);
         $nb_vill = $villa_vendre->count();
         return view('site.villa.vendre', ['villa_vendre' => $villa_vendre])
+            ->with(['nb_vill' => $nb_vill]);
+    }
+
+
+    public function all_promo()
+    {
+        $villa_promo = villa::where('status', 1)
+            ->where('sold', 1)
+            ->latest()
+            ->paginate(4);
+        $nb_vill = $villa_promo->count();
+        return view('site.villa.promo', ['villa_promo' => $villa_promo])
             ->with(['nb_vill' => $nb_vill]);
     }
 
@@ -358,6 +367,22 @@ class VillaController extends Controller
             ->paginate(4);
         $nb_vill = $villa_vendre->count();
         return view('site.villa.vendre', ['villa_vendre' => $villa_vendre])
+            ->with(['nb_vill' => $nb_vill]);
+    }
+
+    public function search_promo()
+    {
+        request()->validate([
+            'search' => ['required', 'max: 60']
+        ]);
+        $search = request('search');
+        $villa_promo = villa::where('status', 1)
+            ->where('name', 'like', '%' . $search . '%')
+            ->where('sold', 1)
+            ->latest()
+            ->paginate(4);
+        $nb_vill = $villa_promo->count();
+        return view('site.villa.promo', ['villa_promo' => $villa_promo])
             ->with(['nb_vill' => $nb_vill]);
     }
 
