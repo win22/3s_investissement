@@ -143,7 +143,7 @@ class BureauController extends Controller
                 ]);
             }
         endforeach;
-        return redirect('/dashboard')->with(
+        return redirect('/all_villa')->with(
             Session::put('message', 'Un bureau a été ajouté ')
         );
     }

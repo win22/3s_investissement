@@ -44,7 +44,12 @@
                 </div>
             </div>
             <div class="col-12 col-sm-6 reveal-2">
-                <h3 class="my-3">{{ $terrain->name }}</h3>
+                <h3 class="my-3">{{ $terrain->name }}
+                    <br/>
+                    @if( ($terrain['sold']) == 1 )
+                    <span style="color: limegreen; font-family: 'Manjari Regular'">{{ $terrain['pourcentage'] }} de réduction</span>
+                    @endif
+                </h3>
                 <span class="small text-orange">Petite description :</span><br/>
                 <p>{{ $terrain->short_description }}</p>
                 <hr>

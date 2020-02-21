@@ -44,7 +44,13 @@
                 </div>
             </div>
             <div class="col-12 col-sm-6 reveal-2">
-                <h3 class="my-3">{{ $appart->name }}</h3>
+                <h3 class="my-3">{{ $appart->name }}    <br/>
+                    @if( ($appart['sold']) == 1 )
+                    <span style="color: limegreen; font-family: 'Manjari Regular'">{{ $appart['pourcentage'] }} de réduction</span>
+                    @endif
+
+                </h3>
+
                 <span class="small text-orange">Petite description :</span><br/>
                 <p>{{ $appart->short_description }}</p>
                 <hr>

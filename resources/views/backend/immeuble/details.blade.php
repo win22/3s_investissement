@@ -44,7 +44,11 @@
                 </div>
             </div>
             <div class="col-12 col-sm-6 reveal-2">
-                <h3 class="my-3">{{ $immeub->name }}</h3>
+                <h3 class="my-3">{{ $immeub->name }} <br/>
+                    @if( ($immeub['sold']) == 1 )
+                    <span style="color: limegreen; font-family: 'Manjari Regular'">{{ $immeub['pourcentage'] }} de réduction</span>
+                    @endif
+                </h3>
                 <span class="small text-orange">Petite description :</span><br/>
                 <p>{{ $immeub->short_description }}</p>
                 <hr>

@@ -44,7 +44,12 @@
                 </div>
             </div>
             <div class="col-12 col-sm-6 reveal-2">
-                <h3 class="my-3">{{ $bureau->name }}</h3>
+                <h3 class="my-3">{{ $bureau->name }}
+                    <br/>
+                    @if( ($bureau['sold']) == 1 )
+                    <span style="color: limegreen; font-family: 'Manjari Regular'">{{ $bureau['pourcentage'] }} de réduction</span>
+                    @endif
+                </h3>
                 <span class="small text-orange">Petite description :</span><br/>
                 <p>{{ $bureau->short_description }}</p>
                 <hr>

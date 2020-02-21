@@ -105,12 +105,9 @@
                         </div>
                         @endforeach
                     </div>
-                    <p class="card-text">
-                        @if($nb_l<=0)
-                        <span style="color: red ;padding-left: 35%">Aucune information trouvée</span>
-                        @endif
-                    </p>
-
+                    @if( $nb_l <= 0)
+                    <span style="padding-left: 40%;  color:tomato" align="center" class="text-center">Aucune information trouvée</span>
+                    @endif
                     <div class="card-tools">
 
                         <ul class="pagination pagination-sm float-right">
@@ -207,8 +204,8 @@
                         </div>
                         @endforeach
                     </div>
-                    @if($nb_v<=0)
-                    <span style="color: red ;padding-left: 35%">Aucune information trouvée</span>
+                    @if( $nb_v <= 0)
+                    <span style="padding-left: 40%;  color:tomato" align="center" class="text-center">Aucune information trouvée</span>
                     @endif
 
                     <div class="card-tools">
@@ -316,8 +313,8 @@
                         @endforeach
                     </div>
                     <p class="m-3">
-                        @if($nb_p<=0)
-                        <span style="color: red ;padding-left: 35%">Aucune information trouvée</span>
+                        @if( $nb_p <= 0)
+                        <span style="padding-left: 40%; color:tomato" align="center" class="text-center">Aucune information trouvée</span>
                         @endif
                     </p>
                     <br/>

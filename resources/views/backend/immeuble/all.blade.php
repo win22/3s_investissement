@@ -106,8 +106,8 @@
                         @endforeach
                     </div>
                     <p class="card-text">
-                        @if($nb_l<=0)
-                        <span align="center" class="text-center">Aucune information trouvé</span>
+                        @if($nb_l <= 0)
+                        <span style="padding-left: 40%;  color:tomato" align="center" class="text-center">Aucune information trouvée</span>
                         @endif
                     </p>
 
@@ -209,8 +209,8 @@
                         @endforeach
                     </div>
                     <p class="card-text">
-                        @if($nb_v<=0)
-                        <span align="center" class="text-center">Aucune information trouvé</span>
+                        @if( $nb_v <= 0)
+                        <span style="padding-left: 40%;  color:tomato" align="center" class="text-center">Aucune information trouvée</span>
                         @endif
                     </p>
 
@@ -319,8 +319,8 @@
                         @endforeach
                     </div>
                     <p class="card-text">
-                        @if($nb_p<=0)
-                        <span class="text-center">Aucune information trouvé</span>
+                        @if( $nb_p <= 0)
+                        <span style="padding-left: 40%;  color:tomato" align="center" class="text-center">Aucune information trouvée</span>
                         @endif
                     </p>
                     <br/>

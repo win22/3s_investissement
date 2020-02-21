@@ -319,7 +319,7 @@
                             @foreach($terrains as $terrain)
                             <li class="item property-block">
                                 <a href="{{ route('detail_terre', array('select' => $terrain->id)) }}" class="property-featured-image">
-                                    <img src="{{ asset($terrain->image) }}" alt="">
+                                    <img style="height: 150px; !important;" src="{{ asset($terrain->image) }}" alt="">
                                     <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
                                     @if($terrain->option == 1)
                                     <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>

@@ -78,11 +78,11 @@
                         </tbody>
                     </table>
                     <p class="card-text">
-                        @if($nb>0)
-                        Total des informations : <span id="total_records">{{ $nb }}</span>
-                        @else
-                        <span class="text-center">Aucune information trouvé</span>
+                    <p style="padding-left: 40%; color:tomato" class="card-text md-2">
+                        @if($nb<=0)
+                        <span class="">Aucune information trouvé</span>
                         @endif
+                    </p>
                     </p>
 
                     <div class="card-tools">

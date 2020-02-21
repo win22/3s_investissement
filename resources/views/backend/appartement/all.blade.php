@@ -106,9 +106,11 @@
                         @endforeach
                     </div>
                     <p class="card-text">
+                    <p style="padding-left: 40%; color:tomato" class="card-text md-2">
                         @if($nb<=0)
-                        <span align="center" class="text-center">Aucune information trouvé</span>
+                        <span class="">Aucune information trouvé</span>
                         @endif
+                    </p>
                     </p>
 
                     <div class="card-tools">
@@ -209,9 +211,11 @@
                         @endforeach
                     </div>
                     <p class="card-text">
+                    <p style="padding-left: 40%; color:tomato" class="card-text md-2">
                         @if($nb_v<=0)
-                        <span align="center" class="text-center">Aucune information trouvé</span>
+                        <span class="">Aucune information trouvé</span>
                         @endif
+                    </p>
                     </p>
 
                     <div class="card-tools">
@@ -321,9 +325,11 @@
                         @endforeach
                     </div>
                     <p class="card-text">
+                    <p style="padding-left: 40%; color:tomato" class="card-text md-2">
                         @if($nb_s<=0)
-                        <span class="text-center">Aucune information trouvé</span>
+                        <span class="">Aucune information trouvé</span>
                         @endif
+                    </p>
                     </p>
 
                     <div class="card-tools">
