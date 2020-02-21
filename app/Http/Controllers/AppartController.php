@@ -25,12 +25,10 @@ class AppartController extends Controller
     public function all_appart()
     {
         $appart = Appartement::where('option', 1)
-            ->where('sold', 2)
             ->latest()
             ->paginate(4);
         $nb = $appart->count();
         $appart_vendre = Appartement::where('option', 2)
-            ->where('sold', 2)
             ->latest()
             ->paginate(4);
         $nb_v = $appart_vendre->count();
@@ -301,7 +299,7 @@ class AppartController extends Controller
         $appart_louer = Appartement::where('status', 1)
             ->where('option', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_app = $appart_louer->count();
         return view('site.appart.louer', ['appart_louer' => $appart_louer])
             ->with(['nb_app' => $nb_app]);
@@ -312,7 +310,7 @@ class AppartController extends Controller
         $appart_vendre = Appartement::where('status', 1)
             ->where('option', 2)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_app = $appart_vendre->count();
         return view('site.appart.vendre', ['appart_vendre' => $appart_vendre])
             ->with(['nb_app' => $nb_app]);
@@ -323,7 +321,7 @@ class AppartController extends Controller
         $appart_promo = Appartement::where('status', 1)
             ->where('sold', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_app = $appart_promo->count();
         return view('site.appart.promo', ['appart_promo' => $appart_promo])
             ->with(['nb_app' => $nb_app]);
@@ -339,7 +337,7 @@ class AppartController extends Controller
         $apparts = Appartement::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_app = $apparts->count();
         return view('site.appart.all_appart', ['apparts' => $apparts])
             ->with(['nb_app' => $nb_app]);
@@ -355,7 +353,7 @@ class AppartController extends Controller
             ->where('name', 'like', '%' . $search . '%')
             ->where('option', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_app = $appart_louer->count();
         return view('site.appart.louer', ['appart_louer' => $appart_louer])
             ->with(['nb_app' => $nb_app]);
@@ -371,7 +369,7 @@ class AppartController extends Controller
             ->where('name', 'like', '%' . $search . '%')
             ->where('option', 2)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_app = $appart_vendre->count();
         return view('site.appart.vendre', ['appart_vendre' => $appart_vendre])
             ->with(['nb_app' => $nb_app]);
@@ -387,7 +385,7 @@ class AppartController extends Controller
             ->where('name', 'like', '%' . $search . '%')
             ->where('sold', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_app = $appart_promo->count();
         return view('site.appart.promo', ['appart_promo' => $appart_promo])
             ->with(['nb_app' => $nb_app]);

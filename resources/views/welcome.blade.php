@@ -69,37 +69,41 @@
                                 <li><a href="javascript:;">Propriétés</a>
                                     <ul class="dropdown">
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('all_appar') }}">Appartements</a></li>
-                                        <li><a style="color: #5e5e5e !important;"href="{{ route('vil_all') }}">Villa</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="{{ route('all_im') }}">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;"href="{{ route('vil_all') }}">Villas</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('all_bur') }}">Bureaux</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('all_im') }}">Immeubles</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('all_terre') }}">Terrains</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Louer</a>
                                     <ul class="dropdown">
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('app_louer') }}">Appartements</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="{{ route('vill_louer') }}">Villa</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="{{ route('im_louer') }}">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('vill_louer') }}">Villas</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('bur_louer') }}">Bureaux</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('im_louer') }}">Immeubles</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('terre_louer') }}">Terrain</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Vendre</a>
                                     <ul class="dropdown">
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('app_vendre') }}">Appartements</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="{{ route('vill_vendre') }}">Villa</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="{{ route('im_louer') }}">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('vill_vendre') }}">Villas</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('bur_vendre') }}">Bureaux</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('im_vendre') }}">Immeubles</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('terre_vendre') }}">Terrains</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Promo</a>
                                     <ul class="dropdown">
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('app_promo') }}">Appartements</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('vill_promo') }}">Villa</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="my-properties.html">Bureau</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('bur_promo') }}">Bureau</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('im_promo') }}">Immeuble</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('terre_promo') }}">Terrains</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">A propos</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{ route('contact_site') }}">A propos</a></li>
+                                <li><a href="{{ route('contact_site') }}">Contact</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -112,21 +116,23 @@
     <div class="site-showcase">
         <div class="slider-mask overlay-transparent"></div>
         <!-- Start Hero Slider -->
-        <div class="hero-slider flexslider clearfix" style="height:680px" data-autoplay="yes" ondurationchange="5000" data-pagination="no"
+        <div class="hero-slider flexslider clearfix" style="height:580px" data-autoplay="yes" ondurationchange="5000" data-pagination="no"
              data-arrows="yes" data-style="fade" data-pause="yes">
             <ul class="slides">
                 <li class="slider-banner1" style="background-image:url({{ asset('site/image/03.jpg')}}); height: 680px">
                     <div class="row">
                         <div class="containerss">
-                            <span class="text1 span1">Bienvenue dans </span>
-                            <span class="text2 span1">3s investissement </span>
+                            <h5  class="reveal text3  span1">Bienvenue dans  <span style="color: tomato">3s investissement SUARL</span></h5>&nbsp;
+                            <h5  class="reveal-4 text1 span1">Nous faisons de votre confort notre priotité.</h5>&nbsp;
                         </div>
                     </div>
 
                 </li>
                 <li class="parallax" style="background-image:url({{ asset('site/image/05.jpg')}}); height: 680px">
-                    <div>
-                        <h2 class="line anim-typewriter" >Nous faisons de votre confort notre priorité</h2>
+                    <div class="row">
+                        <div class="containerss">
+                            <h5  class="reveal text1  span1">Nous faisons de votre confort notre priotité.</h5>&nbsp;
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -179,12 +185,12 @@
         <div id="content" class="content full">
             <div class="featured-blocks">
                 <div class="container">
-                    <div class="row reveal">
+                    <div class="row reveal-2">
                         <h3 class="text-center">Choisir un catalogue</h3>
                         <div class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
                                     src="{{ URL::to(asset('site/image/03.jpg')) }}"
                                     class="img-thumbnail">
-                            <h3 class="text-center">Nos propriétés</h3>
+                            <h3 class="text-center">Promo</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
                                 Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
                         </div>
@@ -348,138 +354,66 @@
                     <div class="row">
                         <ul class="owl-carousel owl-alt-controls" data-columns="4" data-autoplay="yes"
                             data-pagination="no" data-arrows="yes" data-single-item="no">
+                            @foreach($terrains as $terrain)
                             <li class="item property-block">
-                                <a href="property-detail.html" class="property-featured-image">
-                                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-                                    <span class="images-count"><i class="fa fa-picture-o"></i> 2</span>
-                                    <span class="badges">Rent</span>
+                                <a href="{{ route('detail_terre', array('select' => $terrain->id)) }}" class="property-featured-image">
+                                    <img src="{{ asset($terrain->image) }}" alt="">
+                                    <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
+                                    @if($terrain->option == 1)
+                                    <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
+                                    @elseif($terrain->option == 2)
+                                    <span style="background-color: #00bd49 !important; color: white" class="badges">vendre</span>
+                                    @else
+                                    <span class="badges">{{ $terrain->pourcentage }}</span>
+                                    @endif
                                 </a>
                                 <div class="property-info">
-                                    <h4><a href="property-detail.html">116 Waverly Place</a></h4>
-                                    <span class="location">NYC</span>
-                                    <div class="price"><strong>$</strong><span>2800 Monthly</span></div>
+                                    <h4><a href="{{ route('detail_terre', array('select' => $terrain->id)) }}">{{ $terrain->name }}</a></h4>
+                                    <span class="location">{{$terrain->adresse }}</span>
+                                    @if($terrain->devise == 1)
+                                    <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $terrain->prix }}</span><strong>CFA</strong></div>
+                                    @elseif($immeub->devise == 2)
+                                    <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $terrain->prix }}</span><strong>EURO</strong></div>
+                                    @else
+                                    <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $terrain->prix }}</span><strong>$</strong></div>
+                                    @endif
+                                    <br/>
                                 </div>
                             </li>
-                            <li class="item property-block">
-                                <a href="property-detail.html" class="property-featured-image">
-                                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-                                    <span class="images-count"><i class="fa fa-picture-o"></i> 2</span>
-                                    <span class="badges">Buy</span>
-                                </a>
-                                <div class="property-info">
-                                    <h4><a href="property-detail.html">232 East 63rd Street</a></h4>
-                                    <span class="location">NYC</span>
-                                    <div class="price"><strong>$</strong><span>250000</span></div>
-                                </div>
-                            </li>
-                            <li class="item property-block">
-                                <a href="property-detail.html" class="property-featured-image">
-                                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-                                    <span class="images-count"><i class="fa fa-picture-o"></i> 2</span>
-                                    <span class="badges">Buy</span>
-                                </a>
-                                <div class="property-info">
-                                    <h4><a href="property-detail.html">55 Warren Street</a></h4>
-                                    <span class="location">NYC</span>
-                                    <div class="price"><strong>$</strong><span>300000</span></div>
-                                </div>
-                            </li>
-                            <li class="item property-block">
-                                <a href="property-detail.html" class="property-featured-image">
-                                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-                                    <span class="images-count"><i class="fa fa-picture-o"></i> 2</span>
-                                    <span class="badges">Rent</span>
-                                </a>
-                                <div class="property-info">
-                                    <h4><a href="property-detail.html">459 West Broadway</a></h4>
-                                    <span class="location">NYC</span>
-                                    <div class="price"><strong>$</strong><span>3100 Monthly</span></div>
-                                </div>
-                            </li>
-                            <li class="item property-block">
-                                <a href="property-detail.html" class="property-featured-image">
-                                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-                                    <span class="images-count"><i class="fa fa-picture-o"></i> 2</span>
-                                    <span class="badges">Buy</span>
-                                </a>
-                                <div class="property-info">
-                                    <h4><a href="property-detail.html">70 Greene Street</a></h4>
-                                    <span class="location">NYC</span>
-                                    <div class="price"><strong>$</strong><span>500000</span></div>
-                                </div>
-                            </li>
-                            <li class="item property-block">
-                                <a href="property-detail.html" class="property-featured-image">
-                                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-                                    <span class="images-count"><i class="fa fa-picture-o"></i> 2</span>
-                                    <span class="badges">Rent</span>
-                                </a>
-                                <div class="property-info">
-                                    <h4><a href="property-detail.html">115 Allen Street</a></h4>
-                                    <span class="location">NYC</span>
-                                    <div class="price"><strong>$</strong><span>5000 Monthly</span></div>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
+                    <p class="m-3">
+                        @if($nb_terre<=0)
+                        <span style="color: red ;padding-left: 40%">Aucune information trouvée</span>
+                        @endif
+                    </p>
                 </div>
             </div>
+            <div class="container">
+                <div class="block-heading">
+                    <h4><span class="heading-icon"><i class="fa fa-users"></i></span>Nos partenaires</h4>
+                    <a href="about.html" class="btn btn-primary btn-sm pull-right">Tous les partenaires <i
+                                class="fa fa-long-arrow-right"></i></a>
+                </div>
+                <div class="row">
+                    <ul class="owl-carousel" id="clients-slider" data-columns="4" data-autoplay="yes"
+                        data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="4"
+                        data-items-desktop-small="4" data-items-mobile="2" data-items-tablet="4">
+                        <li class="item"><a href="#"><img src="{{ asset('site/image/logo-na.png') }}" alt=""></a></li>
+                        <li class="item"><a href="#"><img src="{{ asset('site/image/logo-na.png') }}" alt=""></a></li>
+                        <li class="item"><a href="#"><img src="{{ asset('site/image/logo-na.png') }}" alt=""></a></li>
+                        <li class="item"><a href="#"><img src="{{ asset('site/image/logo-na.png') }}" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
             <div class="padding-tb45 bottom-blocks">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4 col-sm-4 features-list column">
-                            <h3>Theme features</h3>
-                            <ul>
-                                <li>
-                                    <div class="icon"><i class="fa fa-umbrella"></i></div>
-                                    <div class="text">
-                                        <h4>Lots of possibilities</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon"><i class="fa fa-list"></i></div>
-                                    <div class="text">
-                                        <h4>Property list view</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon"><i class="fa fa-search"></i></div>
-                                    <div class="text">
-                                        <h4>Advance Search Options</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon"><i class="fa fa-users"></i></div>
-                                    <div class="text">
-                                        <h4>Agents Profile</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4 col-sm-4 popular-agent column">
-                            <h3>Popular Agent</h3>
-                            <a href="agent-detail.html"><img
-                                        src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt=""
-                                        class="img-thumbnail"></a>
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <h4><a href="agent-detail.html">Brooklyn Coyle</a></h4>
-                                    <a href="agent-detail.html" class="btn btn-sm btn-primary">more details</a>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <ul class="contact-info">
-                                        <li><i class="fa fa-phone"></i> +87 6543 210</li>
-                                        <li><i class="fa fa-envelope"></i> brook@gmail.com</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4 latest-testimonials column">
-                            <h3>Client Testimonials</h3>
+                        <h3 class="text-center">Ils nous ont fait confiance</h3>
+                        <div class="col-md-4 col-sm-4 latest-testimonials column carde">
+
                             <ul class="testimonials">
                                 <li>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas
@@ -489,7 +423,39 @@
                                         amet, consectetur adipiscing.</p>
                                     <img src="http://placehold.it/80x80&amp;text=IMAGE+PLACEHOLDER" alt="Happy Client"
                                          class="testimonial-sender">
-                                    <cite>Mellisa - <strong>My company</strong>
+                                    <cite>Ibrahima DIALLO - <strong>Nataal Agency</strong>
+                                        <br><a href="#">www.nataalagency.com</a>
+                                    </cite>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-4 latest-testimonials column carde ">
+                            <ul class="testimonials">
+                                <li>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas
+                                        rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Lorem ipsum
+                                        dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
+                                        amet, consectetur adipiscing.</p>
+                                    <img src="http://placehold.it/80x80&amp;text=IMAGE+PLACEHOLDER" alt="Happy Client"
+                                         class="testimonial-sender">
+                                    <cite>Sagesse DIHAMBOU - <strong>LyMarket</strong>
+                                        <br><a href="#">www.lymarket.sb</a>
+                                    </cite>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-4 latest-testimonials column carde">
+                            <ul class="testimonials">
+                                <li>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas
+                                        rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Lorem ipsum
+                                        dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
+                                        amet, consectetur adipiscing.</p>
+                                    <img src="http://placehold.it/80x80&amp;text=IMAGE+PLACEHOLDER" alt="Happy Client"
+                                         class="testimonial-sender">
+                                    <cite>Malick DIALLO - <strong>Margo Business</strong>
                                         <br><a href="#">www.companyurl.com</a>
                                     </cite>
                                 </li>
@@ -498,30 +464,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="block-heading">
-                    <h4><span class="heading-icon"><i class="fa fa-users"></i></span>Our Partners</h4>
-                    <a href="about.html" class="btn btn-primary btn-sm pull-right">All partners <i
-                                class="fa fa-long-arrow-right"></i></a>
-                </div>
-                <div class="row">
-                    <ul class="owl-carousel" id="clients-slider" data-columns="6" data-autoplay="yes"
-                        data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="6"
-                        data-items-desktop-small="4" data-items-mobile="2" data-items-tablet="4">
-                        <li class="item"><a href="#"><img src="images/partner-1.png" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="images/partner-2.png" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="images/partner-3.png" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="images/partner-4.png" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="images/partner-5.png" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="images/partner-1.png" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="images/partner-2.png" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="images/partner-3.png" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="images/partner-4.png" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="images/partner-5.png" alt=""></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+
     </div>
     <!-- Start Site Footer -->
    @include('site.footer')
@@ -556,6 +499,8 @@
         )
     });
 </script>
+
+
 
 </body>
 </html>

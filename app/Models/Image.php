@@ -12,6 +12,7 @@ class Image extends Model
         'entrepot_id',
         'immeubles_id',
         'magasin_id',
+        'bureau_id',
         'terrain_id',
         'hectare_id',
         'villa_id',

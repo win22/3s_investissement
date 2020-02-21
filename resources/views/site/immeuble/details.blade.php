@@ -48,7 +48,10 @@
         </div>
 
         <div class="widget">
-            <h3 class="widgettitle">Details </h3>
+            <h3 class="widgettitle">Details <br/>
+                @if( ($immeub['sold']) == 1 )
+                <span style="color: limegreen; font-family: 'Manjari Regular'">{{ $immeub['pourcentage'] }} de réduction</span>
+                @endif</h3>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Adresse:</span><br/>
@@ -81,16 +84,16 @@
             </div>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
-                    <span style="color: red">Chambre:</span><br/>
-                    <span>{{ $immeub['chambre'] }}</span>
+                    <span style="color: red">Appartement:</span><br/>
+                    <span>{{ $immeub['appartement'] }}</span>
                 </div>
                 <div class="col-md-4">
-                    <span style="color: red">Cuisines:</span><br/>
-                    <span>{{ $immeub['cuisine'] }}</span>
+                    <span style="color: red">Piscine:</span><br/>
+                    <span>{{ $immeub['piscine'] }}</span>
                 </div>
                 <div class="col-md-4">
-                    <span style="color: red">Salle de bain:</span><br/>
-                    <span>{{ $immeub['sale_de_bain'] }}</span>
+                    <span style="color: red">Dimension:</span><br/>
+                    <span>{{ $immeub['dimension'] }}</span>
                 </div>
             </div>
             <div style="font-family: 'Manjari Bold'" class="row">
@@ -99,8 +102,8 @@
                     <span>{{ $immeub['garage'] }}</span>
                 </div>
                 <div class="col-md-4">
-                    <span style="color: red">Salon:</span><br/>
-                    <span>{{ $immeub['salon'] }}</span>
+                    <span style="color: red">Étage:</span><br/>
+                    <span>{{ $immeub['etage'] }}</span>
                 </div>
             </div>
             <br/>
@@ -198,7 +201,7 @@
                     data-pagination="no" data-arrows="yes" data-single-item="no">
                     @foreach($immeub_similaire as $immeub)
                     <li class="item property-block">
-                        <a href="{{ route('property-detail', array('select' => $immeub->id)) }}" class="property-featured-image">
+                        <a href="{{ route('detail_im', array('select' => $immeub->id)) }}" class="property-featured-image">
                             <img style="height: 150px;"  src="{{ asset($immeub->image) }}" alt="">
                             @if($immeub->option == 1)
                             <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
@@ -209,7 +212,7 @@
                             @endif
                         </a>
                         <div class="property-info">
-                            <h4><a href="{{ route('property-detail', array('select' => $immeub->id)) }}">{{ $immeub->name }}</a></h4>
+                            <h4><a href="{{ route('detail_im', array('select' => $immeub->id)) }}">{{ $immeub->name }}</a></h4>
                             <span class="location">{{ $immeub->adresse }}</span>
                             @if($immeub->devise == 1)
                             <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $immeub->prix }}</span><strong>CFA</strong></div>

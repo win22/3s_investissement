@@ -232,31 +232,54 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview {{ request()->is('all_appart','add_appart')? 'open-menu' : ''}} ">
+                    <li class="nav-item has-treeview {{ request()->is('all_bur','add_burt')? 'open-menu' : ''}} ">
                         <a href="#" class="nav-link {{ request()->is('all_bur','add_bur')? 'active' : ''}}">
                             <i class="nav-icon fas fa-chair"></i>
                             <p>
-                                Burreau
+                                Bureaux
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <a href="{{ route('bureaux') }}" class="nav-link {{ request()->is('all_bur')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Liste Appartements</p>
+                                    <p>Liste bureaux</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('add_bureau') }}" class="nav-link {{ request()->is('add_bur')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Ajouter Appartements</p>
+                                    <p>Ajouter un bureau</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview {{ request()->is('all_appart','add_appart')? 'open-menu' : ''}} ">
-                        <a href="#" class="nav-link {{ request()->is('all_bur','add_bur')? 'active' : ''}}">
+                    <li class="nav-item has-treeview {{ request()->is('all_terre','add_terre')? 'open-menu' : ''}} ">
+                        <a href="#" class="nav-link {{ request()->is('all_terre','add_terre')? 'active' : ''}}">
+                            <i class="nav-icon fas fa-ruler-combined"></i>
+                            <p>
+                                Terrain
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('terrains') }}" class="nav-link {{ request()->is('all_terre')?  'active' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Liste terrains</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('add_terrain') }}" class="nav-link {{ request()->is('add_terre')?  'active' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Ajouter un terrains</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview {{ request()->is('all_entr','add_entr')? 'open-menu' : ''}} ">
+                        <a href="#" class="nav-link {{ request()->is('all_entr','add_entr')? 'active' : ''}}">
                             <i class="nav-icon fas fa-warehouse"></i>
                             <p>
                                 Entreprôts
@@ -267,13 +290,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="#" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Liste Appartements</p>
+                                    <p>Liste entreprôts</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Ajouter Appartements</p>
+                                    <p>Ajouter entreprôts</p>
                                 </a>
                             </li>
                         </ul>
@@ -302,29 +325,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview {{ request()->is('all_entr','add_entr')? 'open-menu' : ''}} ">
-                        <a href="#" class="nav-link {{ request()->is('all_entr','add_entr')? 'active' : ''}}">
-                            <i class="nav-icon fas fa-ruler-combined"></i>
-                            <p>
-                                Terrain
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Liste Appartements</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Ajouter Appartements</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
                     <li class="nav-item has-treeview {{ request()->is('all_entr','add_entr')? 'open-menu' : ''}} ">
                         <a href="#" class="nav-link {{ request()->is('all_entr','add_entr')? 'active' : ''}}">
                             <i class="nav-icon fas fa-campground"></i>

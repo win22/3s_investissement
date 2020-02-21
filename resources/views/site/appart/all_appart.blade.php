@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="widget sidebar-widget featured-properties-widget">
-                <h3 class="widgettitle">Affiche</h3>
+                <h3 class="widgettitle"></h3>
                 <img  style="height: 380px" src="{{ asset('site/image/02.jpg ') }}">
             </div>
         </form>

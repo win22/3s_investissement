@@ -48,7 +48,10 @@
         </div>
 
         <div class="widget">
-            <h3 class="widgettitle">Details </h3>
+            <h3 class="widgettitle">Details <br/>
+                @if( ($appart['sold']) == 1 )
+                <span style="color: limegreen; font-family: 'Manjari Regular'">{{ $appart['pourcentage'] }} de réduction</span>
+                @endif</h3>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Adresse:</span><br/>

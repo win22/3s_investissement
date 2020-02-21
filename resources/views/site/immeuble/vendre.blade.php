@@ -9,7 +9,7 @@
             <ul>
                 @foreach($immeub_vendre as $immeub)
                 <li class="type-rent col-md-12 reveal">
-                    <div class="col-md-4"><a href="{{ route('property-detail', array('select' => $immeub->id)) }}"
+                    <div class="col-md-4"><a href="{{ route('detail_im', array('select' => $immeub->id)) }}"
                                              class="property-featured-image"> <img src="{{ asset($immeub->image) }}"
                                                                                    alt=""> <span class="images-count"><i
                                     class="fa fa-picture-o"></i> 1</span>
@@ -34,7 +34,7 @@
                             <div style="background-color: rgba(2,72,255,0.76)" class="price">
                                 <span>{{ $immeub->prix }}</span><strong>$</strong></div>
                             @endif
-                            <h4><a href="{{ route('property-detail', array('select' => $immeub->id)) }}">{{
+                            <h4><a href="{{ route('detail_im', array('select' => $immeub->id)) }}">{{
                                     $immeub->name }}</a></h4>
                             <span class="location">{{ $immeub->adresse }}</span>
                             <p>{{ $immeub->short_description }}</p>
@@ -55,7 +55,7 @@
     </div>
     <!-- Start Sidebar -->
     <div class="sidebar right-sidebar col-md-3">
-        <form action="{{ route('search_im_ven') }}" method="post">
+        <form action="{{ route('search_ven_im') }}" method="post">
             @csrf
             <div class="widget sidebar-widget">
                 <h3 class="widgettitle">Recherche</h3>

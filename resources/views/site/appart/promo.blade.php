@@ -37,7 +37,12 @@
                             <h4><a href="{{ route('property-detail', array('select' => $appart->id)) }}">{{
                                     $appart->name }}</a></h4>
                             <span class="location">{{ $appart->adresse }}</span>
-                            <p>{{ $appart->short_description }}</p>
+                            <p>
+                                @if( ($appart['sold']) == 1 )
+                                <strong style="color: #00bd49; font-family: 'Manjari Regular'">{{ $appart['pourcentage'] }} de réduction</strong>
+                                @endif
+                                <br/>
+                                {{ $appart->short_description }}</p>
                         </div>
                         <div class="property-amenities clearfix">
                             <span class="area"><strong>{{ $appart->chambre }}</strong>Chambre</span>

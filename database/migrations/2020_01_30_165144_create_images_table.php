@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use Session;
 class CreateImagesTable extends Migration
 {
     /**
@@ -16,7 +16,7 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('appartement_id')->nullable();
-            $table->integer('burreau_id')->nullable();
+            $table->integer('bureau_id')->nullable();
             $table->integer('entrepot_id')->nullable();
             $table->integer('immeuble_id')->nullable();
             $table->integer('magasin_id')->nullable();

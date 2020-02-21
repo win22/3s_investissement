@@ -9,7 +9,7 @@
             <ul>
                 @foreach($villa_promo as $villa)
                 <li class="type-rent col-md-12 reveal">
-                    <div class="col-md-4"><a href="{{ route('property-detail', array('select' => $villa->id)) }}"
+                    <div class="col-md-4"><a href="{{ route('villa_detail', array('select' => $villa->id)) }}"
                                              class="property-featured-image"> <img src="{{ asset($villa->image) }}"
                                                                                    alt=""> <span class="images-count"><i
                                     class="fa fa-picture-o"></i> 1</span>
@@ -34,17 +34,27 @@
                             <div style="background-color: rgba(2,72,255,0.76)" class="price">
                                 <span>{{ $villa->prix }}</span><strong>$</strong></div>
                             @endif
-                            <h4><a href="{{ route('property-detail', array('select' => $villa->id)) }}">{{
+                            <h4><a href="{{ route('villa_detail', array('select' => $villa->id)) }}">{{
                                     $villa->name }}</a></h4>
-                            <span class="location">{{ $villa->adresse }}</span>
-                            <p>{{ $villa->short_description }}</p>
+                            <span class="location">{{ $villa->adresse }}
+                            </span>
+                            <p>
+                                @if( ($villa['sold']) == 1 )
+                                <strong style="color: #00bd49; font-family: 'Manjari Regular'">{{ $villa['pourcentage'] }} de réduction</strong>
+                                @endif
+                                <br/>
+                                {{ $villa->short_description }}
+                            </p>
+
                         </div>
+
                         <div class="property-amenities clearfix">
                             <span class="area"><strong>{{ $villa->chambre }}</strong>Chambre</span>
                             <span class="baths"><strong>{{ $villa->salon }}</strong>Salon</span>
                             <span class="beds"><strong>{{ $villa->cuisine }}</strong>Cuisine</span>
                             <span class="parking"><strong>{{ $villa->garage }}</strong>Garage</span>
                         </div>
+
                 </li>
                 @endforeach
             </ul>

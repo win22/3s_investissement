@@ -143,7 +143,7 @@ class ImmeubleController extends Controller
                 ]);
             }
         endforeach;
-        return redirect('/dashboard')->with(
+        return redirect('/all_im')->with(
             Session::put('message', 'Un Immeuble a été ajouté ')
         );
     }
@@ -277,7 +277,7 @@ class ImmeubleController extends Controller
         $immeubs = Immeuble::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_im = $immeubs->count();
         return view('site.immeuble.all_immeub', ['immeubs' => $immeubs])
             ->with(['nb_im' => $nb_im]);
@@ -303,7 +303,7 @@ class ImmeubleController extends Controller
         $immeub_louer = Immeuble::where('status', 1)
             ->where('option', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_im = $immeub_louer->count();
         return view('site.immeuble.louer', ['immeub_louer' => $immeub_louer])
             ->with(['nb_im' => $nb_im]);
@@ -314,7 +314,7 @@ class ImmeubleController extends Controller
         $immeub_vendre = Immeuble::where('status', 1)
             ->where('option', 2)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_im = $immeub_vendre->count();
         return view('site.immeuble.vendre', ['immeub_vendre' => $immeub_vendre])
             ->with(['nb_im' => $nb_im]);
@@ -325,7 +325,7 @@ class ImmeubleController extends Controller
         $immeub_promo = Immeuble::where('status', 1)
             ->where('sold', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_im = $immeub_promo->count();
         return view('site.immeuble.promo', ['immeub_promo' => $immeub_promo])
             ->with(['nb_im' => $nb_im]);
@@ -341,7 +341,7 @@ class ImmeubleController extends Controller
             ->where('name', 'like', '%' . $search . '%')
             ->where('option', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_im = $immeub_louer->count();
         return view('site.immeuble.louer', ['immeub_louer' => $immeub_louer])
             ->with(['nb_im' => $nb_im]);
@@ -355,9 +355,9 @@ class ImmeubleController extends Controller
         $search = request('search');
         $immeub_vendre = Immeuble::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
-            ->where('option', 1)
+            ->where('option', 2)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_im = $immeub_vendre->count();
         return view('site.immeuble.vendre', ['immeub_vendre' => $immeub_vendre])
             ->with(['nb_im' => $nb_im]);
@@ -373,7 +373,7 @@ class ImmeubleController extends Controller
             ->where('name', 'like', '%' . $search . '%')
             ->where('sold', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_im = $immeub_promo->count();
         return view('site.immeuble.promo', ['immeub_promo' => $immeub_promo])
             ->with(['nb_im' => $nb_im]);

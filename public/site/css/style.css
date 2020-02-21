@@ -3148,23 +3148,37 @@ span.progress-bar-tooltip:after {
 	width: 100%;
 }
 .containerss .span1{
-	text-transform: uppercase;
+	text-transform: none;
 	display: block;
 }
-.text1{
-	color: white;
-	font-size: 80px;
-	box-shadow: -1px 9px 30px -12px rgb(144, 25, 9) !important;
-	font-weight: 700;
-	letter-spacing: 1px;
-	margin-bottom: 20px;
-	font-family: "Verdana" !important;
-	position: relative;
-	animation: text 3s 1;
+/*.text1{*/
+/*	color: white;*/
+/*	font-size: 80px;*/
+/*	text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.18);*/
+/*	font-weight: 10px;*/
+/*	letter-spacing: 2px;*/
+/*	margin-bottom: 20px;*/
+/*	font-family: "Verdana" !important;*/
+/*	position: relative;*/
+/*	animation: text 3s 1;*/
+/*}*/
+/*.text2{*/
+/*	font-size: 55px;*/
+/*	font-weight: bold;*/
+/*	color: #ff9600;*/
+/*	font-family: "Inconsolata" !important;*/
+
+/*}*/
+.text3{
+	font-size: 40px;
+	color: #ebf0ff;
+	font-weight: normal;
+	animation: text2 2s 1;
 }
-.text2{
-	font-size: 30px;
-	color: #ff9600;
+.text1{
+	font-size: 40px;
+	color: #ebf0ff;
+	font-weight: bold;
 }
 
 .line
@@ -3180,14 +3194,27 @@ span.progress-bar-tooltip:after {
 	overflow: hidden;transform: translateY(-50%);
 }
 
+@keyframes text2 {
+	0%{
+
+	}
+	30%{
+		letter-spacing: 15px;
+
+	}
+	85%{
+		letter-spacing: 8px;
+
+	}
+}
 
 @keyframes text {
 	0%{
 
-		margin-bottom: -40px;
+		margin-bottom: -90px;
 	}
 	30%{
-		letter-spacing: 25px;
+		letter-spacing: 45px;
 		margin-bottom: -40px;
 	}
 	85%{
@@ -3218,7 +3245,19 @@ span.progress-bar-tooltip:after {
 }
 .reveal-3
 {
-	transition-delay: .4s;
+	transition-delay: .3s;
+
+}
+
+.reveal-4
+{
+	transition-delay: 2s;
+
+}
+
+.reveal-5
+{
+	transition-delay: 3s;
 
 }
 

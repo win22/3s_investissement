@@ -106,18 +106,14 @@
                         @endforeach
                     </div>
                     <p class="card-text">
-                        @if($nb>0)
-                        Total des informations : <span id="total_records">{{ $nb }}</span>
-                        @else
+                        @if($nb<=0)
                         <span align="center" class="text-center">Aucune information trouvé</span>
                         @endif
                     </p>
 
                     <div class="card-tools">
-
                         <ul class="pagination pagination-sm float-right">
                             {{ $all_villa->links() }}
-
                         </ul>
                     </div>
                 </div>
@@ -211,18 +207,14 @@
                         @endforeach
                     </div>
                     <p class="card-text">
-                        @if($nb_v>0)
-                        Total des informations : <span id="total_records">{{ $nb_v }}</span>
-                        @else
+                        @if($nb_v<=0)
                         <span align="center" class="text-center">Aucune information trouvé</span>
                         @endif
                     </p>
 
                     <div class="card-tools">
-
                         <ul class="pagination pagination-sm float-right">
                             {{ $all_villa_vendre->links() }}
-
                         </ul>
                     </div>
                 </div>
@@ -231,7 +223,7 @@
                     <div class="row">
                         @foreach($all_villa_sold as $villa)
                         <div class="col-md-4">
-                            <div class="card  card-success1 card-outline1">
+                            <div class="card carde">
                                 <div class="ribbon-wrapper ribbon-lg">
                                     <div class="ribbon bg-success">
                                         Promo
@@ -325,15 +317,12 @@
                         @endforeach
                     </div>
                     <p class="card-text">
-                        @if($nb_s>0)
-                        Total des informations : <span id="total_records">{{ $nb_s }}</span>
-                        @else
+                        @if($nb_s<=0)
                         <span class="text-center">Aucune information trouvé</span>
                         @endif
                     </p>
 
                     <div class="card-tools">
-
                         <ul class="pagination pagination-sm float-right">
                             {{ $all_villa_sold->links() }}
 

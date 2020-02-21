@@ -106,9 +106,7 @@
                         @endforeach
                     </div>
                     <p class="card-text">
-                        @if($nb>0)
-                        Total des informations : <span id="total_records">{{ $nb }}</span>
-                        @else
+                        @if($nb<=0)
                         <span align="center" class="text-center">Aucune information trouvé</span>
                         @endif
                     </p>
@@ -134,7 +132,6 @@
                                 </div>
                                 <div class="card-header"
                                      style="background: url({{$appart['image'] }}) center center; background-position: cover; height: 130px !important;">
-
                                     <div style="padding-top: 103px">
                                         <h2 style="padding: 10px;" class="badge badge-info float-left">{{
                                             $appart['prix'] }}
@@ -212,9 +209,7 @@
                         @endforeach
                     </div>
                     <p class="card-text">
-                        @if($nb_v>0)
-                        Total des informations : <span id="total_records">{{ $nb_v }}</span>
-                        @else
+                        @if($nb_v<=0)
                         <span align="center" class="text-center">Aucune information trouvé</span>
                         @endif
                     </p>
@@ -232,7 +227,7 @@
                     <div class="row">
                         @foreach($all_appart_sold as $appart)
                         <div class="col-md-4">
-                            <div class="card  card-success1 card-outline1">
+                            <div class="card carde">
                                 <div class="ribbon-wrapper ribbon-lg">
                                     <div class="ribbon bg-success">
                                         Promo
@@ -241,8 +236,8 @@
                                 <div class="card-header"
                                      style="background: url({{$appart['image'] }}) center center; height: 130px !important;">
 
-                                    <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
+                                    <div style="padding-top: 103px">
+                                        <h2 style="padding: 10px;" class="badge badge-info float-left">{{
                                             $appart['prix'] }}
                                             @if($appart['devise'] == 1)
                                             CFA
@@ -326,9 +321,7 @@
                         @endforeach
                     </div>
                     <p class="card-text">
-                        @if($nb_s>0)
-                        Total des informations : <span id="total_records">{{ $nb_s }}</span>
-                        @else
+                        @if($nb_s<=0)
                         <span class="text-center">Aucune information trouvé</span>
                         @endif
                     </p>

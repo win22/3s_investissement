@@ -20,12 +20,10 @@ class VillaController extends Controller
     public function all_villa()
     {
         $villa = Villa::where('option', 1)
-            ->where('sold', 2)
             ->latest()
             ->paginate(6);
         $nb = $villa->count();
         $villa_vendre = Villa::where('option', 2)
-            ->where('sold', 2)
             ->latest()
             ->paginate(6);
         $nb_v = $villa_vendre->count();
@@ -293,7 +291,7 @@ class VillaController extends Controller
         $villa_louer = villa::where('status', 1)
             ->where('option', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_vill = $villa_louer->count();
         return view('site.villa.louer', ['villa_louer' => $villa_louer])
             ->with(['nb_vill' => $nb_vill]);
@@ -304,7 +302,7 @@ class VillaController extends Controller
         $villa_vendre = villa::where('status', 1)
             ->where('option', 2)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_vill = $villa_vendre->count();
         return view('site.villa.vendre', ['villa_vendre' => $villa_vendre])
             ->with(['nb_vill' => $nb_vill]);
@@ -316,7 +314,7 @@ class VillaController extends Controller
         $villa_promo = villa::where('status', 1)
             ->where('sold', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_vill = $villa_promo->count();
         return view('site.villa.promo', ['villa_promo' => $villa_promo])
             ->with(['nb_vill' => $nb_vill]);
@@ -332,7 +330,7 @@ class VillaController extends Controller
         $villas = villa::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_vill = $villas->count();
         return view('site.villa.all_villa', ['villas' => $villas])
             ->with(['nb_vill' => $nb_vill]);
@@ -348,7 +346,7 @@ class VillaController extends Controller
             ->where('name', 'like', '%' . $search . '%')
             ->where('option', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_vill = $villa_louer->count();
         return view('site.villa.louer', ['villa_louer' => $villa_louer])
             ->with(['nb_vill' => $nb_vill]);
@@ -364,7 +362,7 @@ class VillaController extends Controller
             ->where('name', 'like', '%' . $search . '%')
             ->where('option', 2)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_vill = $villa_vendre->count();
         return view('site.villa.vendre', ['villa_vendre' => $villa_vendre])
             ->with(['nb_vill' => $nb_vill]);
@@ -380,7 +378,7 @@ class VillaController extends Controller
             ->where('name', 'like', '%' . $search . '%')
             ->where('sold', 1)
             ->latest()
-            ->paginate(4);
+            ->paginate(3);
         $nb_vill = $villa_promo->count();
         return view('site.villa.promo', ['villa_promo' => $villa_promo])
             ->with(['nb_vill' => $nb_vill]);

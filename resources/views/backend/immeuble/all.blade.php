@@ -123,7 +123,7 @@
                     <div class="row">
                         @foreach($immeubs_vendre as $immeub_v)
                         <div class="col-md-4 p-2">
-                            <div class="card carde dropdown-hover animated-dropdown-menu">
+                            <div class="card carde">
                                 <div class="ribbon-wrapper sm ribbon">
                                     <div style="color: white !important; " class="ribbon bg-danger text-white">
                                         <span class="small" style="font-family: 'Manjari Bold'">A louer</span>
@@ -226,7 +226,7 @@
                     <div class="row">
                         @foreach($immeubs_promo as $immeub_p)
                         <div class="col-md-4">
-                            <div class="card  card-success1 card-outline1">
+                            <div class="card carde">
                                 <div class="ribbon-wrapper ribbon-lg">
                                     <div class="ribbon bg-success">
                                         Promo
@@ -234,9 +234,8 @@
                                 </div>
                                 <div class="card-header"
                                      style="background: url({{$immeub_p['image'] }}) center center; height: 130px !important;">
-
-                                    <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
+                                    <div style="padding-top: 103px">
+                                        <h2 style="padding: 10px;" class="badge badge-info float-left">{{
                                             $immeub_p['prix'] }}
                                             @if($immeub_p['devise'] == 1)
                                             CFA

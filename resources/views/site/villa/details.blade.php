@@ -48,7 +48,11 @@
         </div>
 
         <div class="widget">
-            <h3 class="widgettitle">Details </h3>
+            <h3 class="widgettitle">Details<br>
+                @if( ($villa['sold']) == 1 )
+                <span style="color: limegreen; font-family: 'Manjari Regular'">{{ $villa['pourcentage'] }} de réduction</span>
+                @endif
+            </h3>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Adresse:</span><br/>
@@ -102,7 +106,9 @@
                     <span style="color: red">Salon:</span><br/>
                     <span>{{ $villa['salon'] }}</span>
                 </div>
+
             </div>
+
             <br/>
             <div class="tabs">
                 <ul class="nav nav-tabs">
@@ -197,7 +203,7 @@
                     data-pagination="no" data-arrows="yes" data-single-item="no">
                     @foreach($villa_similaire as $villa)
                     <li class="item property-block">
-                        <a href="{{ route('property-detail', array('select' => $villa->id)) }}" class="property-featured-image">
+                        <a href="{{ route('villa_detail', array('select' => $villa->id)) }}" class="property-featured-image">
                             <img style="height: 150px;"  src="{{ asset($villa->image) }}" alt="">
                             @if($villa->option == 1)
                             <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
@@ -208,7 +214,7 @@
                             @endif
                         </a>
                         <div class="property-info">
-                            <h4><a href="{{ route('property-detail', array('select' => $villa->id)) }}">{{ $villa->name }}</a></h4>
+                            <h4><a href="{{ route('villa_detail', array('select' => $villa->id)) }}">{{ $villa->name }}</a></h4>
                             <span class="location">{{ $villa->adresse }}</span>
                             @if($villa->devise == 1)
                             <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>CFA</strong></div>
