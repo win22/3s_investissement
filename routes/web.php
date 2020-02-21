@@ -14,20 +14,22 @@
 Route::get('/', 'HomeController@index');
 
 
-Route::get('send_message/{name}', 'HomeController@captcha_send')->name('save_mess');
+Route::get('/send_message/{name}', 'HomeController@captcha_send')->name('save_mess');
+Route::get('/send_message_two', 'HomeController@captcha_send_two')->name('save_mess_two');
 Route::get('/contact', 'HomeController@contacts')->name('contact_site');
+Route::get('/about', 'HomeController@about')->name('about_site');
 
 //              Appartement site config
-Route::get('details_proprieties/{id}', 'AppartController@details_site')->name('property-detail');
-Route::get('all_appart', 'HomeController@all_appart')->name('all_appar');
-Route::get('all_appartement_louer', 'AppartController@all_louer')->name('app_louer');
-Route::get('all_appartement_vendre', 'AppartController@all_vendre')->name('app_vendre');
-Route::get('all_appartement_vendre', 'AppartController@all_vendre')->name('app_vendre');
-Route::get('all_appartement_promo', 'AppartController@all_promo')->name('app_promo');
-Route::post('all_search_louer', 'AppartController@search_louer')->name('search_lou');
-Route::post('all_search', 'AppartController@search')->name('search');
-Route::post('all_search_vendre', 'AppartController@search_vendre')->name('search_ven');
-Route::post('all_search_promo', 'AppartController@search_promo')->name('search_promo');
+Route::get('/details_proprieties/{id}', 'AppartController@details_site')->name('property-detail');
+Route::get('/all_appart', 'HomeController@all_appart')->name('all_appar');
+Route::get('/all_appartement_louer', 'AppartController@all_louer')->name('app_louer');
+Route::get('/all_appartement_vendre', 'AppartController@all_vendre')->name('app_vendre');
+Route::get('/all_appartement_vendre', 'AppartController@all_vendre')->name('app_vendre');
+Route::get('/all_appartement_promo', 'AppartController@all_promo')->name('app_promo');
+Route::post('/all_search_louer', 'AppartController@search_louer')->name('search_lou');
+Route::post('/all_search', 'AppartController@search')->name('search');
+Route::post('/all_search_vendre', 'AppartController@search_vendre')->name('search_ven');
+Route::post('/all_search_promo', 'AppartController@search_promo')->name('search_promo');
 
 //              Villa site config
 Route::get('villa_all', 'HomeController@all_villa')->name('vil_all');
@@ -77,7 +79,7 @@ Route::post('all_search_promo_terrain', 'TerrainController@search_promo')->name(
 
 //           ----------partie admin--------------
 Route::get('/investi_admin', 'SuperAdminController@index');
-Route::post('/admin_connexion', 'SuperAdminController@connexion');
+Route::post('/signin_connexion_user_admin', 'SuperAdminController@connexion');
 Route::group([
     'middleware' => 'App\Http\Middleware\Auth'
     ], function ()

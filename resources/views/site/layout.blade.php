@@ -42,18 +42,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-8 col-xs-8">
-                        <img style="width: 65px;border-radius: 30px"
-                             src="{{ URL::to(asset('backend/img/logo2.jpg')) }}">
+                        <img style="width: 85px;border-radius: 30px"
+                             src="{{ URL::to(asset('backend/img/logo.png')) }}">
                     </div>
                     <div class="col-md-9 col-sm-8 col-xs-4">
-                        <div class="contact-info-blocks hidden-sm hidden-xs">
+                        <div class="contact-info-blocks hidden-sm hidden-xs" style="padding-top: 10px">
                             <div>
-                                <i style="color: antiquewhite" class="fa fa-phone"></i> Free Line For You
-                                <span>080 378678 90</span>
+                                <i style="color: antiquewhite !important;" class="fa fa-phone"></i>&nbsp; Appelez nous
+                                <span>(+221) 33 825 82 92 | 77 390 12 63 | 77 472 39 46</span>
+
                             </div>
                             <div>
-                                <i style="color: antiquewhite" class="fa fa-envelope"></i> Email Us
-                                <span>sales@realspaces.com</span>
+                                <i style="color: white !important; " class="fa fa-envelope"></i>&nbsp;
+                                Notre Email
+                                <span>s3investissement@gmail.com</span>
                             </div>
                         </div>
                         <a href="#" style="color: white !important;" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a>
@@ -65,7 +67,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <nav class="navigation">
-
                                 <ul class="sf-menu">
                                     <li class="active2"><a href="/">Acceuil</a></li>
                                     <li><a href="javascript:;">Propriétés</a>
@@ -104,8 +105,8 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('terre_promo') }}">Terrains</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">A propos</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{ route('about_site') }}">A propos</a></li>
+                                    <li><a href="{{ route('contact_site') }}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -126,6 +127,8 @@
     </div>
     <!-- Start Site Footer -->
     @include('site.footer')
+    <!-- Button trigger modal -->
+
 </div>
 <script src="{{ asset('site/js/jquery-2.0.0.min.js') }}"></script> <!-- Jquery Library Call -->
 <script src="{{ asset('site/plugins/prettyphoto/js/prettyphoto.js') }}"></script> <!-- PrettyPhoto Plugin -->

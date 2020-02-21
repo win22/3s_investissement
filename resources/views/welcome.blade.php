@@ -41,18 +41,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-8 col-xs-8">
-                        <img style="width: 65px;border-radius: 30px"
+                        <img style="width: 85px;border-radius: 30px"
                              src="{{ URL::to(asset('backend/img/logo.png')) }}">
                     </div>
                     <div class="col-md-9 col-sm-8 col-xs-4">
                         <div class="contact-info-blocks hidden-sm hidden-xs" style="padding-top: 10px">
                             <div>
-                                <i style="color: antiquewhite !important;" class="fa fa-phone"></i> Appelez nous
-                                <span>080 378678 90</span>
+                                <i style="color: antiquewhite !important;" class="fa fa-phone"></i>&nbsp; Appelez nous
+                                <span>(+221) 33 825 82 92 | 77 390 12 63 | 77 472 39 46</span>
+
                             </div>
                             <div>
-                                <i style="color: antiquewhite" class="fa fa-envelope"></i>Notre Email
-                                <span>sagesse@gmail.com</span>
+                                <i style="color: white !important; " class="fa fa-envelope"></i>&nbsp;
+                                Notre Email
+                                <span>s3investissement@gmail.com</span>
                             </div>
                     </div>
                         <a href="#" style="color: white !important;" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a>
@@ -102,7 +104,7 @@
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('terre_promo') }}">Terrains</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('contact_site') }}">A propos</a></li>
+                                <li><a href="{{ route('about_site') }}">A propos</a></li>
                                 <li><a href="{{ route('contact_site') }}">Contact</a></li>
                             </ul>
                         </nav>
@@ -116,7 +118,7 @@
     <div class="site-showcase">
         <div class="slider-mask overlay-transparent"></div>
         <!-- Start Hero Slider -->
-        <div class="hero-slider flexslider clearfix" style="height:580px" data-autoplay="yes" ondurationchange="5000" data-pagination="no"
+        <div class="hero-slider flexslider clearfix" style="height:650px" data-autoplay="yes" ondurationchange="5000" data-pagination="no"
              data-arrows="yes" data-style="fade" data-pause="yes">
             <ul class="slides">
                 <li class="slider-banner1" style="background-image:url({{ asset('site/image/03.jpg')}}); height: 680px">
@@ -139,46 +141,6 @@
         </div>
         <!-- End Hero Slider -->
         <!-- Site Search Module -->
-        <div class="site-search-module">
-            <div class="container">
-                <div class="site-search-module-inside">
-                    <form action="#">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <select name="propery type" class="form-control input-lg selectpicker">
-                                        <option selected>Type</option>
-                                        <option>Villa</option>
-                                        <option>Family House</option>
-                                        <option>Single Home</option>
-                                        <option>Cottage</option>
-                                        <option>Apartment</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <select name="propery contract type" class="form-control input-lg selectpicker">
-                                        <option selected>Contract</option>
-                                        <option>Rent</option>
-                                        <option>Buy</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <select name="propery location" class="form-control input-lg selectpicker">
-                                        <option selected>Location</option>
-                                        <option>New York</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary btn-block btn-lg"><i
-                                                class="fa fa-search"></i> Recherche
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- Start Content -->
     <div class="main" role="main">
@@ -187,7 +149,7 @@
                 <div class="container">
                     <div class="row reveal-2">
                         <h3 class="text-center">Choisir un catalogue</h3>
-                        <div class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
+                        <div data-toggle="modal" data-target="#exampleModal" class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
                                     src="{{ URL::to(asset('site/image/03.jpg')) }}"
                                     class="img-thumbnail">
                             <h3 class="text-center">Promo</h3>
@@ -195,19 +157,19 @@
                                 Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
                         </div>
                         <div class="reveal-2">
-                            <div class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
+                            <div data-toggle="modal" data-target="#exampleModal3" class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
                                                                       src="{{ URL::to(asset('site/image/02.jpg')) }}"
                                                                       class="img-thumbnail">
-                                <h3 class="text-center">Louer</h3>
+                                <h3 class="text-center">A louer</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
                                     Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
                             </div>
                         </div>
                         <div class="reveal-3">
-                            <div class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
+                            <div data-toggle="modal" data-target="#exampleModal2" class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
                                                                       src="{{ URL::to(asset('site/image/06.jpg')) }}"
                                                                       class="img-thumbnail">
-                                <h3 class="text-center">Avendre</h3>
+                                <h3 class="text-center">A vendre</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
                                     Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
                             </div>
@@ -468,6 +430,73 @@
     </div>
     <!-- Start Site Footer -->
    @include('site.footer')
+
+
+    <!-- Modal Promo -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Veuillez choisir une catégorie</h5>
+                </div>
+                <div class="modal-body">
+                    <a href="{{ route('app_promo') }}" class="btn btn-success">Appartements</a>
+                    <a href="{{ route('im_promo') }}" class="btn btn-warning">Immeubles</a>
+                    <a href="{{ route('vill_promo') }}" class="btn btn-danger">Villas</a>
+                    <a href="{{ route('bur_promo') }}" class="btn btn-success">Bureaux</a>
+                    <a href="{{ route('terre_promo') }}" class="btn btn-info">Terrains</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal vendre -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Veuillez choisir une catégorie</h5>
+                </div>
+                <div class="modal-body">
+                    <a href="{{ route('app_vendre') }}" class="btn btn-success">Appartements</a>
+                    <a href="{{ route('im_vendre') }}" class="btn btn-warning">Immeubles</a>
+                    <a href="{{ route('vill_vendre') }}" class="btn btn-danger">Villas</a>
+                    <a href="{{ route('bur_vendre') }}" class="btn btn-success">Bureaux</a>
+                    <a href="{{ route('terre_vendre') }}" class="btn btn-info">Terrains</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal louer -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Veuillez choisir une catégorie</h5>
+                </div>
+                <div class="modal-body">
+                    <a href="{{ route('app_louer') }}" class="btn btn-success">Appartements</a>
+                    <a href="{{ route('im_louer') }}" class="btn btn-warning">Immeubles</a>
+                    <a href="{{ route('vill_louer') }}" class="btn btn-danger">Villas</a>
+                    <a href="{{ route('bur_louer') }}" class="btn btn-success">Bureaux</a>
+                    <a href="{{ route('terre_louer') }}" class="btn btn-info">Terrains</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="{{ asset('site/js/jquery-2.0.0.min.js') }}"></script> <!-- Jquery Library Call -->
 <script src="{{ asset('site/plugins/prettyphoto/js/prettyphoto.js') }}"></script> <!-- PrettyPhoto Plugin -->

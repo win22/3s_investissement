@@ -22,7 +22,7 @@
                             <h3 style="font-family: 'Manjari Regular'" class="text-center">Connexion</h3>
                         </div>
 
-                        <form action="/admin_connexion" method="post">
+                        <form action="/signin_connexion_user_admin" method="post">
                             @csrf
                             <div class="form-group">
                                 <label class="label">Adresse e-mail</label>

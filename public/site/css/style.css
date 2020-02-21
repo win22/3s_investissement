@@ -663,7 +663,7 @@ body.boxed .body .site-header, body.boxed .body .main-menu-wrapper{
 	height:30px;
 }
 .middle-header{
-	height:60px;
+	height:75px;
 	background-color: tomato;
 	position:relative;
 	z-index:8;

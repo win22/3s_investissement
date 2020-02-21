@@ -1,48 +1,53 @@
-
 <footer class="site-footer">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6 footer-widget widget">
-                <h3 style="color: white" class="widgettitle">Latest News</h3>
+                <h3 style="color: white" class="widgettitle">Liens utiles</h3>
+                <ul>
+                    <li><a href="submit.html">Propriétés en promo</a></li>
+                    <li><a href="login.html">Proprétes à louer</a></li>
+                    <li><a href="pricing.html">Propriétes à vendre</a></li>
+                    <li><a href="{{ route('about_site') }}">A propos de nous</a></li>
+                    <li><a href="{{ route('contact_site') }}">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 footer-widget widget">
+                <h3 style="color: white" class="widgettitle">Information</h3>
                 <ul>
                     <li>
-                        <a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                        <a href="blog-post.html">
+                            Plus de 200 propriétes reparties par catégorie dans notre site
+                            .</a>
                         <span class="meta-data">1 March, 2014</span>
                     </li>
-                    <li>
-                        <a href="blog-post.html">Lorem ipsum dolor sit amet elit, consectetur adipiscing.</a>
-                        <span class="meta-data">28 February, 2014</span>
-                    </li>
-                    <li>
-                        <a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
-                        <span class="meta-data">26 February, 2014</span>
-                    </li>
                 </ul>
             </div>
+
             <div class="col-md-3 col-sm-6 footer-widget widget">
-                <h3 style="color: white" class="widgettitle">Useful Links</h3>
-                <ul>
-                    <li><a href="submit.html">Add your listing</a></li>
-                    <li><a href="login.html">Become an agent</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="about.html">About us</a></li>
-                    <li><a href="shortcodes.html">Theme features</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6 footer-widget widget">
-                <h3  style="color: white" class="widgettitle">Twitter Updates</h3>
+                <h3 style="color: white" class="widgettitle">Réseaux sociaux</h3>
                 <ul class="twitter-widget"></ul>
             </div>
             <div class="col-md-3 col-sm-6 footer-widget widget">
                 <h3 style="color: white" class="widgettitle">Newsletter</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec
-                    facilisis fermentum sem, ac viverra ante luctus vel.</p>
+                <p style="color: white">
+                    Abonnez-vous à notre newsletter pour etre rapidement informé sur nos nouvelles promotions
+                </p>
                 <form method="post" id="newsletterform" name="newsletterform" class="newsletter-form"
                       action="mail/newsletter.php">
-                    <input type="email" name="nl-email" id="nl-email" placeholder="Enter your email"
+                    <input required type="email" name="nl-email" id="nl-email" placeholder="Saisir ici"
                            class="form-control">
+                    <div class="form-group row">
+                        <div style="width: 10px !important;" class="col-md-6 offset-md-4">
+                            <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}"></div>
+                            @if($errors->has('g-recaptcha-response'))
+                            <span>
+                                <strong style="color: red">{{ $errors->first('g-recaptcha-response')}}</strong>
+                                @endif
+                            </span>
+                        </div>
+                    </div>
                     <input type="submit" name="nl-submit" id="nl-submit" class="btn btn-primary btn-block btn-lg"
-                           value="Subscribe">
+                           value="Souscrire">
                 </form>
                 <div class="clearfix"></div>
                 <div id="nl-message"></div>
@@ -53,18 +58,9 @@
 <footer class="site-footer-bottom">
     <div class="container">
         <div class="row">
-            <div class="copyrights-col-left col-md-6 col-sm-6">
-                <p style="color: white">&copy; 2020 NataalAgency. All Rights Reserved</p>
-            </div>
-            <div class="copyrights-col-right col-md-6 col-sm-6">
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
-                    <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
-                    <a href="http://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a>
-                    <a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus"></i></a>
-                    <a href="http://www.pinterest.com/" target="_blank"><i class="fa fa-youtube"></i></a>
-                    <a href="#"><i class="fa fa-rss"></i></a>
-                </div>
+            <div class="copyrights-col-left col-md-12 col-sm-6">
+                <p style="color: white">&copy; 2020 <a style="color: white" href="http://nataalagency.com/" bank>NataalAgency</a>.
+                    Tous les droits sont réservés</p>
             </div>
         </div>
     </div>
