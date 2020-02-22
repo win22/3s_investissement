@@ -288,22 +288,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <a href="{{ route('entrepots') }}" class="nav-link {{ request()->is('all_entr')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Liste entreprôts</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('add_entrepot') }}" class="nav-link {{ request()->is('add_entr')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Ajouter entreprôts</p>
+                                    <p>Ajouter un entreprôt</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview {{ request()->is('all_entr','add_entr')? 'open-menu' : ''}} ">
-                        <a href="#" class="nav-link {{ request()->is('all_entr','add_entr')? 'active' : ''}}">
+                    <li class="nav-item has-treeview {{ request()->is('all_mag','add_mag')? 'open-menu' : ''}} ">
+                        <a href="#" class="nav-link {{ request()->is('all_mag','add_mag')? 'active' : ''}}">
                             <i class="nav-icon fas fa-store"></i>
                             <p>
                                 Magasin
@@ -312,15 +312,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <a href="{{ route('magasins') }}" class="nav-link  {{ request()->is('all_mag')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Liste Appartements</p>
+                                    <p>Liste magasin</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('add_magasin') }}" class="nav-link  {{ request()->is('all_mag')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Ajouter Appartements</p>
+                                    <p>Ajouter un magasin</p>
                                 </a>
                             </li>
                         </ul>

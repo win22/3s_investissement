@@ -3,19 +3,19 @@
 <div class="row">
     <div class="col-md-9">
         <div class="block-heading">
-            <h4><span class="heading-icon"><i class="fa fa-th-list"></i></span>Liste des terrains à louer</h4>
+            <h4><span class="heading-icon"><i class="fa fa-th-list"></i></span>Liste des entrepots</h4>
         </div>
         <div class="property-listing">
             <ul>
-                @foreach($terrain_louer as $terrain)
+                @foreach($entrepots as $entrepot)
                 <li class="type-rent col-md-12 reveal">
-                    <div class="col-md-4"><a href="{{ route('detail_terre', array('select' => $terrain->id)) }}"
-                                             class="property-featured-image"> <img src="{{ asset($terrain->image) }}"
+                    <div class="col-md-4"><a href="{{ route('detail_entr', array('select' => $entrepot->id)) }}"
+                                             class="property-featured-image"> <img src="{{ asset($entrepot->image) }}"
                                                                                    alt=""> <span class="images-count"><i
                                     class="fa fa-picture-o"></i> 1</span>
-                            @if($terrain->option == 1)
+                            @if($entrepot->option == 1)
                             <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
-                            @elseif($terrain->option == 2)
+                            @elseif($entrepot->option == 2)
                             <span style="background-color: #00bd49 !important; color: white"
                                   class="badges">vendre</span>
                             @else
@@ -24,38 +24,38 @@
                     </div>
                     <div class="col-md-8">
                         <div class="property-info">
-                            @if($terrain->devise == 1)
+                            @if($entrepot->devise == 1)
                             <div style="background-color: rgba(2,72,255,0.76)" class="price">
-                                <span>{{ $terrain->prix }}</span><strong>CFA</strong></div>
-                            @elseif($terrain->devise == 2)
+                                <span>{{ $entrepot->prix }}</span><strong>CFA</strong></div>
+                            @elseif($entrepot->devise == 2)
                             <div style="background-color: rgba(2,72,255,0.76)" class="price">
-                                <span>{{ $terrain->prix }}</span><strong>EURO</strong></div>
+                                <span>{{ $entrepot->prix }}</span><strong>EURO</strong></div>
                             @else
                             <div style="background-color: rgba(2,72,255,0.76)" class="price">
-                                <span>{{ $terrain->prix }}</span><strong>$</strong></div>
+                                <span>{{ $entrepot->prix }}</span><strong>$</strong></div>
                             @endif
-                            <h4><a href="{{ route('detail_terre', array('select' => $terrain->id)) }}">{{
-                                    $terrain->name }}</a></h4>
-                            <span class="location">{{ $terrain->adresse }}</span>
-                            <p>{{ $terrain->short_description }}</p>
+                            <h4><a href="{{ route('detail_entr', array('select' => $entrepot->id)) }}">{{
+                                    $entrepot->name }}</a></h4>
+                            <span class="location">{{ $entrepot->adresse }}</span>
+                            <p>{{ $entrepot->short_description }}</p>
                         </div>
                         <div class="property-amenities clearfix">
-                            <span class="parking"><strong>{{ $terrain->dimension }}</strong>Dimension</span>
+                            <span class="parking">Dimension: <strong>{{ $entrepot->dimension }}</strong></span>
                         </div>
                 </li>
                 @endforeach
             </ul>
         </div>
         <ul class="pagination">
-            {{ $terrain_louer->links() }}
+            {{ $entrepots->links() }}
         </ul>
-        @if( $nb_terre <= 0)
+        @if( $nb_entr <= 0)
         <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
         @endif
     </div>
     <!-- Start Sidebar -->
     <div class="sidebar right-sidebar col-md-3">
-        <form action="{{ route('search_lou_terre') }}" method="post">
+        <form action="{{ route('search_entr') }}" method="post">
             @csrf
             <div class="widget sidebar-widget">
                 <h3 class="widgettitle">Recherche</h3>

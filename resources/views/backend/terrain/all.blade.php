@@ -234,10 +234,10 @@
                                      style="background: url({{$terrain_p['image'] }}) center center; height: 130px !important;">
                                     <div style="padding-top: 103px">
                                         <h2 style="padding: 10px;" class="badge badge-info float-left">{{
-                                            $terrain_v['prix'] }}
-                                            @if($terrain_v['devise'] == 1)
+                                            $terrain_p['prix'] }}
+                                            @if($terrain_p['devise'] == 1)
                                             CFA
-                                            @elseif($terrain_v['devise'] == 2)
+                                            @elseif($terrain_p['devise'] == 2)
                                             EURO
                                             @else
                                             $

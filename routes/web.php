@@ -75,6 +75,27 @@ Route::post('all_search_louer_terrain', 'TerrainController@search_louer')->name(
 Route::post('all_search_vendre_terrain', 'TerrainController@search_vendre')->name('search_ven_terre');
 Route::post('all_search_promo_terrain', 'TerrainController@search_promo')->name('search_promo_terre');
 
+//              entrepot site conig
+Route::get('all_entrepot', 'HomeController@all_entrepot')->name('all_entr');
+Route::get('details_entrepot_font/{id}', 'EntrepotController@details_entrepot_site')->name('detail_entr');
+Route::get('louer_entrepot', 'EntrepotController@all_louer')->name('entr_louer');
+Route::get('vendre_entrepot', 'EntrepotController@all_vendre')->name('entr_vendre');
+Route::get('promo_entrepot', 'EntrepotController@all_promo')->name('entr_promo');
+Route::post('all_search_entrepot', 'EntrepotController@search')->name('search_entr');
+Route::post('all_search_louer_entrepot', 'EntrepotController@search_louer')->name('search_lou_entr');
+Route::post('all_search_vendre_entrepot', 'EntrepotController@search_vendre')->name('search_ven_entr');
+Route::post('all_search_promo_entrepot', 'EntrepotController@search_promo')->name('search_promo_entr');
+
+//              magasin site conig
+Route::get('all_magasin', 'HomeController@all_magasin')->name('all_mag');
+Route::get('details_magasin_font/{id}', 'MagasinController@details_magasin_site')->name('detail_mag');
+Route::get('louer_magasin', 'MagasinController@all_louer')->name('mag_louer');
+Route::get('vendre_magasin', 'MagasinController@all_vendre')->name('mag_vendre');
+Route::get('promo_magasin', 'MagasinController@all_promo')->name('mag_promo');
+Route::post('all_search_magasin', 'MagasinController@search')->name('search_mag');
+Route::post('all_search_louer_magasin', 'MagasinController@search_louer')->name('search_lou_mag');
+Route::post('all_search_vendre_magasin', 'MagasinController@search_vendre')->name('search_ven_mag');
+Route::post('all_search_promo_magasin', 'MagasinController@search_promo')->name('search_promo_mag');
 
 
 //           ----------partie admin--------------
@@ -150,4 +171,26 @@ Route::group([
     Route::get('/unactive_terre/{id}', 'TerrainController@unactive')->name('desactive_terrains');
     Route::post('save_terre', 'TerrainController@save')->name('save_terrain');
     Route::post('/update_terre/{id}', 'TerrainController@updates')->name('modifie_terre');
+
+    //Route pour les entrepots
+    Route::get('all_entr', 'EntrepotController@all_entrepot')->name('entrepots');
+    Route::get('add_entr', 'EntrepotController@index')->name('add_entrepot');
+    Route::get('/detail_entr/{id}', 'EntrepotController@details')->name('detail_entrepot');
+    Route::get('/active_entr/{id}', 'EntrepotController@active')->name('active_entrepots');
+    Route::get('/edit_entr/{id}', 'EntrepotController@edits')->name('selectionner_entr');
+    Route::get('/delete_entr/{id}', 'EntrepotController@supprimer')->name('supprimer_entr');
+    Route::get('/unactive_entr/{id}', 'EntrepotController@unactive')->name('desactive_entrepots');
+    Route::post('save_entr', 'EntrepotController@save')->name('save_entrepot');
+    Route::post('/update_entr/{id}', 'EntrepotController@updates')->name('modifie_entr');
+
+    //Route pour les magasins
+    Route::get('all_mag', 'MagasinController@all_magasin')->name('magasins');
+    Route::get('add_mag', 'MagasinController@index')->name('add_magasin');
+    Route::get('/detail_mag/{id}', 'MagasinController@details')->name('detail_magasin');
+    Route::get('/active_mag/{id}', 'MagasinController@active')->name('active_magasins');
+    Route::get('/edit_mag/{id}', 'MagasinController@edits')->name('selectionner_mag');
+    Route::get('/delete_mag/{id}', 'MagasinController@supprimer')->name('supprimer_mag');
+    Route::get('/unactive_mag/{id}', 'MagasinController@unactive')->name('desactive_magasins');
+    Route::post('save_mag', 'MagasinController@save')->name('save_magasin');
+    Route::post('/update_mag/{id}', 'MagasinController@updates')->name('modifie_mag');
 });

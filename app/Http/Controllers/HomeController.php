@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Appartement;
 use App\Models\Bureau;
+use App\Models\Entrepot;
 use App\Models\Immeuble;
+use App\Models\Magasin;
 use App\Models\Terrain;
 use App\Models\villa;
 use App\Models\Message;
@@ -98,6 +100,26 @@ class HomeController extends Controller
         $nb_terre = $terrains->count();
         return view('site.terrain.all_terrain', ['terrains' => $terrains])
             ->with(['nb_terre' => $nb_terre]);
+    }
+
+    public function all_entrepot()
+    {
+        $entrepots = Entrepot::where('status', 1)
+            ->latest()
+            ->paginate(3);
+        $nb_entr = $entrepots->count();
+        return view('site.entrepot.all_entrepot', ['entrepots' => $entrepots])
+            ->with(['nb_entr' => $nb_entr]);
+    }
+
+    public function all_magasin()
+    {
+        $magasins = Magasin::where('status', 1)
+            ->latest()
+            ->paginate(3);
+        $nb_mag = $magasins->count();
+        return view('site.magasin.all_magasin', ['magasins' => $magasins])
+            ->with(['nb_mag' => $nb_mag]);
     }
 
     public function captcha_send($name)

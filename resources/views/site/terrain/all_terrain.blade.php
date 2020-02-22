@@ -3,13 +3,13 @@
 <div class="row">
     <div class="col-md-9">
         <div class="block-heading">
-            <h4><span class="heading-icon"><i class="fa fa-th-list"></i></span>Liste des terrainles</h4>
+            <h4><span class="heading-icon"><i class="fa fa-th-list"></i></span>Liste des terrains</h4>
         </div>
         <div class="property-listing">
             <ul>
                 @foreach($terrains as $terrain)
                 <li class="type-rent col-md-12 reveal">
-                    <div class="col-md-4"><a href="{{ route('detail_im', array('select' => $terrain->id)) }}"
+                    <div class="col-md-4"><a href="{{ route('detail_terre', array('select' => $terrain->id)) }}"
                                              class="property-featured-image"> <img src="{{ asset($terrain->image) }}"
                                                                                    alt=""> <span class="images-count"><i
                                     class="fa fa-picture-o"></i> 1</span>
@@ -34,7 +34,7 @@
                             <div style="background-color: rgba(2,72,255,0.76)" class="price">
                                 <span>{{ $terrain->prix }}</span><strong>$</strong></div>
                             @endif
-                            <h4><a href="{{ route('detail_im', array('select' => $terrain->id)) }}">{{
+                            <h4><a href="{{ route('detail_terre', array('select' => $terrain->id)) }}">{{
                                     $terrain->name }}</a></h4>
                             <span class="location">{{ $terrain->adresse }}</span>
                             <p>{{ $terrain->short_description }}</p>

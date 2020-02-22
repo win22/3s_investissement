@@ -76,6 +76,8 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('all_bur') }}">Bureaux</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('all_im') }}">Immeubles</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('all_terre') }}">Terrains</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('all_entr') }}">Entrepots</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('all_mag') }}">Magasin</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Louer</a>
@@ -85,6 +87,8 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('bur_louer') }}">Bureaux</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('im_louer') }}">Immeubles</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('terre_louer') }}">Terrain</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('entr_louer') }}">Entrepots</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('mag_louer') }}">Magasin</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Vendre</a>
@@ -94,6 +98,8 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('bur_vendre') }}">Bureaux</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('im_vendre') }}">Immeubles</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('terre_vendre') }}">Terrains</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('entr_vendre') }}">Entrepots</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('mag_vendre') }}">Magasin</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Promo</a>
@@ -103,6 +109,8 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('bur_promo') }}">Bureau</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('im_promo') }}">Immeuble</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('terre_promo') }}">Terrains</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('entr_promo') }}">Entrepots</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('mag_promo') }}">Magasin</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('about_site') }}">A propos</a></li>
