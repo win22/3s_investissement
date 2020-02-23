@@ -5,14 +5,13 @@
     <!-- general form elements -->
     <div class="card card-orange card-outline">
         <div class="card-header">
-            <h3 class="card-title badge">terrain</h3><br/>
-            <p>Vous êtes dans le formulaire de modifification d'un terrain</p>
+            <h3 class="card-title badge">Terrain</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
         <div class="card-body">
             <div class="card-header" style="background-color: red">
-                <h6 class="card-title text-white">Modification de la terrain : <span style="font-family: 'Manjari Bold'">{{ $terrain['name'] }}</span> </h6>
+                <h6 class="card-title text-white">Modification du terrain : <span style="font-family: 'Manjari Bold'">{{ $terrain['name'] }}</span> </h6>
             </div>
             <form  action="{{ route('modifie_terre', array('test' => $terrain->id)) }}" enctype="multipart/form-data" method="post">
                 {{ csrf_field() }}
@@ -197,16 +196,16 @@
                     </div>
                 </div>
                 <!-- /.card-body -->
-                <button type="submit" class="btn btn-info float-left">
-                    <i class="nav-icon fas fa-edit"></i>
-                    Modifier</button>
-                &nbsp;
-                <a href="{{ route('terrains')}}" class="btn btn-danger">
-                    <i class="fas fa-backspace fa-lg mr-2"></i>
-                    Retour
-                </a>
-
-
+                <div class="float-right">
+                    <button type="submit" class="btn btn-info float-left">
+                        <i class="nav-icon fas fa-edit"></i>
+                        Modifier</button>
+                    &nbsp;
+                    <a href="{{ route('terrains')}}" class="btn btn-danger">
+                        <i class="fas fa-backspace fa-lg mr-2"></i>
+                        Retour
+                    </a>
+                </div>
             </form>
         </div>
 

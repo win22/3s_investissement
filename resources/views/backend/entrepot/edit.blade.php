@@ -72,7 +72,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Type<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="type">
-                                <option value="entrepotement">entrepotement</option>
+                                <option value="entrepot">entrepot</option>
                             </select>
                             @if($errors->has('type'))
                             <small  class="form-text text-danger">{{$errors->first('type')}}</small>
@@ -197,14 +197,17 @@
                     </div>
                 </div>
                 <!-- /.card-body -->
-                <button type="submit" class="btn btn-info float-left">
-                    <i class="nav-icon fas fa-edit"></i>
-                    Modifier</button>
-                &nbsp;
-                <a href="{{ route('entrepots')}}" class="btn btn-danger">
-                    <i class="fas fa-backspace fa-lg mr-2"></i>
-                    Retour
-                </a>
+                <div class="float-right">
+                    <button type="submit" class="btn btn-info ">
+                        <i class="nav-icon fas fa-edit"></i>
+                        Modifier</button>
+                    &nbsp;
+                    <a href="{{ route('entrepots')}}" class="btn btn-danger">
+                        <i class="fas fa-backspace fa-lg mr-2"></i>
+                        Retour
+                    </a>
+                </div>
+
 
 
             </form>

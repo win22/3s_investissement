@@ -4,25 +4,25 @@
     <div class="col-md-8 reveal">
         <div class="single-property">
             <div class="widget">
-                <h2 style="font-family: 'Manjari Regular'" class="widgettitle">Details d'une villa </h2>
+                <h2 style="font-family: 'Manjari Regular'" class="widgettitle">Details d'un hectare </h2>
             </div>
-            <h3 class="page-title">{{ $villa->name }}</h3>
+            <h3 class="page-title">{{ $hectare->name }}</h3>
             <div class="property-slider">
                 <div id="property-images" class="flexslider">
                     <ul class="slides">
-                        @foreach($villa->images as $image)
+                        @foreach($hectare->images as $image)
                         <li class="item @if($loop->first) elevation-3 active @endif"> <img  src="{{ URL::to($image['image']) }}" alt="">
                         </li>
                         @endforeach
-                        <li class="item"> <img src="{{URL::to($villa['image'])}}" alt=""> </li>
+                        <li class="item"> <img src="{{URL::to($hectare['image'])}}" alt=""> </li>
                     </ul>
                 </div>
                 <div id="property-thumbs" class="flexslider">
                     <ul class="slides">
-                        @foreach($villa->images as $image)
+                        @foreach($hectare->images as $image)
                         <li class="item"> <img  src="{{ URL::to($image['image']) }}" alt=""> </li>
                         @endforeach
-                        <li class="item"> <img src="{{URL::to($villa['image'])}}" alt=""> </li>
+                        <li class="item"> <img src="{{URL::to($hectare['image'])}}" alt=""> </li>
 
                     </ul>
                 </div>
@@ -33,50 +33,50 @@
     <div class="sidebar right-sidebar col-md-4 reveal-2">
         <div class="widget">
             <div class="agent">
-                <h4><i style="color: red" class="fa fa-map-marker"></i> {{ $villa->adresse }}</h4>
-                <p>{{ $villa->short_description }}</p>
+                <h4><i style="color: red" class="fa fa-map-marker"></i> {{ $hectare->adresse }}</h4>
+                <p>{{ $hectare->short_description }}</p>
                 <div class="agent-contacts clearfix">
-                    @if($villa->devise == 1)
-                    <div style="background-color: red;" class="price"><span>{{ $villa->prix }}</span><strong>CFA</strong></div>
-                    @elseif($villa->devise == 2)
-                    <div class="price"><span>{{ $villa->prix }}</span><strong>EURO</strong></div>
+                    @if($hectare->devise == 1)
+                    <div style="background-color: red;" class="price"><span>{{ $hectare->prix }}</span><strong>CFA</strong></div>
+                    @elseif($hectare->devise == 2)
+                    <div class="price"><span>{{ $hectare->prix }}</span><strong>EURO</strong></div>
                     @else
-                    <div class="price"><span>{{ $villa->prix }}</span><strong>$</strong></div>
+                    <div class="price"><span>{{ $hectare->prix }}</span><strong>$</strong></div>
                     @endif
                 </div>
             </div>
         </div>
 
         <div class="widget">
-            <h3 class="widgettitle">Details<br>
-                @if( ($villa['sold']) == 1 )
-                <span style="color: limegreen; font-family: 'Manjari Regular'">{{ $villa['pourcentage'] }} de réduction</span>
+            <h3 class="widgettitle">Details <br/>
+                @if( ($hectare['sold']) == 1 )
+                <span style="color: limegreen; font-family: 'Manjari Regular'">{{ $hectare['pourcentage'] }} de réduction</span>
                 @endif
             </h3>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Adresse:</span><br/>
-                    <span>{{ $villa['adresse'] }}</span>
+                    <span>{{ $hectare['adresse'] }}</span>
                 </div>
                 <div class="col-md-4">
                     <span style="color: red">Ville:</span><br/>
-                    <span>{{ $villa['ville'] }}</span>
+                    <span>{{ $hectare['ville'] }}</span>
                 </div>
                 <div class="col-md-4">
                     <span style="color: red">Pays:</span><br/>
-                    <span>{{ $villa['pays'] }}</span>
+                    <span>{{ $hectare['pays'] }}</span>
                 </div>
             </div>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
                     <span style="color: red">Type:</span><br/>
-                    <span>{{ $villa['type'] }}</span>
+                    <span>{{ $hectare['type'] }}</span>
                 </div>
                 <div class="col-md-4">
                     <span style="color: red">Option:</span><br/>
-                    @if($villa['option'] == 1)
+                    @if($hectare['option'] == 1)
                     <span>A louer</span>
-                    @elseif($villa['devise'] == 2)
+                    @elseif($hectare['devise'] == 2)
                     EURO
                     <span>A vendre</span>
                     $
@@ -85,30 +85,11 @@
             </div>
             <div style="font-family: 'Manjari Bold'" class="row">
                 <div class="col-md-4">
-                    <span style="color: red">Chambre:</span><br/>
-                    <span>{{ $villa['chambre'] }}</span>
-                </div>
-                <div class="col-md-4">
-                    <span style="color: red">Cuisines:</span><br/>
-                    <span>{{ $villa['cuisine'] }}</span>
-                </div>
-                <div class="col-md-4">
-                    <span style="color: red">Salle de bain:</span><br/>
-                    <span>{{ $villa['sale_de_bain'] }}</span>
-                </div>
-            </div>
-            <div style="font-family: 'Manjari Bold'" class="row">
-                <div class="col-md-4">
-                    <span style="color: red">Garage:</span><br/>
-                    <span>{{ $villa['garage'] }}</span>
-                </div>
-                <div class="col-md-4">
-                    <span style="color: red">Salon:</span><br/>
-                    <span>{{ $villa['salon'] }}</span>
+                    <span style="color: red">Dimension:</span><br/>
+                    <span>{{ $hectare['dimension'] }}</span>
                 </div>
 
             </div>
-
             <br/>
             <div class="tabs">
                 <ul class="nav nav-tabs">
@@ -116,7 +97,7 @@
                 </ul>
                 <div class="tab-content">
                     <div id="description" class="tab-pane active">
-                        {{ $villa->large_description }}
+                        {{ $hectare->large_description }}
                     </div>
                 </div>
             </div>
@@ -130,7 +111,7 @@
         </div>
     </div>
 </div>
-<form class="forma reveal-3" action="{{ route('save_mess', array('test' => $villa->name)) }}">
+<form class="forma reveal-3" action="{{ route('save_mess', array('test' => $hectare->name)) }}">
     <div class="row">
         <div class="form-group col-md-4">
             <label>Nom</label>
@@ -200,34 +181,34 @@
             <div class="row">
                 <ul class="owl-carousel owl-alt-controls" data-columns="4" data-autoplay="yes"
                     data-pagination="no" data-arrows="yes" data-single-item="no">
-                    @foreach($villa_similaire as $villa)
+                    @foreach($hectare_similaire as $hectare)
                     <li class="item property-block">
-                        <a href="{{ route('villa_detail', array('select' => $villa->id)) }}" class="property-featured-image">
-                            <img style="height: 150px;"  src="{{ asset($villa->image) }}" alt="">
-                            @if($villa->option == 1)
+                        <a href="{{ route('detail_hect', array('select' => $hectare->id)) }}" class="property-featured-image">
+                            <img style="height: 150px;"  src="{{ asset($hectare->image) }}" alt="">
+                            @if($hectare->option == 1)
                             <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
-                            @elseif($villa->option == 2)
+                            @elseif($hectare->option == 2)
                             <span style="background-color: #00bd49 !important; color: white" class="badges">vendre</span>
                             @else
                             <span class="badges">Promo</span>
                             @endif
                         </a>
                         <div class="property-info">
-                            <h4><a href="{{ route('villa_detail', array('select' => $villa->id)) }}">{{ $villa->name }}</a></h4>
-                            <span class="location">{{ $villa->adresse }}</span>
-                            @if($villa->devise == 1)
-                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>CFA</strong></div>
+                            <h4><a href="{{ route('detail_hect', array('select' => $hectare->id)) }}">{{ $hectare->name }}</a></h4>
+                            <span class="location">{{ $hectare->adresse }}</span>
+                            @if($hectare->devise == 1)
+                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $hectare->prix }}</span><strong>CFA</strong></div>
                             @elseif($appart->devise == 2)
-                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>EURO</strong></div>
+                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $hectare->prix }}</span><strong>EURO</strong></div>
                             @else
-                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $villa->prix }}</span><strong>$</strong></div>
+                            <div style="background-color: rgba(2,72,255,0.76)" class="price"><span>{{ $hectare->prix }}</span><strong>$</strong></div>
                             @endif
                         </div>
                     </li>
                     @endforeach
                 </ul>
             </div>
-            @if( $nb_vill <= 0)
+            @if( $nb_hect <= 0)
             <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
             @endif
         </div>

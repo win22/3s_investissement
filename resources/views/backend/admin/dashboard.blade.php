@@ -3,32 +3,37 @@
 <p hidden>   {{ \Carbon\Carbon::setLocale('fr') }}</p>
 <div class="row reveal">
     <div class="col-lg-3 col-6">
-        <!-- small box -->
+
         <div class="small-box bg-info">
             <div class="inner">
-                <h3>150</h3>
-
+                @if($apparts > 0)
+                <h3>{{ $apparts }}</h3>
+                @else
+                <h3>0</h3>
+                @endif
                 <p>Appartements </p>
             </div>
             <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i style="color: white" class="fas fa-store-alt"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('appart') }}" class="small-box-footer">Voir les détails <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    <!-- ./col -->
+
+
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
-                <h3>53</h3>
-
+                @if($villas >= 0)
+                <h3>{{ $villas }}</h3>
+                @endif
                 <p>Villa</p>
             </div>
             <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i style="color: white" class="fas fa-house-damage"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('all_vil') }}" class="small-box-footer">Voir les détails <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -36,13 +41,17 @@
         <!-- small box -->
         <div style="color: white !important;" class="small-box bg-warning">
             <div class="inner">
-                <h3>44</h3>
+                @if($immeubles > 0)
+                <h3>{{ $immeubles }}</h3>
+                @else
+                <h3>0</h3>
+                @endif
                 <p>Immeuble</p>
             </div>
             <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i style="color: white" class="fas fa-hotel"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('immeubles') }}" class="small-box-footer">Voir les détails <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -50,14 +59,82 @@
         <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>65</h3>
-
+                @if($bureaux > 0)
+                <h3>{{ $bureaux }}</h3>
+                @else
+                <h3>0</h3>
+                @endif
                 <p>Bureau</p>
             </div>
             <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i style="color: white" class="fas fa-chair"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('bureaux') }}" class="small-box-footer"> Voir les détails <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+</div>
+<div class="row reveal-2">
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                @if($terrains >= 0)
+                <h3>{{ $terrains }}</h3>
+                @endif
+                <p>Terrain</p>
+            </div>
+            <div class="icon">
+                <i style="color: white"class="fas fa-ruler-combined"></i>
+            </div>
+            <a href="{{ route('terrains') }}" class="small-box-footer">Voir les détails<i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                @if($entrepots >= 0)
+                <h3>{{ $entrepots }}</h3>
+                @endif
+                <p>Entrepot</p>
+            </div>
+            <div class="icon">
+                <i style="color: white" class="fas fa-warehouse"></i>
+            </div>
+            <a href="{{ route('entrepots') }}" class="small-box-footer">Voir les détails <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div style="color: white !important;" class="small-box bg-warning">
+            <div class="inner">
+                @if($Magasin >= 0)
+                <h3>{{ $Magasin }}</h3>
+                @endif
+                <p>Magasin</p>
+            </div>
+            <div class="icon">
+                <i style="color: white" class="fas fa-store"></i>
+            </div>
+            <a href="{{ route('magasins') }}" class="small-box-footer">Voir les détails <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                @if($hectare >= 0)
+                <h3>{{ $hectare }}</h3>
+                @endif
+                <p>Hectare</p>
+            </div>
+            <div class="icon">
+                <i style="color: white" class="fas fa-campground"></i>
+            </div>
+            <a href="{{ route('hectares') }}" class="small-box-footer">Voir les détails <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
 </div>
@@ -176,13 +253,6 @@
                     <div class="col-5 text-center">
                         <img src="{{ asset(Auth()->user()->image) }}" alt="" class="img-circle img-fluid">
                     </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="text-right">
-                    <a href="#" class="btn btn-sm btn-primary">
-                        <i class="fas fa-user"></i> View Profile
-                    </a>
                 </div>
             </div>
         </div>

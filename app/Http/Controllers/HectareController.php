@@ -3,58 +3,71 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Villa;
+use App\Models\Hectare;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use File;
-
-class VillaController extends Controller
+class HectareController extends Controller
 {
     public function index()
     {
-        return view('backend.villa.add');
+        return view('backend.hectare.add');
     }
-
-    public function all_villa()
+    public function all_hectare()
     {
-        $villa = Villa::where('option', 1)
+        $hectares_louer = Hectare::where('option', 1)
             ->latest()
             ->paginate(6);
-        $nb = $villa->count();
-        $villa_vendre = Villa::where('option', 2)
+        $nb_l = $hectares_louer->count();
+
+        $hectares_vendre = Hectare::where('option', 2)
             ->latest()
             ->paginate(6);
-        $nb_v = $villa_vendre->count();
-        $villa_sold = Villa::where('sold', 1)
+        $nb_v = $hectares_vendre->count();
+
+        $hectares_promo = Hectare::where('sold', 1)
             ->latest()
             ->paginate(6);
-        $nb_s = $villa_sold->count();
-        return view('backend.villa.all', ['all_villa' => $villa])
-            ->with(['nb' => $nb])
-            ->with(['all_villa_vendre' => $villa_vendre])
-            ->with(['nb_v' => $nb_v])
-            ->with(['all_villa_sold' => $villa_sold])
-            ->with(['nb_s' => $nb_s]);
+        $nb_p = $hectares_promo->count();
+        return view('backend.hectare.all', ['hectares_louer' => $hectares_louer])
+            ->with('hectares_vendre', $hectares_vendre)
+            ->with('hectares_promo', $hectares_promo)
+            ->with('nb_l', $nb_l)
+            ->with('nb_v', $nb_v)
+            ->with('nb_p', $nb_p);
 
     }
 
-    public function search_data()
+    public function active($id)
     {
-        $search = request('search');
-        $villas =  Villa::where('name', 'like', '%' . $search . '%')
-            ->latest()
-            ->paginate(6);
-        $nb = $villas->count();
-        return view('backend.villa.search', ['villas' => $villas])
-            ->with(['nb' => $nb]);
+        $hectare = hectare::findOrFail($id);
+        $hectare->status = 1;
+        $hectare->admin_id = Auth::id();
+        $hectare->save();
+        return back()->with(
+            Session::put('message', "cet hectare  a été activé")
+        );
+
     }
+
+    public function unactive($id)
+    {
+        $hectare = Hectare::findOrFail($id);
+        $hectare->status = 0;
+        $hectare->admin_id = Auth::id();
+        $hectare->save();
+        return back()->with(
+            Session::put('message', "cet hectare  a été désactivé")
+        );
+    }
+
 
     public function save(Request $request)
     {
         request()->validate([
-            'name' => ['required', 'max:60'],
+            'name' => ['required', 'max: 60'],
             'short_description' => ['required', 'max: 150'],
             'large_description' => ['required'],
             'ville' => ['required', 'max:30'],
@@ -64,17 +77,18 @@ class VillaController extends Controller
             'type' => ['required', 'max:90'],
             'devise' => ['required', 'max:2'],
             'prix' => ['required', 'max:90'],
-            'chambre' => ['required', 'max:3'],
-            'cuisine' => ['required', 'max:3'],
-            'sale_de_bain' => ['required', 'max:3'],
+            'dimension' => ['required'],
             'option' => ['required', 'max:3'],
             'sold' => ['required', 'max:3'],
-            'garage' => ['required', 'max:3'],
-            'salon' => ['required', 'max:3'],
             'image' => ['required', 'image'],
-            'images' => ['required',]
+            'images' => ['required']
         ]);
-
+        $pourcentage = null;
+        if (request('sold') == 1) {
+            $pourcentage = request('pourcentage');
+        } else {
+            $pourcentage = null;
+        }
         $image = $request->file('image');
         if ($image) {
             $image_name = str_random(6);
@@ -84,18 +98,10 @@ class VillaController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $image->move($upload_path, $image_full_name);
             if ($success) {
-                $defaut_image = $image_url;
+                $image = $image_url;
             }
         }
-
-        $pourcentage = null;
-        if (request('sold') == 1) {
-            $pourcentage = request('pourcentage');
-        } else {
-            $pourcentage = null;
-        }
-
-        $villa = villa::create([
+        $hectare = Hectare::create([
             'admin_id' => Auth::user()->role,
             'name' => request('name'),
             'short_description' => request('short_description'),
@@ -109,15 +115,10 @@ class VillaController extends Controller
             'devise' => request('devise'),
             'sold' => request('sold'),
             'pourcentage' => $pourcentage,
-            'chambre' => request('chambre'),
-            'cuisine' => request('cuisine'),
-            'sale_de_bain' => request('sale_de_bain'),
             'option' => request('option'),
-            'garage' => request('garage'),
-            'piece' => request('piece'),
-            'salon' => request('salon'),
+            'dimension' => request('dimension'),
             'status' => 0,
-            'image' => $defaut_image
+            'image' => $image
         ]);
         $photo = $request->file('images');
         foreach ($photo as $images):
@@ -128,20 +129,20 @@ class VillaController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $images->move($upload_path, $image_full_name);
             if ($success) {
-                villa::findOrFail($villa->id)->images()->create([
+                Hectare::findOrFail($hectare->id)->images()->create([
                     'image' => $image_url
                 ]);
             }
         endforeach;
-        return redirect('/all_villa')->with(
-            Session::put('message', 'Une villa a été ajoutée ')
+        return redirect('/all_hect')->with(
+            Session::put('message', 'Un hectare a été ajouté ')
         );
     }
 
     public function updates(Request $request, $id)
     {
         request()->validate([
-            'name' => ['required', 'max:60'],
+            'name' => ['required', 'max: 60'],
             'short_description' => ['required', 'max: 150'],
             'large_description' => ['required'],
             'ville' => ['required', 'max:30'],
@@ -151,34 +152,26 @@ class VillaController extends Controller
             'type' => ['required', 'max:90'],
             'devise' => ['required', 'max:2'],
             'prix' => ['required', 'max:90'],
-            'chambre' => ['required', 'max:3'],
-            'cuisine' => ['required', 'max:3'],
-            'sale_de_bain' => ['required', 'max:3'],
+            'dimension' => ['required'],
             'option' => ['required', 'max:3'],
             'sold' => ['required', 'max:3'],
-            'garage' => ['required', 'max:3'],
-            'salon' => ['required', 'max:3'],
         ]);
 
-        $villa = villa::findOrFail($id);
-        $villa->name = request('name');
-        $villa->short_description = request('short_description');
-        $villa->large_description = request('large_description');
-        $villa->adresse = request('adresse');
-        $villa->ville = request('ville');
-        $villa->pays = request('pays');
-        $villa->type = request('type');
-        $villa->option = request('option');
-        $villa->align = request('align');
-        $villa->prix = request('prix');
-        $villa->devise = request('devise');
-        $villa->sold = request('sold');
-        $villa->pourcentage = request('pourcentage');
-        $villa->chambre = request('chambre');
-        $villa->cuisine = request('cuisine');
-        $villa->garage = request('garage');
-        $villa->salon = request('salon');
-        $villa->sale_de_bain = request('cuisine');
+        $hectare = Hectare::findOrFail($id);
+        $hectare->name = request('name');
+        $hectare->short_description = request('short_description');
+        $hectare->large_description = request('large_description');
+        $hectare->adresse = request('adresse');
+        $hectare->ville = request('ville');
+        $hectare->pays = request('pays');
+        $hectare->type = request('type');
+        $hectare->option = request('option');
+        $hectare->align = request('align');
+        $hectare->prix = request('prix');
+        $hectare->devise = request('devise');
+        $hectare->sold = request('sold');
+        $hectare->pourcentage = request('pourcentage');
+        $hectare->dimension = request('dimension');
         $image = $request->file('image');
         if ($image) {
             request()->validate([
@@ -191,8 +184,8 @@ class VillaController extends Controller
             $image_url = $upload_path . $image_full_name;
             $success = $image->move($upload_path, $image_full_name);
             if ($success) {
-                $villa->image = $image_url;
-                $img_p = Villa::findOrFail($id);
+                $hectare->image = $image_url;
+                $img_p = Hectare::findOrFail($id);
                 File::delete($img_p->image);
                 $img_p->image = $image_url;
             }
@@ -200,7 +193,7 @@ class VillaController extends Controller
 
         $photo = $request->file('images');
         if ($photo) {
-            $imag = Image::where('villa_id', $id)->get();
+            $imag = Image::where('hectare_id', $id)->get();
             foreach ($imag as $im):
                 File::delete($im->image);
                 $im->delete();
@@ -213,122 +206,98 @@ class VillaController extends Controller
                 $image_url = $upload_path . $image_full_name;
                 $success = $images->move($upload_path, $image_full_name);
                 if ($success) {
-                    villa::findOrFail($villa->id)->images()->create([
+                    Hectare::findOrFail($hectare->id)->images()->create([
                         'image' => $image_url
                     ]);
                 }
             endforeach;
         }
-        $villa->admin_id = Auth::id();
-        $villa->save();
-        return redirect('/detail_villa/' . $villa->id)->with(
-            Session::put('message', " Information modifiée avec succès !")
+        $hectare->admin_id = Auth::id();
+        $hectare->save();
+        return redirect('/detail_hect/' . $hectare->id)->with(
+            Session::put('message', " Information modifiée avec succèes !")
         );
 
-    }
-
-
-    public function active($id)
-    {
-        $villa = villa::findOrFail($id);
-        $villa->status = 1;
-        $villa->admin_id = Auth::id();
-        $villa->save();
-        return back()->with(
-            Session::put('message', "L'villa " . $villa->name . "a été activé")
-        );
-
-    }
-
-    public function unactive($id)
-    {
-        $villa = villa::findOrFail($id);
-        $villa->status = 0;
-        $villa->admin_id = Auth::id();
-        $villa->save();
-        return back()->with(
-            Session::put('message', "L'villa " . $villa->name . "a été desactivé")
-        );
     }
 
     public function supprimer($id)
     {
-        $villa = villa::findOrFail($id);
-        $imag = Image::where('villa_id', $id)->get();
+        $hectare = Hectare::findOrFail($id);
+        $imag = Image::where('hectare_id', $id)->get();
         foreach ($imag as $im):
             File::delete($im->image);
             $im->delete();
         endforeach;
-        File::delete($villa->image);
-        $villa->delete();
+        File::delete($hectare->image);
+        $hectare->delete();
 
         return back()->with(
-            Session::put('message', "La villa " . $villa->name . "a été supprimé")
+            Session::put('message', "Le hectare " . $hectare->name . "a été supprimé")
         );
     }
 
     public function details($id)
     {
-        $detail_villa = villa::findOrFail($id);
-        $admin_name = Admin::find($detail_villa->admin_id);
-        return view('backend.villa.details', ['villa' => $detail_villa])
+        $detail_hectare = Hectare::findOrFail($id);
+        $admin_name = Admin::find($detail_hectare->admin_id);
+        return view('backend.hectare.details', ['hectare' => $detail_hectare])
             ->with(['admin_name' => $admin_name]);
     }
 
     public function edits($id)
     {
-        $villa = villa::findOrFail($id);
-        return view('backend.villa.edit', ['villa' => $villa]);
+        $hectare = Hectare::findOrFail($id);
+        return view('backend.hectare.edit', ['hectare' => $hectare]);
     }
 
 
-    //config pour le site
-    public function details_villa_site($id)
+    //c             onfig pour le site
+    public function details_hectare_site($id)
     {
-        $villa = villa::findOrFail($id);
-        $villa_similaire = villa::where('id', '!=', $id)
+        $hectare = Hectare::findOrFail($id);
+        $hectare_similaire = Hectare::where('id', '!=', $id)
             ->where('status', 1)
             ->take(8)
             ->get();
-        $nb_vill = $villa_similaire->count();
+        $nb_hect = $hectare_similaire->count();
 
-        return view('site.villa.details', ['villa' => $villa])
-            ->with(['nb_vill' => $nb_vill])
-            ->with(['villa_similaire' => $villa_similaire]);
+        return view('site.hectare.details', ['hectare' => $hectare])
+            ->with(['nb_hect' => $nb_hect])
+            ->with(['hectare_similaire' => $hectare_similaire]);
     }
 
     public function all_louer()
     {
-        $villa_louer = villa::where('status', 1)
+        $hectare_louer = Hectare::where('status', 1)
             ->where('option', 1)
             ->latest()
             ->paginate(3);
-        $nb_vill = $villa_louer->count();
-        return view('site.villa.louer', ['villa_louer' => $villa_louer])
-            ->with(['nb_vill' => $nb_vill]);
+        $nb_hect = $hectare_louer->count();
+        return view('site.hectare.louer', ['hectare_louer' => $hectare_louer])
+            ->with(['nb_hect' => $nb_hect]);
     }
 
     public function all_vendre()
     {
-        $villa_vendre = villa::where('status', 1)
+        $hectare_vendre = Hectare::where('status', 1)
             ->where('option', 2)
             ->latest()
             ->paginate(3);
-        $nb_vill = $villa_vendre->count();
-        return view('site.villa.vendre', ['villa_vendre' => $villa_vendre])
-            ->with(['nb_vill' => $nb_vill]);
+        $nb_hect = $hectare_vendre->count();
+        return view('site.hectare.vendre', ['hectare_vendre' => $hectare_vendre])
+            ->with(['nb_hect' => $nb_hect]);
     }
 
 
     public function all_promo()
     {
-        $villa_promo = villa::where('status', 1)
+        $hectare_promo = Hectare::where('status', 1)
             ->where('sold', 1)
             ->latest()
             ->paginate(3);
-        $nb_vill = $villa_promo->count();
-        return view('site.villa.promo', ['villa_promo' => $villa_promo])
-            ->with(['nb_vill' => $nb_vill]);
+        $nb_hect = $hectare_promo->count();
+        return view('site.hectare.promo', ['hectare_promo' => $hectare_promo])
+            ->with(['nb_hect' => $nb_hect]);
     }
 
     //search
@@ -338,13 +307,13 @@ class VillaController extends Controller
             'search' => ['required', 'max: 60']
         ]);
         $search = request('search');
-        $villas = villa::where('status', 1)
+        $hectares = Hectare::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
             ->latest()
             ->paginate(3);
-        $nb_vill = $villas->count();
-        return view('site.villa.all_villa', ['villas' => $villas])
-            ->with(['nb_vill' => $nb_vill]);
+        $nb_hect = $hectares->count();
+        return view('site.hectare.all_hectare', ['hectares' => $hectares])
+            ->with(['nb_hect' => $nb_hect]);
     }
 
     public function search_louer()
@@ -353,14 +322,14 @@ class VillaController extends Controller
             'search' => ['required', 'max: 60']
         ]);
         $search = request('search');
-        $villa_louer = villa::where('status', 1)
+        $hectare_louer = Hectare::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
             ->where('option', 1)
             ->latest()
             ->paginate(3);
-        $nb_vill = $villa_louer->count();
-        return view('site.villa.louer', ['villa_louer' => $villa_louer])
-            ->with(['nb_vill' => $nb_vill]);
+        $nb_hect = $hectare_louer->count();
+        return view('site.hectare.louer', ['hectare_louer' => $hectare_louer])
+            ->with(['nb_hect' => $nb_hect]);
     }
 
     public function search_vendre()
@@ -369,14 +338,14 @@ class VillaController extends Controller
             'search' => ['required', 'max: 60']
         ]);
         $search = request('search');
-        $villa_vendre = villa::where('status', 1)
+        $hectare_vendre = Hectare::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
             ->where('option', 2)
             ->latest()
             ->paginate(3);
-        $nb_vill = $villa_vendre->count();
-        return view('site.villa.vendre', ['villa_vendre' => $villa_vendre])
-            ->with(['nb_vill' => $nb_vill]);
+        $nb_hect = $hectare_vendre->count();
+        return view('site.hectare.vendre', ['hectare_vendre' => $hectare_vendre])
+            ->with(['nb_hect' => $nb_hect]);
     }
 
     public function search_promo()
@@ -385,15 +354,13 @@ class VillaController extends Controller
             'search' => ['required', 'max: 60']
         ]);
         $search = request('search');
-        $villa_promo = villa::where('status', 1)
+        $hectare_promo = Hectare::where('status', 1)
             ->where('name', 'like', '%' . $search . '%')
             ->where('sold', 1)
             ->latest()
             ->paginate(3);
-        $nb_vill = $villa_promo->count();
-        return view('site.villa.promo', ['villa_promo' => $villa_promo])
-            ->with(['nb_vill' => $nb_vill]);
+        $nb_hect = $hectare_promo->count();
+        return view('site.hectare.promo', ['hectare_promo' => $hectare_promo])
+            ->with(['nb_hect' => $nb_hect]);
     }
-
-
 }

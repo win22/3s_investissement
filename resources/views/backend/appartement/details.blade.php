@@ -90,10 +90,8 @@
                         <span class="small text-orange">Option:</span><br/>
                         @if($appart['option'] == 1)
                         <span>A louer</span>
-                        @elseif($appart['devise'] == 2)
-                        EURO
+                        @elseif($appart['option'] == 2)
                         <span>A vendre</span>
-                        $
                         @endif
                     </div>
                     <div class="col-md-4">
@@ -141,18 +139,18 @@
                     </div>
                 </nav>
             </div>
-            <div class="mt-3">
-                <a href="{{ route('selectionner_ap', array('select' =>$appart->id)) }}" class="btn btn-primary ">
-                    <i class="fas fa-edit fa-lg mr-2"></i>
-                    Modifier
-                </a>
-                <a href="{{ route('appart')}}" class="btn btn-danger ">
-                    <i class="fas fa-backspace fa-lg mr-2"></i>
-                    Retour
-                </a>
-            </div>
         </div>
-        <div class="float-right">
+        <div class="mt-3 float-right">
+            <a href="{{ route('selectionner_ap', array('select' =>$appart->id)) }}" class="btn btn-primary ">
+                <i class="fas fa-edit fa-lg mr-2"></i>
+                Modifier
+            </a>
+            <a href="{{ route('appart')}}" class="btn btn-danger ">
+                <i class="fas fa-backspace fa-lg mr-2"></i>
+                Retour
+            </a>
+        </div>
+        <div class="float-left">
             <span class="small">Modifié {{  \Carbon\Carbon::parse($appart['updated_at'])->diffForHumans() }}
              par
                 @if($admin_name['name'] == null)

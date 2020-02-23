@@ -176,15 +176,16 @@
                     </div>
                 </div>
                 <!-- /.card-body -->
-                <button type="submit" class="btn btn-info float-left">
-                    <i class="nav-icon fas fa-check"></i>
-                    Ajouter</button>
-                &nbsp;
-                <a href="{{ route('entrepots')}}" class="btn btn-danger">
-                    <i class="fas fa-backspace fa-lg mr-2"></i>
-                    Retour
-                </a>
-
+                <div class="float-right">
+                    <button type="submit" class="btn btn-info float-left">
+                        <i class="nav-icon fas fa-check"></i>
+                        Enregistrer</button>
+                    &nbsp;
+                    <a href="{{ route('entrepots')}}" class="btn btn-danger">
+                        <i class="fas fa-backspace fa-lg mr-2"></i>
+                        Retour
+                    </a>
+                </div>
             </form>
         </div>
 

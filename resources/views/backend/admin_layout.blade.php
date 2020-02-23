@@ -37,16 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </ul>
 
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+
         <p hidden class="alert ">{{ $message = Session::get('message')}}</p>
         @if($message)
         <div id="alert"  class="alert alert-success alert-with-icon small right ml-5">
@@ -58,74 +49,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @endif
 
         <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                </div>
-            </li>
 
-        </ul>
     </nav>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-orange elevation-4" >
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a href="/dashboard" class="brand-link">
             <img style="width: 63px; border-radius: 60px" src="{{ asset('backend/img/logo.png')}}">
             <span class="brand-text text-white font-weight-light">3s investissement</span>
         </a>
@@ -282,7 +213,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="nav-link {{ request()->is('all_entr','add_entr')? 'active' : ''}}">
                             <i class="nav-icon fas fa-warehouse"></i>
                             <p>
-                                Entreprôts
+                                Entrepots
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -290,13 +221,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="{{ route('entrepots') }}" class="nav-link {{ request()->is('all_entr')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Liste entreprôts</p>
+                                    <p>Liste entrepots</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('add_entrepot') }}" class="nav-link {{ request()->is('add_entr')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Ajouter un entreprôt</p>
+                                    <p>Ajouter un entrepots</p>
                                 </a>
                             </li>
                         </ul>
@@ -318,7 +249,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('add_magasin') }}" class="nav-link  {{ request()->is('all_mag')?  'active' : ''}}">
+                                <a href="{{ route('add_magasin') }}" class="nav-link  {{ request()->is('add_mag')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Ajouter un magasin</p>
                                 </a>
@@ -326,8 +257,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview {{ request()->is('all_entr','add_entr')? 'open-menu' : ''}} ">
-                        <a href="#" class="nav-link {{ request()->is('all_entr','add_entr')? 'active' : ''}}">
+                    <li class="nav-item has-treeview {{ request()->is('all_hect','add_hect')? 'open-menu' : ''}} ">
+                        <a href="#" class="nav-link {{ request()->is('all_hect','add_hect')? 'active' : ''}}">
                             <i class="nav-icon fas fa-campground"></i>
                             <p>
                                 Hectares
@@ -336,15 +267,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <a href="{{ route('hectares') }}" class="nav-link {{ request()->is('all_hect')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Liste Appartements</p>
+                                    <p>Liste hectares</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('add_hectare') }}" class="nav-link {{ request()->is('add_hect')?  'active' : ''}}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Ajouter Appartements</p>
+                                    <p>Ajouter hectare  </p>
                                 </a>
                             </li>
                         </ul>

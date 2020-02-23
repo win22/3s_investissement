@@ -164,9 +164,9 @@
                </span>
             @endif
             <p hidden class="alert ">{{ $message = Session::get('message')}}</p>
+            <br/>
             @if($message)
             <p style="color: #1a741a; font-family: 'Manjari Regular'" class="data-notify=" message"> {{$message }} <br/>
-            Un mail vous a été envoyé afin de confirmer votre reservation<br/>
             </p>
             {{ Session::put('message',NULL) }}
             @endif

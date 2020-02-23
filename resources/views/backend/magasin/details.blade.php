@@ -89,10 +89,8 @@
                         <span class="small text-orange">Option:</span><br/>
                         @if($magasin['option'] == 1)
                         <span>A louer</span>
-                        @elseif($magasin['devise'] == 2)
-                        EURO
+                        @elseif($magasin['option'] == 2)
                         <span>A vendre</span>
-                        $
                         @endif
                     </div>
                     <div class="col-md-4">
@@ -106,26 +104,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="small text-orange">Chambre:</span><br/>
-                        <span>{{ $magasin['chambre'] }}</span>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="small text-orange">Cuisines:</span><br/>
-                        <span>{{ $magasin['cuisine'] }}</span>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="small text-orange">Salle de bain:</span><br/>
-                        <span>{{ $magasin['sale_de_bain'] }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <span class="small text-orange">Garage:</span><br/>
-                        <span>{{ $magasin['garage'] }}</span>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="small text-orange">Salon:</span><br/>
-                        <span>{{ $magasin['salon'] }}</span>
+                        <span class="small text-orange">Dimension:</span><br/>
+                        <span>{{ $magasin['dimension'] }}</span>
                     </div>
                 </div>
                 <br/>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appartement;
 use App\Models\Bureau;
 use App\Models\Entrepot;
+use App\Models\Hectare;
 use App\Models\Immeuble;
 use App\Models\Magasin;
 use App\Models\Terrain;
@@ -120,6 +121,16 @@ class HomeController extends Controller
         $nb_mag = $magasins->count();
         return view('site.magasin.all_magasin', ['magasins' => $magasins])
             ->with(['nb_mag' => $nb_mag]);
+    }
+
+    public function all_hectare()
+    {
+        $hectares = Hectare::where('status', 1)
+            ->latest()
+            ->paginate(3);
+        $nb_hect = $hectares->count();
+        return view('site.hectare.all_hectare', ['hectares' => $hectares])
+            ->with(['nb_hect' => $nb_hect]);
     }
 
     public function captcha_send($name)

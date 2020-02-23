@@ -76,7 +76,8 @@
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('all_im') }}">Immeubles</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('all_terre') }}">Terrains</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('all_entr') }}">Entrepots</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="{{ route('all_mag') }}">Magasin</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('all_mag') }}">Magasins</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('all_hect') }}">Hectares</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Louer</a>
@@ -88,6 +89,7 @@
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('terre_louer') }}">Terrain</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('entr_louer') }}">Entrepots</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('mag_louer') }}">Magasin</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('hect_louer') }}">Hectares</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Vendre</a>
@@ -99,6 +101,7 @@
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('terre_vendre') }}">Terrains</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('entr_vendre') }}">Entrepots</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('mag_vendre') }}">Magasin</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('hect_vendre') }}">Hectares</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="javascript:;">Promo</a>
@@ -110,6 +113,7 @@
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('terre_promo') }}">Terrains</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('entr_promo') }}">Entrepots</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('mag_promo') }}">Magasin</a></li>
+                                        <li><a style="color: #5e5e5e !important;" href="{{ route('hect_promo') }}">Hectares</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('about_site') }}">A propos</a></li>
@@ -455,6 +459,7 @@
                     <a href="{{ route('terre_promo') }}" class="btn btn-info">Terrains</a>
                     <a href="{{ route('entr_promo') }}" class="btn btn-info">Entrepots</a>
                     <a href="{{ route('mag_promo') }}" class="btn btn-info">Magasin</a>
+                    <a href="{{ route('hect_promo') }}" class="btn btn-info">Hectares</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
@@ -478,7 +483,8 @@
                     <a href="{{ route('bur_vendre') }}" class="btn btn-success">Bureaux</a>
                     <a href="{{ route('terre_vendre') }}" class="btn btn-info">Terrains</a>
                     <a href="{{ route('entr_vendre') }}" class="btn btn-danger">Entrepots</a>
-                    <a href="{{ route('mag_vendre') }}" class="btn btn-danger">Magasin</a>
+                    <a href="{{ route('mag_vendre') }}" class="btn btn-danger">Magasins</a>
+                    <a href="{{ route('hect_vendre') }}" class="btn btn-danger">Hectares</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
@@ -502,7 +508,8 @@
                     <a href="{{ route('bur_louer') }}" class="btn btn-success">Bureaux</a>
                     <a href="{{ route('terre_louer') }}" class="btn btn-info">Terrains</a>
                     <a href="{{ route('entr_louer') }}" class="btn btn-danger">Entrepots</a>
-                    <a href="{{ route('mag_louer') }}" class="btn btn-danger">Magasin</a>
+                    <a href="{{ route('mag_louer') }}" class="btn btn-danger">Magasins</a>
+                    <a href="{{ route('hect_louer') }}" class="btn btn-danger">Hectares</a>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>

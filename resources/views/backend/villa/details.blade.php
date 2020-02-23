@@ -85,10 +85,8 @@
                         <span class="small text-orange">Option:</span><br/>
                         @if($villa['option'] == 1)
                         <span>A louer</span>
-                        @elseif($villa['devise'] == 2)
-                        EURO
+                        @elseif($villa['option'] == 2)
                         <span>A vendre</span>
-                        $
                         @endif
                     </div>
                     <div class="col-md-4">
@@ -136,19 +134,19 @@
                     </div>
                 </nav>
             </div>
-            <div class="mt-3">
-                <a href="{{ route('selectionner', array('select' =>$villa->id)) }}" class="btn btn-primary ">
-                    <i class="fas fa-edit fa-lg mr-2"></i>
-                    Modifier
-                </a>
-                <a href="{{ route('all_vil')}}" class="btn btn-danger ">
-                    <i class="fas fa-backspace fa-lg mr-2"></i>
-                    Retour
-                </a>
-               &nbsp;
-            </div>
         </div>
-        <div class="float-right">
+        <div class="mt-3 float-right">
+            <a href="{{ route('selectionner', array('select' =>$villa->id)) }}" class="btn btn-primary ">
+                <i class="fas fa-edit fa-lg mr-2"></i>
+                Modifier
+            </a>
+            <a href="{{ route('all_vil')}}" class="btn btn-danger ">
+                <i class="fas fa-backspace fa-lg mr-2"></i>
+                Retour
+            </a>
+            &nbsp;
+        </div>
+        <div class="float-left">
             <span class="small">Modifié {{  \Carbon\Carbon::parse($villa['updated_at'])->diffForHumans() }}
              par
                 @if($admin_name['name'] == null)

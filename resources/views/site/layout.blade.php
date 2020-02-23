@@ -4,7 +4,7 @@
     <!-- Basic Page Needs
       ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Real Spaces - Responsive Real Estate Template</title>
+    <title>3s investissement suarl</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
@@ -77,7 +77,8 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('all_im') }}">Immeubles</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('all_terre') }}">Terrains</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('all_entr') }}">Entrepots</a></li>
-                                            <li><a style="color: #5e5e5e !important;" href="{{ route('all_mag') }}">Magasin</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('all_mag') }}">Magasins</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('all_hect') }}">Hectares</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Louer</a>
@@ -89,6 +90,7 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('terre_louer') }}">Terrain</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('entr_louer') }}">Entrepots</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('mag_louer') }}">Magasin</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('hect_louer') }}">Hectares</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Vendre</a>
@@ -100,6 +102,7 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('terre_vendre') }}">Terrains</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('entr_vendre') }}">Entrepots</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('mag_vendre') }}">Magasin</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('hect_vendre') }}">Hectares</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="javascript:;">Promo</a>
@@ -111,6 +114,7 @@
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('terre_promo') }}">Terrains</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('entr_promo') }}">Entrepots</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('mag_promo') }}">Magasin</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('hect_promo') }}">Hectares</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('about_site') }}">A propos</a></li>

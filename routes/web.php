@@ -97,6 +97,16 @@ Route::post('all_search_louer_magasin', 'MagasinController@search_louer')->name(
 Route::post('all_search_vendre_magasin', 'MagasinController@search_vendre')->name('search_ven_mag');
 Route::post('all_search_promo_magasin', 'MagasinController@search_promo')->name('search_promo_mag');
 
+//              hectare site conig
+Route::get('all_hectare', 'HomeController@all_hectare')->name('all_hect');
+Route::get('details_hectare_font/{id}', 'HectareController@details_hectare_site')->name('detail_hect');
+Route::get('louer_hectare', 'HectareController@all_louer')->name('hect_louer');
+Route::get('vendre_hectare', 'HectareController@all_vendre')->name('hect_vendre');
+Route::get('promo_hectare', 'HectareController@all_promo')->name('hect_promo');
+Route::post('all_search_hectare', 'HectareController@search')->name('search_hect');
+Route::post('all_search_louer_hectare', 'HectareController@search_louer')->name('search_lou_hect');
+Route::post('all_search_vendre_hectare', 'HectareController@search_vendre')->name('search_ven_hect');
+Route::post('all_search_promo_hectare', 'HectareController@search_promo')->name('search_promo_hect');
 
 //           ----------partie admin--------------
 Route::get('/investi_admin', 'SuperAdminController@index');
@@ -106,7 +116,7 @@ Route::group([
     ], function ()
 {
     Route::get('/dashboard', 'DashboardController@index');
-    Route::get('/dashboard', 'DashboardController@all_message');
+
     Route::get('/logout', 'DashboardController@logout');
     Route::post('/view_message/test', 'DashboardController@view_mess');
     Route::get('delete_message/{id}', 'DashboardController@delete_mess');
@@ -125,6 +135,7 @@ Route::group([
     Route::get('/delete_appart/{id}', 'AppartController@supprimer')->name('supprimer_ap');
     Route::get('/detail_appart/{id}', 'AppartController@details')->name('detail_appart');
     Route::get('/edit_appart/{id}', 'AppartController@edits')->name('selectionner_ap');
+    Route::post('/search_data_appart', 'AppartController@search_data')->name('search_admin_ap');
     Route::post('/save_appart', 'AppartController@save')->name('save_ap');
     Route::post('/update_appart/{id}', 'AppartController@updates')->name('modifie_ap');
 
@@ -138,7 +149,7 @@ Route::group([
     Route::get('/edit_villa/{id}', 'VillaController@edits')->name('selectionner');
     Route::post('/save_villa', 'VillaController@save')->name('save_v');
     Route::post('/update_villa/{id}', 'VillaController@updates')->name('modifier');
-
+    Route::post('/search_data_villa', 'VillaController@search_data')->name('search_admin_vil');
     //Route pour les immeubles
     Route::get('all_im', 'ImmeubleController@all_immeuble')->name('immeubles');
     Route::get('add_im', 'ImmeubleController@index')->name('add_immeubles');
@@ -193,4 +204,15 @@ Route::group([
     Route::get('/unactive_mag/{id}', 'MagasinController@unactive')->name('desactive_magasins');
     Route::post('save_mag', 'MagasinController@save')->name('save_magasin');
     Route::post('/update_mag/{id}', 'MagasinController@updates')->name('modifie_mag');
+
+    //Route pour les Hectares
+    Route::get('all_hect', 'HectareController@all_hectare')->name('hectares');
+    Route::get('add_hect', 'HectareController@index')->name('add_hectare');
+    Route::get('/detail_hect/{id}', 'HectareController@details')->name('detail_hectare');
+    Route::get('/active_hect/{id}', 'HectareController@active')->name('active_hectares');
+    Route::get('/edit_hect/{id}', 'HectareController@edits')->name('selectionner_hect');
+    Route::get('/delete_hect/{id}', 'HectareController@supprimer')->name('supprimer_hect');
+    Route::get('/unactive_hect/{id}', 'HectareController@unactive')->name('desactive_hectares');
+    Route::post('save_hect', 'HectareController@save')->name('save_hectare');
+    Route::post('/update_hect/{id}', 'HectareController@updates')->name('modifie_hect');
 });

@@ -45,6 +45,17 @@ class AppartController extends Controller
 
     }
 
+    public function search_data()
+    {
+        $search = request('search');
+        $apparts =  Appartement::where('name', 'like', '%' . $search . '%')
+                    ->latest()
+                    ->paginate(6);
+        $nb = $apparts->count();
+        return view('backend.appartement.search', ['apparts' => $apparts])
+            ->with(['nb' => $nb]);
+    }
+
     public function save(Request $request)
     {
         request()->validate([

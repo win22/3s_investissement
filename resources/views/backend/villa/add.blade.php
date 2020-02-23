@@ -243,15 +243,16 @@
                     </div>
                 </div>
                 <!-- /.card-body -->
+                <div class="float-right">
                     <button type="submit" class="btn btn-info float-left">
                         <i class="nav-icon fas fa-check"></i>
-                        Ajouter</button>
-                &nbsp;
-                <a href="{{ route('all_vil')}}" class="btn btn-danger">
-                    <i class="fas fa-backspace fa-lg mr-2"></i>
-                    Retour
-                </a>
-
+                        Enregistrer</button>
+                    &nbsp;
+                    <a href="{{ route('all_vil')}}" class="btn btn-danger">
+                        <i class="fas fa-backspace fa-lg mr-2"></i>
+                        Retour
+                    </a>
+                </div>
             </form>
         </div>
 

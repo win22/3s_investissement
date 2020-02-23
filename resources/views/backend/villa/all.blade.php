@@ -5,8 +5,23 @@
     <p hidden>   {{ \Carbon\Carbon::setLocale('fr') }}</p>
     <div class="card card-dark ">
         <div class="card-header">
-            <h5 class="m-0">Villa</h5>
-            <p>Liste des villas par catégorie</p>
+            <div class="float-left">
+                <h5 class="m-0">Villa</h5>
+                <p>Liste des villas par catégorie</p>
+            </div>
+            <div style="padding-top: 20px" class="float-right">
+                <form class="form-inline ml-3" action="{{ route('search_admin_vil') }}" method="post">
+                    @csrf
+                    <div class="input-group input-group-sm">
+                        <input required class="form-control form-control-navbar" type="search" name="search_name" placeholder="Recherche" aria-label="Search">
+                        <div class="input-group-append">
+                            <button style="background-color: white" class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="card-body">
             <nav class="nav nav-tabs">
@@ -107,7 +122,7 @@
                     </div>
                     <p class="card-text">
                         @if($nb<=0)
-                        <span align="center" class="text-center">Aucune information trouvé</span>
+                        <span style="color: tomato; padding-left: 40%" >Aucune information trouvé</span>
                         @endif
                     </p>
 
@@ -122,7 +137,7 @@
                     <div class="row">
                         @foreach($all_villa_vendre as $villa_v)
                         <div class="col-md-4 p-2">
-                            <div class="card card-success1 card-outline1">
+                            <div class="card">
                                 <div class="ribbon-wrapper ribbon-lg">
                                     <div style="color: white !important;" class="ribbon bg-info text-white">
                                         Vendre
@@ -131,10 +146,10 @@
                                 <div class="card-header"
                                      style="background: url({{$villa_v['image'] }}) center center; background-position: cover; height: 130px !important;">
 
-                                    <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
+                                    <div style="padding-top: 103px">
+                                        <h2 style="padding: 10px;" class="badge badge-info float-left">{{
                                             $villa_v['prix'] }}
-                                            @if($villa['devise'] == 1)
+                                            @if($villa_v['devise'] == 1)
                                             CFA
                                             @elseif($villa_v['devise'] == 2)
                                             EURO
@@ -144,7 +159,7 @@
                                         </h2>
                                     </div>
                                 </div>
-                                <div class="card-body"> <a href="{{ route('details_villas', array('test' => $villa_v->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $villa['name'] }}</h6></a>
+                                <div class="card-body"> <a href="{{ route('details_villas', array('test' => $villa_v->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $villa_v['name'] }}</h6></a>
                                     <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $villa_v['short_description'] }}
                                     <div class="row">
@@ -180,7 +195,7 @@
                                        <span class="small"> {{ \Carbon\Carbon::parse($villa_v['updated_at'])->diffForHumans() }}</span>
                                     </div>
                                     <div class="row td-actions text-center float-right">
-                                        @if($villa['status'] == 1)
+                                        @if($villa_v['status'] == 1)
                                         <a href="{{ route('desactive', array('test' => $villa_v->id)) }}"
                                            class="btn btn-dark btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-down"></i>
@@ -208,7 +223,7 @@
                     </div>
                     <p class="card-text">
                         @if($nb_v<=0)
-                        <span align="center" class="text-center">Aucune information trouvé</span>
+                        <span style="color: tomato; padding-left: 40%" >Aucune information trouvé</span>
                         @endif
                     </p>
 
@@ -231,17 +246,18 @@
                                 </div>
                                 <div class="card-header"
                                      style="background: url({{$villa_p['image'] }}) center center; height: 130px !important;">
-
-                                    <div style="padding-top: 40px">
-                                        <h2 style="padding: 10px;" class="badge badge-danger float-left">{{
-                                            $villa_p['prix'] }}
-                                            @if($villa['devise'] == 1)
-                                            CFA
-                                            @elseif($villa_p['devise'] == 2)
-                                            EURO
-                                            @else
-                                            $
-                                            @endif
+                                            <div style="padding-top: 103px">
+                                                <h2 style="padding: 10px;" class="badge badge-info float-left">{{
+                                                    $villa_p['prix'] }}
+                                                    @if($villa_p['devise'] == 1)
+                                                    CFA
+                                                    @elseif($villa_p['devise'] == 2)
+                                                    EURO
+                                                    @else
+                                                    $
+                                                    @endif
+                                                </h2>
+                                            </div>
                                         </h2>
                                     </div>
                                 </div>
@@ -290,7 +306,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="row td-actions text-center float-right">
-                                        @if($villa['status'] == 1)
+                                        @if($villa_p['status'] == 1)
                                         <a href="{{ route('desactive', array('test' => $villa_p->id)) }}"
                                            class="btn btn-dark btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-down"></i>
@@ -316,9 +332,9 @@
                         </div>
                         @endforeach
                     </div>
-                    <p class="card-text">
+                    <p class="card-text md-5">
                         @if($nb_s<=0)
-                        <span class="text-center">Aucune information trouvé</span>
+                        <span style="color: tomato; padding-left: 40%" class="text-center">Aucune information trouvé</span>
                         @endif
                     </p>
 

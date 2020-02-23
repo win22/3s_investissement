@@ -89,10 +89,8 @@
                         <span class="small text-orange">Option:</span><br/>
                         @if($terrain['option'] == 1)
                         <span>A louer</span>
-                        @elseif($terrain['devise'] == 2)
-                        EURO
+                        @elseif($terrain['option'] == 2)
                         <span>A vendre</span>
-                        $
                         @endif
                     </div>
                     <div class="col-md-4">
@@ -106,26 +104,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <span class="small text-orange">Chambre:</span><br/>
-                        <span>{{ $terrain['chambre'] }}</span>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="small text-orange">Cuisines:</span><br/>
-                        <span>{{ $terrain['cuisine'] }}</span>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="small text-orange">Salle de bain:</span><br/>
-                        <span>{{ $terrain['sale_de_bain'] }}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <span class="small text-orange">Garage:</span><br/>
-                        <span>{{ $terrain['garage'] }}</span>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="small text-orange">Salon:</span><br/>
-                        <span>{{ $terrain['salon'] }}</span>
+                        <span class="small text-orange">Dimension:</span><br/>
+                        <span>{{ $terrain['dimension'] }}</span>
                     </div>
                 </div>
                 <br/>
@@ -140,18 +120,18 @@
                     </div>
                 </nav>
             </div>
-            <div class="mt-3">
-                <a href="{{ route('selectionner_terre', array('select' =>$terrain->id)) }}" class="btn btn-primary ">
-                    <i class="fas fa-edit fa-lg mr-2"></i>
-                    Modifier
-                </a>
-                <a href="{{ route('terrains')}}" class="btn btn-danger ">
-                    <i class="fas fa-backspace fa-lg mr-2"></i>
-                    Retour
-                </a>
-            </div>
         </div>
-        <div class="float-right">
+        <div class="mt-3 float-right">
+            <a href="{{ route('selectionner_terre', array('select' =>$terrain->id)) }}" class="btn btn-primary ">
+                <i class="fas fa-edit fa-lg mr-2"></i>
+                Modifier
+            </a>
+            <a href="{{ route('terrains')}}" class="btn btn-danger ">
+                <i class="fas fa-backspace fa-lg mr-2"></i>
+                Retour
+            </a>
+        </div>
+        <div class="float-left">
             <span class="small">Modifié {{  \Carbon\Carbon::parse($terrain['updated_at'])->diffForHumans() }}
              par
                 @if($admin_name['name'] == null)
