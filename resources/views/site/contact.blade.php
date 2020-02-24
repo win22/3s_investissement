@@ -19,7 +19,8 @@
     <div class="col-md-12">
         <br/>
         <h3 class="reveal-2">Laissez nous un message</h3>
-            <form class="forma reveal-3" action="{{ route('save_mess_two') }}">
+            <form class="forma reveal-3" method="post" action="{{ route('save_mess_two') }}">
+                @csrf
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label>Nom</label>

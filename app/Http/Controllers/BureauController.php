@@ -43,14 +43,25 @@ class BureauController extends Controller
 
     }
 
+    public function search_data()
+    {
+        $search = request('search');
+        $bureaux =  Bureau::where('name', 'like', '%' . $search . '%')
+            ->latest()
+            ->paginate(6);
+        $nb = $bureaux->count();
+        return view('backend.bureau.search', ['bureaux' => $bureaux])
+            ->with(['nb' => $nb]);
+    }
+
     public function active($id)
     {
         $bureau = Bureau::findOrFail($id);
         $bureau->status = 1;
         $bureau->admin_id = Auth::id();
         $bureau->save();
-        return back()->with(
-            Session::put('message', "Le bureau " . $bureau->name . "a été activé")
+        return redirect('/all_bur')->with(
+            Session::put('message', "Vous avez activé le bureau ". $bureau->name)
         );
 
     }
@@ -61,8 +72,8 @@ class BureauController extends Controller
         $bureau->status = 0;
         $bureau->admin_id = Auth::id();
         $bureau->save();
-        return back()->with(
-            Session::put('message', "Le bureau " . $bureau->name . "a été désactivé")
+        return redirect('/all_bur')->with(
+            Session::put('message', "Vous avez désactivé le bureau ". $bureau->name)
         );
     }
 
@@ -259,9 +270,8 @@ class BureauController extends Controller
         endforeach;
         File::delete($bureau->image);
         $bureau->delete();
-
-        return back()->with(
-            Session::put('message', "Le bureau " . $bureau->name . "a été supprimé")
+        return redirect('/all_bur')->with(
+            Session::put('message', "Vous avez supprimé un bureau")
         );
     }
 

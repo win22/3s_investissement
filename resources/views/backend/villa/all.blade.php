@@ -13,7 +13,7 @@
                 <form class="form-inline ml-3" action="{{ route('search_admin_vil') }}" method="post">
                     @csrf
                     <div class="input-group input-group-sm">
-                        <input required class="form-control form-control-navbar" type="search" name="search_name" placeholder="Recherche" aria-label="Search">
+                        <input required class="form-control form-control-navbar" type="search" name="search" placeholder="Recherche" aria-label="Search">
                         <div class="input-group-append">
                             <button style="background-color: white" class="btn btn-navbar" type="submit">
                                 <i class="fas fa-search"></i>

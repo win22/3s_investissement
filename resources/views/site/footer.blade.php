@@ -26,18 +26,19 @@
             <div class="col-md-3 col-sm-6 footer-widget widget">
                 <h3 style="color: white" class="widgettitle">Réseaux sociaux</h3>
                 <ul class="twitter-widget"></ul>
+
             </div>
             <div class="col-md-3 col-sm-6 footer-widget widget">
                 <h3 style="color: white" class="widgettitle">Newsletter</h3>
                 <p style="color: white">
                     Abonnez-vous à notre newsletter pour etre rapidement informé sur nos nouvelles promotions
                 </p>
-                <form method="post" id="newsletterform" name="newsletterform" class="newsletter-form"
-                      action="mail/newsletter.php">
-                    <input required type="email" name="nl-email" id="nl-email" placeholder="Saisir ici"
+                <form method="post" action="{{ route('send_message') }}">
+                    @csrf
+                    <input required type="email" name="email" id="nl-email" placeholder="Saisir ici"
                            class="form-control">
                     <div class="form-group row">
-                        <div style="width: 10px !important;" class="col-md-6 offset-md-4">
+                        <div style="width: 10px !important;" class="col-md-12 offset-md-12">
                             <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}"></div>
                             @if($errors->has('g-recaptcha-response'))
                             <span>
@@ -46,7 +47,7 @@
                             </span>
                         </div>
                     </div>
-                    <input type="submit" name="nl-submit" id="nl-submit" class="btn btn-primary btn-block btn-lg"
+                    <input type="submit" class="btn btn-primary btn-block btn-lg"
                            value="Souscrire">
                 </form>
                 <div class="clearfix"></div>

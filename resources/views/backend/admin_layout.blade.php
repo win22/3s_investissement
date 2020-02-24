@@ -37,7 +37,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </ul>
 
         <!-- SEARCH FORM -->
-
+        <p style="color: white; padding-top: 20px">
+            Pannel d'administration
+        </p>
         <p hidden class="alert ">{{ $message = Session::get('message')}}</p>
         @if($message)
         <div id="alert"  class="alert alert-success alert-with-icon small right ml-5">

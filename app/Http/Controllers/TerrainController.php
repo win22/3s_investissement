@@ -40,14 +40,25 @@ class TerrainController extends Controller
 
     }
 
+    public function search_data()
+    {
+        $search = request('search');
+        $terrains =  Terrain::where('name', 'like', '%' . $search . '%')
+            ->latest()
+            ->paginate(6);
+        $nb = $terrains->count();
+        return view('backend.terrain.search', ['terrains' => $terrains])
+            ->with(['nb' => $nb]);
+    }
+
     public function active($id)
     {
         $terrain = Terrain::findOrFail($id);
         $terrain->status = 1;
         $terrain->admin_id = Auth::id();
         $terrain->save();
-        return back()->with(
-            Session::put('message', "Le terrain " . $terrain->name . "a été activé")
+        return redirect('/all_terre')->with(
+            Session::put('message', 'Vous avez activé le terrain ' .$terrain->name)
         );
 
     }
@@ -58,8 +69,8 @@ class TerrainController extends Controller
         $terrain->status = 0;
         $terrain->admin_id = Auth::id();
         $terrain->save();
-        return back()->with(
-            Session::put('message', "Le terrain " . $terrain->name . "a été désactivé")
+        return redirect('/all_terre')->with(
+            Session::put('message', 'Vous avez desactivé le terrain ' .$terrain->name)
         );
     }
 

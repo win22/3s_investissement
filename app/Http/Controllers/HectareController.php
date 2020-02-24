@@ -40,14 +40,25 @@ class HectareController extends Controller
 
     }
 
+    public function search_data()
+    {
+        $search = request('search');
+        $hectares =  Hectare::where('name', 'like', '%' . $search . '%')
+            ->latest()
+            ->paginate(6);
+        $nb = $hectares->count();
+        return view('backend.hectare.search', ['hectares' => $hectares])
+            ->with(['nb' => $nb]);
+    }
+
     public function active($id)
     {
         $hectare = hectare::findOrFail($id);
         $hectare->status = 1;
         $hectare->admin_id = Auth::id();
         $hectare->save();
-        return back()->with(
-            Session::put('message', "cet hectare  a été activé")
+        return redirect('/all_hect')->with(
+            Session::put('message', "Vous avez activé l'hectare ". $hectare->name)
         );
 
     }
@@ -58,8 +69,8 @@ class HectareController extends Controller
         $hectare->status = 0;
         $hectare->admin_id = Auth::id();
         $hectare->save();
-        return back()->with(
-            Session::put('message', "cet hectare  a été désactivé")
+        return redirect('/all_hect')->with(
+            Session::put('message', "Vous avez désactivé l'hectare ". $hectare->name)
         );
     }
 
@@ -230,9 +241,8 @@ class HectareController extends Controller
         endforeach;
         File::delete($hectare->image);
         $hectare->delete();
-
-        return back()->with(
-            Session::put('message', "Le hectare " . $hectare->name . "a été supprimé")
+        return redirect('/all_hect')->with(
+            Session::put('message', "Vous avez supprimé un hectare ")
         );
     }
 

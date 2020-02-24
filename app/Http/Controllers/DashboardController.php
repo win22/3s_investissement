@@ -9,6 +9,7 @@ use App\Models\Hectare;
 use App\Models\Immeuble;
 use App\Models\Magasin;
 use App\Models\Message;
+use App\Models\Newsletter;
 use App\Models\Terrain;
 use App\Models\villa;
 use Illuminate\Http\Request;
@@ -36,6 +37,10 @@ class DashboardController extends Controller
             ->paginate(5);
         $nb = $all_messages->count();
 
+        $all_news = Newsletter::latest()
+            ->paginate(5);
+        $nb_n = $all_news->count();
+
         $last_mess = Message::where('status', 0)
             ->latest()
             ->first();
@@ -49,7 +54,9 @@ class DashboardController extends Controller
             ->with(['entrepots' => $entrepots])
             ->with(['Magasin' => $Magasin])
             ->with(['hectare' => $hectare])
+            ->with(['all_news' => $all_news])
             ->with(['nb' => $nb])
+            ->with(['nb_n' => $nb_n])
             ->with(['last_mess' => $last_mess]);
     }
 
@@ -82,6 +89,15 @@ class DashboardController extends Controller
         $message->delete();
         return back()->with(
             Session::put('message', 'Vous avez supprimé un message ')
+        );
+    }
+
+    public function delete_mess_n($id)
+    {
+        $news = Newsletter::findOrFail($id);
+        $news->delete();
+        return back()->with(
+            Session::put('message', 'Vous avez supprimé un email de votre newsletter ')
         );
     }
 }

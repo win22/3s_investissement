@@ -8,6 +8,7 @@ use App\Models\Entrepot;
 use App\Models\Hectare;
 use App\Models\Immeuble;
 use App\Models\Magasin;
+use App\Models\Newsletter;
 use App\Models\Terrain;
 use App\Models\villa;
 use App\Models\Message;
@@ -153,6 +154,21 @@ class HomeController extends Controller
         ]);
         return back()->with(
             Session::put('message', 'Merci '.request('name').' pour votre réservation')
+        );
+    }
+
+    public function send_message_twree()
+    {
+        request()->validate([
+            'email' => ['required', 'email', 'unique:newsletters'],
+            'g-recaptcha-response' => new Captcha(),
+        ]);
+
+        Newsletter::create([
+           'email' => request('email')
+        ]);
+        return back()->with(
+            Session::put('message', 'Merci pour votre abonnement')
         );
     }
 

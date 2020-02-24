@@ -242,8 +242,8 @@ class AppartController extends Controller
         $appart->status = 1;
         $appart->admin_id = Auth::id();
         $appart->save();
-        return back()->with(
-            Session::put('message', "L'appartement " . $appart->name . "a été activé")
+        return redirect('/all_appartement')->with(
+            Session::put('message', "Vous avez activé l'appartement " .$appart->name)
         );
 
     }
@@ -254,8 +254,8 @@ class AppartController extends Controller
         $appart->status = 0;
         $appart->admin_id = Auth::id();
         $appart->save();
-        return back()->with(
-            Session::put('message', "L'appartement " . $appart->name . "a été desactivé")
+        return redirect('/all_appartement')->with(
+            Session::put('message', "Vous avez désactivé l'appartement " .$appart->name)
         );
     }
 
@@ -269,9 +269,8 @@ class AppartController extends Controller
         endforeach;
         File::delete($appart->image);
         $appart->delete();
-
-        return back()->with(
-            Session::put('message', "L'appartement " . $appart->name . "a été supprimé")
+        return redirect('/all_appartement')->with(
+            Session::put('message', "Cet appartement a été supprimé")
         );
     }
 

@@ -5,8 +5,24 @@
     <p hidden>   {{ \Carbon\Carbon::setLocale('fr') }}</p>
     <div class="card card-dark  ">
         <div class="card-header">
-            <h5 class="m-0">Magasin</h5>
-            <p>Liste des magasins par catégorie</p>
+            <div class="float-left">
+                <h5 class="m-0">Magasin</h5>
+                <p>Liste des magasins par catégorie</p>
+            </div>
+
+            <div style="padding-top: 20px" class="float-right">
+                <form class="form-inline ml-3" action="{{ route('search_admin_mag') }}" method="post">
+                    @csrf
+                    <div class="input-group input-group-sm">
+                        <input required class="form-control form-control-navbar" type="search" name="search" placeholder="Recherche" aria-label="Search">
+                        <div class="input-group-append">
+                            <button style="background-color: white" class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="card-body">
             <nav class="nav nav-tabs">

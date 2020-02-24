@@ -10,49 +10,48 @@
                 <p>Voici le resultat de votre recherche</p>
             </div>
             <div style="padding-top: 20px" class="float-right">
-                <form class="form-inline ml-3" action="{{ route('search_admin_ap') }}" method="post">
-                    @csrf
-                    <div class="input-group input-group-sm">
-                        <input required class="form-control form-control-navbar" type="search" name="search" placeholder="Recherche" aria-label="Search">
-                        <div class="input-group-append">
-                            <button style="background-color: white" class="btn btn-navbar" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
+            <form class="form-inline ml-3" action="{{ route('search_admin_mag') }}" method="post">
+                @csrf
+                <div class="input-group input-group-sm">
+                    <input required class="form-control form-control-navbar" type="search" name="search" placeholder="Recherche" aria-label="Search">
+                    <div class="input-group-append">
+                        <button style="background-color: white" class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                </form>
-            </div>
-
+                </div>
+            </form>
+        </div>
         </div>
         <div class="card-body">
             <div class="row">
-                @foreach($apparts as $appart)
+                @foreach($magasins as $magasin)
                 <div class="col-md-4 p-2">
                     <div class="card carde dropdown-hover animated-dropdown-menu">
                         <div class="ribbon-wrapper sm ribbon">
-                            @if($appart['sold'] == 1)
+                            @if($magasin['sold'] == 1)
                             <div style="color: white !important;" class="ribbon bg-success text-white">
                                 <span class="sm">Promo</span>
                             </div>
-                            @elseif($appart['sold'] == 1 || $appart['sold'] == 2 && $appart['option'] == 2)
+                            @elseif($magasin['sold'] == 1 || $magasin['sold'] == 2 && $magasin['option'] == 2)
                             <div style="color: white !important;" class="ribbon bg-blue text-white">
                                 <span class="sm">Vendre</span>
                             </div>
-                            @elseif($appart['sold'] == 1 || $appart['sold'] == 2 && $appart['option'] == 1)
+                            @elseif($magasin['sold'] == 1 || $magasin['sold'] == 2 && $magasin['option'] == 1)
                             <div style="color: white !important;" class="ribbon bg-danger text-white">
                                 <span class="sm">Louer</span>
                             </div>
                             @endif
                         </div>
                         <div class="card-header"
-                             style="background: url({{$appart['image'] }}) center center; background-position: cover; height: 130px !important;">
+                             style="background: url({{$magasin['image'] }}) center center; background-position: cover; height: 130px !important;">
 
                             <div style="padding-top: 103px">
                                 <h2 style="padding: 10px;" class="badge badge-info float-left">{{
-                                    $appart['prix'] }}
-                                    @if($appart['devise'] == 1)
+                                    $magasin['prix'] }}
+                                    @if($magasin['devise'] == 1)
                                     CFA
-                                    @elseif($appart['devise'] == 2)
+                                    @elseif($magasin['devise'] == 2)
                                     EURO
                                     @else
                                     $
@@ -61,24 +60,24 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a href="{{ route('detail_appart', array('test' => $appart->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $appart['name']
+                            <a href="{{ route('detail_magasin', array('test' => $magasin->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $magasin['name']
                                     }}</h6></a><br/>
-                            <span>{{ $appart['short_description'] }}
+                            <span>{{ $magasin['short_description'] }}
                                     <div class="row">
                                         <div class="col-md-8">
                                             <span class="small">
                                                 <i style="color: deepskyblue !important;" class="fas fa-map-marker-alt"></i>&nbsp;
                                             </span>
-                                            <span>{{ $appart['adresse'] }}</span>
+                                            <span>{{ $magasin['adresse'] }}</span>
                                         </div>
                                         <div class="col-md-4">
                                             <i style="color: #05d7ff  !important;" class="fas fa-globe-africa"></i>&nbsp;
-                                            <span>{{ $appart['pays'] }}</span>
+                                            <span>{{ $magasin['pays'] }}</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8">
-                                            @if($appart['status'] == 1)
+                                            @if($magasin['status'] == 1)
                                             <span class="small">
                                                  <i style="color: green  !important;" class="fas fa-shield-alt"></i>&nbsp;
                                             </span>
@@ -94,26 +93,26 @@
                         </div>
                         <div class="card-footer">
                             <div class="float-left">
-                                <span class="small"> Modifier {{  \Carbon\Carbon::parse($appart['updated_at'])->diffForHumans() }}</span>
+                                <span class="small"> Modifier {{  \Carbon\Carbon::parse($magasin['updated_at'])->diffForHumans() }}</span>
                             </div>
                             <div class="row td-actions text-center float-right">
-                                @if($appart['status'] == 1)
-                                <a href="{{ route('desactive_ap', array('test' => $appart->id)) }}"
+                                @if($magasin['status'] == 1)
+                                <a href="{{ route('desactive_magasins', array('test' => $magasin->id)) }}"
                                    class="btn btn-dark btn-link btn-sm">
                                     <i style="color: white !important;" class="fas fa-thumbs-down"></i>
                                 </a>
                                 @else
-                                <a href="{{ route('active_ap', array('test' => $appart->id)) }}"
+                                <a href="{{ route('active_magasins', array('test' => $magasin->id)) }}"
                                    class="btn btn-success btn-link btn-sm">
                                     <i style="color: white !important;" class="fas fa-thumbs-up"></i>
                                 </a>
                                 @endif
                                 &nbsp;
-                                <a href="{{ route('selectionner_ap', array('select' =>$appart->id)) }}" class="btn btn-warning btn-link btn-sm">
+                                <a href="{{ route('selectionner_mag', array('select' =>$magasin->id)) }}" class="btn btn-warning btn-link btn-sm">
                                     <i style="color: white !important;" class="fas fa-edit"></i>
                                 </a>
                                 &nbsp;
-                                <a href="{{ route('supprimer_ap', array('test' => $appart->id)) }}" id="delete"
+                                <a href="{{ route('supprimer_mag', array('test' => $magasin->id)) }}" id="delete"
                                    class="btn btn-danger btn-link btn-sm">
                                     <i style="color: white !important;" class="fas fa-times"></i>
                                 </a>
@@ -134,12 +133,12 @@
             <div class="card-tools">
 
                 <ul class="pagination pagination-sm float-right">
-                    {{ $apparts->links() }}
+                    {{ $magasins->links() }}
 
                 </ul>
             </div>
             <div class="float-left">
-                <a href="{{ route('appart')}}" class="btn btn-danger ">
+                <a href="{{ route('magasins')}}" class="btn btn-danger ">
                     <i class="fas fa-backspace fa-lg mr-2"></i>
                     Retour
                 </a>

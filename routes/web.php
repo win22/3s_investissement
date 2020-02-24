@@ -14,8 +14,9 @@
 Route::get('/', 'HomeController@index');
 
 
-Route::get('/send_message/{name}', 'HomeController@captcha_send')->name('save_mess');
-Route::get('/send_message_two', 'HomeController@captcha_send_two')->name('save_mess_two');
+Route::post('/send_message/{name}', 'HomeController@captcha_send')->name('save_mess');
+Route::post('/send_message_two', 'HomeController@captcha_send_two')->name('save_mess_two');
+Route::post('/send_message', 'HomeController@send_message_twree')->name('send_message');
 Route::get('/contact', 'HomeController@contacts')->name('contact_site');
 Route::get('/about', 'HomeController@about')->name('about_site');
 
@@ -120,6 +121,7 @@ Route::group([
     Route::get('/logout', 'DashboardController@logout');
     Route::post('/view_message/test', 'DashboardController@view_mess');
     Route::get('delete_message/{id}', 'DashboardController@delete_mess');
+    Route::get('delete_message_n/{id}', 'DashboardController@delete_mess_n');
     Route::get('/all_admin', 'AdminController@all_admin');
     Route::get('/delete_admin/{id}', 'AdminController@supprimer');
     Route::get('/active_admin/{id}', 'AdminController@active_admin');
@@ -160,6 +162,7 @@ Route::group([
     Route::get('/delete_im/{id}', 'ImmeubleController@supprimer')->name('supprimer_im');
     Route::post('save_im', 'ImmeubleController@save')->name('save_immeubles');
     Route::post('/update_im/{id}', 'ImmeubleController@updates')->name('modifie_im');
+    Route::post('/search_data_immeuble', 'ImmeubleController@search_data')->name('search_admin_im');
 
     //Route pour les bureaux
     Route::get('all_bur', 'BureauController@all_bureau')->name('bureaux');
@@ -171,6 +174,7 @@ Route::group([
     Route::get('/unactive_bur/{id}', 'BureauController@unactive')->name('desactive_bureaux');
     Route::post('save_bur', 'BureauController@save')->name('save_bureau');
     Route::post('/update_bur/{id}', 'BureauController@updates')->name('modifie_bur');
+    Route::post('/search_data_bureau', 'BureauController@search_data')->name('search_admin_bur');
 
     //Route pour les terrains
     Route::get('all_terre', 'TerrainController@all_terrain')->name('terrains');
@@ -182,6 +186,7 @@ Route::group([
     Route::get('/unactive_terre/{id}', 'TerrainController@unactive')->name('desactive_terrains');
     Route::post('save_terre', 'TerrainController@save')->name('save_terrain');
     Route::post('/update_terre/{id}', 'TerrainController@updates')->name('modifie_terre');
+    Route::post('/search_data_terrain', 'TerrainController@search_data')->name('search_admin_terre');
 
     //Route pour les entrepots
     Route::get('all_entr', 'EntrepotController@all_entrepot')->name('entrepots');
@@ -193,6 +198,8 @@ Route::group([
     Route::get('/unactive_entr/{id}', 'EntrepotController@unactive')->name('desactive_entrepots');
     Route::post('save_entr', 'EntrepotController@save')->name('save_entrepot');
     Route::post('/update_entr/{id}', 'EntrepotController@updates')->name('modifie_entr');
+    Route::post('/search_data_entr', 'EntrepotController@search_data')->name('search_admin_entr');
+
 
     //Route pour les magasins
     Route::get('all_mag', 'MagasinController@all_magasin')->name('magasins');
@@ -204,6 +211,7 @@ Route::group([
     Route::get('/unactive_mag/{id}', 'MagasinController@unactive')->name('desactive_magasins');
     Route::post('save_mag', 'MagasinController@save')->name('save_magasin');
     Route::post('/update_mag/{id}', 'MagasinController@updates')->name('modifie_mag');
+    Route::post('/search_data_mag', 'MagasinController@search_data')->name('search_admin_mag');
 
     //Route pour les Hectares
     Route::get('all_hect', 'HectareController@all_hectare')->name('hectares');
@@ -215,4 +223,5 @@ Route::group([
     Route::get('/unactive_hect/{id}', 'HectareController@unactive')->name('desactive_hectares');
     Route::post('save_hect', 'HectareController@save')->name('save_hectare');
     Route::post('/update_hect/{id}', 'HectareController@updates')->name('modifie_hect');
+    Route::post('/search_data_hect', 'HectareController@search_data')->name('search_admin_hect');
 });

@@ -111,7 +111,8 @@
         </div>
     </div>
 </div>
-<form class="forma reveal-3" action="{{ route('save_mess', array('test' => $magasin->name)) }}">
+<form class="forma reveal-3"  method="post" action="{{ route('save_mess', array('test' => $magasin->name)) }}">
+    @csrf
     <div class="row">
         <div class="form-group col-md-4">
             <label>Nom</label>

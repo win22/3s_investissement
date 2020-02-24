@@ -144,66 +144,32 @@
                 <div class="col-lg-12">
                     <div class="card card-orange card-outline reveal-2">
                         <div class="card-header">
-                            <h5 class="m-0">Messages</h5>
-                            @if($last_mess)
-                            <p> {{  \Carbon\Carbon::parse($last_mess['created_at'])->diffForHumans() }}
-                                de cela vous avez reçu un nouveau message de {{ $last_mess->name }}
-                            </p>
-                            @endif
+                            <h5 class="m-0">Newsletter</h5
                         </div>
+                    </div>
                         <div class="card-body">
                             <div class="col-md-12">
-
-                                <!-- /.card-header -->
-
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead class="text-white" style="background-color: #0c3540; border-radius: 30px !important;">
                                         <tr>
 
-                                            <th>Nom</th>
                                             <th>Email</th>
-                                            <th>Numero</th>
                                             <th>Date</th>
-                                            <th>Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($all_messages as $v_info)
-                                        <tr >
-
-                                            <td>{{ $v_info['name'] }}</td>
-                                            <td>{{ $v_info['email'] }}</td>
+                                        @foreach($all_news as $v_info_n)
+                                        <tr>
+                                            <td>{{ $v_info_n['email'] }}</td>
                                             <td>
-                                                {{ $v_info['phone'] }}
-                                            </td>
-                                            <td>
-                                                {{  \Carbon\Carbon::parse($v_info['created_at'])->diffForHumans() }}
-                                            </td>
-                                            <td>
-                                                @if($v_info->status == 1)
-                                                <span class="badge badge-success">lue</span>
-                                                @else
-                                                <span class="badge badge-warning">Non lue</span>
-                                                @endif
+                                                {{  \Carbon\Carbon::parse($v_info_n['created_at'])->diffForHumans() }}
                                             </td>
 
                                             <td class="td-actions text-center">
-                                                <a data-toggle="modal"
-                                                   data-id="{{ $v_info['id'] }}"
-                                                   data-name="{{ $v_info['name'] }}"
-                                                   data-email="{{ $v_info['email'] }}"
-                                                   data-message="{{ $v_info['message'] }}"
-                                                   data-phone="{{ $v_info['phone'] }}"
-                                                   data-name_p="{{ $v_info['name_p'] }}"
-                                                   data-target="#updateModal2"
-
-                                                   class="btn btn-warning btn-link btn-sm" style="margin-left: 2px">
-                                                    <i style="color: white !important;" class="fas fa-eye"></i>
-                                                </a>
                                                 @if(Auth::check() AND Auth::user()->role == 1)
-                                                <a id="delete" href="/delete_message/{{ $v_info['id'] }}"
+                                                <a id="delete" href="/delete_message_n/{{ $v_info_n['id'] }}"
                                                    class="btn btn-danger btn-link btn-sm" style="margin-left: 2px">
                                                     <i style="color: white !important;" class="fas fa-times "></i>
                                                 </a>
@@ -214,7 +180,7 @@
                                         </tbody>
                                     </table>
                                     <p style="padding-left: 40%; color:tomato" class="card-text md-2">
-                                        @if($nb<=0)
+                                        @if($nb_n<=0)
                                         <span class="">Aucune information trouvé</span>
                                         @endif
                                     </p>
@@ -224,6 +190,7 @@
                         </div>
                     </div>
                 </div>
+
     </div>
     <!-- /.col-md-6 -->
     <!-- /.col-md-6 -->
@@ -254,6 +221,86 @@
                         <img src="{{ asset(Auth()->user()->image) }}" alt="" class="img-circle img-fluid">
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="card card-orange card-outline reveal-2">
+            <div class="card-header">
+                <h5 class="m-0">Message</h5>
+                @if($last_mess)
+                <p> {{  \Carbon\Carbon::parse($last_mess['created_at'])->diffForHumans() }}
+                    de cela vous avez reçu un nouveau message de {{ $last_mess->name }}
+                </p>
+                @endif
+            </div>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-white" style="background-color: #0c3540; border-radius: 30px !important;">
+                            <tr>
+
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Numero</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($all_messages as $v_info)
+                            <tr >
+
+                                <td>{{ $v_info['name'] }}</td>
+                                <td>{{ $v_info['email'] }}</td>
+                                <td>
+                                    {{ $v_info['phone'] }}
+                                </td>
+                                <td>
+                                    {{  \Carbon\Carbon::parse($v_info['created_at'])->diffForHumans() }}
+                                </td>
+                                <td>
+                                    @if($v_info->status == 1)
+                                    <span class="badge badge-success">lue</span>
+                                    @else
+                                    <span class="badge badge-warning">Non lue</span>
+                                    @endif
+                                </td>
+
+                                <td class="td-actions text-center">
+                                    <a data-toggle="modal"
+                                       data-id="{{ $v_info['id'] }}"
+                                       data-name="{{ $v_info['name'] }}"
+                                       data-email="{{ $v_info['email'] }}"
+                                       data-message="{{ $v_info['message'] }}"
+                                       data-phone="{{ $v_info['phone'] }}"
+                                       data-name_p="{{ $v_info['name_p'] }}"
+                                       data-target="#updateModal2"
+
+                                       class="btn btn-warning btn-link btn-sm" style="margin-left: 2px">
+                                        <i style="color: white !important;" class="fas fa-eye"></i>
+                                    </a>
+                                    @if(Auth::check() AND Auth::user()->role == 1)
+                                    <a id="delete" href="/delete_message/{{ $v_info['id'] }}"
+                                       class="btn btn-danger btn-link btn-sm" style="margin-left: 2px">
+                                        <i style="color: white !important;" class="fas fa-times "></i>
+                                    </a>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <p style="padding-left: 40%; color:tomato" class="card-text md-2">
+                            @if($nb<=0)
+                            <span class="">Aucune information trouvé</span>
+                            @endif
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

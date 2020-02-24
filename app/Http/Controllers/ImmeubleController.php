@@ -41,14 +41,25 @@ class ImmeubleController extends Controller
 
     }
 
+    public function search_data()
+    {
+        $search = request('search');
+        $immeubs =  Immeuble::where('name', 'like', '%' . $search . '%')
+            ->latest()
+            ->paginate(6);
+        $nb = $immeubs->count();
+        return view('backend.immeuble.search', ['immeubs' => $immeubs])
+            ->with(['nb' => $nb]);
+    }
+
     public function active($id)
     {
         $immeuble = Immeuble::findOrFail($id);
         $immeuble->status = 1;
         $immeuble->admin_id = Auth::id();
         $immeuble->save();
-        return back()->with(
-            Session::put('message', "L'immeuble " . $immeuble->name . "a été activé")
+        return redirect('/all_im')->with(
+            Session::put('message', "Vous avez activé l'immeuble :" . $immeuble->name )
         );
 
     }
@@ -59,8 +70,8 @@ class ImmeubleController extends Controller
         $immeuble->status = 0;
         $immeuble->admin_id = Auth::id();
         $immeuble->save();
-        return back()->with(
-            Session::put('message', "L'immeuble " . $immeuble->name . "a été désactivé")
+        return redirect('/all_im')->with(
+            Session::put('message', "Vous avez désactivé l'immeuble :" . $immeuble->name )
         );
     }
 
@@ -262,8 +273,8 @@ class ImmeubleController extends Controller
         File::delete($immeub->image);
         $immeub->delete();
 
-        return back()->with(
-            Session::put('message', "L'immeuble " . $immeub->name . "a été supprimé")
+        return redirect('/all_im')->with(
+            Session::put('message', "Vous avez supprimé cet immeuble ")
         );
     }
 

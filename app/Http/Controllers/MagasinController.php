@@ -40,14 +40,25 @@ class MagasinController extends Controller
 
     }
 
+    public function search_data()
+    {
+        $search = request('search');
+        $magasins =  Magasin::where('name', 'like', '%' . $search . '%')
+            ->latest()
+            ->paginate(6);
+        $nb = $magasins->count();
+        return view('backend.magasin.search', ['magasins' => $magasins])
+            ->with(['nb' => $nb]);
+    }
+
     public function active($id)
     {
         $magasin = Magasin::findOrFail($id);
         $magasin->status = 1;
         $magasin->admin_id = Auth::id();
         $magasin->save();
-        return back()->with(
-            Session::put('message', "Le magasin " . $magasin->name . "a été activé")
+        return redirect('/all_mag')->with(
+            Session::put('message', "Vous avez activé le magasin ".$magasin->name)
         );
 
     }
@@ -58,8 +69,8 @@ class MagasinController extends Controller
         $magasin->status = 0;
         $magasin->admin_id = Auth::id();
         $magasin->save();
-        return back()->with(
-            Session::put('message', "Le magasin " . $magasin->name . "a été désactivé")
+        return redirect('/all_mag')->with(
+            Session::put('message', "Vous avez désactivé le magasin ".$magasin->name)
         );
     }
 
@@ -231,8 +242,8 @@ class MagasinController extends Controller
         File::delete($magasin->image);
         $magasin->delete();
 
-        return back()->with(
-            Session::put('message', "Le magasin " . $magasin->name . "a été supprimé")
+        return redirect('/all_mag')->with(
+            Session::put('message', "Vous avez supprimé un magasin" )
         );
     }
 
@@ -251,7 +262,7 @@ class MagasinController extends Controller
     }
 
 
-    //c             onfig pour le site
+    //      config pour le site
     public function details_magasin_site($id)
     {
         $magasin = Magasin::findOrFail($id);

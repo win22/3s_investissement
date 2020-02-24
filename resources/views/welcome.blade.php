@@ -275,7 +275,7 @@
                             <li class="col-md-4 col-sm-6 type-rent reveal">
                                 <div class="property-block">
                                     <a  href="{{ route('detail_im', array('select' => $immeub->id)) }}" class="property-featured-image">
-                                        <img style="height: 230px !important;"  src="{{$villa->image }}" alt="">
+                                        <img style="height: 230px !important;"  src="{{$immeub->image }}" alt="">
                                         <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
                                         @if($immeub->option == 1)
                                         <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
@@ -296,7 +296,7 @@
                                         <div style="background-color: rgba(255,9,9,0.76)" class="price"><span>{{ $immeub->prix }}</span><strong>$</strong></div>
                                         @endif
                                         <br/>
-                                        <span>{{ $villa->short_description }}</span>
+                                        <span>{{ $immeub->short_description }}</span>
                                     </div>
                                     <div class="property-amenities clearfix">
                                         <span class="area"><strong>{{ $immeub->appartement }}</strong>Appart</span>
@@ -310,7 +310,7 @@
                         </ul>
                     </div>
                     @if( ($nb_app<=0) && ($nb_vill<=0) && ($nb_im<=0) )
-                    <span style="padding-left: 40%" align="center" class="text-center">Aucune information trouvée</span>
+                    <span style="padding-left: 40%; color: tomato" align="center" class="text-center">Aucune information trouvée</span>
                     @endif
                 </div>
                 <a href="simple-listing-fw.html" class="btn btn-primary btn-sm pull-right">Voir d'autres proprétés<i class="fa fa-long-arrow-right"></i></a>

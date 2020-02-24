@@ -40,14 +40,25 @@ class EntrepotController extends Controller
 
     }
 
+    public function search_data()
+    {
+        $search = request('search');
+        $entrepots =  Entrepot::where('name', 'like', '%' . $search . '%')
+            ->latest()
+            ->paginate(6);
+        $nb = $entrepots->count();
+        return view('backend.entrepot.search', ['entrepots' => $entrepots])
+            ->with(['nb' => $nb]);
+    }
+
     public function active($id)
     {
         $entrepot = Entrepot::findOrFail($id);
         $entrepot->status = 1;
         $entrepot->admin_id = Auth::id();
         $entrepot->save();
-        return back()->with(
-            Session::put('message', "Le entrepot " . $entrepot->name . "a été activé")
+        return redirect('/all_entr')->with(
+            Session::put('message', "Vous avez activé l'entrepot " . $entrepot->name)
         );
 
     }
@@ -58,8 +69,8 @@ class EntrepotController extends Controller
         $entrepot->status = 0;
         $entrepot->admin_id = Auth::id();
         $entrepot->save();
-        return back()->with(
-            Session::put('message', "Le entrepot " . $entrepot->name . "a été désactivé")
+        return redirect('/all_entr')->with(
+            Session::put('message', "Vous avez désactivé l'entrepot " . $entrepot->name)
         );
     }
 
@@ -231,8 +242,8 @@ class EntrepotController extends Controller
         File::delete($entrepot->image);
         $entrepot->delete();
 
-        return back()->with(
-            Session::put('message', "Le entrepot " . $entrepot->name . "a été supprimé")
+        return redirect('/all_entr')->with(
+            Session::put('message', "Vous avez supprimé un entrepot")
         );
     }
 
@@ -251,7 +262,7 @@ class EntrepotController extends Controller
     }
 
 
-    //c             onfig pour le site
+    //          config pour le site
     public function details_entrepot_site($id)
     {
         $entrepot = Entrepot::findOrFail($id);

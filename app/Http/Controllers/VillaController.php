@@ -234,8 +234,8 @@ class VillaController extends Controller
         $villa->status = 1;
         $villa->admin_id = Auth::id();
         $villa->save();
-        return back()->with(
-            Session::put('message', "L'villa " . $villa->name . "a été activé")
+        return redirect('/all_villa')->with(
+            Session::put('message', 'Vous avez activé la villa ' .$villa->name)
         );
 
     }
@@ -246,8 +246,8 @@ class VillaController extends Controller
         $villa->status = 0;
         $villa->admin_id = Auth::id();
         $villa->save();
-        return back()->with(
-            Session::put('message', "L'villa " . $villa->name . "a été desactivé")
+        return redirect('/all_villa')->with(
+            Session::put('message', 'Vous avez desactivé la villa ' .$villa->name)
         );
     }
 
@@ -261,9 +261,8 @@ class VillaController extends Controller
         endforeach;
         File::delete($villa->image);
         $villa->delete();
-
-        return back()->with(
-            Session::put('message', "La villa " . $villa->name . "a été supprimé")
+        return redirect('/all_villa')->with(
+            Session::put('message', "Vous avez supprimé une villa ")
         );
     }
 
