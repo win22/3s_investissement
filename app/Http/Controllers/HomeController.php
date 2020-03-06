@@ -160,12 +160,12 @@ class HomeController extends Controller
     public function send_message_twree()
     {
         request()->validate([
-            'email' => ['required', 'email', 'unique:newsletters'],
-            'g-recaptcha-response' => new Captcha(),
+            'email_news' => ['required', 'email'],
+            'g-recaptcha-response_2' => new Captcha(),
         ]);
 
         Newsletter::create([
-           'email' => request('email')
+           'email_news' => request('email_news')
         ]);
         return back()->with(
             Session::put('message', 'Merci pour votre abonnement')

@@ -1,7 +1,7 @@
 @extends('backend.admin_layout')
 @section('contenu')
 
-<div class="col-md-12">
+<div class="col-md-12 reveal">
     <!-- general form elements -->
     <div class="card card-orange card-outline">
         <div class="card-header">
@@ -12,7 +12,7 @@
         <!-- form start -->
         <div class="card-body">
             <div class="card-header" style="background-color: red">
-                <h6 class="card-title text-white">Modification de la magasin : <span style="font-family: 'Manjari Bold'">{{ $magasin['name'] }}</span> </h6>
+                <h6 class="card-title text-white">Modification du magasin : <span style="font-family: 'Manjari Bold'">{{ $magasin['name'] }}</span> </h6>
             </div>
             <form  action="{{ route('modifie_mag', array('test' => $magasin->id)) }}" enctype="multipart/form-data" method="post">
                 {{ csrf_field() }}
@@ -72,7 +72,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Type<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="type">
-                                <option value="magasinement">magasinement</option>
+                                <option value="magasin">magasin</option>
                             </select>
                             @if($errors->has('type'))
                             <small  class="form-text text-danger">{{$errors->first('type')}}</small>

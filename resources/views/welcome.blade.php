@@ -4,7 +4,7 @@
     <!-- Basic Page Needs
       ================================================== -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Real Spaces - Responsive Real Estate Template</title>
+    <title>3s investissement</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
@@ -27,11 +27,12 @@
     <!-- SCRIPTS
       ================================================== -->
     <script src="{{ asset('site/js/modernizr.js') }}"></script><!-- Modernizr -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="home">
 <!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser
-    today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better
+<p class="chromeframe">You are using an outdated browser. <a href="https://browsehappy.com/">Upgrade your browser
+    today</a> or <a href="https://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better
     experience this site.</p>
 <![endif]-->
 <div class="body">
@@ -108,13 +109,17 @@
                                     <ul class="dropdown">
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('app_promo') }}">Appartements</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('vill_promo') }}">Villa</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="{{ route('bur_promo') }}">Bureau</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('im_promo') }}">Immeuble</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('terre_promo') }}">Terrains</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="{{ route('entr_promo') }}">Entrepots</a></li>
-                                        <li><a style="color: #5e5e5e !important;" href="{{ route('mag_promo') }}">Magasin</a></li>
                                         <li><a style="color: #5e5e5e !important;" href="{{ route('hect_promo') }}">Hectares</a></li>
                                     </ul>
+                                </li>
+                                <li><a href="">Projet en cours</a>
+                                        <ul class="dropdown">
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('app_louer') }}">Appartements</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('vill_louer') }}">Villas</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('terre_louer') }}">Terrain</a></li>
+                                        </ul>
                                 </li>
                                 <li><a href="{{ route('about_site') }}">A propos</a></li>
                                 <li><a href="{{ route('contact_site') }}">Contact</a></li>
@@ -136,8 +141,11 @@
                 <li class="slider-banner1" style="background-image:url({{ asset('site/image/03.jpg')}}); height: 680px">
                     <div class="row">
                         <div class="containerss">
-                            <h5  class="reveal text3  span1">Bienvenue dans  <span style="color: tomato">3s investissement SUARL</span></h5>&nbsp;
-                            <h5  class="reveal-4 text1 span1">Nous faisons de votre confort notre priotité.</h5>&nbsp;
+                            <h5  class="reveal text3  span1">Bienvenue dans  <span class="shadow" style="
+                            color: tomato; font-weight: bold; text-shadow: 2px 0px 3px rgba(8,79,104,0.67)">
+                                    3s investissement SUARL
+                                </span></h5>&nbsp;
+                            <h5  class="reveal-4 text1 span1">Nous faisons de votre confort, notre priorité.</h5>&nbsp;
                         </div>
                     </div>
 
@@ -145,7 +153,7 @@
                 <li class="parallax" style="background-image:url({{ asset('site/image/05.jpg')}}); height: 680px">
                     <div class="row">
                         <div class="containerss">
-                            <h5  class="reveal text1  span1">Nous faisons de votre confort notre priotité.</h5>&nbsp;
+                            <h5  class="reveal text1  span1">Nous faisons de votre confort, notre priorité.</h5>&nbsp;
                         </div>
                     </div>
                 </li>
@@ -161,30 +169,33 @@
                 <div class="container">
                     <div class="row reveal-2">
                         <h3 class="text-center">Choisir un catalogue</h3>
-                        <div data-toggle="modal" data-target="#exampleModal" class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
-                                    src="{{ URL::to(asset('site/image/03.jpg')) }}"
-                                    class="img-thumbnail">
-                            <h3 class="text-center">Promo</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
-                                Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
-                        </div>
                         <div class="reveal-2">
                             <div data-toggle="modal" data-target="#exampleModal3" class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
-                                                                      src="{{ URL::to(asset('site/image/02.jpg')) }}"
+                                                                      src="{{ URL::to(asset('site/image/L.jpg')) }}"
                                                                       class="img-thumbnail">
-                                <h3 class="text-center">A louer</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
-                                    Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
+
+                                <p style="padding-top: 10px; text-align: justify"> Entrez dans notre catalogue avec autant de propriétés à louer et partez à
+                                    la recherche de ce qui conviendra à votre style  à des prix très abordables.</p>
                             </div>
                         </div>
                         <div class="reveal-3">
                             <div data-toggle="modal" data-target="#exampleModal2" class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
-                                                                      src="{{ URL::to(asset('site/image/06.jpg')) }}"
+                                                                      src="{{ URL::to(asset('site/image/V.jpg')) }}"
                                                                       class="img-thumbnail">
-                                <h3 class="text-center">A vendre</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
-                                    Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
+
+                                <p style="padding-top: 10px; text-align: justify">Nous faisons de votre confort notre priorités, c'est dans cette optique que
+                                    nous vous proposons des propriétés à vendre à des prix très abordables
+                                </p>
                             </div>
+                        </div>
+                        <div data-toggle="modal" data-target="#exampleModal" class="col-md-4 col-sm-4 carde"><img style="width: 1000px" alt="Friendly Agents"
+                                                                                                                  src="{{ URL::to(asset('site/image/P.jpg')) }}"
+                                                                                                                  class="img-thumbnail">
+
+                            <p style="padding-top: 10px; text-align: justify">
+                                Nous vous proposons aussi une large game de nos propriétées que nous mettons en promotion,
+                                entrez dans notre catalogue et trouver ce que vous recherchez
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -195,7 +206,7 @@
                     <div class="property-columns" id="latest-properties">
                         <div class="col-md-12">
                             <div class="block-heading">
-                                <h4><span class="heading-icon"><i class="fa fa-home"></i></span>Nouvautés</h4>
+                                <h4><span class="heading-icon"><i class="fa fa-home"></i></span>Nouveautés</h4>
                             </div>
                         </div>
                         <ul>
@@ -203,7 +214,7 @@
                             <li class="col-md-4 col-sm-6 type-rent reveal">
                                 <div class="property-block">
                                     <a  href="{{ route('property-detail', array('select' => $appart->id)) }}" class="property-featured-image">
-                                        <img style="height: 230px !important;"  src="{{$appart->image }}" alt="">
+                                        <img style="height: 230px !important;"  src="{{  URL::to(asset($appart->image)) }}" alt="">
                                         <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
                                         @if($appart->option == 1)
                                         <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
@@ -235,11 +246,13 @@
                                 </div>
                             </li>
                             @endforeach
+
+
                             @foreach($villas as $villa)
                             <li class="col-md-4 col-sm-6 type-rent reveal">
                                 <div class="property-block">
                                     <a  href="{{ route('villa_detail', array('select' => $villa->id)) }}" class="property-featured-image">
-                                        <img style="height: 230px !important;"  src="{{$villa->image }}" alt="">
+                                        <img style="height: 230px !important;"  src="{{  URL::to(asset($villa->image)) }}" alt="">
                                         <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
                                         @if($villa->option == 1)
                                         <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
@@ -271,11 +284,12 @@
                                 </div>
                             </li>
                             @endforeach
+
                             @foreach($immeubs as $immeub)
                             <li class="col-md-4 col-sm-6 type-rent reveal">
                                 <div class="property-block">
                                     <a  href="{{ route('detail_im', array('select' => $immeub->id)) }}" class="property-featured-image">
-                                        <img style="height: 230px !important;"  src="{{$immeub->image }}" alt="">
+                                        <img style="height: 230px !important;"  src="{{URL::to(asset($immeub->image)) }}" alt="">
                                         <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
                                         @if($immeub->option == 1)
                                         <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
@@ -310,18 +324,19 @@
                         </ul>
                     </div>
                     @if( ($nb_app<=0) && ($nb_vill<=0) && ($nb_im<=0) )
-                    <span style="padding-left: 40%; color: tomato" align="center" class="text-center">Aucune information trouvée</span>
+                    <span style="padding-left: 40%; color: red" align="center" class="text-center">Aucune information trouvée</span>
                     @endif
                 </div>
-                <a href="simple-listing-fw.html" class="btn btn-primary btn-sm pull-right">Voir d'autres proprétés<i class="fa fa-long-arrow-right"></i></a>
-                <br/>
+               <br/>
             </div>
             <div id="featured-properties">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="block-heading">
-                                <h4><span class="heading-icon"><i class="fa fa-star"></i></span>Autres proprétés</h4>
+                                <h4><span class="heading-icon"><i class="fa fa-star"></i></span>Autres propriétés</h4>
+                                <a href="{{ route('all_terre') }}" class="btn btn-primary btn-sm pull-right">Voir d'autres propriétés</i></a>
+
                             </div>
                         </div>
                     </div>
@@ -331,7 +346,7 @@
                             @foreach($terrains as $terrain)
                             <li class="item property-block">
                                 <a href="{{ route('detail_terre', array('select' => $terrain->id)) }}" class="property-featured-image">
-                                    <img style="height: 150px; !important;" src="{{ asset($terrain->image) }}" alt="">
+                                    <img style="height: 150px; !important;" src="{{ URL::to(asset($terrain->image)) }}" alt="">
                                     <span class="images-count"><i class="fa fa-picture-o"></i>1</span>
                                     @if($terrain->option == 1)
                                     <span style="background-color: #00b2bd !important; color: white" class="badges">louer</span>
@@ -364,23 +379,6 @@
                     </p>
                 </div>
             </div>
-            <div class="container">
-                <div class="block-heading">
-                    <h4><span class="heading-icon"><i class="fa fa-users"></i></span>Nos partenaires</h4>
-                    <a href="about.html" class="btn btn-primary btn-sm pull-right">Tous les partenaires <i
-                                class="fa fa-long-arrow-right"></i></a>
-                </div>
-                <div class="row">
-                    <ul class="owl-carousel" id="clients-slider" data-columns="4" data-autoplay="yes"
-                        data-pagination="no" data-arrows="no" data-single-item="no" data-items-desktop="4"
-                        data-items-desktop-small="4" data-items-mobile="2" data-items-tablet="4">
-                        <li class="item"><a href="#"><img src="{{ asset('site/image/logo-na.png') }}" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="{{ asset('site/image/logo-na.png') }}" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="{{ asset('site/image/logo-na.png') }}" alt=""></a></li>
-                        <li class="item"><a href="#"><img src="{{ asset('site/image/logo-na.png') }}" alt=""></a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
             <div class="padding-tb45 bottom-blocks">
                 <div class="container">
@@ -395,7 +393,7 @@
                                         dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
                                         amet, consectetur adipiscing.</p>
-                                    <img src="http://placehold.it/80x80&amp;text=IMAGE+PLACEHOLDER" alt="Happy Client"
+                                    <img src="https://placehold.it/80x80&amp;text=IMAGE+PLACEHOLDER" alt="Happy Client"
                                          class="testimonial-sender">
                                     <cite>Ibrahima DIALLO - <strong>Nataal Agency</strong>
                                         <br><a href="#">www.nataalagency.com</a>
@@ -411,7 +409,7 @@
                                         dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
                                         amet, consectetur adipiscing.</p>
-                                    <img src="http://placehold.it/80x80&amp;text=IMAGE+PLACEHOLDER" alt="Happy Client"
+                                    <img src="https://placehold.it/80x80&amp;text=IMAGE+PLACEHOLDER" alt="Happy Client"
                                          class="testimonial-sender">
                                     <cite>Sagesse DIHAMBOU - <strong>LyMarket</strong>
                                         <br><a href="#">www.lymarket.sb</a>
@@ -427,7 +425,7 @@
                                         dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus.
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
                                         amet, consectetur adipiscing.</p>
-                                    <img src="http://placehold.it/80x80&amp;text=IMAGE+PLACEHOLDER" alt="Happy Client"
+                                    <img src="https://placehold.it/80x80&amp;text=IMAGE+PLACEHOLDER" alt="Happy Client"
                                          class="testimonial-sender">
                                     <cite>Malick DIALLO - <strong>Margo Business</strong>
                                         <br><a href="#">www.companyurl.com</a>
@@ -452,14 +450,16 @@
                     <h5 class="modal-title" id="exampleModalLabel">Veuillez choisir une catégorie</h5>
                 </div>
                 <div class="modal-body">
-                    <a href="{{ route('app_promo') }}" class="btn btn-success">Appartements</a>
-                    <a href="{{ route('im_promo') }}" class="btn btn-warning">Immeubles</a>
-                    <a href="{{ route('vill_promo') }}" class="btn btn-danger">Villas</a>
-                    <a href="{{ route('bur_promo') }}" class="btn btn-success">Bureaux</a>
-                    <a href="{{ route('terre_promo') }}" class="btn btn-info">Terrains</a>
-                    <a href="{{ route('entr_promo') }}" class="btn btn-info">Entrepots</a>
-                    <a href="{{ route('mag_promo') }}" class="btn btn-info">Magasin</a>
-                    <a href="{{ route('hect_promo') }}" class="btn btn-info">Hectares</a>
+                    <div class="row">
+                        <a href="{{ route('app_promo') }}" class="btn btn-success">Appartements</a>
+                        <a href="{{ route('im_promo') }}" class="btn btn-warning">Immeubles</a>
+                        <a href="{{ route('vill_promo') }}" class="btn btn-danger">Villas</a>
+                        <a href="{{ route('terre_promo') }}" class="btn btn-info">Terrains</a>
+                    </div>
+                    <div class="row" style="padding-top: 10px">
+                        <a href="{{ route('hect_promo') }}" class="btn btn-primary">Hectares</a>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
@@ -477,14 +477,19 @@
                     <h5 class="modal-title" id="exampleModalLabel">Veuillez choisir une catégorie</h5>
                 </div>
                 <div class="modal-body">
-                    <a href="{{ route('app_vendre') }}" class="btn btn-success">Appartements</a>
-                    <a href="{{ route('im_vendre') }}" class="btn btn-warning">Immeubles</a>
-                    <a href="{{ route('vill_vendre') }}" class="btn btn-danger">Villas</a>
-                    <a href="{{ route('bur_vendre') }}" class="btn btn-success">Bureaux</a>
-                    <a href="{{ route('terre_vendre') }}" class="btn btn-info">Terrains</a>
-                    <a href="{{ route('entr_vendre') }}" class="btn btn-danger">Entrepots</a>
-                    <a href="{{ route('mag_vendre') }}" class="btn btn-danger">Magasins</a>
-                    <a href="{{ route('hect_vendre') }}" class="btn btn-danger">Hectares</a>
+                    <div class="row">
+                        <a  href="{{ route('app_vendre') }}" class="btn btn-success col-md-3">Appartements</a>
+                        <a href="{{ route('im_vendre') }}" class="btn btn-warning col-md-3">Immeubles</a>
+                        <a href="{{ route('vill_vendre') }}" class="btn btn-danger col-md-3">Villas</a>
+                        <a href="{{ route('bur_vendre') }}" class="btn btn-success col-md-3">Bureaux</a>
+                    </div>
+                    <div class="row" style="padding-top: 10px">
+                        <a href="{{ route('terre_vendre') }}" class="btn btn-info col-md-3">Terrains</a>
+                        <a href="{{ route('entr_vendre') }}" class="btn btn-success col-md-3">Entrepots</a>
+                        <a href="{{ route('mag_vendre') }}" class="btn btn-warning col-md-3">Magasins</a>
+                        <a href="{{ route('hect_vendre') }}" class="btn btn-danger col-md-3">Hectares</a>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
@@ -502,14 +507,19 @@
                     <h5 class="modal-title" id="exampleModalLabel">Veuillez choisir une catégorie</h5>
                 </div>
                 <div class="modal-body">
-                    <a href="{{ route('app_louer') }}" class="btn btn-success">Appartements</a>
-                    <a href="{{ route('im_louer') }}" class="btn btn-warning">Immeubles</a>
-                    <a href="{{ route('vill_louer') }}" class="btn btn-danger">Villas</a>
-                    <a href="{{ route('bur_louer') }}" class="btn btn-success">Bureaux</a>
-                    <a href="{{ route('terre_louer') }}" class="btn btn-info">Terrains</a>
-                    <a href="{{ route('entr_louer') }}" class="btn btn-danger">Entrepots</a>
-                    <a href="{{ route('mag_louer') }}" class="btn btn-danger">Magasins</a>
-                    <a href="{{ route('hect_louer') }}" class="btn btn-danger">Hectares</a>
+                    <div class="row">
+                        <a href="{{ route('app_louer') }}" class="btn btn-success col-md-3">Appartements</a>
+                        <a href="{{ route('im_louer') }}" class="btn btn-warning col-md-3">Immeubles</a>
+                        <a href="{{ route('vill_louer') }}" class="btn btn-danger col-md-3">Villas</a>
+                        <a href="{{ route('bur_louer') }}" class="btn btn-success col-md-3">Bureaux</a>
+                    </div>
+                   <div class="row" style="padding-top: 10px">
+                       <a href="{{ route('terre_louer') }}" class="btn btn-info col-md-3">Terrains</a>
+                       <a href="{{ route('entr_louer') }}" class="btn btn-primary col-md-3">Entrepots</a>
+                       <a href="{{ route('mag_louer') }}" class="btn btn-warning col-md-3">Magasins</a>
+                       <a href="{{ route('hect_louer') }}" class="btn btn-success col-md-3">Hectares</a>
+                   </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>

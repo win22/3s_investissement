@@ -112,6 +112,11 @@ Route::post('all_search_promo_hectare', 'HectareController@search_promo')->name(
 //           ----------partie admin--------------
 Route::get('/investi_admin', 'SuperAdminController@index');
 Route::post('/signin_connexion_user_admin', 'SuperAdminController@connexion');
+Route::get('/renitialisation_password_user', 'SuperAdminController@ren')->name('reni');
+Route::post('/send_mail', 'SuperAdminController@send_email')->name('send_email_reni');
+Route::get('/user/reset/{token}','SuperAdminController@res');
+Route::post('/user/res/{token}','SuperAdminController@active_compte2');
+
 Route::group([
     'middleware' => 'App\Http\Middleware\Auth'
     ], function ()

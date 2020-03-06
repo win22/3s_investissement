@@ -1,7 +1,7 @@
 @extends('backend.admin_layout')
 @section('contenu')
 
-<div class="col-md-12">
+<div class="col-md-12 reveal">
     <!-- general form elements -->
     <div class="card card-orange card-outline">
         <div class="card-header">
@@ -20,14 +20,14 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <h6  style="font-family: 'Manjari bold">Nom du bureau <span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" value="{{ $bureau['name']}}"  name="name"  placeholder="Saisir ici">
+                            <input required type="text" class="form-control" value="{{ $bureau['name']}}"  name="name"  placeholder="Saisir ici">
                             @if($errors->has('name'))
                             <small class="form-text text-danger">{{$errors->first('name')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-6">
                             <h6 style="font-family: 'Manjari bold">Description rapide<span class="text-orange"> *</span></h6>
-                            <input type="text"  name="short_description"value="{{ $bureau['short_description']}}" class="form-control" placeholder="Saisir ici">
+                            <input required type="text"  name="short_description"value="{{ $bureau['short_description']}}" class="form-control" placeholder="Saisir ici">
                             @if($errors->has('short_description'))
                             <small class="form-text text-danger">{{$errors->first('short_description')}}</small>
                             @endif
@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <h6 style="font-family: 'Manjari bold">Large déscription<span class="text-orange"> *</span></h6>
-                        <textarea name="large_description" value="{{ old('large_description') }}"  class="form-control" rows="3" placeholder="Saisi ici ...">
+                        <textarea required name="large_description" value="{{ old('large_description') }}"  class="form-control" rows="3" placeholder="Saisi ici ...">
                             {{ $bureau['large_description']}}
                         </textarea>
                         @if($errors->has('large_description'))
@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <h6  style="font-family: 'Manjari bold">Adresse<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" value="{{ $bureau['adresse']}}" name="adresse"  placeholder="Saisir ici">
+                            <input  required type="text" class="form-control" value="{{ $bureau['adresse']}}" name="adresse"  placeholder="Saisir ici">
                             @if($errors->has('adresse'))
                             <small class="form-text text-danger">{{$errors->first('adresse')}}</small>
                             @endif
@@ -54,14 +54,14 @@
 
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari bold">Ville<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" value="{{ $bureau['ville']}}" name="ville" placeholder="Saisir ici">
+                            <input required type="text" class="form-control" value="{{ $bureau['ville']}}" name="ville" placeholder="Saisir ici">
                             @if($errors->has('ville'))
                             <small class="form-text text-danger">{{$errors->first('ville')}}</small>
                             @endif
                         </div>
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari bold">Pays<span class="text-orange"> *</span></h6>
-                            <input type="text" class="form-control" value="{{ $bureau['pays']}}" name="pays" placeholder="Saisir ici">
+                            <input required type="text" class="form-control" value="{{ $bureau['pays']}}" name="pays" placeholder="Saisir ici">
                             @if($errors->has('pays'))
                             <small class="form-text text-danger">{{$errors->first('pays')}}</small>
                             @endif
@@ -72,7 +72,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Type<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="type">
-                                <option value="bureauement">bureauement</option>
+                                <option value="bureau">bureau</option>
                             </select>
                             @if($errors->has('type'))
                             <small  class="form-text text-danger">{{$errors->first('type')}}</small>

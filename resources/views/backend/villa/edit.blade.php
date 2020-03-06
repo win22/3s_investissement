@@ -1,7 +1,7 @@
 @extends('backend.admin_layout')
 @section('contenu')
 
-<div class="col-md-12">
+<div class="col-md-12 reveal">
     <!-- general form elements -->
     <div class="card card-orange card-outline">
         <div class="card-header">
@@ -72,7 +72,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Type<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="type">
-                                <option value="villaement">villaement</option>
+                                <option value="villa">villa</option>
                             </select>
                             @if($errors->has('type'))
                             <small  class="form-text text-danger">{{$errors->first('type')}}</small>

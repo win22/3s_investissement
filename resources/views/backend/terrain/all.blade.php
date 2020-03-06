@@ -141,8 +141,8 @@
                         <div class="col-md-4 p-2">
                             <div class="card carde dropdown-hover animated-dropdown-menu">
                                 <div class="ribbon-wrapper sm ribbon">
-                                    <div style="color: white !important; " class="ribbon bg-danger text-white">
-                                        <span class="small" style="font-family: 'Manjari Bold'">A louer</span>
+                                    <div style="color: white !important; " class="ribbon bg-info text-white">
+                                        <span class="small" style="font-family: 'Manjari Bold'">A Vendre</span>
                                     </div>
                                 </div>
                                 <div class="card-header"

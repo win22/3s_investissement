@@ -44,62 +44,32 @@
         <ul class="owl-carousel owl-alt-controls" data-columns="4" data-autoplay="no" data-pagination="no" data-arrows="yes" data-single-item="no">
             <li class="item property-block">
                 <a class="property-featured-image">
-                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
+                    <img style="height: 190px" src="{{ asset('site/image/dg.png') }}" alt="">
 
                 </a>
                 <div class="property-info">
-                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 15%">Ibrahimma DIALLO</a></h4>
-                    <span style="padding-left: 30%" class="">Directeur Général</span>
+                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 25%">Pape DIOP</a></h4>
+                    <span style="padding-left: 20%" class="">Directeur Général</span>
                 </div>
             </li>
             <li class="item property-block">
                 <a class="property-featured-image">
-                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
+                    <img style="height: 180px" src="{{ asset('site/image/sc.jpeg') }}" alt="">
 
                 </a>
                 <div class="property-info">
-                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 15%">Sagesse DIHAMBOU</a></h4>
-                    <span style="padding-left: 35%" class="">IT Manager</span>
+                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 18%">Madame Ndiaye</a></h4>
+                    <span style="padding-left: 15%" class="">Assistante de Direction</span>
                 </div>
             </li>
             <li class="item property-block">
                 <a class="property-featured-image">
-                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
+                    <img style="height: 180px" src="{{ asset('site/image/au.jpeg') }}" alt="">
 
                 </a>
                 <div class="property-info">
-                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 15%">Malick DIALLO</a></h4>
-                    <span style="padding-left: 35%" class="">Designer</span>
-                </div>
-            </li>
-            <li class="item property-block">
-                <a class="property-featured-image">
-                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-
-                </a>
-                <div class="property-info">
-                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 15%">Sagesse DIHAMBOU</a></h4>
-                    <span style="padding-left: 35%" class="">IT Manager</span>
-                </div>
-            </li>
-            <li class="item property-block">
-                <a class="property-featured-image">
-                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-
-                </a>
-                <div class="property-info">
-                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 15%">Sagesse DIHAMBOU</a></h4>
-                    <span style="padding-left: 35%" class="">IT Manager</span>
-                </div>
-            </li>
-            <li class="item property-block">
-                <a class="property-featured-image">
-                    <img src="http://placehold.it/600x400&amp;text=IMAGE+PLACEHOLDER" alt="">
-
-                </a>
-                <div class="property-info">
-                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 15%">Sagesse DIHAMBOU</a></h4>
-                    <span style="padding-left: 35%" class="">IT Manager</span>
+                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 22%">Monsieur Sambou</a></h4>
+                    <span style="padding-left: 25%" class="">Agent commercial</span>
                 </div>
             </li>
         </ul>

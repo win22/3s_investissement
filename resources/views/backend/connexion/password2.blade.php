@@ -16,65 +16,54 @@
         <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
             <div class="row w-100">
                 <div class="col-lg-5 mx-auto">
-                    <div class="auto-form-wrapper card-success card-outline card-success1 card-outline1">
+                    <div class="auto-form-wrapper">
                         <div class="card-title text text-center py-3">
-                            <img width="120px" src="{{ asset('backend/img/logo.png')}}">
-                            <h3 style="font-family: 'Manjari Regular'" class="text-center">Connexion</h3>
+                            <img width="100px" src="{{ asset('backend/img/logo.png')}}">
+                            <h3 style="font-family: 'Manjari Regular'" class="text-center">Rénitialisation du mot de passe </h3>
                         </div>
-
-                        <form action="/signin_connexion_user_admin" method="post">
+                        <form action="{{ url('/user/res',$token)}}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label class="label">Adresse e-mail</label>
-                                <div class="input-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Veuillez saisir votre adresse e-mail">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">
-                                           <i class="material-icons">mail</i>
-                                        </span>
-                                    </div>
-                                </div>
-                                @if($errors->has('email'))
-                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('email')}}</small>
-                                @endif
-                                <p hidden class="alert">{{ $message = Session::get('message')}}</p>
-                                <p hidden class="alert">{{ $succes = Session::get('succes')}}</p>
-                                @if($message)
-                                <small class="form-text text-danger">{{ $message}}</small>
-                                {{ Session::put('message',NULL) }}
-                                @endif
-                                @if($succes)
-                                <small class="form-text text-success">{{ $succes}}</small>
-                                {{ Session::put('succes',NULL) }}
-                                @endif
-                            </div>
-
-                            <div class="form-group">
-                                <label class="label">Mot de passe </label>
+                                <label class="label">Mot de passe</label>
                                 <div class="input-group">
                                     <input type="password" name="password" class="form-control" placeholder="Veuillez saisir votre mot de passe">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
-                                            <i class="material-icons">lock</i>
+                                           <i class="material-icons">lock</i>
                                         </span>
                                     </div>
                                 </div>
                                 @if($errors->has('password'))
                                 <small id="emailHelp" class="form-text text-danger">{{$errors->first('password')}}</small>
                                 @endif
+                                <p hidden class="alert">{{ $message = Session::get('message')}}</p>
+                                @if($message)
+                                <small class="form-text text-danger">{{ $message}}</small>
+                                {{ Session::put('message',NULL) }}
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label">Confirmer mot de passe </label>
+                                <div class="input-group">
+                                    <input type="password" name="password_confirmation" class="form-control" placeholder="Veuillez confirmer votre mot de passe">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">lock</i>
+                                        </span>
+                                    </div>
+                                </div>
+                                @if($errors->has('password_confirmation'))
+                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('password_confirmation')}}</small>
+                                @endif
                             </div>
 
                             <div class="form-group">
 
-                                <button style="background-color: #0c3540; border-radius: 10px" class="btn text-white  submit-btn btn-block">
-                                    <i class="material-icons mr-6">send</i>
-                                    Se connecter
-
+                                <button class="btn btn-primary submit-btn btn-block">
+                                    <i class="material-icons">check</i>
+                                    Sauvegarder
                                 </button>
-                            </div>
-                            <div class="text-block text-center my-3">
-
-                                <a href="{{ route('reni') }}" class="text-warning text-small">Réinitialiser votre mot de passe </a>
                             </div>
                             <div class="text-block text-center my-3">
 
@@ -88,7 +77,7 @@
                     </div>
                     <ul class="auth-footer">
                     </ul>
-                    <p class="footer-text text-center">design by Nataal Agency. Tous les droits sont réservés.</p>
+                    <p  class="footer-text text-center">&copy; 2019 | design by <a  target="_blank" href="http://nataalagency.com/">Nataal Agency</a>. Tous les droits sont réservés.</p>
                 </div>
             </div>
         </div>
@@ -100,5 +89,6 @@
 
 </body>
 </html>
+
 
 

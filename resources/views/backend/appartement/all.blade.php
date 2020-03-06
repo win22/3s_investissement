@@ -166,7 +166,8 @@
                                         </h2>
                                     </div>
                                 </div>
-                                <div class="card-body"> <a href="{{ route('detail_appart', array('test' => $appart_v->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $appart['name']
+                                <div class="card-body"> <a href="{{ route('detail_appart', array('test' => $appart_v->id)) }}">
+                                        <h6 class="widget-user-desc p-1 float-right"> {{ $appart_v['name']
                                             }}</h6></a>
                                   <br/>
                                     <span>{{ $appart_v['short_description'] }}
@@ -179,7 +180,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <i style="color: #05d7ff  !important;" class="fas fa-globe-africa"></i>&nbsp;
-                                            <span>{{ $appart['pays'] }}</span>
+                                            <span>{{ $appart_v['pays'] }}</span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -203,7 +204,7 @@
                                        <span class="small"> Modifié {{ \Carbon\Carbon::parse($appart_v['updated_at'])->diffForHumans() }}</span>
                                     </div>
                                     <div class="row td-actions text-center float-right">
-                                        @if($appart['status'] == 1)
+                                        @if($appart_v['status'] == 1)
                                         <a href="{{ route('desactive_ap', array('test' => $appart_v->id)) }}"
                                            class="btn btn-dark btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-down"></i>
@@ -261,7 +262,7 @@
 
                                     <div style="padding-top: 103px">
                                         <h2 style="padding: 10px;" class="badge badge-info float-left">{{
-                                            $appart['prix'] }}
+                                            $appart_p['prix'] }}
                                             @if($appart_p['devise'] == 1)
                                             CFA
                                             @elseif($appart_p['devise'] == 2)
@@ -273,7 +274,8 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                     <a href="{{ route('detail_appart', array('test' => $appart_p->id)) }}"> <h6 class="widget-user-desc p-1 float-right"> {{ $appart['name']
+                                     <a href="{{ route('detail_appart', array('test' => $appart_p->id)) }}">
+                                         <h6 class="widget-user-desc p-1 float-right"> {{ $appart_p['name']
                                                 }}</h6></a>
                                     <span class="text-orange small">Déscription rapide</span><br/>
                                     <span>{{ $appart_p['short_description'] }}
@@ -317,7 +319,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="row td-actions text-center float-right">
-                                        @if($appart['status'] == 1)
+                                        @if($appart_p['status'] == 1)
                                         <a href="{{ route('desactive_ap', array('test' => $appart_p->id)) }}"
                                            class="btn btn-dark btn-link btn-sm">
                                             <i style="color: white !important;" class="fas fa-thumbs-down"></i>

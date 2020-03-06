@@ -109,12 +109,16 @@
                                         <ul class="dropdown">
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('app_promo') }}">Appartements</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('vill_promo') }}">Villa</a></li>
-                                            <li><a style="color: #5e5e5e !important;" href="{{ route('bur_promo') }}">Bureau</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('im_promo') }}">Immeuble</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('terre_promo') }}">Terrains</a></li>
-                                            <li><a style="color: #5e5e5e !important;" href="{{ route('entr_promo') }}">Entrepots</a></li>
-                                            <li><a style="color: #5e5e5e !important;" href="{{ route('mag_promo') }}">Magasin</a></li>
                                             <li><a style="color: #5e5e5e !important;" href="{{ route('hect_promo') }}">Hectares</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">Projet en cours</a>
+                                        <ul class="dropdown">
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('app_louer') }}">Appartements</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('vill_louer') }}">Villas</a></li>
+                                            <li><a style="color: #5e5e5e !important;" href="{{ route('terre_louer') }}">Terrain</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('about_site') }}">A propos</a></li>

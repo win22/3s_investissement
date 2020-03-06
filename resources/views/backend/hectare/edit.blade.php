@@ -1,11 +1,11 @@
 @extends('backend.admin_layout')
 @section('contenu')
 
-<div class="col-md-12">
+<div class="col-md-12 reveal">
     <!-- general form elements -->
     <div class="card card-orange card-outline">
         <div class="card-header">
-            <h3 class="card-title badge">hectare</h3><br/>
+            <h3 class="card-title badge">Hectare</h3><br/>
             <p>Vous êtes dans le formulaire de modifification d'un hectare</p>
         </div>
         <!-- /.card-header -->
@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <h6  style="font-family: 'Manjari bold">Nom de hectare<span class="text-orange"> *</span></h6>
+                            <h6  style="font-family: 'Manjari bold">Nom de l'hectare<span class="text-orange"> *</span></h6>
                             <input type="text" class="form-control" value="{{ $hectare['name']}}"  name="name"  placeholder="Saisir ici">
                             @if($errors->has('name'))
                             <small class="form-text text-danger">{{$errors->first('name')}}</small>
@@ -72,7 +72,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Type<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="type">
-                                <option value="hectareement">hectareement</option>
+                                <option value="hectare">hectare</option>
                             </select>
                             @if($errors->has('type'))
                             <small  class="form-text text-danger">{{$errors->first('type')}}</small>

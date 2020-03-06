@@ -28,10 +28,12 @@ class AppartController extends Controller
             ->latest()
             ->paginate(4);
         $nb = $appart->count();
+
         $appart_vendre = Appartement::where('option', 2)
             ->latest()
             ->paginate(4);
         $nb_v = $appart_vendre->count();
+
         $appart_sold = Appartement::where('sold', 1)
             ->latest()
             ->paginate(4);

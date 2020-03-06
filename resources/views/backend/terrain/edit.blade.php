@@ -1,7 +1,7 @@
 @extends('backend.admin_layout')
 @section('contenu')
 
-<div class="col-md-12">
+<div class="col-md-12 reveal">
     <!-- general form elements -->
     <div class="card card-orange card-outline">
         <div class="card-header">
@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <h6  style="font-family: 'Manjari bold">Nom de la terrain<span class="text-orange"> *</span></h6>
+                            <h6  style="font-family: 'Manjari bold">Nom du terrain<span class="text-orange"> *</span></h6>
                             <input type="text" class="form-control" value="{{ $terrain['name']}}"  name="name"  placeholder="Saisir ici">
                             @if($errors->has('name'))
                             <small class="form-text text-danger">{{$errors->first('name')}}</small>
@@ -71,7 +71,7 @@
                         <div class="form-group col-md-4">
                             <h6 style="font-family: 'Manjari Bold'" class="">Type<span class="text-orange"> *</span></h6>
                             <select class="form-control" name="type">
-                                <option value="terrainement">terrainement</option>
+                                <option value="terrain">terrain</option>
                             </select>
                             @if($errors->has('type'))
                             <small  class="form-text text-danger">{{$errors->first('type')}}</small>

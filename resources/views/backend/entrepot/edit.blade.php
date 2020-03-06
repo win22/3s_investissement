@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <h6  style="font-family: 'Manjari bold">Nom de la entrepot<span class="text-orange"> *</span></h6>
+                            <h6  style="font-family: 'Manjari bold">Nom de l'entrepot<span class="text-orange"> *</span></h6>
                             <input type="text" class="form-control" value="{{ $entrepot['name']}}"  name="name"  placeholder="Saisir ici">
                             @if($errors->has('name'))
                             <small class="form-text text-danger">{{$errors->first('name')}}</small>

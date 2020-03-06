@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <a href="{{ route('detail_villa', array('test' => $villa->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $villa['name']
+                            <a href="{{ route('details_villas', array('test' => $villa->id)) }}"> <h6 class="widget-user-desc float-right"> {{ $villa['name']
                                     }}</h6></a><br/>
                             <span>{{ $villa['short_description'] }}
                                     <div class="row">
@@ -98,22 +98,22 @@
                             </div>
                             <div class="row td-actions text-center float-right">
                                 @if($villa['status'] == 1)
-                                <a href="{{ route('desactive_ap', array('test' => $villa->id)) }}"
+                                <a href="{{ route('desactive', array('test' => $villa->id)) }}"
                                    class="btn btn-dark btn-link btn-sm">
                                     <i style="color: white !important;" class="fas fa-thumbs-down"></i>
                                 </a>
                                 @else
-                                <a href="{{ route('active_ap', array('test' => $villa->id)) }}"
+                                <a href="{{ route('active', array('test' => $villa->id)) }}"
                                    class="btn btn-success btn-link btn-sm">
                                     <i style="color: white !important;" class="fas fa-thumbs-up"></i>
                                 </a>
                                 @endif
                                 &nbsp;
-                                <a href="{{ route('selectionner_ap', array('select' =>$villa->id)) }}" class="btn btn-warning btn-link btn-sm">
+                                <a href="{{ route('selectionner', array('select' =>$villa->id)) }}" class="btn btn-warning btn-link btn-sm">
                                     <i style="color: white !important;" class="fas fa-edit"></i>
                                 </a>
                                 &nbsp;
-                                <a href="{{ route('supprimer_ap', array('test' => $villa->id)) }}" id="delete"
+                                <a href="{{ route('supprimer', array('test' => $villa->id)) }}" id="delete"
                                    class="btn btn-danger btn-link btn-sm">
                                     <i style="color: white !important;" class="fas fa-times"></i>
                                 </a>

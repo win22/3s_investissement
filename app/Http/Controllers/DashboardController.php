@@ -34,11 +34,11 @@ class DashboardController extends Controller
 
 
         $all_messages = Message::latest()
-            ->paginate(5);
+            ->paginate(2);
         $nb = $all_messages->count();
 
         $all_news = Newsletter::latest()
-            ->paginate(5);
+            ->paginate(2);
         $nb_n = $all_news->count();
 
         $last_mess = Message::where('status', 0)

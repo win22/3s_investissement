@@ -33,23 +33,7 @@
                 <p style="color: white">
                     Abonnez-vous à notre newsletter pour etre rapidement informé sur nos nouvelles promotions
                 </p>
-                <form method="post" action="{{ route('send_message') }}">
-                    @csrf
-                    <input required type="email" name="email" id="nl-email" placeholder="Saisir ici"
-                           class="form-control">
-                    <div class="form-group row">
-                        <div style="width: 10px !important;" class="col-md-12 offset-md-12">
-                            <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_KEY') }}"></div>
-                            @if($errors->has('g-recaptcha-response'))
-                            <span>
-                                <strong style="color: red">{{ $errors->first('g-recaptcha-response')}}</strong>
-                                @endif
-                            </span>
-                        </div>
-                    </div>
-                    <input type="submit" class="btn btn-primary btn-block btn-lg"
-                           value="Souscrire">
-                </form>
+                <a href="{{ route('contact_site') }}" class="btn btn-danger" block>Cliquer ici</a>
                 <div class="clearfix"></div>
                 <div id="nl-message"></div>
             </div>

@@ -19,15 +19,15 @@
                     <div class="auto-form-wrapper card-success card-outline card-success1 card-outline1">
                         <div class="card-title text text-center py-3">
                             <img width="120px" src="{{ asset('backend/img/logo.png')}}">
-                            <h3 style="font-family: 'Manjari Regular'" class="text-center">Connexion</h3>
+                            <h3 style="font-family: 'Manjari Regular'; padding-top: 10px" class="text-center m">Rénitialisation </h3>
                         </div>
 
-                        <form action="/signin_connexion_user_admin" method="post">
+                        <form action="{{ route('send_email_reni') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label class="label">Adresse e-mail</label>
                                 <div class="input-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Veuillez saisir votre adresse e-mail">
+                                    <input required type="email" name="email" class="form-control" placeholder="Veuillez saisir votre adresse e-mail">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                            <i class="material-icons">mail</i>
@@ -50,31 +50,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="label">Mot de passe </label>
-                                <div class="input-group">
-                                    <input type="password" name="password" class="form-control" placeholder="Veuillez saisir votre mot de passe">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">
-                                            <i class="material-icons">lock</i>
-                                        </span>
-                                    </div>
-                                </div>
-                                @if($errors->has('password'))
-                                <small id="emailHelp" class="form-text text-danger">{{$errors->first('password')}}</small>
-                                @endif
-                            </div>
-
-                            <div class="form-group">
 
                                 <button style="background-color: #0c3540; border-radius: 10px" class="btn text-white  submit-btn btn-block">
                                     <i class="material-icons mr-6">send</i>
-                                    Se connecter
-
+                                    Envoyer
                                 </button>
                             </div>
                             <div class="text-block text-center my-3">
 
-                                <a href="{{ route('reni') }}" class="text-warning text-small">Réinitialiser votre mot de passe </a>
+                                <a href="/investi_admin" class="text-warning text-small">Annuler</a>
                             </div>
                             <div class="text-block text-center my-3">
 
@@ -94,11 +78,11 @@
         </div>
 
     </div>
-
 </div>
 
 
 </body>
 </html>
+
 
 

@@ -3174,6 +3174,7 @@ span.progress-bar-tooltip:after {
 	color: #ebf0ff;
 	font-weight: normal;
 	animation: text2 2s 1;
+
 }
 .text1{
 	font-size: 40px;
@@ -3199,7 +3200,7 @@ span.progress-bar-tooltip:after {
 
 	}
 	30%{
-		letter-spacing: 15px;
+		letter-spacing: 10px;
 
 	}
 	85%{

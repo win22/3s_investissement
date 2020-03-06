@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('message');
+            $table->text('message');
             $table->string('confirm',1);
             $table->string('status',1);
             $table->timestamps();
