@@ -4,75 +4,98 @@
     <div class="row reveal">
         <div class="col-md-6 col-sm-6">
             <h3>Mission &amp; Vision</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam euismod sollicitudin nunc, eget pretium massa. Ut sed adipiscing enim, pellentesque ultrices erat. Integer placerat felis neque, et semper augue ullamcorper in. Pellentesque iaculis leo iaculis aliquet ultrices. Suspendisse potenti. Aenean ac magna faucibus, consectetur ligula vel, feugiat est. Nullam imperdiet semper neque eget euismod. Nunc commodo volutpat semper.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam euismod sollicitudin nunc, eget pretium massa. Ut sed adipiscing enim, pellentesque ultrices erat. Integer placerat felis neque, et semper augue ullamcorper in. Pellentesque iaculis leo iaculis aliquet ultrices. Suspendisse potenti. Aenean ac magna faucibus, consectetur ligula vel, feugiat est. Nullam imperdiet semper neque eget euismod. Nunc commodo volutpat semper.</p>
-        </div>
+            <p style="text-align: justify">
+                3S-Investissement Suarl, est une société immobilière qui véhicule dans les différents secteurs d’activités de l'immobiliers Tels que :<br/>
+                Nous proposons à notre  clientèle :<br/>
+                <ul>
+                <li> - La Vente et le Courtage de Vergers,Terrains Habitable, Agricoles partout Au Sénégal</li>
+                <li> - La Location de Biens Immobiliers ( Terrains, Villas,Immeubles, Appartements,Bureaux,Dépôts...)</li>
+                <li> - La location Meublé A Court et Long Terme.</li>
+                <li> - La Constitution, le dépôt et la suivie des dossiers de demande de titre de propriété (bail, titre foncier,Délibération)
+                </li>
+                <li> - L’Expertise immobilière (Immeuble,Terrain,Villa,Hectare...).</li>
+                <li> - La Construction et la rénovation de bâtiments ( Immeuble, Terrain,Villa,Bureau...)</li>
+                <li> - La Pose de clôture pour sécuriser un périmètre déterminé.</li>
+                <li> - La Gérance,le Conseil en Investissement....</li>
+            </ul>
+            </p>
+
+            <p style="text-align: justify">
+                Nous avons une équipe compétent,dynamique et tres sérieux,Votre besoin est notre priorité
+                Toute l’équipe de 3S-Investissement serait tres ravi d’accueillir toutes vos demandes et d'y répondre rapidement efficacement dans un délais court
+                Gerant de 3S-Investissement - Mr Diop
+            </p>
+             </div>
         <div class="col-md-6 col-sm-6">
-            <h3>Pourquoi devriez-vous nous choisir</h3>
+            <h3>Autres infos</h3>
             <!-- Start Accordion -->
             <div class="accordion" id="accordionArea">
                 <div class="accordion-group panel">
-                    <div class="accordion-heading accordionize"> <a class="accordion-toggle active" data-toggle="collapse" data-parent="#accordionArea" href="#oneArea"> We are real people <i class="fa fa-angle-down"></i> </a> </div>
+                    <div class="accordion-heading accordionize"> <a class="accordion-toggle active" data-toggle="collapse" data-parent="#accordionArea">Pourquoi devriez-vous nous choisir <i class="fa fa-angle-down"></i> </a> </div>
                     <div id="oneArea" class="accordion-body in collapse">
-                        <div class="accordion-inner"> Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue.</div>
-                    </div>
-                </div>
-                <div class="accordion-group panel">
-                    <div class="accordion-heading accordionize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionArea" href="#twoArea"> Friendly Agents to deal with <i class="fa fa-angle-down"></i> </a> </div>
-                    <div id="twoArea" class="accordion-body collapse">
-                        <div class="accordion-inner"> Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue.</div>
-                    </div>
-                </div>
-                <div class="accordion-group panel">
-                    <div class="accordion-heading accordionize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionArea" href="#threeArea"> Notifications for your rent payments <i class="fa fa-angle-down"></i> </a> </div>
-                    <div id="threeArea" class="accordion-body collapse">
-                        <div class="accordion-inner"> Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue.</div>
-                    </div>
+                        <div class="accordion-inner">
+                        <p style="text-align: justify">
+                            3S-Investissement Suarl,société immobilière implante au Sénégal, depuis une dizaine d’années, a su être parmi les leaders dans ce domaine.
+
+                            Nous sommes les plus dynamiques,Sérieux et professionnels.
+
+                            Nous avons à travers ses années résolus plus de 300 demandes de nos clients.
+
+                            Aujourd’hui 80% des demandes de nos clients ont été satisfaites.
+
+                            Nous sommes la, que pour nos clients.
+
+                            Votre confort, notre priorité.
+                        </p>
+                        </div>
                 </div>
             </div>
             <!-- End Accordion -->
         </div>
     </div>
-    <div class="row reveal-2">
-        <div class="col-md-12">
-            <div class="block-heading">
-                <h4><span class="heading-icon"><i class="fa fa-user"></i></span>Notre equipe</h4>
+</div>
+    <div class="padding-tb45 bottom-blocks">
+        <div class="container">
+            <div class="row">
+                <h3 class="text-center">Notre équipe</h3>
+                <div style="padding-bottom: 10px" class="col-md-4 col-sm-4 latest-testimonials column carde">
+                    <ul class="testimonials">
+                        <li style="padding-top: 15px">
+                            <img style="width: 190px !important; height: 180px; border-color: tomato"
+                                 src="{{ asset('site/image/dg.jpg') }}" alt="Happy Client"
+                                 class="testimonial-sender">
+                            <cite>Monsieur - <strong>Pape DIOP</strong>
+
+                                <br><a style="color: tomato">Directeur Général</a>
+                            </cite>
+                        </li>
+                    </ul>
+                </div>
+                <div style="padding-bottom: 10px" class="col-md-4 col-sm-4 latest-testimonials column carde">
+                    <ul class="testimonials">
+                        <li style="padding-top: 15px">
+                            <img style="width: 190px !important; height: 180px;  border-color: tomato"
+                                 src="{{ asset('site/image/sc.jpg') }}" alt="Happy Client"
+                                 class="testimonial-sender">
+                            <cite>Madame - <strong>Ndiaye</strong>
+                                <br><a style="color: tomato; padding-top: 15px">Assistante de Direction</a>
+                            </cite>
+                        </li>
+                    </ul>
+                </div>
+                <div style="padding-bottom: 10px" class="col-md-4 col-sm-4 latest-testimonials column carde">
+                    <ul class="testimonials">
+                        <li style="padding-top: 15px">
+                            <img style="width: 190px !important; height: 180px;  border-color: tomato"
+                                 src="{{ asset('site/image/au.jpg') }}" alt="Happy Client"
+                                 class="testimonial-sender">
+                            <cite>Monsieur - <strong>SAMBA</strong>
+                                <br><a style="color: tomato; padding-top: 15px">Agent Commercial</a>
+                            </cite>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row reveal-3">
-        <ul class="owl-carousel owl-alt-controls" data-columns="4" data-autoplay="no" data-pagination="no" data-arrows="yes" data-single-item="no">
-            <li class="item property-block">
-                <a class="property-featured-image">
-                    <img style="height: 190px" src="{{ asset('site/image/dg.png') }}" alt="">
-
-                </a>
-                <div class="property-info">
-                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 25%">Pape DIOP</a></h4>
-                    <span style="padding-left: 20%" class="">Directeur Général</span>
-                </div>
-            </li>
-            <li class="item property-block">
-                <a class="property-featured-image">
-                    <img style="height: 180px" src="{{ asset('site/image/sc.jpeg') }}" alt="">
-
-                </a>
-                <div class="property-info">
-                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 18%">Madame Ndiaye</a></h4>
-                    <span style="padding-left: 15%" class="">Assistante de Direction</span>
-                </div>
-            </li>
-            <li class="item property-block">
-                <a class="property-featured-image">
-                    <img style="height: 180px" src="{{ asset('site/image/au.jpeg') }}" alt="">
-
-                </a>
-                <div class="property-info">
-                    <h4><a class="text-center" style="font-family: 'Manjari Regular'; padding-left: 22%">Monsieur Sambou</a></h4>
-                    <span style="padding-left: 25%" class="">Agent commercial</span>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
 @endsection
