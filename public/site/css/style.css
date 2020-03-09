@@ -3200,14 +3200,14 @@ span.progress-bar-tooltip:after {
 
 	}
 	30%{
-		letter-spacing: 10px;
-
-	}
-	85%{
 		letter-spacing: 8px;
 
 	}
-}
+	85%{
+		letter-spacing: 7px;
+
+	}
+} sa
 
 @keyframes text {
 	0%{

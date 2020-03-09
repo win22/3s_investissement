@@ -23,7 +23,7 @@
             <p style="text-align: justify">
                 Nous avons une équipe compétent,dynamique et tres sérieux,Votre besoin est notre priorité
                 Toute l’équipe de 3S-Investissement serait tres ravi d’accueillir toutes vos demandes et d'y répondre rapidement efficacement dans un délais court
-                Gerant de 3S-Investissement - Mr Diop
+                .<br/> Gerant de 3S-Investissement - Mr Diop
             </p>
              </div>
         <div class="col-md-6 col-sm-6">
@@ -64,7 +64,7 @@
                             <img style="width: 190px !important; height: 180px; border-color: tomato"
                                  src="{{ asset('site/image/dg.jpg') }}" alt="Happy Client"
                                  class="testimonial-sender">
-                            <cite>Monsieur - <strong>Pape DIOP</strong>
+                            <cite>Monsieur - <strong> DIOP</strong>
 
                                 <br><a style="color: tomato">Directeur Général</a>
                             </cite>
@@ -77,7 +77,7 @@
                             <img style="width: 190px !important; height: 180px;  border-color: tomato"
                                  src="{{ asset('site/image/sc.jpg') }}" alt="Happy Client"
                                  class="testimonial-sender">
-                            <cite>Madame - <strong>Ndiaye</strong>
+                            <cite>Madame - <strong>NDIAYE</strong>
                                 <br><a style="color: tomato; padding-top: 15px">Assistante de Direction</a>
                             </cite>
                         </li>
@@ -89,7 +89,7 @@
                             <img style="width: 190px !important; height: 180px;  border-color: tomato"
                                  src="{{ asset('site/image/au.jpg') }}" alt="Happy Client"
                                  class="testimonial-sender">
-                            <cite>Monsieur - <strong>SAMBA</strong>
+                            <cite>Monsieur - <strong>SAMBOU</strong>
                                 <br><a style="color: tomato; padding-top: 15px">Agent Commercial</a>
                             </cite>
                         </li>
