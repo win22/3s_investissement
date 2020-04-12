@@ -118,7 +118,7 @@ class ImmeubleController extends Controller
             }
         }
         $immeub = Immeuble::create([
-            'admin_id' => Auth::user()->role,
+            'admin_id' => Auth::user()->id,
             'name' => request('name'),
             'short_description' => request('short_description'),
             'large_description' => request('large_description'),
